@@ -79,10 +79,12 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <Compile Include="SqLite_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TriCare\TriCare.csproj">
       <Name>TriCare</Name>
+      <Project>{B15AEA66-E65E-42D1-A5C9-A5A75E0B475D}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
