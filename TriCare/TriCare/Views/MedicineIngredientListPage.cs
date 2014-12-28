@@ -53,7 +53,7 @@ namespace TriCare.Views
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (IngredientCell));
 			listView.ItemSelected += (sender, e) => {
-                var selected = (MedicineIngredient)e.SelectedItem;
+				var selected = (PrescriptionMedicineIngredient)e.SelectedItem;
    
 //var patientPage = new PatientPage(selected);
   //                  Navigation.PushAsync(patientPage);

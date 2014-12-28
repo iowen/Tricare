@@ -10,24 +10,23 @@ namespace TriCare
 		public RefillPage ()
 		{
             var rRepo = new RefillRepo();
-            Title = "Formula";
-            var amounts  =new List<string>();
+            Title = "Refills";
 
             var ra =rRepo.GetAllRefillAmounts();
+			var refillAmountPicker = new Picker (); 
+			var refillQuantPicker = new Picker ();
             foreach(var r in ra)
             {
-                amounts.Add(r.Amount.ToString());
+				refillAmountPicker.Items.Add(r.Amount.ToString());
             }
 
-                        var quants  =new List<string>();
 
             var qa =rRepo.GetAllRefillQuantities();
             foreach(var q in qa)
             {
-                quants.Add(q.Quantity.ToString());
+				refillQuantPicker.Items.Add(q.Quantity.ToString());
             }
-            var refillAmountPicker = new Picker { BindingContext = amounts };
-            var refillQuantPicker = new Picker { BindingContext = quants };
+
 
             Content = new StackLayout
             {
