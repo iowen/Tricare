@@ -62,7 +62,7 @@ namespace TriCare.Views
                     await this.Navigation.PushAsync(new HomePage());
                 }
                 else{
-                    await DisplayAlert("Error", "Invalid credentials provided", "OK","");
+                    await DisplayAlert("Error", "Invalid credentials provided", "OK","close");
                 }
             };
 

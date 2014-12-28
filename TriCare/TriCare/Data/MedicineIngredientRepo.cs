@@ -77,7 +77,7 @@ namespace TriCare.Data
             var result = new List<PrescriptionMedicineIngredient>();
             foreach(var item in ings)
             {
-                result.Add(new PrescriptionMedicineIngredient() { IngredientId = item.IngredientId, Percentage = item.Percentage });
+				result.Add(new PrescriptionMedicineIngredient() {Name = item.Name, IngredientId = item.IngredientId, Percentage = item.Percentage });
             }
             return result;
         }

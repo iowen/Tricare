@@ -27,5 +27,11 @@ namespace TriCare.Models
         public int PrescriptionMedicineId { get; set; }
         public int IngredientId { get; set; }
         public double Percentage { get; set; }
+		[Ignore]
+		public string Name { get; set; }
+		[Ignore]
+		public string PercentageFriendly{ get { return Percentage.ToString (); } }	
+		[Ignore]
+		public string NameFriendly{ get { return Name.ToString (); } }
     }
 }

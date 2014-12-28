@@ -69,10 +69,8 @@ namespace TriCare.Data
                     var resultItem = JsonConvert.DeserializeObject<List<RefillQuantity>>(resultFix);
                     foreach (var item in resultItem)
                     {
-                        foreach (var mItem in item.Ingredients)
-                        {
-                            database.Insert(mItem);
-                        }
+						database.Insert(item);
+                        
                     }
                 }
                 catch (Exception ex)
@@ -99,10 +97,8 @@ namespace TriCare.Data
                     var resultItem = JsonConvert.DeserializeObject<List<RefillAmount>>(resultFix);
                     foreach (var item in resultItem)
                     {
-                        foreach (var mItem in item.Ingredients)
-                        {
-                            database.Insert(mItem);
-                        }
+                            database.Insert(item);
+                        
                     }
                 }
                 catch (Exception ex)

@@ -18,6 +18,9 @@ namespace TriCare.Views
 			Title = "My Patients";
 			patientList = new List<Patient> ();
 			listView = new ListView ();
+			var pRepo = new PatientRepo();
+			patientList = pRepo.GetAllPatientsForPrescriber(int.Parse(App.Token));
+			listView.ItemsSource = patientList;
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (PatientCell));
 			listView.ItemSelected += (sender, e) => {
@@ -57,60 +60,13 @@ namespace TriCare.Views
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
-			#region toolbar
-			ToolbarItem tbi = null;
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				tbi = new ToolbarItem("+", null, () =>
-					{
-                        var todoItem = new Patient();
-                        //var todoPage = new TodoItemPage();
-                        //todoPage.BindingContext = todoItem;
-                        //Navigation.PushAsync(todoPage);
-					}, 0, 0);
-			}
-			if (Device.OS == TargetPlatform.Android) { // BUG: Android doesn't support the icon being null
-				tbi = new ToolbarItem ("+", "plus", () => {
-                    var todoItem = new Patient();
-                    //var todoPage = new TodoItemPage();
-                    //todoPage.BindingContext = todoItem;
-                    //Navigation.PushAsync(todoPage);
-				}, 0, 0);
-			}
-			if (Device.OS == TargetPlatform.WinPhone)
-			{
-				tbi = new ToolbarItem("Add", "add.png", () =>
-					{
-                        var todoItem = new Patient();
-                        //var todoPage = new TodoItemPage();
-                        //todoPage.BindingContext = todoItem;
-                        //Navigation.PushAsync(todoPage);
-					}, 0, 0);
-			}
-
-			ToolbarItems.Add (tbi);
-
-            //if (Device.OS == TargetPlatform.iOS) {
-            //    var tbi2 = new ToolbarItem ("?", null, () => {
-            //        var todos = App.Database.GetItemsNotDone();
-            //        var tospeak = "";
-            //        foreach (var t in todos)
-            //            tospeak += t.Name + " ";
-            //        if (tospeak == "") tospeak = "there are no tasks to do";
-
-            //        DependencyService.Get<ITextToSpeech>().Speak(tospeak);
-            //    }, 0, 0);
-            //    ToolbarItems.Add (tbi2);
-            //}
-			#endregion
+		
 		}
 
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-            var pRepo = new PatientRepo();
-			patientList = pRepo.GetAllPatientsForPrescriber(int.Parse(App.Token));
-			listView.ItemsSource = patientList;
+
 		}
 		public void OnSearchBarButtonPressed(object sender, EventArgs args)
 		{
