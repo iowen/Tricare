@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TriCare.Views;
 using Xamarin.Forms;
+using TriCare.Models;
 
 namespace TriCare
 {
@@ -45,5 +46,14 @@ namespace TriCare
                 });
             }
         }
+		static List<PrescriptionModel> _currentPrescriptions;
+		public static List<PrescriptionModel>  CurrentPrescriptions
+		{
+			get{ return _currentPrescriptions; }
+		}
+		public static void ClearCurrentPrescription()
+		{
+			_currentPrescriptions = new List<PrescriptionModel> ();
+		}
     }
 }

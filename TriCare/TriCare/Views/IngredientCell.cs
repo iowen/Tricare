@@ -26,13 +26,13 @@ namespace TriCare.Views
             {
                 IsVisible = false
             };
-            pId.SetBinding(Label.TextProperty, "MedicineIngredientId");
+			pId.SetBinding(Label.TextProperty, "IngredientId");
 
             var layout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Children = { labelF, labelL }
+				Children = { labelF, labelL ,pId}
             };
             View = layout;
         }

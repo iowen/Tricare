@@ -59,6 +59,7 @@ namespace TriCare.Views
 				var loginState = await prescriberRepo.LoginPrescriber(loginItem);
 				if (loginState.ToLower() == "success")
                 {
+					App.ClearCurrentPrescription();
                     await this.Navigation.PushAsync(new HomePage());
                 }
                 else{

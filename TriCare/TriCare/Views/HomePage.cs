@@ -11,6 +11,7 @@ namespace TriCare.Views
     {
         public HomePage()
         {
+			NavigationPage.SetHasNavigationBar (this, false);
             var AddPatientButton = new Button { Text = "Add Patient" };
             AddPatientButton.Clicked += (sender, e) =>
             {
@@ -83,5 +84,6 @@ namespace TriCare.Views
               }
             });
         }
+
     }
 }
