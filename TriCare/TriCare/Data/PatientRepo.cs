@@ -31,6 +31,40 @@ namespace TriCare.Data
             return database.Table<Patient>().Where(x => x.PrescriberId == prescriber).ToList();
         }
 
+        public async Task<List<Patient>> PullAllPatientsForPrescriber(int prescriber)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://teamsavagemma.com");
+
+
+                var resultTask = await client.PutAsync("http://teamsavagemma.com/api/Patient/" + prescriber.ToString(), null);
+                var resultText = resultTask.Content.ReadAsStringAsync().Result;
+                try
+                {
+                    dynamic resultFix = JsonConvert.DeserializeObject(resultText);
+                    var resultItem = JsonConvert.DeserializeObject<List<Patient>>(resultFix);
+                    if (resultItem.Count > 0)
+                    {
+                        foreach (var it in resultItem)
+                        {
+                            database.Insert(it);
+                        }
+                        var returnTask = new TaskCompletionSource<List<Patient>>();
+                        returnTask.SetResult(resultItem);
+                        return await returnTask.Task;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+                            
+
+
         public Patient GetPatient(int id)
         {
             return database.Table<Patient>().FirstOrDefault(x => x.PatientId == id);

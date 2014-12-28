@@ -28,7 +28,7 @@ namespace TriCare.Views
 			continueButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
-
+                Navigation.PushAsync(new RefillPage());
 			};
 			Grid grid = new Grid
 			{
@@ -87,7 +87,7 @@ namespace TriCare.Views
 		{
 			base.OnAppearing ();
 			MedicineIngredientRepo mRepo = new MedicineIngredientRepo ();
-			listView.ItemsSource = mRepo.GetIngredientsForMedicine (medicineId);
+            listView.ItemsSource = mRepo.ConvertIngreditentsToPrescriptionIngredients(mRepo.GetIngredientsForMedicine(medicineId));
 		}
 
     }

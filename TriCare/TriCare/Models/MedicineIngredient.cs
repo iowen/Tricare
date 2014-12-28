@@ -20,4 +20,12 @@ namespace TriCare.Models
 		[Ignore]
 		public string NameFriendly{ get { return Name.ToString (); } }
     }
+    public class PrescriptionMedicineIngredient
+    {
+        [PrimaryKey]
+        public int PrescriptionMedicineIngredientId { get; set; }
+        public int PrescriptionMedicineId { get; set; }
+        public int IngredientId { get; set; }
+        public double Percentage { get; set; }
+    }
 }

@@ -62,9 +62,12 @@ namespace TriCare.Data
 					if (resultItem.PrescriberId > 0) 
 					{
                         var pRepo = new PrescriberRepo();
+                        var patRepo = new PatientRepo();
+                        
 						//var p =  new Prescriber() { AccountId = resultItem.AccountId, Address = resultItem.Address, City = resultItem.City, DeaNumber = resultItem.DeaNumber, Email = resultItem.Email, Fax = resultItem.Fax, FirstName = resultItem.FirstName, LastName = resultItem.LastName, LicenseNumber = resultItem.LicenseNumber, NpiNumber = resultItem.NpiNumber, Password = resultItem.Password, Phone = resultItem.Phone, PrescriberId = resultItem.PrescriberId, State = resultItem.State, Zip = resultItem.Zip };
 
 						pRepo.AddPrescriberLocal(resultItem);
+                        patRepo.PullAllPatientsForPrescriber(resultItem.PrescriberId);
                         App.SaveToken(resultItem.PrescriberId.ToString());
                         var returnTask = new TaskCompletionSource<string>();
                         returnTask.SetResult("success");

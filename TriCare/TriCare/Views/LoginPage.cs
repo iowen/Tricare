@@ -48,6 +48,12 @@ namespace TriCare.Views
 				{
 					var r = await medR.GetMedicineIngredients();
 				}
+                var rR = new RefillRepo();
+                if (rR.InsertRecords())
+                {
+                    var r = await rR.GetRefillAmounts();
+                    var rq = await rR.GetRefillQuantities();
+                }
 				var loginItem = new LoginModel() {Email = emailEntry.Text, Password = passwordEntry.Text};
                 var prescriberRepo = new PrescriberRepo();
 				var loginState = await prescriberRepo.LoginPrescriber(loginItem);

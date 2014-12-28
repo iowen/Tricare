@@ -25,3 +25,31 @@ C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare.And
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare.Android\obj\Debug\res\drawable\icon.png
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare.Android\obj\Debug\R.cs.flag
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare.Android\obj\Debug\uploadflags.txt
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.dll.config
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.pdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.dll.mdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.apk
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android-Signed.apk
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\FormsViewGroup.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\SQLite.Net.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\SQLite.Net.Platform.XamarinAndroid.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\System.Net.Http.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Newtonsoft.Json.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.pdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.dll.mdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\Newtonsoft.Json.xml
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCare.Android.csprojResolveAssemblyReference.cache
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCare.Android.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCare.Android.pdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\android\bin\TriCare.Android.apk
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\icon.png
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\R.cs.flag
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\uploadflags.txt

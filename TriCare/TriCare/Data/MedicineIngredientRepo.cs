@@ -72,6 +72,16 @@ namespace TriCare.Data
 			return database.Table<MedicineIngredient>().Where(x => x.MedicineId == id).ToList();
         }
 
+        public List<PrescriptionMedicineIngredient>ConvertIngreditentsToPrescriptionIngredients(List<MedicineIngredient> ings)
+        {
+            var result = new List<PrescriptionMedicineIngredient>();
+            foreach(var item in ings)
+            {
+                result.Add(new PrescriptionMedicineIngredient() { IngredientId = item.IngredientId, Percentage = item.Percentage });
+            }
+            return result;
+        }
+
         public int AddMedicine(Medicine item)
         {
             return database.Insert(item);

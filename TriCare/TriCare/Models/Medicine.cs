@@ -14,6 +14,15 @@ namespace TriCare.Models
         public string Name { get; set; }
     }
 
+    public class PrescriptionMedicine
+    {
+        [PrimaryKey]
+        public int PrescriptionMedicineId { get; set; }
+        public int MedicineId { get; set; }
+        public int PrescriptionId { get; set; }
+    }
+
+
 	public class MedicineWithIngredients
 	{
 		public int MedicineId { get; set; }
