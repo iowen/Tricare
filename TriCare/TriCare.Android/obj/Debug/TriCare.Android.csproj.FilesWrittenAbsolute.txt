@@ -22,3 +22,4 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.dll.mdb
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.xml
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricarebg.png

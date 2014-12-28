@@ -4,13 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using TriCare.Data;
 namespace TriCare.Views
 {
     public class PrescriptionNewORSelectPatientPage : ContentPage
     {
         public PrescriptionNewORSelectPatientPage()
         {
+			this.BackgroundImage = "tricareBG.png";
+
+			var pRepo = new PrescriberRepo ();
+			var pId = int.Parse(App.Token);
+			var presc = pRepo.GetPrescriber (pId);
+			App.ClearCurrentPrescription ();
+			App.CurrentPrescription.Prescriber = presc;
             this.SetBinding(ContentPage.TitleProperty, "Select Patient");
 
             var newPatientButton = new Button { Text = "New Patient" };

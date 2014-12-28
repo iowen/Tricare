@@ -46,14 +46,14 @@ namespace TriCare
                 });
             }
         }
-		static List<PrescriptionModel> _currentPrescriptions;
-		public static List<PrescriptionModel>  CurrentPrescriptions
+		static PrescriptionModel _currentPrescription;
+		public static PrescriptionModel  CurrentPrescription
 		{
-			get{ return _currentPrescriptions; }
+			get{ return _currentPrescription; }
 		}
 		public static void ClearCurrentPrescription()
 		{
-			_currentPrescriptions = new List<PrescriptionModel> ();
+			_currentPrescription = new PrescriptionModel ();
 		}
     }
 }

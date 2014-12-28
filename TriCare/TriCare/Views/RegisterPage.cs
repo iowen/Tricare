@@ -15,6 +15,8 @@ namespace TriCare.Views
     {
         public RegisterPage()
         {
+			this.BackgroundImage = "tricareBG.png";
+
             this.SetBinding(ContentPage.TitleProperty, "Register");
 
             var firstNameLabel = new Label { Text = "First Name" };

@@ -14,6 +14,7 @@ namespace TriCare.Views
         public CreatePatientPage(bool isDuringPrescription = false)
         {
             this.SetBinding(ContentPage.TitleProperty, "Add Patient");
+			this.BackgroundImage = "tricareBG.png";
 
             var firstNameLabel = new Label { Text = "First Name" };
             var firstNameEntry = new Entry();

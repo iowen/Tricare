@@ -13,8 +13,9 @@ namespace TriCare.Views
     {
         public LoginPage()
         {
-            this.SetBinding(ContentPage.TitleProperty, "Login");
+			this.BackgroundImage = "tricareBG.png";
 
+            this.SetBinding(ContentPage.TitleProperty, "Login");
             var emailLabel = new Label { Text = "Email" };
             var emailEntry = new Entry();
             emailEntry.SetBinding(Entry.TextProperty, "Email");

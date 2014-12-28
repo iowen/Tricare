@@ -16,6 +16,7 @@ namespace TriCare.Views
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
 
             this.SetBinding(ContentPage.TitleProperty, "Profile");
+			this.BackgroundImage = "tricareBG.png";
 
             var editButton = new Button { Text = "Edit" };
             editButton.Clicked += async (sender, e) =>

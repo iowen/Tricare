@@ -9,6 +9,8 @@ namespace TriCare
 	{
 		public RefillPage ()
 		{
+			this.BackgroundImage = "tricareBG.png";
+
             var rRepo = new RefillRepo();
             Title = "Refills";
 

@@ -15,6 +15,8 @@ namespace TriCare.Views
 		int medicineId;
 		public MedicineIngredientListPage (int _medicineId)
 		{
+			this.BackgroundImage = "tricareBG.png";
+
 			medicineId = _medicineId;
 			Title = "Formula";
 			var addIngredientButton = new Button { Text = "Add Ingredient" };
@@ -28,6 +30,11 @@ namespace TriCare.Views
 			continueButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
+				var en =listView.ItemsSource.GetEnumerator();
+				do{
+					//get ingred. in list
+				}while(en.MoveNext());
+
                 Navigation.PushAsync(new RefillPage());
 			};
 			Grid grid = new Grid

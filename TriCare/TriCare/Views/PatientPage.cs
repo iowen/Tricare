@@ -12,6 +12,8 @@ namespace TriCare.Views
     {
 		public PatientPage(Patient p, bool isDuringPrescription = false)
         {
+			this.BackgroundImage = "tricareBG.png";
+
 			if (!isDuringPrescription)
             this.SetBinding(ContentPage.TitleProperty, "View Patient");
 			else
@@ -157,14 +159,15 @@ namespace TriCare.Views
 			else {
 				var continueButton = new Button { Text = "Continue" };
 				continueButton.Clicked += async (sender, e) => {
-					//var pId = int.Parse(App.Token);
-					//var patientItem = new Patient() { PrescriberId = pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
+					var pId = int.Parse(App.Token);
+					var patientItem = new Patient() { PrescriberId = pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
 					//var patientRepo = new PatientRepo();
 					//// send webservice request and so on
 					//var res = await patientRepo.AddPatient(patientItem);
 					//if (!string.IsNullOrWhiteSpace(res))
 					//{
 					//    await this.Navigation.PopAsync();
+					App.CurrentPrescription.Patient = patientItem;
 					await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
 					//}
 					//else

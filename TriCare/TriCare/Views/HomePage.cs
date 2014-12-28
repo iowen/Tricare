@@ -12,6 +12,8 @@ namespace TriCare.Views
         public HomePage()
         {
 			NavigationPage.SetHasNavigationBar (this, false);
+			this.BackgroundImage = "tricareBG.png";
+
             var AddPatientButton = new Button { Text = "Add Patient" };
             AddPatientButton.Clicked += (sender, e) =>
             {
@@ -49,6 +51,7 @@ namespace TriCare.Views
             this.Children.Add(new ContentPage
                 {
                     Title = "Prescriptions",
+					BackgroundImage = "tricareBG.png",
                     Content = new StackLayout
           {
               VerticalOptions = LayoutOptions.StartAndExpand,
@@ -62,6 +65,7 @@ namespace TriCare.Views
             this.Children.Add(new ContentPage
             {
                 Title = "Patients",
+					BackgroundImage = "tricareBG.png",
                 Content = new StackLayout
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,
@@ -74,6 +78,7 @@ namespace TriCare.Views
             this.Children.Add(new ContentPage
             {
                 Title = "Profile",
+					BackgroundImage = "tricareBG.png",
                 Content = new StackLayout
               {
                   VerticalOptions = LayoutOptions.StartAndExpand,
