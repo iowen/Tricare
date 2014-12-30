@@ -19,7 +19,7 @@ namespace TriCare.Views
 
 			medicineId = _medicineId;
 			Title = "Formula";
-			var addIngredientButton = new Button { Text = "Add Ingredient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
+			var addIngredientButton = new Button { Text = "Add" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
 			addIngredientButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
@@ -59,7 +59,7 @@ namespace TriCare.Views
 				TextColor = Color.Transparent,
 				XAlign = TextAlignment.Center,
 				YAlign = TextAlignment.Center,
-
+				HeightRequest = 1,
 				BackgroundColor = Color.Transparent
 			};
 			grid.Children.Add(bv, 0,0);
