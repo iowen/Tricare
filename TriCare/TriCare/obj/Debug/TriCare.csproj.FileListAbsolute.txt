@@ -16,9 +16,6 @@ C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare\bin
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare\bin\Debug\Xamarin.Forms.Xaml.xml
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare\obj\Debug\TriCare.dll
 C:\Users\iowen\Documents\Visual Studio 2013\Projects\TriCare\TriCare\TriCare\obj\Debug\TriCare.pdb
-C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.csproj.App.config
-C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.csprojResolveAssemblyReference.cache
-C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\TriCare.dll.config
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\TriCare.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\TriCare.pdb
@@ -34,4 +31,7 @@ C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\System.Net.Htt
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\Xamarin.Forms.Core.xml
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.csproj.App.config
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.pdb
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\obj\Debug\TriCare.csprojResolveAssemblyReference.cache

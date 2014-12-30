@@ -1,27 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Views/MedicineIngredientListPage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare.Android\FileSystem.cs">
     <Files>
-      <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Data/MedicineIngredientRepo.cs" Line="51" Column="51" />
-      <File FileName="TriCare/TriCare/Models/MedicineIngredient.cs" Line="26" Column="26" />
-      <File FileName="TriCare/TriCare/Views/IngredientCell.cs" Line="37" Column="37" />
-      <File FileName="TriCare/TriCare/Views/RefillPage.cs" Line="29" Column="29" />
-      <File FileName="TriCare/TriCare/Data/RefillRepo.cs" Line="9" Column="9" />
-      <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="37" Column="37" />
-      <File FileName="TriCare/TriCare/Models/RefillAmount.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/App.cs" Line="59" Column="59" />
-      <File FileName="TriCare/TriCare/Views/HomePage.cs" Line="53" Column="53" />
-      <File FileName="TriCare/TriCare/Models/PrescriptionModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/LoginModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionNewORSelectPatientPage.cs" Line="94" Column="94" />
-      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="52" Column="52" />
-      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="6" Column="6" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionSelectMedicinePage.cs" Line="52" Column="52" />
+      <File FileName="TriCare\TriCare\Views\SignaturePadPage.cs" Line="56" Column="56" />
+      <File FileName="TriCare\TriCare.Android\SignaturePadRenderer.cs" Line="23" Column="23" />
+      <File FileName="TriCare\TriCare.Android\SignatureService.cs" Line="6" Column="6" />
+      <File FileName="TriCare\TriCare.Android\SignatureServiceActivity.cs" Line="24" Column="24" />
+      <File FileName="TriCare\TriCare\Views\SignaturePadView.cs" Line="11" Column="11" />
+      <File FileName="TriCare\TriCare\Utilities\IFile.cs" Line="9" Column="9" />
+      <File FileName="TriCare\TriCare.Android\File.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare.Android\Directory.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare.Android\FileSystem.cs" Line="17" Column="17" />
+      <File FileName="TriCare\TriCare\Utilities\IDirectory.cs" Line="9" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadView.cs" line="21" column="1" />
+      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\SignaturePadRenderer.cs" line="118" column="1" />
+      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="84" column="1" />
+      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\File.cs" line="79" column="1" />
+      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\FileSystem.cs" line="24" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TriCare.Android MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>

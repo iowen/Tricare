@@ -32,6 +32,7 @@ C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCar
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android.apk
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\TriCare.Android-Signed.apk
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\FormsViewGroup.dll
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\SignaturePad.Android.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\SQLite.Net.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\SQLite.Net.Platform.XamarinAndroid.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\bin\Debug\System.Net.Http.dll
@@ -50,6 +51,8 @@ C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCar
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCare.Android.dll
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\TriCare.Android.pdb
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\android\bin\TriCare.Android.apk
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\layout\signaturepad.xml
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\icon.png
+C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\tricarebg.png
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\R.cs.flag
 C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\uploadflags.txt

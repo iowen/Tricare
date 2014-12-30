@@ -12,9 +12,19 @@ public final class R {
     }
     public static final class drawable {
         public static int icon=0x7f020000;
+        public static int tricarebg=0x7f020001;
+    }
+    public static final class id {
+        public static int btnCancel=0x7f050002;
+        public static int btnSave=0x7f050003;
+        public static int rootView=0x7f050000;
+        public static int signatureView=0x7f050001;
+    }
+    public static final class layout {
+        public static int signaturepad=0x7f030000;
     }
     public static final class string {
-        public static int ApplicationName=0x7f030001;
-        public static int Hello=0x7f030000;
+        public static int ApplicationName=0x7f040001;
+        public static int Hello=0x7f040000;
     }
 }

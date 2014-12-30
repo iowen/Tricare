@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TriCare.Data;
 using TriCare.Models;
+using TriCare.Utilities;
 using Xamarin.Forms;
 
 namespace TriCare.Views
@@ -71,7 +72,10 @@ namespace TriCare.Views
             var registerButton = new Button { Text = "Register" };
             registerButton.Clicked += (sender, e) =>
             {
-                this.Navigation.PushAsync(new RegisterPage());
+              //  this.Navigation.PushAsync(new RegisterPage());
+                var sigserv = DependencyService.Get<ISignatureService>();
+                var fileSys = DependencyService.Get<IFileSystem>();
+                this.Navigation.PushAsync(new SignaturePadPage(sigserv, fileSys));
                 
             };
 

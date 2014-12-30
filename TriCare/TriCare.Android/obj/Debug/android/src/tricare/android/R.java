@@ -14,8 +14,17 @@ public final class R {
         public static final int icon=0x7f020000;
         public static final int tricarebg=0x7f020001;
     }
+    public static final class id {
+        public static final int btnCancel=0x7f050002;
+        public static final int btnSave=0x7f050003;
+        public static final int rootView=0x7f050000;
+        public static final int signatureView=0x7f050001;
+    }
+    public static final class layout {
+        public static final int signaturepad=0x7f030000;
+    }
     public static final class string {
-        public static final int ApplicationName=0x7f030001;
-        public static final int Hello=0x7f030000;
+        public static final int ApplicationName=0x7f040001;
+        public static final int Hello=0x7f040000;
     }
 }
