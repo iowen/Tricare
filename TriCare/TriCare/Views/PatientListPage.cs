@@ -22,6 +22,7 @@ namespace TriCare.Views
 			listView = new ListView ();
 			var pRepo = new PatientRepo();
 			patientList = pRepo.GetAllPatientsForPrescriber(int.Parse(App.Token));
+			listView.BackgroundColor = Color.Transparent;
 			listView.ItemsSource = patientList;
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (PatientCell));

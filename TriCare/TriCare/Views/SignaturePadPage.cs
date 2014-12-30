@@ -42,7 +42,7 @@ namespace TriCare.Views
 				StrokeColor = Color.Black,
 				StrokeWidth = 2,
 			};
-            var saveButton = new Button { Text = "Save" };
+			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             saveButton.Clicked += saveButton_Clicked;
 			if (Device.OS == TargetPlatform.iOS) {		
 

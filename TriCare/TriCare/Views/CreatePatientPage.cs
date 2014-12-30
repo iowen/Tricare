@@ -98,7 +98,7 @@ namespace TriCare.Views
             var PaymentTypeEntry = new Entry();
             PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 
-            var saveButton = new Button { Text = "Save" };
+			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             saveButton.Clicked += async (sender, e) =>
             {
 				var pId = int.Parse(App.Token);

@@ -81,7 +81,7 @@ namespace TriCare.Views
             var FaxEntry = new Entry();
             FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 
-            var registerButton = new Button { Text = "Register" };
+			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
                 if (passwordEntry.Text != password2Entry.Text)

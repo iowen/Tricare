@@ -17,17 +17,23 @@ namespace TriCare.Views
 			this.BackgroundImage = "tricareBG.png";
 
             this.SetBinding(ContentPage.TitleProperty, "Login");
-            var emailLabel = new Label { Text = "Email" };
-            var emailEntry = new Entry();
+			var emailLabel = new Label { Text = "Email", TextColor = Color.White  };
+			var emailEntry = new Entry(){
+				BackgroundColor = Color.Transparent,
+				TextColor = Color.White ,
+
+				};
             emailEntry.SetBinding(Entry.TextProperty, "Email");
 
-            var passwordLabel = new Label { Text = "Password" };
+			var passwordLabel = new Label { Text = "Password", TextColor = Color.White   };
 			var passwordEntry = new Entry(){
+				BackgroundColor = Color.Transparent,
+				TextColor = Color.White ,
 				IsPassword = true
 			};
             passwordEntry.SetBinding(Entry.TextProperty, "Password");
 
-            var loginButton = new Button { Text = "Log In" };
+			var loginButton = new Button { Text = "Log In" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             loginButton.Clicked += async (sender, e) =>
             {
 				var iR = new InsuranceCarrierRepo();
@@ -69,7 +75,7 @@ namespace TriCare.Views
                 }
             };
 
-            var registerButton = new Button { Text = "Register" };
+			var registerButton = new Button { Text = "Register", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };
             registerButton.Clicked += (sender, e) =>
             {
               //  this.Navigation.PushAsync(new RegisterPage());

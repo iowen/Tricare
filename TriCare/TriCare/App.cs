@@ -12,8 +12,10 @@ namespace TriCare
     {
         public static Page GetMainPage()
         {
+		
             var mainNav = new NavigationPage(new LoginPage());
-
+			mainNav.BarBackgroundColor = Color.FromRgba(119,164,214,255);
+			mainNav.BarTextColor = Color.White;
             return mainNav;
         }
 

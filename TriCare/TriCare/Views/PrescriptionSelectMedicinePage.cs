@@ -24,7 +24,7 @@ namespace TriCare.Views
 			};
 			foreach (var med in meds) {
 
-				var newButton = new Button { Text = med.Name.Trim() };
+				var newButton = new Button { Text = med.Name.Trim() , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 				newButton.Clicked += async (sender, e) => {
 					await this.Navigation.PushAsync (new MedicineIngredientListPage (med.MedicineId));
 				};

@@ -18,7 +18,7 @@ namespace TriCare.Views
             this.SetBinding(ContentPage.TitleProperty, "Profile");
 			this.BackgroundImage = "tricareBG.png";
 
-            var editButton = new Button { Text = "Edit" };
+			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {
                 //var pId = int.Parse(App.Token);

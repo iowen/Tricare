@@ -19,14 +19,14 @@ namespace TriCare.Views
 
 			medicineId = _medicineId;
 			Title = "Formula";
-			var addIngredientButton = new Button { Text = "Add Ingredient" };
+			var addIngredientButton = new Button { Text = "Add Ingredient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 			addIngredientButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
 
 			};
 
-			var continueButton = new Button { Text = "Continue" };
+			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
 			continueButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
@@ -57,6 +57,7 @@ namespace TriCare.Views
 		
 		
 			listView = new ListView ();
+			listView.BackgroundColor = Color.Transparent;
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (IngredientCell));
 			listView.ItemSelected += (sender, e) => {

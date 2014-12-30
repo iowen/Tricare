@@ -14,34 +14,34 @@ namespace TriCare.Views
 			NavigationPage.SetHasNavigationBar (this, false);
 			this.BackgroundImage = "tricareBG.png";
 
-            var AddPatientButton = new Button { Text = "Add Patient" };
+			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new CreatePatientPage());
 
             };
 
-            var ManagePatientButton = new Button { Text = "Manage Patients" };
+			var ManagePatientButton = new Button { Text = "Manage Patients", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePatientButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new PatientListPage());
 
             };
 
-            var AddPrescriptionButton = new Button { Text = "Add Prescription" };
+			var AddPrescriptionButton = new Button { Text = "Add Prescription" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPrescriptionButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new PrescriptionNewORSelectPatientPage());
 
             };
 
-            var ManagePrescriptionButton = new Button { Text = "Prescription History" };
+			var ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePrescriptionButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new RegisterPage());
 
             };
-            var EditProfileButton = new Button { Text = "Edit Profile" };
+			var EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             EditProfileButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new PrescriberPage());

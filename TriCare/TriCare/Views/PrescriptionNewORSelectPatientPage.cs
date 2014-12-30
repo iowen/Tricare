@@ -20,13 +20,13 @@ namespace TriCare.Views
 			App.CurrentPrescription.Prescriber = presc;
             this.SetBinding(ContentPage.TitleProperty, "Select Patient");
 
-            var newPatientButton = new Button { Text = "New Patient" };
+			var newPatientButton = new Button { Text = "New Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             newPatientButton.Clicked += async (sender, e) =>
             {
                     await this.Navigation.PushAsync(new CreatePatientPage(true));
             };
 
-            var existingPatientButton = new Button { Text = "Existing Patient" };
+			var existingPatientButton = new Button { Text = "Existing Patient", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             existingPatientButton.Clicked += (sender, e) =>
             {
                 this.Navigation.PushAsync(new PatientListPage(true));

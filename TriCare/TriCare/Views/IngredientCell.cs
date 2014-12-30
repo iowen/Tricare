@@ -13,12 +13,14 @@ namespace TriCare.Views
         {
 			var labelF = new Label
 			{
-				YAlign = TextAlignment.Center
+				YAlign = TextAlignment.Center,
+				TextColor = Color.White
 			};
 			labelF.SetBinding(Label.TextProperty, "NameFriendly");
 			var labelL = new Label
 			{
-				YAlign = TextAlignment.Center
+				YAlign = TextAlignment.Center,
+				TextColor = Color.White
 			};
 			labelL.SetBinding(Label.TextProperty, "PercentageFriendly");
 
