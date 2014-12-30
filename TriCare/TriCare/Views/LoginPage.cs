@@ -15,7 +15,7 @@ namespace TriCare.Views
         public LoginPage()
         {
 			this.BackgroundImage = "tricareBG.png";
-
+			NavigationPage.SetHasNavigationBar (this, false);
             this.SetBinding(ContentPage.TitleProperty, "Login");
 			var emailLabel = new Label { Text = "Email", TextColor = Color.White  };
 			var emailEntry = new Entry(){
