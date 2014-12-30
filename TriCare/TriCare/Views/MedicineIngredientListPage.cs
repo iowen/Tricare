@@ -31,10 +31,14 @@ namespace TriCare.Views
 			continueButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
+				App.CurrentPrescription.Medicine.Ingredients = new List<PrescriptionMedicineIngredientModel>();
+
 				var en =listView.ItemsSource.GetEnumerator();
-				do{
+				while(en.MoveNext()){
 					//get ingred. in list
-				}while(en.MoveNext());
+					var it = (PrescriptionMedicineIngredient)en.Current;
+					App.CurrentPrescription.Medicine.Ingredients.Add(new PrescriptionMedicineIngredientModel(){  Percentage = it.Percentage, IngredientId = it.IngredientId, Name = it.Name}); 
+				}
 
                 Navigation.PushAsync(new RefillPage());
 			};
@@ -53,7 +57,7 @@ namespace TriCare.Views
 					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 				}
 				};
-			grid.Children.Add(addIngredientButton,0,0);
+			grid.Children.Add(addIngredientButton);
 			var bv = new Label {
 				Text = "Leftover space",
 				TextColor = Color.Transparent,
@@ -63,7 +67,7 @@ namespace TriCare.Views
 				BackgroundColor = Color.Transparent
 			};
 			grid.Children.Add(bv, 0,0);
-			grid.Children.Add(continueButton, 0,0);
+			grid.Children.Add(continueButton);
 
 			Grid.SetColumn (addIngredientButton, 0);
 			Grid.SetColumn (bv, 1);
@@ -73,9 +77,9 @@ namespace TriCare.Views
 			listView.BackgroundColor = Color.Transparent;
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (IngredientCell));
-			listView.ItemSelected += (sender, e) => {
+			listView.ItemSelected += async (sender, e) => {
 				var selected = (PrescriptionMedicineIngredient)e.SelectedItem;
-   
+				var action = await DisplayActionSheet("Menu","Cancel","Delete",new []{"Edit"});
 //var patientPage = new PatientPage(selected);
   //                  Navigation.PushAsync(patientPage);
 
@@ -92,6 +96,7 @@ namespace TriCare.Views
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
 			layout.Children.Add (grid);
+			layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
 			layout.Children.Add (	new ScrollView
 				{
 					Content = listView,

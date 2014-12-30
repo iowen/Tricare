@@ -32,7 +32,7 @@ namespace TriCare.Views
                 this.Navigation.PushAsync(new PatientListPage(true));
 
             };
-			var orLabel = new Label (){ Text = "- OR -" };
+			var orLabel = new Label (){ Text = "- OR -",HorizontalOptions =LayoutOptions.Center, TextColor = Color.White };
             Content = new StackLayout
             {
                 VerticalOptions = LayoutOptions.StartAndExpand,

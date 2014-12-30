@@ -14,8 +14,7 @@ namespace TriCare.Views
         {
             var pRepo = new PrescriberRepo();
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
-
-            this.SetBinding(ContentPage.TitleProperty, "Profile");
+			Title = "Profile";
 			this.BackgroundImage = "tricareBG.png";
 
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
@@ -122,7 +121,9 @@ namespace TriCare.Views
                     editButton,
                scrollview
              		},
-                    BindingContext = p
+                    BindingContext = p,
+				Padding = new Thickness(20)
+
             };
 
         }

@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace TriCare.Views
 {
-   public class IngredientCell :ViewCell
+   public class VerifyCell :ViewCell
     {
-       public IngredientCell()
+       public VerifyCell()
         {
 			var labelF = new Label
 			{
@@ -18,7 +18,6 @@ namespace TriCare.Views
 				TextColor = Color.White
 			};
 			labelF.SetBinding(Label.TextProperty, "NameFriendly");
-
 
             View = labelF;
         }

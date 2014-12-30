@@ -82,6 +82,9 @@
     <Compile Include="Models\RefillAmount.cs" />
     <Compile Include="Models\RefillQuantity.cs" />
     <Compile Include="Views\SignaturePadView.cs" />
+    <Compile Include="Views\VerifyPage.cs" />
+    <Compile Include="Views\VerifyCell.cs" />
+    <Compile Include="Models\StringLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

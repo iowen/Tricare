@@ -14,18 +14,12 @@ namespace TriCare.Views
 			var labelF = new Label
 			{
 				YAlign = TextAlignment.Center,
+				XAlign = TextAlignment.Center,
 				TextColor = Color.White
 			};
 			labelF.SetBinding(Label.TextProperty, "NameFriendly");
 
-
-            var layout = new StackLayout
-            {
-				Orientation = StackOrientation.Horizontal,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Children = { labelF }
-            };
-            View = layout;
+            View = labelF;
         }
 
        protected override void OnBindingContextChanged()

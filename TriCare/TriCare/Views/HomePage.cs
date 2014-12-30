@@ -75,19 +75,7 @@ namespace TriCare.Views
               }
                 }
             });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Profile",
-					BackgroundImage = "tricareBG.png",
-                Content = new StackLayout
-              {
-                  VerticalOptions = LayoutOptions.StartAndExpand,
-                  Padding = new Thickness(20),
-                  Children = {
-					EditProfileButton
-              }
-              }
-            });
+			this.Children.Add (new PrescriberPage ());
         }
 
     }

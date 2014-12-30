@@ -32,17 +32,17 @@ namespace TriCare.Views
           //  this.List = new ObservableList<Signature>();
 
 			curView = new SignaturePadView {  
-				CaptionText = "Sign Here",
+				CaptionText = " ",
 				CaptionTextColor = Color.Blue,
-				ClearText = "Clear Me!",
+				ClearText = "Clear",
 				ClearTextColor = Color.Red,
 				PromptText = "",
 				PromptTextColor = Color.Blue,
-				SignatureLineColor = Color.Aqua,
+				SignatureLineColor = Color.Blue,
 				StrokeColor = Color.Black,
 				StrokeWidth = 2,
 			};
-			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			var saveButton = new Button { Text = "Sign & Send" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             saveButton.Clicked += saveButton_Clicked;
 		//	if (Device.OS == TargetPlatform.iOS) {		
 
@@ -75,13 +75,12 @@ namespace TriCare.Views
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Padding = new Thickness(20),
                 Children = {
-					grid,
+					grid
                     
                 }
             
         };
-		/*	}
-			else{
+			/*}else if (Device.OS == TargetPlatform.Android){
 				Grid grid = new Grid
 				{
 					VerticalOptions = LayoutOptions.FillAndExpand,
@@ -123,14 +122,20 @@ namespace TriCare.Views
 
 			if (width > height) {
 				// Orientation got changed! Do your changes here
-				//if (Device.OS == TargetPlatform.iOS) {		
+				if (Device.OS == TargetPlatform.iOS) {		
 					curView.WidthRequest = 440;
-				//}
+				}
+				if (Device.OS == TargetPlatform.Android) {		
+					curView.WidthRequest = 600;
+				}
 			} else {
 				// Orientation got changed! Do your changes here
-			//	if (Device.OS == TargetPlatform.iOS) {		
+				if (Device.OS == TargetPlatform.iOS) {		
 					curView.WidthRequest = 280;		
-				//}
+				}
+				if (Device.OS == TargetPlatform.Android) {		
+					curView.WidthRequest = 300;
+				}
 			}
 
 		}
@@ -145,6 +150,8 @@ namespace TriCare.Views
                 using (var fs = file.OpenWrite())
                     fs.Write(bytes, 0, bytes.Length);
             }
+			// make pdf Send fax and email 
+			this.Navigation.PushAsync (new HomePage ());
         }
 
 

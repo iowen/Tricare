@@ -25,7 +25,7 @@ namespace TriCare.Views
 
             var lastNameLabel = new Label { Text = "Last Name" };
             var lastNameEntry = new Label();
-            firstNameEntry.SetBinding(Label.TextProperty, "LastName");
+            lastNameEntry.SetBinding(Label.TextProperty, "LastName");
 
 
             var genderLabel = new Label { Text = "Gender" };
@@ -152,7 +152,7 @@ namespace TriCare.Views
 						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 					}
 					};
-				grid.Children.Add(editButton,0,0);
+				grid.Children.Add(editButton);
 				var bv = new Label {
 					Text = "Leftover space",
 					TextColor = Color.Transparent,
@@ -162,7 +162,7 @@ namespace TriCare.Views
 					BackgroundColor = Color.Transparent
 				};
 				grid.Children.Add(bv, 0,0);
-				grid.Children.Add(deleteButton, 0,0);
+				grid.Children.Add(deleteButton);
 
 				Grid.SetColumn (editButton, 0);
 				Grid.SetColumn (bv, 1);
@@ -225,7 +225,7 @@ namespace TriCare.Views
 						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 					}
 					};
-				grid.Children.Add(continueButton,0,0);
+				grid.Children.Add(continueButton);
 				var bv = new Label {
 					Text = "Leftover space",
 					TextColor = Color.Transparent,
@@ -235,11 +235,11 @@ namespace TriCare.Views
 					BackgroundColor = Color.Transparent
 				};
 				grid.Children.Add(bv, 0,0);
-				grid.Children.Add(editButton, 0,0);
+				grid.Children.Add(editButton);
 
-				Grid.SetColumn (continueButton, 0);
+				Grid.SetColumn (editButton, 0);
 				Grid.SetColumn (bv, 1);
-				Grid.SetColumn (editButton, 2);
+				Grid.SetColumn (continueButton, 2);
 
 
 				layout.Children.Add(grid);

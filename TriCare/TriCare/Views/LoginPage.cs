@@ -78,11 +78,7 @@ namespace TriCare.Views
 			var registerButton = new Button { Text = "Register", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };
             registerButton.Clicked += (sender, e) =>
             {
-              //  this.Navigation.PushAsync(new RegisterPage());
-                var sigserv = DependencyService.Get<ISignatureService>();
-                var fileSys = DependencyService.Get<IFileSystem>();
-                this.Navigation.PushAsync(new SignaturePadPage(sigserv, fileSys));
-                
+               this.Navigation.PushAsync(new RegisterPage());            
             };
 
             Content = new StackLayout
