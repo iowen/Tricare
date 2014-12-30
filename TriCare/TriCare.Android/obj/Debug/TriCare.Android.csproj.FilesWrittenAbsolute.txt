@@ -23,3 +23,5 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.xml
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricarebg.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/layout/signaturepad.xml
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/SignaturePad.Android.dll

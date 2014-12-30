@@ -9,8 +9,8 @@ using TriCare.Utilities;
 using Xamarin.Forms;
 using System.IO;
 
-[assembly: Dependency(typeof(TriCare.Droid.FileSystem))]
-namespace TriCare.Droid
+[assembly: Dependency(typeof(TriCare.iOS.FileSystem))]
+namespace TriCare.iOS
 {
     public class FileSystem: IFileSystem
     {

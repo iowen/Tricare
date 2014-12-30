@@ -9,10 +9,9 @@ using TriCare.iOS;
 using TriCare.Utilities;
 using Xamarin.Forms;
 using System.IO;
-using Android.Webkit;
 
-[assembly: Dependency(typeof(TriCare.Droid.File))]
-namespace TriCare.Droid
+[assembly: Dependency(typeof(TriCare.iOS.File))]
+namespace TriCare.iOS
 {
     public class File :IFile
     {

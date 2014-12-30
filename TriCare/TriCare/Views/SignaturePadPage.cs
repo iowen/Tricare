@@ -20,6 +20,8 @@ namespace TriCare.Views
 
         public SignaturePadPage(ISignatureService signatureService,IFileSystem fileSystem)
         {
+			this.BackgroundImage = "tricareBG.png";
+
             this.signatureService = signatureService;
             //this.dialogs = dialogs;
             this.fileSystem = fileSystem;
@@ -38,16 +40,18 @@ namespace TriCare.Views
 				PromptTextColor = Color.Blue,
 				SignatureLineColor = Color.Aqua,
 				StrokeColor = Color.Black,
-				StrokeWidth = 2
+				StrokeWidth = 2,
 			};
             var saveButton = new Button { Text = "Save" };
             saveButton.Clicked += saveButton_Clicked;
+			if (Device.OS == TargetPlatform.iOS) {		
+
             Grid grid = new Grid
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 RowDefinitions = 
 				{
-					new RowDefinition { Height = GridLength.Auto },
+					new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute)},
 					new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) },
 				},
                 ColumnDefinitions = 
@@ -55,6 +59,10 @@ namespace TriCare.Views
 					new ColumnDefinition { Width = GridLength.Auto },
 				}
             };
+				curView.HeightRequest = grid.RowDefinitions [0].Height.Value;
+
+	
+
             grid.Children.Add(curView);
             Grid.SetRow(curView, 0);
 
@@ -72,9 +80,60 @@ namespace TriCare.Views
                 }
             
         };
+			}
+			else{
+				Grid grid = new Grid
+				{
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					RowDefinitions = 
+					{
+						new RowDefinition { Height =GridLength.Auto},
+						new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) },
+					},
+					ColumnDefinitions = 
+					{
+						new ColumnDefinition { Width = GridLength.Auto },
+					}
+					};
+
+
+				grid.Children.Add(curView);
+				Grid.SetRow(curView, 0);
+
+				grid.Children.Add(saveButton);
+				Grid.SetRow(saveButton, 1);
+
+
+				Content =  new StackLayout
+				{
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Padding = new Thickness(20),
+					Children = {
+						grid,
+
+					}
+
+				};
+			}
          
         }
+		protected override void OnSizeAllocated(double width, double height)
+		{
+			base.OnSizeAllocated(width, height);
 
+			if (width > height) {
+				// Orientation got changed! Do your changes here
+				if (Device.OS == TargetPlatform.iOS) {		
+					curView.WidthRequest = 440;
+				}
+			} else {
+				// Orientation got changed! Do your changes here
+				if (Device.OS == TargetPlatform.iOS) {		
+					curView.WidthRequest = 280;		
+				}
+			}
+
+		}
         private void saveButton_Clicked(object sender, EventArgs e)
         {
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);

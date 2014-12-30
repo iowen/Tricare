@@ -10,8 +10,8 @@ using TriCare.Utilities;
 using Xamarin.Forms;
 using System.IO;
 
-[assembly: Dependency(typeof(TriCare.Droid.Directory))]
-namespace TriCare.Droid
+[assembly: Dependency(typeof(TriCare.iOS.Directory))]
+namespace TriCare.iOS
 {
     public class Directory : IDirectory
     {
