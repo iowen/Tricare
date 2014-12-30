@@ -17,24 +17,13 @@ namespace TriCare.Views
 				TextColor = Color.White
 			};
 			labelF.SetBinding(Label.TextProperty, "NameFriendly");
-			var labelL = new Label
-			{
-				YAlign = TextAlignment.Center,
-				TextColor = Color.White
-			};
-			labelL.SetBinding(Label.TextProperty, "PercentageFriendly");
 
-            var pId = new Label
-            {
-                IsVisible = false
-            };
-			pId.SetBinding(Label.TextProperty, "IngredientId");
 
             var layout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Children = { labelF, labelL ,pId}
+				Children = { labelF}
             };
             View = layout;
         }

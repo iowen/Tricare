@@ -140,25 +140,59 @@ namespace TriCare.Views
 				Grid grid = new Grid
 				{
 					VerticalOptions = LayoutOptions.FillAndExpand,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 					RowDefinitions = 
 					{
-						new RowDefinition { Height = GridLength.Auto },
 						new RowDefinition { Height = GridLength.Auto },
 					},
 					ColumnDefinitions = 
 					{
-						new ColumnDefinition { Width = GridLength.Auto },
+						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)},
+						new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 					}
 					};
 				grid.Children.Add(editButton,0,0);
+				var bv = new Label {
+					Text = "Leftover space",
+					TextColor = Color.Transparent,
+					XAlign = TextAlignment.Center,
+					YAlign = TextAlignment.Center,
 
-				grid.Children.Add(deleteButton, 20,0);
+					BackgroundColor = Color.Transparent
+				};
+				grid.Children.Add(bv, 0,0);
+				grid.Children.Add(deleteButton, 0,0);
+
+				Grid.SetColumn (editButton, 0);
+				Grid.SetColumn (bv, 1);
+				Grid.SetColumn (deleteButton, 2);
+
 
 				layout.Children.Add(grid);
 			}
 			else {
-				var continueButton = new Button { Text = "Continue" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+				var continueButton = new Button { Text = "Continue" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120};
 				continueButton.Clicked += async (sender, e) => {
+					var pId = int.Parse(App.Token);
+					var patientItem = new Patient() { PrescriberId = pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
+					//var patientRepo = new PatientRepo();
+					//// send webservice request and so on
+					//var res = await patientRepo.AddPatient(patientItem);
+					//if (!string.IsNullOrWhiteSpace(res))
+					//{
+					//    await this.Navigation.PopAsync();
+					App.CurrentPrescription.Patient = patientItem;
+					await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
+					//}
+					//else
+					//{
+					//    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
+					//}
+				};
+
+				var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120};
+				editButton.Clicked += async (sender, e) => {
 					var pId = int.Parse(App.Token);
 					var patientItem = new Patient() { PrescriberId = pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
 					//var patientRepo = new PatientRepo();
@@ -179,17 +213,33 @@ namespace TriCare.Views
 				Grid grid = new Grid
 				{
 					VerticalOptions = LayoutOptions.FillAndExpand,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 					RowDefinitions = 
 					{
-						new RowDefinition { Height = GridLength.Auto },
 						new RowDefinition { Height = GridLength.Auto },
 					},
 					ColumnDefinitions = 
 					{
-						new ColumnDefinition { Width = GridLength.Auto },
+						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)},
+						new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+						new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 					}
 					};
 				grid.Children.Add(continueButton,0,0);
+				var bv = new Label {
+					Text = "Leftover space",
+					TextColor = Color.Transparent,
+					XAlign = TextAlignment.Center,
+					YAlign = TextAlignment.Center,
+
+					BackgroundColor = Color.Transparent
+				};
+				grid.Children.Add(bv, 0,0);
+				grid.Children.Add(editButton, 0,0);
+
+				Grid.SetColumn (continueButton, 0);
+				Grid.SetColumn (bv, 1);
+				Grid.SetColumn (editButton, 2);
 
 
 				layout.Children.Add(grid);

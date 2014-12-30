@@ -26,6 +26,9 @@ namespace TriCare.Views
 
 				var newButton = new Button { Text = med.Name.Trim() , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 				newButton.Clicked += async (sender, e) => {
+					App.CurrentPrescription.Medicine = new TriCare.Models.MedicineModelForPrescription();
+					App.CurrentPrescription.Medicine .MedicineId = med.MedicineId;
+					App.CurrentPrescription.Medicine .MedicineName = med.Name.Trim();
 					await this.Navigation.PushAsync (new MedicineIngredientListPage (med.MedicineId));
 				};
 				myContent.Children.Add (newButton);

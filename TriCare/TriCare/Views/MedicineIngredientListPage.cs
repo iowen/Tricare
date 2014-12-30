@@ -19,14 +19,15 @@ namespace TriCare.Views
 
 			medicineId = _medicineId;
 			Title = "Formula";
-			var addIngredientButton = new Button { Text = "Add Ingredient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			var addIngredientButton = new Button { Text = "Add Ingredient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
 			addIngredientButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
 
+
 			};
 
-			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
+			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White ,WidthRequest= 120 };
 			continueButton.Clicked += (sender, e) =>
 			{
 				//show add modal;
@@ -40,21 +41,33 @@ namespace TriCare.Views
 			Grid grid = new Grid
 			{
 				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				RowDefinitions = 
 				{
-					new RowDefinition { Height = GridLength.Auto },
 					new RowDefinition { Height = GridLength.Auto },
 				},
 				ColumnDefinitions = 
 				{
-					new ColumnDefinition { Width = GridLength.Auto },
+					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)},
+					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 				}
 				};
 			grid.Children.Add(addIngredientButton,0,0);
+			var bv = new Label {
+				Text = "Leftover space",
+				TextColor = Color.Transparent,
+				XAlign = TextAlignment.Center,
+				YAlign = TextAlignment.Center,
 
-			grid.Children.Add(continueButton, 20,0);
+				BackgroundColor = Color.Transparent
+			};
+			grid.Children.Add(bv, 0,0);
+			grid.Children.Add(continueButton, 0,0);
 
-		
+			Grid.SetColumn (addIngredientButton, 0);
+			Grid.SetColumn (bv, 1);
+			Grid.SetColumn (continueButton, 2);
 		
 			listView = new ListView ();
 			listView.BackgroundColor = Color.Transparent;

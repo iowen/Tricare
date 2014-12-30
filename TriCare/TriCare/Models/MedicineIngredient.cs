@@ -32,6 +32,6 @@ namespace TriCare.Models
 		[Ignore]
 		public string PercentageFriendly{ get { return Percentage.ToString (); } }	
 		[Ignore]
-		public string NameFriendly{ get { return Name.ToString (); } }
+		public string NameFriendly{ get { return Name.ToString ().Trim() +" - "+ Percentage.ToString ()+"%"; } }
     }
 }

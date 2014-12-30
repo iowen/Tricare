@@ -44,7 +44,7 @@ namespace TriCare.Views
 			};
 			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             saveButton.Clicked += saveButton_Clicked;
-			if (Device.OS == TargetPlatform.iOS) {		
+		//	if (Device.OS == TargetPlatform.iOS) {		
 
             Grid grid = new Grid
             {
@@ -80,7 +80,7 @@ namespace TriCare.Views
                 }
             
         };
-			}
+		/*	}
 			else{
 				Grid grid = new Grid
 				{
@@ -114,7 +114,7 @@ namespace TriCare.Views
 					}
 
 				};
-			}
+			}*/
          
         }
 		protected override void OnSizeAllocated(double width, double height)
@@ -123,14 +123,14 @@ namespace TriCare.Views
 
 			if (width > height) {
 				// Orientation got changed! Do your changes here
-				if (Device.OS == TargetPlatform.iOS) {		
+				//if (Device.OS == TargetPlatform.iOS) {		
 					curView.WidthRequest = 440;
-				}
+				//}
 			} else {
 				// Orientation got changed! Do your changes here
-				if (Device.OS == TargetPlatform.iOS) {		
+			//	if (Device.OS == TargetPlatform.iOS) {		
 					curView.WidthRequest = 280;		
-				}
+				//}
 			}
 
 		}

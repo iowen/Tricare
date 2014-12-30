@@ -16,27 +16,14 @@ namespace TriCare.Views
 				YAlign = TextAlignment.Center,
 				TextColor = Color.White
 			};
-			labelF.SetBinding(Label.TextProperty, "FirstName");
-			var labelL = new Label
-			{
-				YAlign = TextAlignment.Center,
-					
-				TextColor = Color.White
-			};
-			labelL.SetBinding(Label.TextProperty, "LastName");
+			labelF.SetBinding(Label.TextProperty, "NameFriendly");
 
-            var pId = new Label
-            {
-                IsVisible = false
-            };
-            pId.SetBinding(Label.TextProperty, "PatientId");
 
             var layout = new StackLayout
             {
-                Padding = new Thickness(20, 0, 0, 0),
-                Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                Children = { labelF, labelL }
+				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Children = { labelF }
             };
             View = layout;
         }
