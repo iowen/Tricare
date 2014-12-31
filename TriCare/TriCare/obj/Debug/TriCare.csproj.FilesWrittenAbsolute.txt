@@ -1,0 +1,16 @@
+/Users/iowen/Documents/Tricare/TriCare/TriCare/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile7.AssemblyAttribute.cs
+/Users/iowen/Documents/Tricare/TriCare/TriCare/obj/Debug/TriCare.Views.AddIngredientPage.xaml
+/Users/iowen/Documents/Tricare/TriCare/TriCare/obj/Debug/AddIngredientPage.xaml.g.cs
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/TriCare.dll.mdb
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/TriCare.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/obj/Debug/TriCare.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/obj/Debug/TriCare.dll.mdb
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Acr.XamForms.SignaturePad.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Newtonsoft.Json.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/SQLite.Net.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Xamarin.Forms.Core.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Xamarin.Forms.Labs.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Xamarin.Forms.Xaml.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/ExifLib.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/System.Net.Http.Primitives.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/System.Net.Http.Extensions.dll

@@ -38,6 +38,10 @@ Microsoft.CSharp.dll
 Mono.CSharp.dll
 System.ComponentModel.Annotations.dll
 System.ComponentModel.DataAnnotations.dll
+Xamarin.Forms.Labs.dll
+ExifLib.dll
+System.Runtime.Serialization.Json.dll
+System.Runtime.Serialization.Xml.dll
 Xamarin.Forms.Xaml.dll
 System.Resources.ResourceManager.dll
 Xamarin.Forms.Platform.iOS.Classic.dll
