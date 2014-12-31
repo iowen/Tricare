@@ -47,7 +47,9 @@
     <Compile Include="Data\PrescriberRepo.cs" />
     <Compile Include="Data\PatientRepo.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MedicineModel.cs" />
+    <Compile Include="Models\MedicineModel.cs">
+      <DependentUpon>PatientListItemModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PatientListItemModel.cs" />
     <Compile Include="Models\Prescriber.cs" />
@@ -88,6 +90,9 @@
     <Compile Include="Views\AddIngredientPage.xaml.cs">
       <DependentUpon>AddIngredientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddIngredients.cs" />
+    <Compile Include="Models\ingredientLabel.cs" />
+    <Compile Include="Views\ingCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

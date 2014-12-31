@@ -41,7 +41,7 @@ namespace TriCare.Views
 			addIngredientButton.Clicked += async (sender, e) =>
 			{
 
-				await this.Navigation.PushModalAsync(new AddIngredientPage());
+				await this.Navigation.PushModalAsync(new AddIngredients());
 
 			};
 

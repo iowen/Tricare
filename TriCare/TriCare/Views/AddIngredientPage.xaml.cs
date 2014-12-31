@@ -25,8 +25,8 @@ namespace TriCare.Views
 				OnPropertyChanged ();	
 			}
 		}
-
-		public string SearchText{ get; set;}
+		private string searchText;
+		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
 		public AddIngredientPage ()
 		{
 			var a = new AutoCompleteView ();
