@@ -4,13 +4,16 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.Android.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.Android.apk
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/android/bin/TriCare.Android.apk
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/layout/signaturepad.xml
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/icon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricarebg.png
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/R.cs.flag
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.Android-Signed.apk
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/uploadflags.txt
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/TriCare.Android.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/TriCare.Android.dll.mdb
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/FormsViewGroup.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/SignaturePad.Android.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/SQLite.Net.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/SQLite.Net.Platform.XamarinAndroid.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/System.Net.Http.dll
@@ -21,8 +24,6 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.dll.mdb
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.xml
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricarebg.png
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/layout/signaturepad.xml
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/SignaturePad.Android.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Xamarin.Forms.Labs.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/System.Diagnostics.Tools.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/ExifLib.dll

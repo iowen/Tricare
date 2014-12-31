@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TriCare.Data;
 using TriCare.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Controls;
 
 namespace TriCare.Views
 {
@@ -13,17 +15,33 @@ namespace TriCare.Views
     {
 		ListView listView;
 		int medicineId;
+		float addedPercentage;
+		private ObservableCollection<object> ingredientList =
+			new ObservableCollection<object>();
+		public ObservableCollection<object> IngredientList
+		{
+			get { return ingredientList; }
+			set
+			{
+				ingredientList = value;
+			//	NotifyPropertyChanged(m => m.IngredientList);
+			}
+		}
 		public MedicineIngredientListPage (int _medicineId)
 		{
 			this.BackgroundImage = "tricareBG.png";
-
+			var iRepo = new IngredientRepo ();
+			var ir = iRepo.GetAllIngredients ();
+			foreach (var i in ir) {
+				IngredientList.Add (i.Name.Trim ());
+			}
 			medicineId = _medicineId;
 			Title = "Formula";
 			var addIngredientButton = new Button { Text = "Add" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
-			addIngredientButton.Clicked += (sender, e) =>
+			addIngredientButton.Clicked += async (sender, e) =>
 			{
-				//show add modal;
 
+				await this.Navigation.PushModalAsync(new AddIngredientPage());
 
 			};
 

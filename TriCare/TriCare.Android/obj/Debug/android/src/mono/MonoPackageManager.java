@@ -124,6 +124,8 @@ class MonoPackageManager_Resources {
 		"System.Xml.XDocument.dll",
 		"System.Xml.XmlSerializer.dll",
 		"Newtonsoft.Json.dll",
+		"Xamarin.Forms.Labs.dll",
+		"ExifLib.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

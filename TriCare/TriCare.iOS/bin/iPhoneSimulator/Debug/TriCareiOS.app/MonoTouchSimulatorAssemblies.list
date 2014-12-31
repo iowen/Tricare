@@ -38,6 +38,7 @@ Microsoft.CSharp.dll
 Mono.CSharp.dll
 System.ComponentModel.Annotations.dll
 System.ComponentModel.DataAnnotations.dll
+Xamarin.Forms.Xaml.dll
 System.Resources.ResourceManager.dll
 Xamarin.Forms.Platform.iOS.Classic.dll
 SQLite.Net.Platform.XamarinIOS.dll

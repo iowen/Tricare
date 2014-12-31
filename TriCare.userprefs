@@ -1,46 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Views/MedicineIngredientListPage.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="TriCare/TriCare.iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/app.config" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/packages.config" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/SignaturePadRenderer.cs" Line="26" Column="26" />
-      <File FileName="TriCare/TriCare.iOS/SignatureService.cs" Line="2" Column="2" />
-      <File FileName="TriCare/TriCare.iOS/SignatureServiceController.cs" Line="4" Column="4" />
-      <File FileName="TriCare/TriCare.iOS/Directory.cs" Line="41" Column="41" />
-      <File FileName="TriCare/TriCare.iOS/File.cs" Line="21" Column="21" />
-      <File FileName="TriCare/TriCare.iOS/FileSystem.cs" Line="22" Column="22" />
-      <File FileName="TriCare/TriCare.Android/SignaturePadRenderer.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Utilities/SignaturePadConfiguration.cs" Line="5" Column="5" />
-      <File FileName="TriCare/TriCare.iOS/IosUtil.cs" Line="23" Column="23" />
-      <File FileName="TriCare/TriCare/Views/SignaturePadView.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/SignaturePadPage.cs" Line="7" Column="7" />
-      <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.Android/SignatureServiceActivity.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/RegisterPage.cs" Line="134" Column="134" />
-      <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="28" Column="28" />
-      <File FileName="TriCare/TriCare/Views/CreatePatientPage.cs" Line="125" Column="125" />
-      <File FileName="TriCare/TriCare/Views/HomePage.cs" Line="18" Column="18" />
-      <File FileName="TriCare/TriCare/Views/IngredientCell.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="54" Column="54" />
-      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="4" Column="4" />
-      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="29" Column="29" />
-      <File FileName="TriCare/TriCare/Views/PrescriberPage.cs" Line="126" Column="126" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionNewORSelectPatientPage.cs" Line="148" Column="148" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionSelectMedicinePage.cs" Line="71" Column="71" />
-      <File FileName="TriCare/TriCare/Views/RefillPage.cs" Line="5" Column="5" />
-      <File FileName="TriCare/TriCare/Views/PatientCell.cs" Line="55" Column="55" />
-      <File FileName="TriCare/TriCare/App.cs" Line="63" Column="63" />
-      <File FileName="TriCare/TriCare/Models/Patient.cs" Line="106" Column="106" />
-      <File FileName="TriCare/TriCare/Models/PatientListItemModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/Ingredient.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/MedicineIngredient.cs" Line="68" Column="68" />
-      <File FileName="TriCare/TriCare/Data/MedicineRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/MedicineModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/Info.plist" />
-      <File FileName="TriCare/TriCare.iOS/Resources/Images.xcassets/LaunchImage.launchimage/Contents.json" />
+      <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="5" Column="5" />
+      <File FileName="TriCare/TriCare/Data/IngredientRepo.cs" Line="1" Column="1" />
+      <File FileName="../../../../Library/Frameworks/Mono.framework/Versions/3.10.0/lib/mono/4.5/Microsoft.Common.targets" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
