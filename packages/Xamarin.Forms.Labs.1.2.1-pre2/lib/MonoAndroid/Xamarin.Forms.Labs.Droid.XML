@@ -355,7 +355,7 @@
         </member>
         <member name="M:Xamarin.Forms.Labs.BroadcastReceiverExtensions.RegisterReceiver(Android.Content.BroadcastReceiver,Android.Content.IntentFilter)">
             <summary>
-            Registers the receiver using <see cref="P:Android.App.Application.Context"/>.
+            Registers the receiver using <see cref="!:Application.Context"/>.
             </summary>
             <returns>The receiver intent.</returns>
             <param name="receiver">Receiver.</param>
@@ -363,7 +363,7 @@
         </member>
         <member name="M:Xamarin.Forms.Labs.BroadcastReceiverExtensions.UnregisterReceiver(Android.Content.BroadcastReceiver)">
             <summary>
-            Unregisters the receiver using <see cref="P:Android.App.Application.Context"/>.
+            Unregisters the receiver using <see cref="!:Application.Context"/>.
             </summary>
             <param name="receiver">Receiver to unregister.</param>
         </member>
@@ -374,7 +374,7 @@
         </member>
         <member name="M:Xamarin.Forms.Labs.IntentFilterExtensions.RegisterReceiver(Android.Content.IntentFilter)">
             <summary>
-            Gets a single result for the intent filter using <see cref="P:Android.App.Application.Context"/>
+            Gets a single result for the intent filter using <see cref="!:Application.Context"/>
             </summary>
             <param name="intentFilter">Intent filter</param>
             <returns>An intent result, null if not successful</returns>
@@ -387,7 +387,7 @@
         <member name="M:Xamarin.Forms.Labs.ObjectExtensions.StartActivity(System.Object,Android.Content.Intent)">
             <summary>
             Starts the activity using either the object itself if it a type of <see cref="T:Android.Content.Context"/>
-            or alternatively using <see cref="P:Android.App.Application.Context"/>
+            or alternatively using <see cref="!:Application.Context"/>
             </summary>
             <param name="o">O.</param>
             <param name="intent">Intent.</param>
@@ -879,6 +879,11 @@
             Gets the average data transfer rate
             </summary>
             <value>The average data transfer rate in bytes per second.</value>
+        </member>
+        <member name="T:Xamarin.Forms.Labs.Droid.Services.Network">
+            <summary>
+            Android <see cref="T:Xamarin.Forms.Labs.Services.INetwork"/> implementation.
+            </summary>
         </member>
         <member name="P:Xamarin.Forms.Labs.Droid.Services.NfcDevice.DeviceId">
             TODO: figure out if the NFC device has an ID or name. 
