@@ -16,7 +16,7 @@ namespace TriCare.Views
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
 			Title = "Profile";
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {

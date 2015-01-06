@@ -11,9 +11,9 @@ namespace TriCare.Views
     {
         public HomePage()
         {
-			NavigationPage.SetHasNavigationBar (this, false);
+			NavigationPage.SetHasBackButton (this, false);
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += (sender, e) =>
             {

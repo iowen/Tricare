@@ -13,7 +13,7 @@ namespace TriCare.Views
         public PrescriptionSelectMedicinePage()
         {
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			this.SetBinding(ContentPage.TitleProperty, "Select Medicine");
 			var mRepo = new MedicineRepo ();
 			var meds = mRepo.GetAllMedicines ();

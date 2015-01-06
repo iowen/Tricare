@@ -15,7 +15,7 @@ namespace TriCare.Views
         {
             this.SetBinding(ContentPage.TitleProperty, "Add Patient");
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
             var firstNameLabel = new Label { Text = "First Name" };
             var firstNameEntry = new Entry()
             {

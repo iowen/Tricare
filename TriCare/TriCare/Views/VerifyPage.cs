@@ -15,7 +15,7 @@ namespace TriCare
 		public VerifyPage ()
 		{
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			Title = "Verify";
 
 			var confirmButton = new Button { Text = "Confirm", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };

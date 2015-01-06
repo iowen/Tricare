@@ -16,7 +16,7 @@ namespace TriCare.Views
 		public PatientListPage (bool isDuringPrescription = false)
 		{
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			Title = "My Patients";
 			patientList = new List<Patient> ();
 			listView = new ListView ();

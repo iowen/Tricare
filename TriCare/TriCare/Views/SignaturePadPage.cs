@@ -23,7 +23,7 @@ namespace TriCare.Views
         public SignaturePadPage(ISignatureService signatureService,IFileSystem fileSystem)
         {
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
             this.signatureService = signatureService;
             //this.dialogs = dialogs;
             this.fileSystem = fileSystem;
@@ -168,7 +168,7 @@ namespace TriCare.Views
                 file = this.fileSystem.AppData.CreateFile(fileName);
                 using (var fs = file.OpenWrite())
                     fs.Write(bytes, 0, bytes.Length);
-				DisplayActionSheet ("fname", file.FullName, "close");
+				//DisplayActionSheet ("fname", file.FullName, "close");
             }
 			// make pdf Send fax and email 
 			var ingList = new List<MedicineIngredientForPrescriptionModel> ();
@@ -190,7 +190,7 @@ namespace TriCare.Views
 			};
 			var rep = new PrescriptionRepo ();
 			var a = await rep.AddPrescription (presc);
-			DisplayAlert ("ret", a, "close");
+			await DisplayAlert ("ret", a, "close");
 		//	this.Navigation.PushAsync (new HomePage ());
         }
 

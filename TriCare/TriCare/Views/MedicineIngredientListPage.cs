@@ -30,11 +30,16 @@ namespace TriCare.Views
 		public MedicineIngredientListPage (int _medicineId)
 		{
 			this.BackgroundImage = "tricareBG.png";
+			App.EnableLogout ();
 			var iRepo = new IngredientRepo ();
 			var ir = iRepo.GetAllIngredients ();
 			foreach (var i in ir) {
 				IngredientList.Add (i.Name.Trim ());
 			}
+			var medL = new Label {
+				TextColor = Color.White,
+				Text = "Medicine : "+App.CurrentPrescription.Medicine.MedicineName.Trim()
+			};
 			medicineId = _medicineId;
 			Title = "Formula";
 			var addIngredientButton = new Button { Text = "Add" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
@@ -116,6 +121,7 @@ namespace TriCare.Views
 					Text="Formula", 
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
+			layout.Children.Add (medL);
 			layout.Children.Add (grid);
 	// for version 2
             //		layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });

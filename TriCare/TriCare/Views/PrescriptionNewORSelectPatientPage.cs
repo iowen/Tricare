@@ -12,7 +12,7 @@ namespace TriCare.Views
         public PrescriptionNewORSelectPatientPage()
         {
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			var pRepo = new PrescriberRepo ();
 			var pId = int.Parse(App.Token);
 			var presc = pRepo.GetPrescriber (pId);

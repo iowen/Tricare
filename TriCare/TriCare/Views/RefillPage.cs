@@ -17,7 +17,7 @@ namespace TriCare
 			cq = new List<string> ();
             var rRepo = new RefillRepo();
             Title = "Refills";
-
+			App.EnableLogout ();
             var ra =rRepo.GetAllRefillAmounts();
 			var qa =rRepo.GetAllRefillQuantities();
 

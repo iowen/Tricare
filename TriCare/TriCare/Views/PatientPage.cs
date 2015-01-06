@@ -13,7 +13,7 @@ namespace TriCare.Views
 		public PatientPage(Patient p, bool isDuringPrescription = false)
         {
 			this.BackgroundImage = "tricareBG.png";
-
+			App.EnableLogout ();
 			if (!isDuringPrescription)
             this.SetBinding(ContentPage.TitleProperty, "View Patient");
 			else
