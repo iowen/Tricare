@@ -20,6 +20,16 @@ namespace TriCare.iOS
 {
 	public class SignaturePadRenderer : ViewRenderer<TriCare.Views.SignaturePadView, NativeView> {
 
+		private MemoryStream ConvertStreamToMemoryStream(Stream input)
+		{
+			var output = new MemoryStream();
+			byte[] buffer = new byte[16*1024];
+			int read;
+			while((read = input.Read (buffer, 0, buffer.Length)) > 0)
+				output.Write (buffer, 0, read);
+			return output;
+		}
+
 		protected override void OnElementChanged(ElementChangedEventArgs<SignaturePadView> e) {
 			base.OnElementChanged(e);
 
@@ -58,8 +68,8 @@ namespace TriCare.iOS
 
 			this.Element.SetInternals(
 				imgFormat => imgFormat == ImageFormatType.Jpg
-				? (MemoryStream)view.GetImage().AsJPEG().AsStream()
-				: (MemoryStream)view.GetImage().AsPNG().AsStream(),
+				? ConvertStreamToMemoryStream(view.GetImage().AsJPEG().AsStream())
+				: ConvertStreamToMemoryStream(view.GetImage().AsPNG().AsStream()) ,
 				() => view.Points.Select(x => new DrawPoint(x.X, x.Y)), 
 				x => view.LoadPoints(x.Select(y => new System.Drawing.PointF(y.X, y.Y)).ToArray()),
 				() => view.IsBlank

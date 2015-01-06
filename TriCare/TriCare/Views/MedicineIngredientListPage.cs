@@ -77,7 +77,7 @@ namespace TriCare.Views
 					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
 				}
 				};
-			grid.Children.Add(addIngredientButton);
+		//	grid.Children.Add(addIngredientButton);
 			var bv = new Label {
 				Text = "Leftover space",
 				TextColor = Color.Transparent,

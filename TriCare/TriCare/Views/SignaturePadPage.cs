@@ -149,9 +149,10 @@ namespace TriCare.Views
                 file = this.fileSystem.AppData.CreateFile(fileName);
                 using (var fs = file.OpenWrite())
                     fs.Write(bytes, 0, bytes.Length);
+				DisplayActionSheet ("fname", file.FullName, "close");
             }
 			// make pdf Send fax and email 
-			this.Navigation.PushAsync (new HomePage ());
+		//	this.Navigation.PushAsync (new HomePage ());
         }
 
 
