@@ -38,12 +38,14 @@ namespace TriCare.Views
 			medicineId = _medicineId;
 			Title = "Formula";
 			var addIngredientButton = new Button { Text = "Add" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
-			addIngredientButton.Clicked += async (sender, e) =>
-			{
+          
+            //for version 2
+            //addIngredientButton.Clicked += async (sender, e) =>
+            //{
 
-				await this.Navigation.PushModalAsync(new AddIngredients());
+            //    await this.Navigation.PushModalAsync(new AddIngredients());
 
-			};
+            //};
 
 			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White ,WidthRequest= 120 };
 			continueButton.Clicked += (sender, e) =>
@@ -87,7 +89,8 @@ namespace TriCare.Views
 			grid.Children.Add(bv, 0,0);
 			grid.Children.Add(continueButton);
 
-			Grid.SetColumn (addIngredientButton, 0);
+            // for version 2
+		//	Grid.SetColumn (addIngredientButton, 0);
 			Grid.SetColumn (bv, 1);
 			Grid.SetColumn (continueButton, 2);
 		
@@ -114,7 +117,8 @@ namespace TriCare.Views
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
 			layout.Children.Add (grid);
-			layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
+	// for version 2
+            //		layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
 			layout.Children.Add (	new ScrollView
 				{
 					Content = listView,

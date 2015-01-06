@@ -17,85 +17,165 @@ namespace TriCare.Views
 			this.BackgroundImage = "tricareBG.png";
 
             var firstNameLabel = new Label { Text = "First Name" };
-            var firstNameEntry = new Entry();
+            var firstNameEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
             var lastNameLabel = new Label { Text = "Last Name" };
-            var lastNameEntry = new Entry();
+            var lastNameEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
 
             var genderLabel = new Label { Text = "Gender" };
-            var genderEntry = new Entry();
+            var genderEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             genderEntry.SetBinding(Entry.TextProperty, "Gender");
 
             var birthDateLabel = new Label { Text = "Birth Date" };
-            var birthDateEntry = new Entry();
+            var birthDateEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
 
 
             var ssnLabel = new Label { Text = "Last 4 of SSN" };
-            var ssnEntry = new Entry();
+            var ssnEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             ssnEntry.SetBinding(Entry.TextProperty, "SSN");
 
             var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" };
-            var InsuranceCarrierEntry = new Entry();
+            var InsuranceCarrierEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             InsuranceCarrierEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
             var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number" };
-            var InsuranceCarrierIdNumberEntry = new Entry();
+            var InsuranceCarrierIdNumberEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             InsuranceCarrierIdNumberEntry.SetBinding(Entry.TextProperty, "InsuranceCarrierIdNumber");
 
             var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number" };
-            var InsuranceGroupNumberEntry = new Entry();
+            var InsuranceGroupNumberEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             InsuranceGroupNumberEntry.SetBinding(Entry.TextProperty, "InsuranceGroupNumber");
 
             var InsurancePhoneLabel = new Label { Text = "Insurance Phone" };
-            var InsurancePhoneEntry = new Entry();
+            var InsurancePhoneEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             InsurancePhoneEntry.SetBinding(Entry.TextProperty, "InsurancePhone");
 
             var RxBinLabel = new Label { Text = "Rx Bin" };
-            var RxBinEntry = new Entry();
+            var RxBinEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             RxBinEntry.SetBinding(Entry.TextProperty, "RxBin");
 
             var RxPcnLabel = new Label { Text = "Rx Pcn" };
-            var RxPcnEntry = new Entry();
+            var RxPcnEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             RxPcnEntry.SetBinding(Entry.TextProperty, "RxPcn");
 
             var AllergiesLabel = new Label { Text = "Allergies" };
-            var AllergiesEntry = new Entry();
+            var AllergiesEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             AllergiesEntry.SetBinding(Entry.TextProperty, "Allergies");
 
             var DiagnosisLabel = new Label { Text = "Diagnosis" };
-            var DiagnosisEntry = new Entry();
+            var DiagnosisEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             RxPcnEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
             var AddressLabel = new Label { Text = "Address" };
-            var AddressEntry = new Entry();
+            var AddressEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
             var CityLabel = new Label { Text = "City" };
-            var CityEntry = new Entry();
+            var CityEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
             var StateLabel = new Label { Text = "State" };
-            var StateEntry = new Entry();
+            var StateEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             StateEntry.SetBinding(Entry.TextProperty, "State");
 
             var ZipLabel = new Label { Text = "Zip" };
-            var ZipEntry = new Entry();
+            var ZipEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
             var PhoneLabel = new Label { Text = "Phone" };
-            var PhoneEntry = new Entry();
+            var PhoneEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
             var EmailLabel = new Label { Text = "Email" };
-            var EmailEntry = new Entry();
+            var EmailEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             EmailEntry.SetBinding(Entry.TextProperty, "Email");
 
             var PaymentTypeLabel = new Label { Text = "Payment Time" };
-            var PaymentTypeEntry = new Entry();
+            var PaymentTypeEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };

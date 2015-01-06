@@ -21,7 +21,6 @@ namespace TriCare.Views
 			var emailEntry = new Entry(){
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.White ,
-
 				};
             emailEntry.SetBinding(Entry.TextProperty, "Email");
 

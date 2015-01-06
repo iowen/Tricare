@@ -20,65 +20,117 @@ namespace TriCare.Views
             this.SetBinding(ContentPage.TitleProperty, "Register");
 
             var firstNameLabel = new Label { Text = "First Name" };
-            var firstNameEntry = new Entry();
+            var firstNameEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
             var lastNameLabel = new Label { Text = "Last Name" };
-            var lastNameEntry = new Entry();
+            var lastNameEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
 
             var emailLabel = new Label { Text = "Email" };
-            var emailEntry = new Entry();
+            var emailEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             emailEntry.SetBinding(Entry.TextProperty, "Email");
 
 			var passwordLabel = new Label { Text = "Password" };
 			var passwordEntry = new Entry(){
-				IsPassword = true
+				IsPassword = true,
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White
 			}; 
 
 			passwordEntry.SetBinding(Entry.TextProperty, "Password");
 
 			var password2Label = new Label { Text = "Re-Enter Password" };
 			var password2Entry = new Entry(){
-				IsPassword = true
+				IsPassword = true,
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White
 			}; 
 
 
             var NpiNumberLabel = new Label { Text = "NPI Number" };
-            var NpiNumberEntry = new Entry();
+            var NpiNumberEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
 
             var LicenseNumberLabel = new Label { Text = "License Number" };
-            var LicenseNumberEntry = new Entry();
+            var LicenseNumberEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
             var DeaNumberLabel = new Label { Text = "DEA Number" };
-            var DeaNumberEntry = new Entry();
+            var DeaNumberEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
 
             var AddressLabel = new Label { Text = "Address" };
-            var AddressEntry = new Entry();
+            var AddressEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
             var CityLabel = new Label { Text = "City" };
-            var CityEntry = new Entry();
+            var CityEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
             var StateLabel = new Label { Text = "State" };
-            var StateEntry = new Entry();
+            var StateEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             StateEntry.SetBinding(Entry.TextProperty, "State");
 
             var ZipLabel = new Label { Text = "Zip" };
-            var ZipEntry = new Entry();
+            var ZipEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
             var PhoneLabel = new Label { Text = "Phone" };
-            var PhoneEntry = new Entry();
+            var PhoneEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
             var FaxLabel = new Label { Text = "Fax" };
-            var FaxEntry = new Entry();
+            var FaxEntry = new Entry()
+            {
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+            };
             FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
