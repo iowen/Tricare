@@ -19,7 +19,7 @@ using SignaturePad;
 namespace TriCare.Droid
 {
 
-    [Activity]
+	[Activity(MainLauncher = true,ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class SignatureServiceActivity : Activity
     {
         private NativeView signatureView;
@@ -30,6 +30,8 @@ namespace TriCare.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+			base.RequestedOrientation = Android.Content.PM.ScreenOrientation.Landscape;
+			RequestedOrientation = Android.Content.PM.ScreenOrientation.Landscape;
             var signature = new SignaturePadView(this);
 
             this.SetContentView(Resource.Layout.SignaturePad);
@@ -40,7 +42,6 @@ namespace TriCare.Droid
             this.btnCancel = this.FindViewById<Button>(Resource.Id.btnCancel);
 
             var cfg = SignatureService.CurrentConfig;
-
             rootView.SetBackgroundColor(cfg.MainBackgroundColor.ToAndroid());
             this.signatureView.BackgroundColor = Color.White;
             this.signatureView.Caption.Text = cfg.CaptionText;

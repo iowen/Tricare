@@ -12,7 +12,7 @@ namespace TriCare.Models
         public int Amount;
         public int Quantity;
     }
-    public class PrescriptionMedicineIngredientModel
+   public class PrescriptionMedicineIngredientModel
     {
         public int PrescriptionMedicineIngredientId;
         public int PrescriptionMedicineId;
@@ -27,4 +27,24 @@ namespace TriCare.Models
         public int MedicineId;
         public List<PrescriptionMedicineIngredientModel> Ingredients;
     }
+	public class MedicineIngredientForPrescriptionModel
+	{
+		public int IngredientId;
+		public double Percentage;
+		public int PrescriptionMedicineIngredientId;
+
+	}
+
+	public class CreatePrescriptionModel
+	{
+		public int PrescriptionId;
+		public int PrescriberId;
+		public int PatientId;
+		public int PrescriptionMedicineId;
+		public DateTime Created;
+		public int MedicineId;
+		public List<MedicineIngredientForPrescriptionModel> Ingredients;
+		public int RefillAmount;
+		public int RefillQuantity;
+	}
 }

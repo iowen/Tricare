@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TriCare.Utilities;
+using TriCare.Models;
+using TriCare.Data;
 using Xamarin.Forms;
 
 namespace TriCare.Views
@@ -16,8 +18,8 @@ namespace TriCare.Views
         private readonly ISignatureService signatureService;
         private readonly IFileSystem fileSystem;
         private SignaturePadView curView;
-
-
+		private Button saveButton;
+		private Label rLabel;
         public SignaturePadPage(ISignatureService signatureService,IFileSystem fileSystem)
         {
 			this.BackgroundImage = "tricareBG.png";
@@ -30,7 +32,10 @@ namespace TriCare.Views
        //     this.Configure = new Command(() => App.NavigateTo<SignaturePadConfigViewModel>());
           //  this.Create = new Command(this.OnCreate);
           //  this.List = new ObservableList<Signature>();
-
+			rLabel = new Label {
+				Text = "Rotate to Sign",
+				IsVisible = false
+			};
 			curView = new SignaturePadView {  
 				CaptionText = " ",
 				CaptionTextColor = Color.Blue,
@@ -42,10 +47,9 @@ namespace TriCare.Views
 				StrokeColor = Color.Black,
 				StrokeWidth = 2,
 			};
-			var saveButton = new Button { Text = "Sign & Send" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			saveButton = new Button { Text = "Sign & Send" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             saveButton.Clicked += saveButton_Clicked;
 		//	if (Device.OS == TargetPlatform.iOS) {		
-
             Grid grid = new Grid
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
@@ -62,7 +66,7 @@ namespace TriCare.Views
 				curView.HeightRequest = grid.RowDefinitions [0].Height.Value;
 
 	
-
+			grid.Children.Add (rLabel);
             grid.Children.Add(curView);
             Grid.SetRow(curView, 0);
 
@@ -80,6 +84,12 @@ namespace TriCare.Views
                 }
             
         };
+			if (Width < Height) {
+				// Orientation got changed! Do your changes here
+				rLabel.IsVisible = true;
+				curView.IsVisible = false;
+				saveButton.IsVisible = false;
+				}
 			/*}else if (Device.OS == TargetPlatform.Android){
 				Grid grid = new Grid
 				{
@@ -122,24 +132,33 @@ namespace TriCare.Views
 
 			if (width > height) {
 				// Orientation got changed! Do your changes here
+				curView.IsVisible = true;
+				saveButton.IsVisible = true;
+				rLabel.IsVisible = false;
 				if (Device.OS == TargetPlatform.iOS) {		
 					curView.WidthRequest = 440;
 				}
 				if (Device.OS == TargetPlatform.Android) {		
 					curView.WidthRequest = 600;
+
 				}
 			} else {
+				curView.IsVisible = false;
+				saveButton.IsVisible = false;
+				rLabel.IsVisible = true;
 				// Orientation got changed! Do your changes here
 				if (Device.OS == TargetPlatform.iOS) {		
-					curView.WidthRequest = 280;		
+					curView.WidthRequest = 0;		
 				}
 				if (Device.OS == TargetPlatform.Android) {		
-					curView.WidthRequest = 300;
+					curView.WidthRequest = 0;
+				//	curView.RelScaleTo(300);
+
 				}
 			}
 
 		}
-        private void saveButton_Clicked(object sender, EventArgs e)
+        private async void saveButton_Clicked(object sender, EventArgs e)
         {
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
@@ -152,6 +171,26 @@ namespace TriCare.Views
 				DisplayActionSheet ("fname", file.FullName, "close");
             }
 			// make pdf Send fax and email 
+			var ingList = new List<MedicineIngredientForPrescriptionModel> ();
+			foreach (var i in App.CurrentPrescription.Medicine.Ingredients) 
+			{
+				ingList.Add (new MedicineIngredientForPrescriptionModel{IngredientId = i.IngredientId, Percentage = i.Percentage,PrescriptionMedicineIngredientId = 0 });
+			}
+			var presc = new CreatePrescriptionModel 
+			{ 
+				PrescriptionId = 0,
+				PrescriptionMedicineId = 0,
+				PrescriberId =App.CurrentPrescription.Prescriber.PrescriberId,
+				PatientId = App.CurrentPrescription.Patient.PatientId,
+				MedicineId = App.CurrentPrescription.Medicine.MedicineId,
+				Ingredients = ingList,
+				Created = DateTime.Now,
+				RefillAmount = App.CurrentPrescription.Refill.Amount,
+				RefillQuantity = App.CurrentPrescription.Refill.Quantity
+			};
+			var rep = new PrescriptionRepo ();
+			var a = await rep.AddPrescription (presc);
+			DisplayAlert ("ret", a, "close");
 		//	this.Navigation.PushAsync (new HomePage ());
         }
 

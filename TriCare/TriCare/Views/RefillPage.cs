@@ -19,6 +19,8 @@ namespace TriCare
             Title = "Refills";
 
             var ra =rRepo.GetAllRefillAmounts();
+			var qa =rRepo.GetAllRefillQuantities();
+
 			var medL = new Label {
 				TextColor = Color.White,
 				Text = "Medicine : "+App.CurrentPrescription.Medicine.MedicineName.Trim()
@@ -45,8 +47,8 @@ namespace TriCare
 			continueButton.Clicked += (sender, e) =>
 			{
 				App.CurrentPrescription.Refill = new TriCare.Models.RefillModel();
-				App.CurrentPrescription.Refill.Amount = int.Parse(ca[refillAmountPicker.SelectedIndex]);
-				App.CurrentPrescription.Refill.Quantity = int.Parse(cq[refillQuantPicker.SelectedIndex]);
+				App.CurrentPrescription.Refill.Amount = ra[refillAmountPicker.SelectedIndex].RefillAmountId;
+				App.CurrentPrescription.Refill.Quantity = qa[refillQuantPicker.SelectedIndex].RefillQuantityId;
 				Navigation.PushAsync(new VerifyPage());
 			};
 
@@ -57,7 +59,6 @@ namespace TriCare
             }
 
 
-            var qa =rRepo.GetAllRefillQuantities();
             foreach(var q in qa)
             {
 				cq.Add (q.Quantity.ToString ());
