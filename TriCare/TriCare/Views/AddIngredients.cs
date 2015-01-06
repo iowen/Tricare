@@ -11,13 +11,12 @@ namespace TriCare.Views
 {
 	public class AddIngredients : ContentPage
 	{
-		private ObservableCollection<object> ingredientList =
-			new ObservableCollection<object>();
-		private ObservableCollection<object> ingredientList1 =
-			new ObservableCollection<object>();
+		private List<object> ingredientList =
+			new List<object>();
+
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
-		public ObservableCollection<object> IngredientList
+		public List<object> IngredientList
 		{
 			get { return ingredientList; }
 			set
@@ -34,9 +33,9 @@ namespace TriCare.Views
 			var a1 = new AutoCompleteView ();
 			SearchCommand = new Command((key) =>
 				{
-					DisplayAlert("Search",a.AvailableSugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.AvailableSugestions.Count.ToString(),"close");
 					DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
-					DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
 					// Add the key to the input string.
 				});
 
@@ -47,10 +46,7 @@ namespace TriCare.Views
 				});
 			var iRepo = new IngredientRepo ();
 			var t = iRepo.GetAllIngredients ();
-			foreach (var i in t) {
-				ingredientList.Add(i);
-			}
-
+	
 			a = new AutoCompleteView () {
 				SearchBackgroundColor = Color.Gray,
 				ShowSearchButton = true,
@@ -60,12 +56,15 @@ namespace TriCare.Views
 				BindingContext = t,
 				SugestionBackgroundColor = Color.Blue,
 				Placeholder = "Name",
-				Sugestions = IngredientList,
-
-
 			};
 
+			foreach (var i in t) {
+				ingredientList.Add(i);
+			}
+
 			Content = new StackLayout {
+				VerticalOptions = LayoutOptions.StartAndExpand,
+				Padding = new Thickness(80),
 				Children = { a }
 			};
 			//this.Content.BindingContext = t;

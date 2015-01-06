@@ -1,21 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\AddIngredients.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare.iOS/Main.cs">
     <Files>
-      <File FileName="TriCare\TriCare\Views\MedicineIngredientListPage.cs" Line="60" Column="60" />
-      <File FileName="TriCare\TriCare\Data\IngredientRepo.cs" Line="49" Column="49" />
-      <File FileName="TriCare\TriCare\Views\AddIngredientPage.xaml" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Views\AddIngredientPage.xaml.cs" Line="4" Column="4" />
-      <File FileName="TriCare\TriCare\Views\AddIngredients.cs" Line="65" Column="65" />
-      <File FileName="TriCare\TriCare\Models\StringLabel.cs" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Models\ingredientLabel.cs" Line="30" Column="30" />
-      <File FileName="TriCare\TriCare\Models\LoginModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Views\LoginPage.cs" Line="29" Column="29" />
-      <File FileName="TriCare\TriCare\Views\RefillPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Views\IngredientCell.cs" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Views\VerifyCell.cs" Line="1" Column="1" />
-      <File FileName="TriCare\TriCare\Views\ingCell.cs" Line="47" Column="47" />
-      <File FileName="TriCare\TriCare\Views\VerifyPage.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
