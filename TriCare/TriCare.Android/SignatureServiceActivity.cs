@@ -19,7 +19,7 @@ using SignaturePad;
 namespace TriCare.Droid
 {
 
-	[Activity(MainLauncher = true,ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
+	[Activity]
     public class SignatureServiceActivity : Activity
     {
         private NativeView signatureView;
