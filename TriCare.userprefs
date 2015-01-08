@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\RegisterPage.cs">
+    <Files>
+      <File FileName="TriCare\TriCare\Views\RegisterPage.cs" Line="8" Column="8" />
+      <File FileName="TriCare\TriCare\Data\PrescriberRepo.cs" Line="13" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\AddIngredientPage.xaml.cs" line="25" column="1" />

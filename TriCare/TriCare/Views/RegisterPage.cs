@@ -167,7 +167,7 @@ namespace TriCare.Views
 				var resultInt = int.Parse(res.ToString());
 				if (resultInt > 0)
                 {
-					await this.Navigation.PopAsync();
+					//await this.Navigation.PopAsync();
                     await this.Navigation.PushAsync(new HomePage());
                 }
                 else

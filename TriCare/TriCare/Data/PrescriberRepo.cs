@@ -130,7 +130,10 @@ namespace TriCare.Data
 					 database.Insert(item);
 					App.SaveToken(item.PrescriberId.ToString());
 
-					return resultText;
+					//return resultText;
+					var returnTask = new TaskCompletionSource<string>();
+					returnTask.SetResult(item.PrescriberId.ToString());
+					return await returnTask.Task;
 				}
 				return null;
 			}
