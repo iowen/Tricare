@@ -162,14 +162,15 @@ namespace TriCare.Views
         {
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
-			using (var ms = curView.GetImage(ImageFormatType.Png))
-            {
-                var bytes = ms.ToArray();
-                file = this.fileSystem.AppData.CreateFile(fileName);
-                using (var fs = file.OpenWrite())
-                    fs.Write(bytes, 0, bytes.Length);
+			byte[] bytes = curView.GetImage(ImageFormatType.Png).ToArray();
+			//using (var ms = curView.GetImage(ImageFormatType.Png))
+      //      {
+      //          bytes = ms.ToArray();
+//                file = this.fileSystem.AppData.CreateFile(fileName);
+//                using (var fs = file.OpenWrite())
+//                    fs.Write(bytes, 0, bytes.Length);
 				//DisplayActionSheet ("fname", file.FullName, "close");
-            }
+      //     }
 			// make pdf Send fax and email 
 			var ingList = new List<MedicineIngredientForPrescriptionModel> ();
 			foreach (var i in App.CurrentPrescription.Medicine.Ingredients) 
@@ -189,7 +190,7 @@ namespace TriCare.Views
 				RefillQuantity = App.CurrentPrescription.Refill.Quantity
 			};
 			var rep = new PrescriptionRepo ();
-			var a = await rep.AddPrescription (presc);
+			var a = await rep.AddPrescription (presc, bytes);
 			await DisplayAlert ("ret", a, "close");
 		//	this.Navigation.PushAsync (new HomePage ());
         }

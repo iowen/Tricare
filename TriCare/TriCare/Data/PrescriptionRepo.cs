@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TriCare.Models;
 using Xamarin.Forms;
-
+using System.IO;
+using System.Net.Http.Headers;
 namespace TriCare.Data
 {
     public class PrescriptionRepo
@@ -73,7 +74,7 @@ namespace TriCare.Data
             return database.Table<Ingredient>().FirstOrDefault(x => x.IngredientId == id);
         }
 
-		public async Task<string>  AddPrescription(CreatePrescriptionModel item)
+		public async Task<string>  AddPrescription(CreatePrescriptionModel item, byte[] Sig)
         {
 			try
 			{
@@ -81,18 +82,21 @@ namespace TriCare.Data
 				//	client.BaseAddress = new Uri("");
 				var json = JsonConvert.SerializeObject(item);
 
-				var content = new FormUrlEncodedContent(new[] 
-					{
-						new KeyValuePair<string, string>("", json)
-					});
-
-
+				var content = new MultipartFormDataContent();
+				content.Add(new StringContent(json), "value");
+				var fileContent = new ByteArrayContent(Sig);
+				fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+				{
+					FileName = "Sig.png"
+				};
+				content.Add(fileContent);
 
 				var resultTask = await client.PostAsync("http://teamsavagemma.com/api/PrescriptionMedicine", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
-				dynamic resultFix = JsonConvert.DeserializeObject(resultText);
-
-				var pReturn = JsonConvert.DeserializeObject<CreatePrescriptionModel>(resultFix);
+//
+//				dynamic resultFix = JsonConvert.DeserializeObject(resultText);
+//
+//				var pReturn = JsonConvert.DeserializeObject<CreatePrescriptionModel>(resultFix);
 
 //				if (pReturn > 0)
 //				{
@@ -100,7 +104,8 @@ namespace TriCare.Data
 //					database.Insert(item);
 //					return resultText;
 //				}
-				return pReturn.MedicineId.ToString();
+//				return pReturn.MedicineId.ToString();
+				return resultText;
 			}
 			catch (Exception ex)
 			{
