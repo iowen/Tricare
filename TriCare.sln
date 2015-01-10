@@ -212,7 +212,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TriCare\TriCare.iOS\TriCare.iOS.csproj
+		StartupItem = TriCare\TriCare.Android\TriCare.Android.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

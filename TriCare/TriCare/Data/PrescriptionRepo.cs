@@ -87,7 +87,7 @@ namespace TriCare.Data
 				var fileContent = new ByteArrayContent(Sig);
 				fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
 				{
-					FileName = "Sig.png"
+					FileName = "Sig777.png"
 				};
 				content.Add(fileContent);
 
