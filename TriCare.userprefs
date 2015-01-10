@@ -1,9 +1,44 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\RegisterPage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Data/PrescriptionRepo.cs">
     <Files>
-      <File FileName="TriCare\TriCare\Views\RegisterPage.cs" Line="8" Column="8" />
-      <File FileName="TriCare\TriCare\Data\PrescriberRepo.cs" Line="13" Column="13" />
+      <File FileName="TriCare/TriCare/Data/IngredientRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/LoginModel.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/PrescriberPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/App.cs" Line="9" Column="9" />
+      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare.Android/SignatureServiceActivity.cs" Line="11" Column="11" />
+      <File FileName="TriCare/TriCare/Views/SignaturePadView.cs" Line="2" Column="2" />
+      <File FileName="TriCare/TriCare.Android/MainActivity.cs" Line="34" Column="34" />
+      <File FileName="TriCare/TriCare.Android/SignatureService.cs" Line="33" Column="33" />
+      <File FileName="TriCare/TriCare.Android/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="7" Column="7" />
+      <File FileName="TriCare/TriCare/Views/SignaturePadPage.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/PrescriptionModel.cs" Line="33" Column="33" />
+      <File FileName="TriCare/TriCare/Models/MedicineModel.cs" Line="27" Column="27" />
+      <File FileName="TriCare/TriCare/Data/PrescriptionRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/MedicineIngredient.cs" Line="5" Column="5" />
+      <File FileName="TriCare/TriCare/Models/RefillAmount.cs" Line="5" Column="5" />
+      <File FileName="TriCare/TriCare/Models/RefillQuantity.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/PatientRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/Medicine.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/PrescriberModel.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/MedicineIngredientRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/RefillPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Models/PatientListItemModel.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/RefillRepo.cs" Line="55" Column="55" />
+      <File FileName="TriCare/TriCare/Views/RegisterPage.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/HomePage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Views/AddIngredients.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/CreatePatientPage.cs" Line="4" Column="4" />
+      <File FileName="TriCare/TriCare/Views/PrescriptionNewORSelectPatientPage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Views/PrescriptionSelectMedicinePage.cs" Line="24" Column="24" />
+      <File FileName="TriCare/TriCare/Views/VerifyPage.cs" Line="1" Column="1" />
+      <File FileName="../../Downloads/PDFCreate/CreatePDFFromScratch.aspx.cs" Line="42" Column="42" />
+      <File FileName="TriCare/TriCare/Data/PrescriberRepo.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -13,7 +48,7 @@
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\AddIngredientPage.xaml.cs" line="43" column="1" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\AddIngredientPage.xaml.cs" line="44" column="1" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\AddIngredients.cs" line="37" column="1" />
-      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/SignaturePadPage.cs" line="155" column="1" />
+      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/SignaturePadPage.cs" line="195" column="1" />
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/SignaturePadRenderer.cs" line="70" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

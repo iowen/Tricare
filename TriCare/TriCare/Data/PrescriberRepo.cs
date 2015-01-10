@@ -128,8 +128,6 @@ namespace TriCare.Data
 				{
 					item.PrescriberId = pReturn;
 					 database.Insert(item);
-					App.SaveToken(item.PrescriberId.ToString());
-
 					//return resultText;
 					var returnTask = new TaskCompletionSource<string>();
 					returnTask.SetResult(item.PrescriberId.ToString());

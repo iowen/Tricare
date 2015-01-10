@@ -167,8 +167,12 @@ namespace TriCare.Views
 				var resultInt = int.Parse(res.ToString());
 				if (resultInt > 0)
                 {
-					//await this.Navigation.PopAsync();
-                    await this.Navigation.PushAsync(new HomePage());
+					var loginItem = new LoginModel () { Email = prescriberItem.Email, Password = prescriberItem.Email };
+					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
+					if (loginState.ToLower () == "success") {
+						App.ClearCurrentPrescription ();
+						await this.Navigation.PushAsync (new HomePage ());
+					} 
                 }
                 else
                 {

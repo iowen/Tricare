@@ -20,20 +20,7 @@ namespace TriCare.Views
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {
-                //var pId = int.Parse(App.Token);
-                //var patientItem = new Patient() { PrescriberId = pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
-                //var patientRepo = new PatientRepo();
-                //// send webservice request and so on
-                //var res = await patientRepo.AddPatient(patientItem);
-                //if (!string.IsNullOrWhiteSpace(res))
-                //{
-                //    await this.Navigation.PopAsync();
-                //    await this.Navigation.PushAsync(new HomePage());
-                //}
-                //else
-                //{
-                //    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
-                //}
+                this.Navigation.PushAsync(new EditPrescriberPage());
             };
 
             var firstNameLabel = new Label { Text = "First Name" };

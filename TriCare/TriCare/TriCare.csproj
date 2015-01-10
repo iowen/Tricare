@@ -92,6 +92,8 @@
     <Compile Include="Models\ingredientLabel.cs" />
     <Compile Include="Views\ingCell.cs" />
     <Compile Include="Data\PrescriptionRepo.cs" />
+    <Compile Include="Views\EditPatientPage.cs" />
+    <Compile Include="Views\EditPrescriberPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">
