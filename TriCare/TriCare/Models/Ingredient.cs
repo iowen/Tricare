@@ -12,5 +12,10 @@ namespace TriCare.Models
         [PrimaryKey]
         public int IngredientId { get; set; }
         public string Name { get; set; }
+
+		public override string ToString ()
+		{
+			return string.Format ("{0}",Name.ToString());
+		}
     }
 }

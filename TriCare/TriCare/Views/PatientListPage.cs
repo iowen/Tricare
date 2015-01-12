@@ -68,8 +68,9 @@ namespace TriCare.Views
 
 		protected override void OnAppearing ()
 		{
-			base.OnAppearing ();
 
+			base.OnAppearing ();
+			listView.ItemsSource = patientList;
 		}
 		public void OnSearchBarButtonPressed(object sender, EventArgs args)
 		{

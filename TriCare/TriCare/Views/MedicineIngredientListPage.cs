@@ -111,7 +111,8 @@ namespace TriCare.Views
 
 			};
 
-
+			MedicineIngredientRepo mRepo = new MedicineIngredientRepo ();
+			listView.ItemsSource = mRepo.ConvertIngreditentsToPrescriptionIngredients(mRepo.GetIngredientsForMedicine(medicineId));
 
 			// Accomodate iPhone status bar.
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
@@ -140,8 +141,7 @@ namespace TriCare.Views
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			MedicineIngredientRepo mRepo = new MedicineIngredientRepo ();
-            listView.ItemsSource = mRepo.ConvertIngreditentsToPrescriptionIngredients(mRepo.GetIngredientsForMedicine(medicineId));
+
 		}
 
     }

@@ -141,6 +141,50 @@ namespace TriCare.Data
 			}
         }
 
+		public async Task<bool> UpdatePrescriber(Prescriber item)
+		{
+			try
+			{
+				var client = new HttpClient ();
+				//	client.BaseAddress = new Uri("");
+				var json = JsonConvert.SerializeObject(item);
+
+				var content = new FormUrlEncodedContent(new[] 
+					{
+						new KeyValuePair<string, string>("", json)
+					});
+
+				var resultTask = await client.PutAsync("http://teamsavagemma.com/api/prescriber", content);
+				var resultText = resultTask.Content.ReadAsStringAsync().Result;
+				var pReturn = JsonConvert.DeserializeObject<int>(resultText);
+				if (pReturn > 0)
+				{
+					var oldItem = database.Table<Prescriber>().FirstOrDefault(x => x.PrescriberId == item.PrescriberId);
+					oldItem.Address = item.Address;
+					oldItem.City = item.City;
+					oldItem.DeaNumber = item.DeaNumber;
+					oldItem.Email = item.Email;
+					oldItem.Fax =item.Fax;
+					oldItem.FirstName = item.FirstName;
+					oldItem.LastName = item.LastName;
+					oldItem.LicenseNumber = item.LicenseNumber;
+					oldItem.NpiNumber = item.NpiNumber;
+					oldItem.Password = item.Password;
+					oldItem.Phone = item.Phone;
+					oldItem.State = item.State;
+					oldItem.Zip = item.Zip;
+
+					database.Update(oldItem);
+					return true;
+				}
+				return false;
+			}
+			catch(Exception ex)
+			{
+				return false;
+			}
+		}
+
         public int DeletePrescriber(int id)
         {
             return database.Delete<Prescriber>(id);

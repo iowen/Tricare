@@ -40,7 +40,7 @@ namespace TriCare
 				//                  Navigation.PushAsync(patientPage);
 
 			};
-				
+
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			var layout = new StackLayout();
 			if (Device.OS == TargetPlatform.WinPhone) { // WinPhone doesn't have the title showing

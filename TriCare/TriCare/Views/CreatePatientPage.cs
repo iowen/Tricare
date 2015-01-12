@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -195,6 +196,8 @@ namespace TriCare.Views
                     }
                     else
                     {
+						patientItem.PatientId = JsonConvert.DeserializeObject<int>(res);
+						App.CurrentPrescription.Patient = patientItem;
                         await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
 
                     }

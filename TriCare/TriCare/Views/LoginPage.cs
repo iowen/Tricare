@@ -77,31 +77,31 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				registerButton.Clicked += async (sender, e) => {
-					var iR = new InsuranceCarrierRepo ();
-					if (iR.InsertRecords ()) {
-						var r = await iR.GetInsuranceCarriers ();
-					}
-					var iG = new IngredientRepo ();
-					if (iG.InsertRecords ()) {
-						var r = await iG.GetIngredients ();
-					}
-					var med = new MedicineRepo ();
-					if (med.InsertRecords ()) {
-						var r = await med.GetMedicines ();
-					}
-					var medR = new MedicineIngredientRepo ();
-					if (medR.InsertRecords ()) {
-						var r = await medR.GetMedicineIngredients ();
-					}
-					var rR = new RefillRepo ();
-					if (rR.InsertRecords ()) {
-						var r = await rR.GetRefillAmounts ();
-						var rq = await rR.GetRefillQuantities ();
-					}
+//					var iR = new InsuranceCarrierRepo ();
+//					if (iR.InsertRecords ()) {
+//						var r = await iR.GetInsuranceCarriers ();
+//					}
+//					var iG = new IngredientRepo ();
+//					if (iG.InsertRecords ()) {
+//						var r = await iG.GetIngredients ();
+//					}
+//					var med = new MedicineRepo ();
+//					if (med.InsertRecords ()) {
+//						var r = await med.GetMedicines ();
+//					}
+//					var medR = new MedicineIngredientRepo ();
+//					if (medR.InsertRecords ()) {
+//						var r = await medR.GetMedicineIngredients ();
+//					}
+//					var rR = new RefillRepo ();
+//					if (rR.InsertRecords ()) {
+//						var r = await rR.GetRefillAmounts ();
+//						var rq = await rR.GetRefillQuantities ();
+//					}
 					//var sigserv = DependencyService.Get<ISignatureService>();
 					//	var fileSys = DependencyService.Get<IFileSystem>();
 					//	this.Navigation.PushAsync(new SignaturePadPage(sigserv, fileSys));
-					this.Navigation.PushAsync (new RegisterPage ());            
+					this.Navigation.PushAsync (new AddIngredients ());            
 				};
 
 				Content = new StackLayout {

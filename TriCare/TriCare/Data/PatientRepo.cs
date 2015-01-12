@@ -103,6 +103,58 @@ namespace TriCare.Data
             }
         }
 
+		public async Task<bool> UpdatePatient(Patient item)
+		{
+			try
+			{
+				var client = new HttpClient();
+				//	client.BaseAddress = new Uri("");
+				var json = JsonConvert.SerializeObject(item);
+
+				var content = new FormUrlEncodedContent(new[] 
+					{
+						new KeyValuePair<string, string>("", json)
+					});
+
+			
+				var resultTask = await client.PutAsync("http://teamsavagemma.com/api/patient", content);
+				var resultText = resultTask.Content.ReadAsStringAsync().Result;
+
+				var pReturn = JsonConvert.DeserializeObject<int>(resultText);
+				if (pReturn > 0)
+				{
+					var oldItem = database.Table<Patient>().FirstOrDefault(x => x.PatientId == item.PatientId);
+					oldItem.Address = item.Address;
+					oldItem.Allergies = item.Allergies;
+					oldItem.BirthDate = item.BirthDate;
+					oldItem.City = item.City;
+					oldItem.Diagnosis = item.Diagnosis;
+					oldItem.Email = item.Email;
+					oldItem.FirstName = item.FirstName;
+					oldItem.Gender = item.Gender;
+					oldItem.InsuranceCarrierId = item.InsuranceCarrierId;
+					oldItem.InsuranceCarrierIdNumber = item.InsuranceCarrierIdNumber;
+					oldItem.InsuranceGroupNumber = item.InsuranceGroupNumber;
+					oldItem.InsurancePhone = item.InsurancePhone;
+					oldItem.LastName = item.LastName;
+					oldItem.PaymentType = item.PaymentType;
+					oldItem.Phone = item.Phone;
+					oldItem.RxBin = item.RxBin;
+					oldItem.RxPcn = item.RxPcn;
+					oldItem.SSN = item.SSN;
+					oldItem.State = item.State;
+					oldItem.Zip = item.Zip;
+					database.Update(oldItem);
+					return true;
+				}
+				return false;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+		}
+
         public int DeletePatient(int id)
         {
             return database.Delete<Patient>(id);
