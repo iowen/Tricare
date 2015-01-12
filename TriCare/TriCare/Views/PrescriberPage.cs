@@ -31,87 +31,199 @@ namespace TriCare.Views
             var lastNameEntry = new Label();
             lastNameEntry.SetBinding(Label.TextProperty, "LastName");
 
+			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Black };
+			var fullNameEntry = new Label { TextColor = Color.Black };
+			fullNameEntry.SetBinding (Label.TextProperty, "NameFriendly");
 
-            var emailLabel = new Label { Text = "Email" };
-            var emailEntry = new Label();
+			var emailLabel = new Label { Text = "Email:", TextColor = Color.Black };
+			var emailEntry = new Label{ TextColor = Color.Black };
             emailEntry.SetBinding(Label.TextProperty, "Email");
 
-            var passwordLabel = new Label { Text = "Password" };
-            var passwordEntry = new Label();
-
+			var passwordLabel = new Label { Text = "Password:", TextColor = Color.Black  };
+			var passwordEntry = new Label{ TextColor = Color.Black };
             passwordEntry.SetBinding(Label.TextProperty, "Password");
 
-
-            var NpiNumberLabel = new Label { Text = "NPI Number" };
-            var NpiNumberEntry = new Label();
+			var NpiNumberLabel = new Label { Text = "NPI Number:", TextColor = Color.Black };
+			var NpiNumberEntry = new Label{ TextColor = Color.Black };
             NpiNumberEntry.SetBinding(Label.TextProperty, "NpiNumber");
 
-            var LicenseNumberLabel = new Label { Text = "License Number" };
-            var LicenseNumberEntry = new Label();
+			var LicenseNumberLabel = new Label { Text = "License Number:", TextColor = Color.Black };
+			var LicenseNumberEntry = new Label{ TextColor = Color.Black };
             LicenseNumberEntry.SetBinding(Label.TextProperty, "LicenseNumber");
 
-            var DeaNumberLabel = new Label { Text = "DEA Number" };
-            var DeaNumberEntry = new Label();
+			var DeaNumberLabel = new Label { Text = "DEA Number:", TextColor = Color.Black };
+			var DeaNumberEntry = new Label{ TextColor = Color.Black };
             DeaNumberEntry.SetBinding(Label.TextProperty, "DeaNumber");
 
-            var AddressLabel = new Label { Text = "Address" };
-            var AddressEntry = new Label();
+			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Black };
+			var AddressEntry = new Label{ TextColor = Color.Black };
             AddressEntry.SetBinding(Label.TextProperty, "Address");
 
-            var CityLabel = new Label { Text = "City" };
-            var CityEntry = new Label();
+			var CityLabel = new Label { Text = "City:", TextColor = Color.Black };
+			var CityEntry = new Label{ TextColor = Color.Black };
             CityEntry.SetBinding(Label.TextProperty, "City");
 
-            var StateLabel = new Label { Text = "State" };
-            var StateEntry = new Label();
+			var StateLabel = new Label { Text = "State:", TextColor = Color.Black };
+			var StateEntry = new Label{ TextColor = Color.Black };
             StateEntry.SetBinding(Label.TextProperty, "State");
 
-            var ZipLabel = new Label { Text = "Zip" };
-            var ZipEntry = new Label();
+			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Black };
+			var ZipEntry = new Label{ TextColor = Color.Black };
             ZipEntry.SetBinding(Label.TextProperty, "Zip");
 
-            var PhoneLabel = new Label { Text = "Phone" };
-            var PhoneEntry = new Label();
+			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Black };
+			var PhoneEntry = new Label{ TextColor = Color.Black };
             PhoneEntry.SetBinding(Label.TextProperty, "Phone");
 
-            var FaxLabel = new Label { Text = "Fax" };
-            var FaxEntry = new Label();
+			var FaxLabel = new Label { Text = "Fax:", TextColor = Color.Black };
+			var FaxEntry = new Label{ TextColor = Color.Black };
             FaxEntry.SetBinding(Label.TextProperty, "Fax");
 
-            var scrollview = new ScrollView
-            {
-                VerticalOptions = LayoutOptions.StartAndExpand,
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
-                    Padding = new Thickness(20),
-                    Children ={
-					firstNameLabel, firstNameEntry, 
-					lastNameLabel, lastNameEntry,
-					emailLabel, emailEntry, 
-						passwordLabel, passwordEntry,
-					NpiNumberLabel, NpiNumberEntry, 
-					LicenseNumberLabel, LicenseNumberEntry,
-					DeaNumberLabel, DeaNumberEntry,
-						AddressLabel, AddressEntry,
-					CityLabel, CityEntry,
-					StateLabel, StateEntry, 
-					ZipLabel, ZipEntry, 
-					PhoneLabel, PhoneEntry,
-					FaxLabel, FaxEntry,
-					}
-                }
-            };
-            Content = new StackLayout
-            {
-                Children = {
-                    editButton,
-               scrollview
-             		},
-                    BindingContext = p,
-				Padding = new Thickness(20)
+			#region LAYOUTS
+			this.BindingContext = p;
 
-            };
+			Label prescriberHeaderLabel = new Label{
+				Text = "Prescriber Information",
+				Font = Font.SystemFontOfSize (NamedSize.Large),
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.Black,
+				BackgroundColor = Color.White
+				};
+
+			StackLayout nameLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			nameLayout.Children.Add (fullNameLabel);
+			nameLayout.Children.Add (fullNameEntry);
+
+			StackLayout passwordLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			passwordLayout.Children.Add (passwordLabel);
+			passwordLayout.Children.Add (passwordEntry);
+
+			StackLayout npiLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			npiLayout.Children.Add (NpiNumberLabel);
+			npiLayout.Children.Add (NpiNumberEntry);
+
+			StackLayout licenseLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			licenseLayout.Children.Add (LicenseNumberLabel);
+			licenseLayout.Children.Add (LicenseNumberEntry);
+
+			StackLayout deaLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			deaLayout.Children.Add (DeaNumberLabel);
+			deaLayout.Children.Add (DeaNumberEntry);
+
+			Label contactHeaderLabel = new Label {
+				Text = "Contact Information",
+				Font = Font.SystemFontOfSize (NamedSize.Large),
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.Black,
+				BackgroundColor = Color.White
+			};
+
+			StackLayout emailLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			emailLayout.Children.Add (emailLabel);
+			emailLayout.Children.Add (emailEntry);
+
+			StackLayout phoneLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			phoneLayout.Children.Add (PhoneLabel);
+			phoneLayout.Children.Add (PhoneEntry);
+
+			StackLayout faxLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			faxLayout.Children.Add (FaxLabel);
+			faxLayout.Children.Add (FaxEntry);
+
+			Label addressHeaderLabel = new Label {
+				Text = "Address Information",
+				Font = Font.SystemFontOfSize (NamedSize.Large),
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.Black,
+				BackgroundColor = Color.White
+			};
+
+			StackLayout addressLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			addressLayout.Children.Add (AddressLabel);
+			addressLayout.Children.Add (AddressEntry);
+
+			StackLayout cityLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			cityLayout.Children.Add (CityLabel);
+			cityLayout.Children.Add (CityEntry);
+
+			StackLayout stateLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			stateLayout.Children.Add (StateLabel);
+			stateLayout.Children.Add (StateEntry);
+
+			StackLayout zipLayout = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+			};
+
+			zipLayout.Children.Add (ZipLabel);
+			zipLayout.Children.Add (ZipEntry);
+
+
+			var scrollview = new ScrollView
+			{
+				VerticalOptions = LayoutOptions.StartAndExpand,
+				Content = new StackLayout
+				{
+					VerticalOptions = LayoutOptions.StartAndExpand,
+					Padding = new Thickness(20),
+					Children ={
+						editButton,
+						new Label(),
+						prescriberHeaderLabel,
+						nameLayout,
+						passwordLayout,
+						npiLayout,
+						licenseLayout,
+						deaLayout,
+						new Label(),
+						contactHeaderLabel,
+						emailLayout,
+						phoneLayout,
+						faxLayout,
+						new Label(),
+						addressHeaderLabel,
+						addressLayout,
+						cityLayout,
+						stateLayout,
+						zipLayout,
+					}
+				}
+			};
+
+			Content = scrollview; //scrollview;
+			#endregion
 
         }
     }
