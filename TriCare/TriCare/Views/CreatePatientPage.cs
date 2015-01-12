@@ -204,7 +204,7 @@ namespace TriCare.Views
                 }
                 else
                 {
-                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
+                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "Close");
                 }
             };
             var scrollview = new ScrollView
