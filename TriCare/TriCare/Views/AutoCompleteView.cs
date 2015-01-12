@@ -159,9 +159,9 @@ namespace TriCare.Views
 			_lstSuggestions = new ListView
 			{
 				HeightRequest = SuggestionsHeightRequest,
-				HasUnevenRows = true
-			};
+				HasUnevenRows = true,
 
+			};
 			innerLayout.Children.Add(_entText);
 			innerLayout.Children.Add(_btnSearch);
 			_stkBase.Children.Add(innerLayout);
@@ -460,7 +460,7 @@ namespace TriCare.Views
 			var autoCompleteView = obj as AutoCompleteView;
 			if (autoCompleteView != null)
 			{
-				autoCompleteView._entText.Placeholder = newPlaceHolderValue;
+				autoCompleteView._entText.Placeholder = newPlaceHolderValue.Trim();
 			}
 		}
 
@@ -723,9 +723,9 @@ namespace TriCare.Views
 					control._availableSuggestions.Clear();
 
 					var filteredSuggestions = control.Suggestions.Cast<object>()
-						.Where(x => Regex.Replace(x.ToString().Trim().ToLowerInvariant(), @"\s+", string.Empty).Contains(cleanedNewPlaceHolderValue))
+						.Where(x => Regex.Replace(x.ToString().Trim().ToLowerInvariant(), @"\s+", string.Empty).Trim().Contains(cleanedNewPlaceHolderValue))
 						.OrderByDescending(x => Regex.Replace(x.ToString().Trim()
-							.ToLowerInvariant(), @"\s+", string.Empty)
+							.ToLowerInvariant(), @"\s+", string.Empty).Trim()
 							.StartsWith(cleanedNewPlaceHolderValue)).ToList();
 
 					control._availableSuggestions = new List<object> ();

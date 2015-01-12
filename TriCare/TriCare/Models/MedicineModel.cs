@@ -34,6 +34,7 @@ namespace TriCare.Models
 		public int PrescriptionMedicineIngredientId;
 
 	}
+		
 
 	public class CreatePrescriptionModel
 	{

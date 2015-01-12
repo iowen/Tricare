@@ -24,5 +24,9 @@ namespace TriCare.Models
         public DateTime Created;
         public MedicineModelForPrescription Medicine;
         public RefillModel Refill;
+		[Ignore]
+		public string PatientNameFriendly { get{return Patient.FirstName.Trim () + " " + Patient.LastName.Trim ();}}
+		public string MedicineNameFriendly {get{return Medicine.MedicineName.Trim();}}
+		public string CreatedFriendly { get { return Created.ToString ("d"); } }
     }
 }
