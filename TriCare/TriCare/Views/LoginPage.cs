@@ -39,6 +39,10 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				loginButton.Clicked += async (sender, e) => {
+					var sr = new StateRepo();
+					if (sr.InsertRecords()){
+						var r = sr.GetStates();
+					}
 					var iR = new InsuranceCarrierRepo ();
 					if (iR.InsertRecords ()) {
 						var r = await iR.GetInsuranceCarriers ();
@@ -77,6 +81,10 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				registerButton.Clicked += async (sender, e) => {
+					var sr = new StateRepo();
+					if (sr.InsertRecords()){
+						var r = sr.GetStates();
+					}
 					var iR = new InsuranceCarrierRepo ();
 					if (iR.InsertRecords ()) {
 						var r = await iR.GetInsuranceCarriers ();

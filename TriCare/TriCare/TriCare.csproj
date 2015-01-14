@@ -96,6 +96,8 @@
     <Compile Include="Views\EditPrescriberPage.cs" />
     <Compile Include="Views\PrescriptionListCell.cs" />
     <Compile Include="Views\AutoCompleteView.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Data\StateRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">
