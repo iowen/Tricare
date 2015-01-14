@@ -32,6 +32,33 @@ namespace TriCare.Data
             return database.Table<Prescriber>().FirstOrDefault(x => x.PrescriberId == id);
         }
 
+        public async Task<Prescriber> GetPrescriberLastUpdate(int prescriberId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://teamsavagemma.com");
+
+
+                var resultTask = await client.GetAsync("http://teamsavagemma.com/api/Prescriber/" + prescriberId.ToString());
+                var resultText = resultTask.Content.ReadAsStringAsync().Result;
+                try
+                {
+                    dynamic resultFix = JsonConvert.DeserializeObject(resultText);
+                    var resultItem = JsonConvert.DeserializeObject<Prescriber>(resultFix);
+                    if (resultItem.PrescriberId > 0)
+                    {
+
+                        return resultItem;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+                    
 		public async Task<string> LoginPrescriber(LoginModel login)
         {
 			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == login.Password))

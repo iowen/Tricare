@@ -41,6 +41,9 @@ namespace TriCare.Models
         public string Email { get; set; }
 		[Required, JsonProperty("Password")]
         public string Password { get; set; }
+        [JsonProperty("LastUpdate")]
+        public DateTime LastUpdate { get; set; }
+
 		[Ignore]
 		public string NameFriendly{ get { return FirstName.ToString ().Trim() +" "+ LastName.ToString ().Trim(); } }
     }
