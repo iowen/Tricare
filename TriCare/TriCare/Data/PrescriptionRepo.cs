@@ -64,16 +64,53 @@ namespace TriCare.Data
             }
         }
 
-        public List<Ingredient> GetAllIngredients()
+        public List<Prescription> GetAllPrescriptions()
         {
-            return (from i in database.Table<Ingredient>() select i).ToList();
+            return (from i in database.Table<Prescription>() select i).ToList();
         }
 
-        public Ingredient GetIngredient(int id)
+        public Prescription GetPrescription(int id)
         {
-            return database.Table<Ingredient>().FirstOrDefault(x => x.IngredientId == id);
+            return database.Table<Prescription>().FirstOrDefault(x => x.PrescriptionId == id);
         }
+		public List<PrescriptionModel>GetPrescriptionsForPrescriber(int prescriberId)
+		{
+			var res = new List<PrescriptionModel> ();
+			var pres = database.Table<Prescription> ().Where (x => x.PrescrberId == prescriberId).ToList ();
+			foreach (var i in pres) {
+				res.Add (GetPrescriptionAsModel (i.PrescriptionId));
+			}
+			return res;
+		}
+		public PrescriptionModel GetPrescriptionAsModel(int id)
+		{
+			var pRepo = new PrescriberRepo ();
+			var presc = pRepo.GetPrescriber (int.Parse (App.Token));
 
+			var prescr = database.Table<Prescription>().FirstOrDefault(x => x.PrescriptionId == id);
+
+			var paRepo = new PatientRepo ();
+			var pat = paRepo.GetPatient (prescr.PatientId);
+
+
+			var rr = new RefillRepo ();
+			var rm = rr.GetPrescriptionRefillAsModel (id);
+			var pMeds = database.Table<PrescriptionMedicine>().First(x => x.PrescriptionId == id);
+			var pMedIs = database.Table<PrescriptionMedicineIngredient>().Where(x => x.PrescriptionMedicineId == pMeds.PrescriptionMedicineId).ToList();
+			var mIng = new List<PrescriptionMedicineIngredientModel> ();
+
+			foreach (var i in pMedIs) {
+				mIng.Add(new PrescriptionMedicineIngredientModel(){Percentage = i.Percentage, PrescriptionMedicineId = i.PrescriptionMedicineId,PrescriptionMedicineIngredientId = i.PrescriptionMedicineIngredientId,IngredientId = i.IngredientId, Name = i.Name});
+			}
+			var mm = new MedicineModelForPrescription ();
+			var mRepo = new MedicineRepo ();
+			var med = mRepo.GetMedicine (pMeds.MedicineId);
+			mm.MedicineId = med.MedicineId;
+			mm.Ingredients = mIng;
+			mm.MedicineName = med.Name.Trim();
+			mm.PrescriptionId = id;
+			return new PrescriptionModel (){Prescriber = presc, PrescriptionId = id,Patient = pat,Created = prescr.Created,Refill = rm ,Medicine = mm};
+		}
 		public async Task<string>  AddPrescription(CreatePrescriptionModel item, byte[] Sig)
         {
 			try
@@ -98,21 +135,29 @@ namespace TriCare.Data
 
 				var pReturn = JsonConvert.DeserializeObject<CreatePrescriptionModel>(resultFix);
 
-//				if (pReturn > 0)
-//				{
-//					item.PatientId = pReturn;
-//					database.Insert(item);
-//					return resultText;
-//				}
-//				return pReturn.MedicineId.ToString();
-				return resultText;
+				if (pReturn.PrescriptionId > 0)
+				{
+					var p = new Prescription(){PrescrberId = pReturn.PrescriberId, PatientId = pReturn.PatientId, PrescriptionId = pReturn.PrescriptionId, Location = pReturn.Location, Created = pReturn.Created};
+					database.Insert(p);
+					var pm = new PrescriptionMedicine(){MedicineId = pReturn.MedicineId, PrescriptionMedicineId = pReturn.PrescriptionMedicineId, PrescriptionId = pReturn.PrescriptionId};
+					database.Insert(pm);
+					foreach(var ing in pReturn.Ingredients)
+					{
+						var ii = database.Table<Ingredient>().FirstOrDefault(x => x.IngredientId == ing.IngredientId);
+						var pmi = new PrescriptionMedicineIngredient(){Name = ii.Name,Percentage = ing.Percentage, PrescriptionMedicineId = pReturn.PrescriptionMedicineId,PrescriptionMedicineIngredientId = ing.PrescriptionMedicineIngredientId,IngredientId = ing.IngredientId};
+						database.Insert(pmi);
+					}
+					var pr = new PresciptionRefill(){RefillAmountId = pReturn.RefillAmount, RefillQuantityId = pReturn.RefillQuantity, PrescriptionRefillId = pReturn.PrescriptionRefillId, PrescriptionId = pReturn.PrescriptionId};
+					database.Insert(pr);
+					return "success";
+				}
+				return "failure";
 			}
 			catch (Exception ex)
 			{
-				return null;
+				return "error";
 			}
 
-         //   return database.Insert(item);
         }
 
         public int DeleteIngredient(int id)

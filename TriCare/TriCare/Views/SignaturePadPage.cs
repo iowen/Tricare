@@ -181,6 +181,7 @@ namespace TriCare.Views
 			{ 
 				PrescriptionId = 0,
 				PrescriptionMedicineId = 0,
+				PrescriptionRefillId = 0,
 				PrescriberId =App.CurrentPrescription.Prescriber.PrescriberId,
 				PatientId = App.CurrentPrescription.Patient.PatientId,
 				MedicineId = App.CurrentPrescription.Medicine.MedicineId,
@@ -191,8 +192,9 @@ namespace TriCare.Views
 			};
 			var rep = new PrescriptionRepo ();
 			var a = await rep.AddPrescription (presc, bytes);
-			await DisplayAlert ("ret", a, "close");
-		//	this.Navigation.PushAsync (new HomePage ());
+			if (a == "success") {
+				this.Navigation.PushAsync (new HomePage ());
+			}
         }
 
 

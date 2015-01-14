@@ -41,7 +41,7 @@ namespace TriCare.Views
 				XAlign = TextAlignment.Center,
 				TextColor = Color.White,
 			};
-			labelPatientName.SetBinding(Label.TextProperty, "MedicineNameFriendly");
+			labelMedicineName.SetBinding(Label.TextProperty, "MedicineNameFriendly");
 
 			var labelCreated = new Label
 			{
@@ -72,6 +72,7 @@ namespace TriCare.Views
 				Children = { labelCreated, labelCreatedText }
 			};
 			var stack = new StackLayout {
+				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {pstack,mstack,cstack}
 			};
 			View = stack;
@@ -82,6 +83,7 @@ namespace TriCare.Views
 			// set after the Cell gets the binding context set on it. Then it is inheriting
 			// the parents binding context.
 			View.BindingContext = BindingContext;
+			this.Height = 90;
 			base.OnBindingContextChanged();
 		}
 	}

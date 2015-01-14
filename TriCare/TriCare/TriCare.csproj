@@ -98,6 +98,8 @@
     <Compile Include="Views\AutoCompleteView.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Data\StateRepo.cs" />
+    <Compile Include="Views\PrescriptionListPage.cs" />
+    <Compile Include="Views\ViewPrescriptionPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

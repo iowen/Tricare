@@ -46,6 +46,7 @@ namespace TriCare.Models
 		public DateTime Created;
 		public int MedicineId;
 		public List<MedicineIngredientForPrescriptionModel> Ingredients;
+		public int PrescriptionRefillId;
 		public int RefillAmount;
 		public int RefillQuantity;
 	}

@@ -55,6 +55,18 @@ namespace TriCare.Data
             var a = database.Table<RefillQuantity>().First(x => x.Quantity == quantity);
             return a.RefillQuantityId;
         }
+
+		public int GetRefillAmountForId(int amount)
+		{
+			var a = database.Table<RefillAmount>().First(x => x.RefillAmountId == amount);
+			return a.Amount;
+		}
+
+		public int GetRefillQuantityForId(int quantity)
+		{
+			var a = database.Table<RefillQuantity>().First(x => x.RefillQuantityId == quantity);
+			return a.Quantity;
+		}
         public async Task<string> GetRefillQuantities()
         {
             using (var client = new HttpClient())
@@ -110,5 +122,16 @@ namespace TriCare.Data
                 return await returnTask.Task;
             }
         }
+
+		public RefillModel GetPrescriptionRefillAsModel(int prescriptionId)
+		{
+			var p = database.Table<Prescription>().FirstOrDefault(x => x.PrescriptionId == prescriptionId);
+			var pr = database.Table<PresciptionRefill>().FirstOrDefault(x => x.PrescriptionId == prescriptionId);
+//			var raa =GetRefillAmountForId(pr.RefillAmountId);
+//			var qa =GetRefillQuantityForId(pr.RefillQuantityId);
+//			var ra = new RefillAmount (){RefillAmountId = pr.RefillAmountId, Amount = raa };
+//			var rq = new RefillQuantity (){RefillQuantityId = pr.RefillQuantityId, Quantity = qa };
+			return new RefillModel (){Amount = pr.RefillAmountId, Quantity = pr.RefillQuantityId,PrescriptionId = prescriptionId };
+		}
     }
 }

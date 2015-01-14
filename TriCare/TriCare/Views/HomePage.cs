@@ -38,7 +38,7 @@ namespace TriCare.Views
 			var ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePrescriptionButton.Clicked += (sender, e) =>
             {
-                this.Navigation.PushAsync(new RegisterPage());
+				this.Navigation.PushAsync(new PrescriptionListPage());
 
             };
 			var EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
