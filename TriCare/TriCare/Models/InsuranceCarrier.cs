@@ -12,5 +12,10 @@ namespace TriCare.Models
         [PrimaryKey]
         public int InsuranceCarrierId { get; set; }
         public string Name { get; set; }
+		public override string ToString ()
+		{
+			return Name.Trim ();
+		}
+
     }
 }

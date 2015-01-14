@@ -4,14 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using System.Collections.ObjectModel;
 using TriCare.Data;
 using TriCare.Models;
-using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace TriCare.Views
 {
     public class CreatePatientPage : ContentPage
     {
+		private List<object> insuranceList =
+			new List<object>();
+
+		public ICommand SearchCommand { get; set; }
+		public ICommand CellSelectedCommand { get; set; }
+		public List<object> InsuranceList
+		{
+			get { return insuranceList; }
+		}
+		private AutoCompleteView a;
+		private string searchText;
+		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public CreatePatientPage(bool isDuringPrescription = false)
         {
             this.SetBinding(ContentPage.TitleProperty, "Add Patient");
@@ -58,17 +72,42 @@ namespace TriCare.Views
                 TextColor = Color.White,
             };
             ssnEntry.SetBinding(Entry.TextProperty, "SSN");
+			var a1 = new AutoCompleteView ();
+			SearchCommand = new Command((key) =>
+				{
+					DisplayAlert("Search",a.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					// Add the key to the input string.
+				});
+
+			CellSelectedCommand = new Command<InsuranceCarrier>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var iRepo = new InsuranceCarrierRepo ();
+			var t = iRepo.GetAllInsuranceCarriers ();
+
+			foreach (var i in t) {
+				insuranceList.Add(i);
+			}
+			a = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = InsuranceList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommand,
+				SuggestionBackgroundColor = Color.Blue,
+				Placeholder = "",
+			};
+
 
             var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" };
-            var InsuranceCarrierEntry = new Entry()
-            {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
-            };
-            InsuranceCarrierEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
+			var InsuranceCarrierEntry = a;
 
             var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number" };
-            var InsuranceCarrierIdNumberEntry = new Entry()
+			var InsuranceCarrierIdNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
                 TextColor = Color.White,
