@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Data\RefillRepo.cs" />
+    <Compile Include="Models\AppDataUpdate.cs" />
     <Compile Include="Utilities\BaseSignatureService.cs" />
     <Compile Include="Utilities\DrawPoint.cs" />
     <Compile Include="Utilities\Extensions.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\ISqLite.cs" />
     <Compile Include="Utilities\SignaturePadConfiguration.cs" />
+    <Compile Include="Data\SyncRepo.cs" />
     <Compile Include="Views\SignaturePadPage.cs" />
     <Compile Include="Utilities\SignatureResult.cs" />
     <Compile Include="Validators\PrescriberValidator.cs" />
