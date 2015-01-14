@@ -93,10 +93,10 @@ namespace TriCare.Data
 
 				var resultTask = await client.PostAsync("http://teamsavagemma.com/api/PrescriptionMedicine", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
-//
-//				dynamic resultFix = JsonConvert.DeserializeObject(resultText);
-//
-//				var pReturn = JsonConvert.DeserializeObject<CreatePrescriptionModel>(resultFix);
+
+				dynamic resultFix = JsonConvert.DeserializeObject(resultText);
+
+				var pReturn = JsonConvert.DeserializeObject<CreatePrescriptionModel>(resultFix);
 
 //				if (pReturn > 0)
 //				{

@@ -42,6 +42,7 @@ namespace TriCare.Models
 		public int PrescriberId;
 		public int PatientId;
 		public int PrescriptionMedicineId;
+		public string Location;
 		public DateTime Created;
 		public int MedicineId;
 		public List<MedicineIngredientForPrescriptionModel> Ingredients;

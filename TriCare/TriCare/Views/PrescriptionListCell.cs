@@ -57,6 +57,8 @@ namespace TriCare.Views
 				XAlign = TextAlignment.Center,
 				TextColor = Color.White,
 			};
+			labelCreatedText.SetBinding(Label.TextProperty, "CreatedFriendly");
+
 			var pstack = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
 				Children = { labelPatient, labelPatientName }
