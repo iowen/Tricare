@@ -64,7 +64,13 @@ namespace TriCare.Data
 			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == login.Password))
 				{
             var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
-
+				var sRepo = new SyncRepo();
+				var sModel = new SyncModel();
+				sModel.PrescriberId = prescriber.PrescriberId;
+				sModel.SyncType = 'b';
+				sModel.LastSync = prescriber.LastUpdate;
+				sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
+				await sRepo.GetSyncData(sModel);
                 App.SaveToken(prescriber.PrescriberId.ToString());
                 var returnTask = new TaskCompletionSource<string>();
                 returnTask.SetResult("success");
@@ -94,7 +100,13 @@ namespace TriCare.Data
 						//var p =  new Prescriber() { AccountId = resultItem.AccountId, Address = resultItem.Address, City = resultItem.City, DeaNumber = resultItem.DeaNumber, Email = resultItem.Email, Fax = resultItem.Fax, FirstName = resultItem.FirstName, LastName = resultItem.LastName, LicenseNumber = resultItem.LicenseNumber, NpiNumber = resultItem.NpiNumber, Password = resultItem.Password, Phone = resultItem.Phone, PrescriberId = resultItem.PrescriberId, State = resultItem.State, Zip = resultItem.Zip };
 
 						pRepo.AddPrescriberLocal(resultItem);
-                        patRepo.PullAllPatientsForPrescriber(resultItem.PrescriberId);
+						var sRepo = new SyncRepo();
+						var sModel = new SyncModel();
+						sModel.PrescriberId = resultItem.PrescriberId;
+						sModel.SyncType = 'p';
+						sModel.LastSync = new DateTime(1987, 11,21);
+						await sRepo.GetSyncData(sModel);
+                   //     patRepo.PullAllPatientsForPrescriber(resultItem.PrescriberId);
                         App.SaveToken(resultItem.PrescriberId.ToString());
                         var returnTask = new TaskCompletionSource<string>();
                         returnTask.SetResult("success");

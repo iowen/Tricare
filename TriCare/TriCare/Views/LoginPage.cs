@@ -43,27 +43,12 @@ namespace TriCare.Views
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
 					}
-					var iR = new InsuranceCarrierRepo ();
-					if (iR.InsertRecords ()) {
-						var r = await iR.GetInsuranceCarriers ();
-					}
-					var iG = new IngredientRepo ();
-					if (iG.InsertRecords ()) {
-						var r = await iG.GetIngredients ();
-					}
-					var med = new MedicineRepo ();
-					if (med.InsertRecords ()) {
-						var r = await med.GetMedicines ();
-					}
-					var medR = new MedicineIngredientRepo ();
-					if (medR.InsertRecords ()) {
-						var r = await medR.GetMedicineIngredients ();
-					}
-					var rR = new RefillRepo ();
-					if (rR.InsertRecords ()) {
-						var r = await rR.GetRefillAmounts ();
-						var rq = await rR.GetRefillQuantities ();
-					}
+                    var sRepo = new SyncRepo();
+                    var sModel = new SyncModel();
+                    sModel.PrescriberId = 0;
+                    sModel.SyncType = 'a';
+                    sModel.LastAppDataSync = sRepo.GetLastAppUpdate();
+                    await sRepo.GetSyncData(sModel);
 					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 					var prescriberRepo = new PrescriberRepo ();
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
@@ -85,27 +70,12 @@ namespace TriCare.Views
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
 					}
-					var iR = new InsuranceCarrierRepo ();
-					if (iR.InsertRecords ()) {
-						var r = await iR.GetInsuranceCarriers ();
-					}
-					var iG = new IngredientRepo ();
-					if (iG.InsertRecords ()) {
-						var r = await iG.GetIngredients ();
-					}
-					var med = new MedicineRepo ();
-					if (med.InsertRecords ()) {
-						var r = await med.GetMedicines ();
-					}
-					var medR = new MedicineIngredientRepo ();
-					if (medR.InsertRecords ()) {
-						var r = await medR.GetMedicineIngredients ();
-					}
-					var rR = new RefillRepo ();
-					if (rR.InsertRecords ()) {
-						var r = await rR.GetRefillAmounts ();
-						var rq = await rR.GetRefillQuantities ();
-					}
+					var sRepo = new SyncRepo();
+					var sModel = new SyncModel();
+					sModel.PrescriberId = 0;
+					sModel.SyncType = 'a';
+					sModel.LastAppDataSync = sRepo.GetLastAppUpdate();
+					await sRepo.GetSyncData(sModel);
 					this.Navigation.PushAsync (new  RegisterPage());            
 				};
 

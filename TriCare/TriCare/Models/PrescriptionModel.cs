@@ -15,6 +15,7 @@ namespace TriCare.Models
 		public int PatientId{ get; set; }
 		public DateTime Created{ get; set; }
 		public string Location { get; set; }
+        public DateTime LastUpdate { get; set; }
     }
 
     public class PrescriptionModel

@@ -169,7 +169,9 @@ namespace TriCare.Views
 
 			Content = _stkBase;
 
-
+			_entText.Unfocused += (sender, e) => {
+				ShowHideListbox(false);
+			};
 			_entText.TextChanged += (s, e) =>
 			{
 				Text = e.NewTextValue;

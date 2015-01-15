@@ -32,6 +32,7 @@ namespace TriCare.Models
         public string RxPcn { get; set; }
         public string InsurancePhone { get; set; }
         public string PaymentType { get; set; }
+        public DateTime LastUpdate { get; set; }
 		[Ignore]
 		public string NameFriendly{ get { return FirstName.ToString ().Trim() +" "+ LastName.ToString ().Trim(); } }
     }
