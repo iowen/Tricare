@@ -49,12 +49,13 @@ namespace TriCare.Views
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
             var genderLabel = new Label { Text = "Gender" };
-            var genderEntry = new Entry()
-            {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
-            };
-            genderEntry.SetBinding(Entry.TextProperty, "Gender");
+			var genderEntry = new Picker {
+				Title="Select a Gender",
+				BackgroundColor = Color.Transparent
+			};
+			genderEntry.Items.Add ("Male");
+			genderEntry.Items.Add ("Female");
+			genderEntry.SetBinding(Entry.TextProperty, "Gender");
 
 			var birthDateLabel = new Label { Text = "Birth Date" };
 			DatePicker birthDateEntry = new DatePicker ();
@@ -215,7 +216,7 @@ namespace TriCare.Views
 
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             saveButton.Clicked += async (sender, e) =>
-            {
+			{
 				#region VALIDATE BEFORE SAVE
 				if(firstNameEntry.Text.Trim().Length <= 0)
 				{
@@ -225,6 +226,11 @@ namespace TriCare.Views
 				else if(lastNameEntry.Text.Trim().Length <= 0)
 				{
 					await DisplayAlert("Alert!","Please enter a valid last name","OK");
+					return;
+				}
+				else if(genderEntry.SelectedIndex < 0)
+				{
+					await DisplayAlert("Alert!","Please select a gender","OK");
 					return;
 				}
 				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -315,7 +321,7 @@ namespace TriCare.Views
 					Address = AddressEntry.Text, 
 					City = CityEntry.Text, 
 					InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, 
-					Gender = genderEntry.Text, 
+					Gender = genderEntry.Items[genderEntry.SelectedIndex].ToString(), 
 					Email = EmailEntry.Text, 
 					FirstName = firstNameEntry.Text, 
 					LastName = lastNameEntry.Text, 
