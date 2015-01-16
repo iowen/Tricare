@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using TriCare.Data;
 using TriCare.Models;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace TriCare.Views
 {
@@ -47,7 +48,6 @@ namespace TriCare.Views
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
-
             var genderLabel = new Label { Text = "Gender" };
             var genderEntry = new Entry()
             {
@@ -56,14 +56,9 @@ namespace TriCare.Views
             };
             genderEntry.SetBinding(Entry.TextProperty, "Gender");
 
-            var birthDateLabel = new Label { Text = "Birth Date" };
-            var birthDateEntry = new Entry()
-            {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
-            };
-            birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
-
+			var birthDateLabel = new Label { Text = "Birth Date" };
+			DatePicker birthDateEntry = new DatePicker ();
+			birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
 
             var ssnLabel = new Label { Text = "Last 4 of SSN" };
             var ssnEntry = new Entry()
@@ -158,7 +153,7 @@ namespace TriCare.Views
             var DiagnosisEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.White,
             };
             RxPcnEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
@@ -221,8 +216,123 @@ namespace TriCare.Views
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             saveButton.Clicked += async (sender, e) =>
             {
+				#region VALIDATE BEFORE SAVE
+				if(firstNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a valid first name","OK");
+					return;
+				}
+				else if(lastNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a valid last name","OK");
+					return;
+				}
+				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please make sure SSN contains 4 digits","OK");
+					return;
+				}
+				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please provide the Insurance Carrier","OK");
+					return;
+				}
+				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the Insurance Carrier Id Number","OK");
+					return;
+				}
+				else if(InsuranceGroupNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceGroupNumberEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the Insurance Group Number","OK");
+					return;
+				}
+				else if(InsurancePhoneEntry.Text.Trim().Length != 10 || Regex.Matches(InsurancePhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for the Insurance Phone Number","OK");
+					return;
+				}
+				else if(RxBinEntry.Text.Trim().Length <= 0 || Regex.Matches(RxBinEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the RX Bin","OK");
+					return;
+				}
+				else if(RxPcnEntry.Text.Trim().Length <= 0 || Regex.Matches(RxPcnEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter only digits for the RX Pcn","OK");
+					return;
+				}
+				else if(AllergiesEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter information on Allergies","OK");
+					return;
+				}
+				else if(DiagnosisEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter information on Diagnosis","OK");
+					return;
+				}
+				else if(AddressEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an Address","OK");				
+					return;
+				}
+				else if(CityEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a City","OK");
+					return;
+				}
+				else if(StateEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an State","OK");
+					return;
+				}
+				else if(ZipEntry.Text.Trim().Length != 5 || Regex.Matches(ZipEntry.Text,@"[a-zA-Z]").Count > 0)
+				{				
+					await DisplayAlert("Alert!","Please enter a Zip code with 5 digits","OK");
+					return;
+				}
+				else if(PhoneEntry.Text.Trim().Length != 10 || Regex.Matches(PhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for the Phone Number","OK");
+					return;
+				}
+				else if(EmailEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an Email","OK");
+					return;
+				}
+				else if(PaymentTypeEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a Payment Type","OK");
+					return;
+				}
+				#endregion
+
 				var pId = int.Parse(App.Token);
-				var patientItem = new Patient() { PrescriberId=pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
+				var patientItem = new Patient() { 
+					PrescriberId=pId, 
+					Address = AddressEntry.Text, 
+					City = CityEntry.Text, 
+					InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, 
+					Gender = genderEntry.Text, 
+					Email = EmailEntry.Text, 
+					FirstName = firstNameEntry.Text, 
+					LastName = lastNameEntry.Text, 
+					InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, 
+					SSN = int.Parse(ssnEntry.Text), 
+					Allergies = AllergiesEntry.Text, 
+					Phone = PhoneEntry.Text, 
+					State = StateEntry.Text, 
+					Zip = int.Parse(ZipEntry.Text), 
+					BirthDate = birthDateEntry.Date,//DateTime.Parse(birthDateEntry.Date.ToString("d")), 
+					Diagnosis = DiagnosisEntry.Text, 
+					InsuranceCarrierId = 1, 
+					InsurancePhone = InsurancePhoneEntry.Text, 
+					PaymentType = PaymentTypeEntry.Text,
+					RxBin = RxBinEntry.Text, 
+					RxPcn = RxPcnEntry.Text 
+				};
                 var patientRepo = new PatientRepo();
                 // send webservice request and so on
                 var res = await patientRepo.AddPatient(patientItem);
