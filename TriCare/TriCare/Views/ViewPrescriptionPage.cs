@@ -60,7 +60,9 @@ namespace TriCare
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-
+			var rRepo = new RefillRepo ();
+			var am = rRepo.GetRefillAmountForId (model.Refill.Amount);
+			var aq = rRepo.GetRefillQuantityForId (model.Refill.Quantity);
 			var pLabel = new StringLabel () {
 				NameFriendly = "Patient : " + model.Patient.NameFriendly.Trim ()
 			};
@@ -71,8 +73,14 @@ namespace TriCare
 			var medLabel = new StringLabel () {
 				NameFriendly = "Medicine : " + model.Medicine.MedicineName.Trim(),
 			};
+			var rAmountLabel = new StringLabel () {
+				NameFriendly = "Refill Amount : " + am.ToString(),
+			};
+			var rQuantLabel = new StringLabel () {
+				NameFriendly = "Refill Quantity : " + aq.ToString(),
+			};
 
-			var lr = new List<StringLabel> (){ pLabel,presLabel,medLabel};
+			var lr = new List<StringLabel> (){ pLabel,presLabel,medLabel, rAmountLabel, rQuantLabel};
 			listView.ItemsSource = lr;
 		}
 	}

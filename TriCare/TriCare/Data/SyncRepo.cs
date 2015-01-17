@@ -76,6 +76,23 @@ namespace TriCare.Data
 							p.LastUpdate = resultItem.PrescriberUpdates.Updated; 
 							database.InsertOrReplace(p);
 							database.InsertOrReplaceAll(resultItem.PrescriberUpdates.Patients);
+                            foreach(var i in resultItem.PrescriberUpdates.Prescriptions)
+                            {
+                                var pres = new Prescription() { PrescrberId = i.Prescriber.PrescriberId, Created = i.Created, LastUpdate = i.LastUpdate, Location = i.Location, PatientId = i.Patient.PatientId, PrescriptionId = i.PrescriptionId };
+                                database.InsertOrReplace(pres);
+                                var pm = new PrescriptionMedicine() { MedicineId = i.MedicineId, PrescriptionId = i.PrescriptionId, PrescriptionMedicineId = i.Ingredients[0].PrescriptionMedicineId };
+                                database.InsertOrReplace(pm);
+
+                                foreach(var ing in i.Ingredients)
+                                {
+                                    var pmi = new PrescriptionMedicineIngredient() { IngredientId = ing.IngredientId, Name = ing.Name, Percentage = ing.Percentage, PrescriptionMedicineId = ing.PrescriptionMedicineId, PrescriptionMedicineIngredientId = ing.PrescriptionMedicineIngredientId };
+                                    database.InsertOrReplace(pmi);
+
+                                }
+								var pr = new PresciptionRefill() { PrescriptionId = i.PrescriptionId, PrescriptionRefillId = i.Refill.PrescriptionRefillId, RefillAmountId = i.Refill.Amount.RefillAmountId, RefillQuantityId = i.Refill.Quantity.RefillQuantityId };
+                                database.InsertOrReplace(pr);
+
+                            }
 						}
                     }
                 }

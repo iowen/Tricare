@@ -49,13 +49,13 @@ namespace TriCare.Models
     {
         public Prescriber Prescriber;
         public List<Patient> Patients;
-        public List<PrescriptionModel> Prescriptions;
+        public List<PrescriptionMedicineModel> Prescriptions;
 		public DateTime Updated;
         public PrescriberSyncDataModel()
         {
             Prescriber = new Prescriber();
             Patients = new List<Patient>();
-            Prescriptions = new List<PrescriptionModel>();
+            Prescriptions = new List<PrescriptionMedicineModel>();
         }
     }
 

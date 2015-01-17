@@ -9,8 +9,28 @@ namespace TriCare.Models
     public class RefillModel
     {
         public int PrescriptionId;
+        public int PrescriptionRefillId;
         public int Amount;
         public int Quantity;
+    }
+    public class RefillAmountModel
+    {
+        public int RefillAmountId;
+        public int Amount;
+    }
+    public class RefillQuantityModel
+    {
+        public int RefillQuantityId;
+        public int Quantity;
+    }
+
+    public class PrescriptionRefillModel
+    {
+        public int PrescriptionId;
+        public RefillAmountModel Amount;
+        public RefillQuantityModel Quantity;
+        public int PrescriptionRefillId;
+
     }
    public class PrescriptionMedicineIngredientModel
     {

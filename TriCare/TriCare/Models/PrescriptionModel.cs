@@ -31,4 +31,19 @@ namespace TriCare.Models
 		public string MedicineNameFriendly {get{return Medicine.MedicineName.Trim();}}
 		public string CreatedFriendly { get { return Created.ToString ("d"); } }
     }
+		
+
+    public class PrescriptionMedicineModel
+    {
+        public int PrescriptionId;
+        public Prescriber Prescriber;
+        public Patient Patient;
+        public DateTime Created;
+        public string MedicineName;
+        public string Location;
+        public DateTime LastUpdate;
+        public int MedicineId;
+        public List<PrescriptionMedicineIngredientModel> Ingredients;
+		public PrescriptionRefillModel Refill;
+    }
 }
