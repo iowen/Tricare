@@ -18,13 +18,22 @@ namespace TriCare.Views
 		private List<object> insuranceList =
 			new List<object>();
 
+		private List<object> stateList =
+			new List<object>();
+
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
 		public List<object> InsuranceList
 		{
 			get { return insuranceList; }
 		}
+
+		public List<object> StateList
+		{
+			get { return stateList; }
+		}
 		private AutoCompleteView a;
+		private AutoCompleteView st;
 		private string searchText;
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public CreatePatientPage(bool isDuringPrescription = false)
@@ -82,11 +91,23 @@ namespace TriCare.Views
 					// Add the key to the input string.
 					this.Opacity = 50;
 				});
+			var CellSelectedCommandS = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
 			var iRepo = new InsuranceCarrierRepo ();
 			var t = iRepo.GetAllInsuranceCarriers ();
 
 			foreach (var i in t) {
 				insuranceList.Add(i);
+			}
+
+			var s = new StateRepo ();
+			var ss = s.GetAllStates ();
+
+			foreach (var sss in ss) {
+				stateList.Add(sss);
 			}
 			a = new AutoCompleteView () {
 				SearchBackgroundColor = Color.Transparent,
@@ -94,10 +115,18 @@ namespace TriCare.Views
 				Suggestions = InsuranceList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
-				SuggestionBackgroundColor = Color.Blue,
+				SuggestionBackgroundColor = Color.Gray,
 				Placeholder = "",
 			};
-
+			st = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = StateList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommandS,
+				SuggestionBackgroundColor = Color.Gray,
+				Placeholder = "",
+			};
 
             var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" };
 			var InsuranceCarrierEntry = a;
@@ -175,12 +204,7 @@ namespace TriCare.Views
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
             var StateLabel = new Label { Text = "State" };
-            var StateEntry = new Entry()
-            {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
-            };
-            StateEntry.SetBinding(Entry.TextProperty, "State");
+			var StateEntry = st;
 
             var ZipLabel = new Label { Text = "Zip" };
             var ZipEntry = new Entry()

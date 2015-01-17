@@ -1,8 +1,24 @@
 ﻿<Properties StartupItem="TriCare\TriCare.Android\TriCare.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\CreatePatientPage.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\HomePage.cs">
     <Files>
-      <File FileName="TriCare\TriCare\Views\CreatePatientPage.cs" Line="5" Column="5" />
+      <File FileName="TriCare\TriCare\Views\CreatePatientPage.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare\Views\LoginPage.cs" Line="39" Column="39" />
+      <File FileName="TriCare\TriCare\Data\SyncRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare\Models\PrescriptionModel.cs" Line="21" Column="21" />
+      <File FileName="TriCare\TriCare\Models\MedicineIngredient.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare\Models\MedicineModel.cs" Line="5" Column="5" />
+      <File FileName="c:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\PrescriberRepo.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\PatientPage.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" Line="5" Column="5" />
+      <File FileName="TriCare\TriCare\Models\Medicine.cs" Line="5" Column="5" />
+      <File FileName="TriCare\TriCare\Models\AppDataUpdate.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare\Views\ViewPrescriptionPage.cs" Line="64" Column="64" />
+      <File FileName="TriCare\TriCare\Views\VerifyPage.cs" Line="93" Column="93" />
+      <File FileName="TriCare\TriCare\Models\State.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\AutoCompleteView.cs" Line="36" Column="36" />
+      <File FileName="TriCare\TriCare\Views\RegisterPage.cs" Line="19" Column="19" />
+      <File FileName="TriCare\TriCare\Views\HomePage.cs" Line="24" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -15,16 +31,13 @@
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/SignaturePadRenderer.cs" line="70" column="1" />
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/AutoCompleteView.cs" line="725" column="1" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="186" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\PatientPage.cs" line="141" column="70" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="180" column="1" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\PrescriberRepo.cs" line="110" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\SyncRepo.cs" line="51" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\PrescriberRepo.cs" line="73" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\SyncRepo.cs" line="69" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\LoginPage.cs" line="51" column="1" />
-      <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\SyncRepo.cs" line="62" column="1" />
+      <Breakpoint file="c:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Data\PrescriberRepo.cs" line="108" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="TriCare\TriCare\Data\SyncRepo.cs" line="81" offsetX="1754" offsetY="1280" expression="i.Prescriber" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.TriCare.Android MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>

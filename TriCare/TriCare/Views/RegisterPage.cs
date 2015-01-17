@@ -1,24 +1,68 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using System.Collections.ObjectModel;
 using TriCare.Data;
 using TriCare.Models;
 using TriCare.Validators;
-using Xamarin.Forms;
-
+using System.Windows.Input;
+using System.Text.RegularExpressions;
 namespace TriCare.Views
 {
 
     public class RegisterPage : ContentPage
     {
+		private List<object> stateList =
+			new List<object>();
+
+		public ICommand SearchCommand { get; set; }
+		public ICommand CellSelectedCommand { get; set; }
+
+		public List<object> StateList
+		{
+			get { return stateList; }
+		}
+		private AutoCompleteView st;
+		private string searchText;
+		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public RegisterPage()
         {
 			this.BackgroundImage = "tricareBG.png";
 			App.DisableLogout ();
             this.SetBinding(ContentPage.TitleProperty, "Register");
+			var a1 = new AutoCompleteView ();
+			SearchCommand = new Command((key) =>
+				{
+					DisplayAlert("Search",st.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					// Add the key to the input string.
+				});
+					
+			var CellSelectedCommand = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var s = new StateRepo ();
+			var ss = s.GetAllStates ();
 
+			foreach (var sss in ss) {
+				stateList.Add(sss);
+			}
+			st = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = StateList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommand,
+				SuggestionBackgroundColor = Color.Gray,
+				Placeholder = "",
+			};
             var firstNameLabel = new Label { Text = "First Name" };
             var firstNameEntry = new Entry()
             {
@@ -102,12 +146,7 @@ namespace TriCare.Views
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
             var StateLabel = new Label { Text = "State" };
-            var StateEntry = new Entry()
-            {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
-            };
-            StateEntry.SetBinding(Entry.TextProperty, "State");
+			var StateEntry = st;
 
             var ZipLabel = new Label { Text = "Zip" };
             var ZipEntry = new Entry()
