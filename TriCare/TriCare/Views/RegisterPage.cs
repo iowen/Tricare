@@ -60,7 +60,7 @@ namespace TriCare.Views
 				Suggestions = StateList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
-				SuggestionBackgroundColor = Color.Blue,
+				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Gray,
 				SearchTextColor = Color.White,
 				Placeholder = "",
