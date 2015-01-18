@@ -29,3 +29,5 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.xml
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/System.Diagnostics.Tools.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricareicon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tcareloginlogo.png

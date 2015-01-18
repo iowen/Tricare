@@ -98,6 +98,7 @@
     <Compile Include="SignatureService.cs" />
     <Compile Include="SignatureServiceActivity.cs" />
     <Compile Include="SqLite_Android.cs" />
+    <Compile Include="ExtendedTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
