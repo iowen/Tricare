@@ -30,7 +30,7 @@ namespace TriCare
 				np.ToolbarItems.Add (logOutButton);
 			}
 			var mainNav = np;
-			mainNav.BarBackgroundColor = Color.FromRgba(119,164,214,128);
+			mainNav.BarBackgroundColor = Color.FromRgba (52, 63, 169, 128);
 			mainNav.BarTextColor = Color.White;
             return mainNav;
         }

@@ -15,27 +15,31 @@ namespace TriCare.Views
 		public LoginPage(bool isLogin = true)
         {
 			if (isLogin) {
-				this.BackgroundImage = "tricareBG.png";
+				this.BackgroundColor = Color.White;
+				var logoCell = new Image () {
+					Source = "tcareLoginLogo.png"
+				};
+
 				NavigationPage.SetHasNavigationBar (this, false);
 				this.SetBinding (ContentPage.TitleProperty, "Login");
-				var emailLabel = new Label { Text = "Email", TextColor = Color.White  };
+				var emailLabel = new Label { Text = "Email", TextColor = Color.Navy  };
 				var emailEntry = new Entry () {
 					BackgroundColor = Color.Transparent,
-					TextColor = Color.White,
+					TextColor = Color.Gray,
 				};
 				emailEntry.SetBinding (Entry.TextProperty, "Email");
 
-				var passwordLabel = new Label { Text = "Password", TextColor = Color.White   };
+				var passwordLabel = new Label { Text = "Password", TextColor = Color.Navy   };
 				var passwordEntry = new Entry () {
 					BackgroundColor = Color.Transparent,
-					TextColor = Color.White,
+					TextColor = Color.Gray,
 					IsPassword = true
 				};
 				passwordEntry.SetBinding (Entry.TextProperty, "Password");
 
 				var loginButton = new Button {
 					Text = "Log In" ,
-					BackgroundColor = Color.FromRgba (128, 128, 128, 128),
+					BackgroundColor = Color.FromRgba (52, 63, 169, 128),
 					TextColor = Color.White
 				};
 				loginButton.Clicked += async (sender, e) => {
@@ -83,6 +87,7 @@ namespace TriCare.Views
 					VerticalOptions = LayoutOptions.StartAndExpand,
 					Padding = new Thickness (20),
 					Children = {
+						logoCell,
 						emailLabel, emailEntry, 
 						passwordLabel, passwordEntry,
 						loginButton, registerButton

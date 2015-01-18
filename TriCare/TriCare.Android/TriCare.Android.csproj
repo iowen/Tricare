@@ -108,6 +108,8 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\Drawable\tricareIcon.png" />
+    <AndroidResource Include="Resources\Drawable\tcareLoginLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\tricareBG.png" />
