@@ -19,109 +19,109 @@ namespace TriCare
 			var p = pRepo.GetPrescriber(int.Parse(App.Token));
 
 			this.BindingContext = p;
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			this.SetBinding(ContentPage.TitleProperty, "Edit Profile");
 
-			var firstNameLabel = new Label { Text = "First Name" };
+			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
-			var lastNameLabel = new Label { Text = "Last Name" };
+			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy};
 			var lastNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
 
-			var emailLabel = new Label { Text = "Email" };
+			var emailLabel = new Label { Text = "Email" , TextColor = Color.Navy};
 			var emailEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			emailEntry.SetBinding(Entry.TextProperty, "Email");
 
 
-			var NpiNumberLabel = new Label { Text = "NPI Number" };
+			var NpiNumberLabel = new Label { Text = "NPI Number" , TextColor = Color.Navy};
 			var NpiNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
 
-			var LicenseNumberLabel = new Label { Text = "License Number" };
+			var LicenseNumberLabel = new Label { Text = "License Number", TextColor = Color.Navy };
 			var LicenseNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
-			var DeaNumberLabel = new Label { Text = "DEA Number" };
+			var DeaNumberLabel = new Label { Text = "DEA Number", TextColor = Color.Navy };
 			var DeaNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
 
-			var AddressLabel = new Label { Text = "Address" };
+			var AddressLabel = new Label { Text = "Address", TextColor = Color.Navy };
 			var AddressEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
-			var CityLabel = new Label { Text = "City" };
+			var CityLabel = new Label { Text = "City" , TextColor = Color.Navy};
 			var CityEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			CityEntry.SetBinding(Entry.TextProperty, "City");
 
-			var StateLabel = new Label { Text = "State" };
+			var StateLabel = new Label { Text = "State", TextColor = Color.Navy };
 			var StateEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			StateEntry.SetBinding(Entry.TextProperty, "State");
 
-			var ZipLabel = new Label { Text = "Zip" };
+			var ZipLabel = new Label { Text = "Zip", TextColor = Color.Navy };
 			var ZipEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
-			var PhoneLabel = new Label { Text = "Phone" };
+			var PhoneLabel = new Label { Text = "Phone" , TextColor = Color.Navy};
 			var PhoneEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
-			var FaxLabel = new Label { Text = "Fax" };
+			var FaxLabel = new Label { Text = "Fax", TextColor = Color.Navy };
 			var FaxEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
 			};
 			FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 
-			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
-			registerButton.Clicked += async (sender, e) =>
+			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			saveButton.Clicked += async (sender, e) =>
 			{
 //
 //				int temp;
@@ -173,7 +173,7 @@ namespace TriCare
 						ZipLabel, ZipEntry, 
 						PhoneLabel, PhoneEntry,
 						FaxLabel, FaxEntry,
-						registerButton
+						saveButton
 					}
 				}
 			};

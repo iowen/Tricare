@@ -15,7 +15,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White
+				TextColor = Color.Navy
 			};
 			labelF.SetBinding(Label.TextProperty, "Name");
 

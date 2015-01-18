@@ -39,25 +39,25 @@ namespace TriCare.Views
         public CreatePatientPage(bool isDuringPrescription = false)
         {
             this.SetBinding(ContentPage.TitleProperty, "Add Patient");
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
-            var firstNameLabel = new Label { Text = "First Name" };
+			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()
             {
-                BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				BackgroundColor = Color.Transparent,
+				TextColor = Color.Gray,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
-            var lastNameLabel = new Label { Text = "Last Name" };
+			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy };
             var lastNameEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
-            var genderLabel = new Label { Text = "Gender" };
+			var genderLabel = new Label { Text = "Gender" , TextColor = Color.Navy };
 			var genderEntry = new Picker {
 				Title="Select a Gender",
 				BackgroundColor = Color.Transparent
@@ -66,15 +66,17 @@ namespace TriCare.Views
 			genderEntry.Items.Add ("Female");
 			genderEntry.SetBinding(Entry.TextProperty, "Gender");
 
-			var birthDateLabel = new Label { Text = "Birth Date" };
+			var birthDateLabel = new Label { Text = "Birth Date" , TextColor = Color.Navy };
 			DatePicker birthDateEntry = new DatePicker ();
+			birthDateEntry.BackgroundColor = Color.Transparent;
+
 			birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
 
-            var ssnLabel = new Label { Text = "Last 4 of SSN" };
+			var ssnLabel = new Label { Text = "Last 4 of SSN" , TextColor = Color.Navy };
             var ssnEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             ssnEntry.SetBinding(Entry.TextProperty, "SSN");
 			var a1 = new AutoCompleteView ();
@@ -128,85 +130,85 @@ namespace TriCare.Views
 				Placeholder = "",
 			};
 
-            var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" };
+			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" , TextColor = Color.Navy};
 			var InsuranceCarrierEntry = a;
 
-            var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number" };
+			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number", TextColor = Color.Navy };
 			var InsuranceCarrierIdNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             InsuranceCarrierIdNumberEntry.SetBinding(Entry.TextProperty, "InsuranceCarrierIdNumber");
 
-            var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number" };
+			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number" , TextColor = Color.Navy};
             var InsuranceGroupNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             InsuranceGroupNumberEntry.SetBinding(Entry.TextProperty, "InsuranceGroupNumber");
 
-            var InsurancePhoneLabel = new Label { Text = "Insurance Phone" };
+			var InsurancePhoneLabel = new Label { Text = "Insurance Phone" , TextColor = Color.Navy};
             var InsurancePhoneEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             InsurancePhoneEntry.SetBinding(Entry.TextProperty, "InsurancePhone");
 
-            var RxBinLabel = new Label { Text = "Rx Bin" };
+			var RxBinLabel = new Label { Text = "Rx Bin" , TextColor = Color.Navy};
             var RxBinEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             RxBinEntry.SetBinding(Entry.TextProperty, "RxBin");
 
-            var RxPcnLabel = new Label { Text = "Rx Pcn" };
+			var RxPcnLabel = new Label { Text = "Rx Pcn" , TextColor = Color.Navy};
             var RxPcnEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             RxPcnEntry.SetBinding(Entry.TextProperty, "RxPcn");
 
-            var AllergiesLabel = new Label { Text = "Allergies" };
+			var AllergiesLabel = new Label { Text = "Allergies" , TextColor = Color.Navy};
             var AllergiesEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             AllergiesEntry.SetBinding(Entry.TextProperty, "Allergies");
 
-            var DiagnosisLabel = new Label { Text = "Diagnosis" };
+			var DiagnosisLabel = new Label { Text = "Diagnosis", TextColor = Color.Navy };
             var DiagnosisEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-				TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             RxPcnEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
-            var AddressLabel = new Label { Text = "Address" };
+			var AddressLabel = new Label { Text = "Address" , TextColor = Color.Navy};
             var AddressEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
-            var CityLabel = new Label { Text = "City" };
+			var CityLabel = new Label { Text = "City", TextColor = Color.Navy };
             var CityEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
-            var StateLabel = new Label { Text = "State" };
+			var StateLabel = new Label { Text = "State" , TextColor = Color.Navy};
 			var StateEntry = st;
 
-            var ZipLabel = new Label { Text = "Zip" };
+			var ZipLabel = new Label { Text = "Zip", TextColor = Color.Navy };
             var ZipEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
@@ -214,27 +216,27 @@ namespace TriCare.Views
             };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
-            var PhoneLabel = new Label { Text = "Phone" };
+			var PhoneLabel = new Label { Text = "Phone", TextColor = Color.Navy };
             var PhoneEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
-            var EmailLabel = new Label { Text = "Email" };
+			var EmailLabel = new Label { Text = "Email" , TextColor = Color.Navy};
             var EmailEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             EmailEntry.SetBinding(Entry.TextProperty, "Email");
 
-            var PaymentTypeLabel = new Label { Text = "Payment Time" };
+			var PaymentTypeLabel = new Label { Text = "Payment Type" , TextColor = Color.Navy};
             var PaymentTypeEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White,
+				TextColor = Color.Gray,
             };
             PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 

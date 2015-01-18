@@ -102,6 +102,7 @@
     <Compile Include="Data\StateRepo.cs" />
     <Compile Include="Views\PrescriptionListPage.cs" />
     <Compile Include="Views\ViewPrescriptionPage.cs" />
+    <Compile Include="Views\ExtendedTabbedPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

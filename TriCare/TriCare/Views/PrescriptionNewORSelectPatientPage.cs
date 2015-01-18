@@ -11,7 +11,7 @@ namespace TriCare.Views
     {
         public PrescriptionNewORSelectPatientPage()
         {
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			var pRepo = new PrescriberRepo ();
 			var pId = int.Parse(App.Token);
@@ -32,7 +32,7 @@ namespace TriCare.Views
                 this.Navigation.PushAsync(new PatientListPage(true));
 
             };
-			var orLabel = new Label (){ Text = "- OR -",HorizontalOptions =LayoutOptions.Center, TextColor = Color.White };
+			var orLabel = new Label (){ Text = "- OR -",HorizontalOptions =LayoutOptions.Center, TextColor = Color.Gray };
             Content = new StackLayout
             {
                 VerticalOptions = LayoutOptions.StartAndExpand,

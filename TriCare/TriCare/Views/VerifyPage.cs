@@ -14,7 +14,7 @@ namespace TriCare
 
 		public VerifyPage ()
 		{
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			Title = "Verify";
 

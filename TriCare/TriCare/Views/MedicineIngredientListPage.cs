@@ -29,7 +29,7 @@ namespace TriCare.Views
 		}
 		public MedicineIngredientListPage (int _medicineId)
 		{
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			var iRepo = new IngredientRepo ();
 			var ir = iRepo.GetAllIngredients ();

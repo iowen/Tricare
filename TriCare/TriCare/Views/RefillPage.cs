@@ -12,7 +12,7 @@ namespace TriCare
 			List<string> cq;
 		public RefillPage ()
 		{
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			ca = new List<string> ();
 			cq = new List<string> ();
             var rRepo = new RefillRepo();
@@ -22,16 +22,16 @@ namespace TriCare
 			var qa =rRepo.GetAllRefillQuantities();
 
 			var medL = new Label {
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Medicine : "+App.CurrentPrescription.Medicine.MedicineName.Trim()
 			};
 			var amL = new Label {
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Refill Amount in MG",
 
 			};
 			var aqL = new Label {
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Refill Quantity"
 			};
 			var refillAmountPicker = new Picker {

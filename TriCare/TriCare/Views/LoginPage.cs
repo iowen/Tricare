@@ -47,12 +47,6 @@ namespace TriCare.Views
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
 					}
-                    var sRepo = new SyncRepo();
-                    var sModel = new SyncModel();
-                    sModel.PrescriberId = 0;
-                    sModel.SyncType = 'a';
-                    sModel.LastAppDataSync = sRepo.GetLastAppUpdate();
-                    await sRepo.GetSyncData(sModel);
 					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 					var prescriberRepo = new PrescriberRepo ();
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);

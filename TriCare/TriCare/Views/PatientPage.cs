@@ -14,7 +14,7 @@ namespace TriCare.Views
 		public PatientPage(Patient p, bool isDuringPrescription = false)
 		{
 			var insuranceCarrierRepo = new InsuranceCarrierRepo ();
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			if (!isDuringPrescription)
 				this.SetBinding(ContentPage.TitleProperty, "View Patient");
@@ -29,82 +29,114 @@ namespace TriCare.Views
 			var lastNameEntry = new Label();
 			lastNameEntry.SetBinding(Label.TextProperty, "LastName");
 
-			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Black };
+			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Navy };
 			var fullNameEntry = new Label { TextColor = Color.Black };
 			fullNameEntry.SetBinding (Label.TextProperty, "NameFriendly");
 
-			var genderLabel = new Label { Text = "Gender:", TextColor = Color.Black };
+			var genderLabel = new Label { Text = "Gender:", TextColor = Color.Navy };
 			var genderEntry = new Label { TextColor = Color.Black };
 			genderEntry.SetBinding(Label.TextProperty, "Gender");
 
-			var birthDateLabel = new Label { Text = "Birth Date:", TextColor = Color.Black };
+			var birthDateLabel = new Label { Text = "Birth Date:", TextColor = Color.Navy };
 			var birthDateEntry = new Label { TextColor = Color.Black };
 			birthDateEntry.SetBinding(Label.TextProperty, "BirthDate");
 
-			var ssnLabel = new Label { Text = "Last 4 of SSN:", TextColor = Color.Black };
+			var ssnLabel = new Label { Text = "Last 4 of SSN:",TextColor = Color.Navy };
 			var ssnEntry = new Label { TextColor = Color.Black };
 			ssnEntry.SetBinding(Label.TextProperty, "SSN");
 
-			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier:", TextColor = Color.Black };
+			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier:", TextColor = Color.Navy };
 			var InsuranceCarrierEntry = new Label { TextColor = Color.Black };
 			//InsuranceCarrierEntry.SetBinding(Label.TextProperty, "LicenseNumber");
 			InsuranceCarrierEntry.Text = insuranceCarrierRepo.GetInsuranceCarrier (p.InsuranceCarrierId).Name;
 
-			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number:", TextColor = Color.Black };
+			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number:", TextColor = Color.Navy};
 			var InsuranceCarrierIdNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceCarrierIdNumberEntry.SetBinding(Label.TextProperty, "InsuranceCarrierIdNumber");
 
-			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number:", TextColor = Color.Black };
+			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number:", TextColor = Color.Navy };
 			var InsuranceGroupNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceGroupNumberEntry.SetBinding(Label.TextProperty, "InsuranceGroupNumber");
 
-			var InsurancePhoneLabel = new Label { Text = "Insurance Phone:", TextColor = Color.Black };
+			var InsurancePhoneLabel = new Label { Text = "Insurance Phone:", TextColor = Color.Navy};
 			var InsurancePhoneEntry = new Label { TextColor = Color.Black };
 			InsurancePhoneEntry.SetBinding(Label.TextProperty, "InsurancePhone");
 
-			var RxBinLabel = new Label { Text = "Rx Bin:", TextColor = Color.Black };
+			var RxBinLabel = new Label { Text = "Rx Bin:", TextColor = Color.Navy };
 			var RxBinEntry = new Label { TextColor = Color.Black };
 			RxBinEntry.SetBinding(Label.TextProperty, "RxBin");
 
-			var RxPcnLabel = new Label { Text = "Rx Pcn:", TextColor = Color.Black };
+			var RxPcnLabel = new Label { Text = "Rx Pcn:", TextColor = Color.Navy };
 			var RxPcnEntry = new Label { TextColor = Color.Black };
 			RxPcnEntry.SetBinding(Label.TextProperty, "RxPcn");
 
-			var AllergiesLabel = new Label { Text = "Allergies:", TextColor = Color.Black };
+			var AllergiesLabel = new Label { Text = "Allergies:", TextColor = Color.Navy };
 			var AllergiesEntry = new Label { TextColor = Color.Black };
 			AllergiesEntry.SetBinding(Label.TextProperty, "Allergies");
 
-			var DiagnosisLabel = new Label { Text = "Diagnosis:", TextColor = Color.Black };
+			var DiagnosisLabel = new Label { Text = "Diagnosis:", TextColor = Color.Navy };
 			var DiagnosisEntry = new Label { TextColor = Color.Black };
 			RxPcnEntry.SetBinding(Label.TextProperty, "Diagnosis");
 
-			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Black };
+			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Navy };
 			var AddressEntry = new Label { TextColor = Color.Black };
 			AddressEntry.SetBinding(Label.TextProperty, "Address");
 
-			var CityLabel = new Label { Text = "City:", TextColor = Color.Black };
+			var CityLabel = new Label { Text = "City:", TextColor = Color.Navy};
 			var CityEntry = new Label { TextColor = Color.Black };
 			CityEntry.SetBinding(Label.TextProperty, "City");
 
-			var StateLabel = new Label { Text = "State:", TextColor = Color.Black };
+			var StateLabel = new Label { Text = "State:", TextColor = Color.Navy };
 			var StateEntry = new Label { TextColor = Color.Black };
 			StateEntry.SetBinding(Label.TextProperty, "State");
 
-			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Black };
+			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Navy};
 			var ZipEntry = new Label { TextColor = Color.Black };
 			ZipEntry.SetBinding(Label.TextProperty, "Zip");
 
-			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Black };
+			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Navy };
 			var PhoneEntry = new Label { TextColor = Color.Black };
 			PhoneEntry.SetBinding(Label.TextProperty, "Phone");
 
-			var EmailLabel = new Label { Text = "Email:", TextColor = Color.Black };
+			var EmailLabel = new Label { Text = "Email:", TextColor = Color.Navy };
 			var EmailEntry = new Label { TextColor = Color.Black };
 			EmailEntry.SetBinding(Label.TextProperty, "Email");
 
-			var PaymentTypeLabel = new Label { Text = "Payment Type:", TextColor = Color.Black };
+			var PaymentTypeLabel = new Label { Text = "Payment Type:", TextColor = Color.Navy };
 			var PaymentTypeEntry = new Label { TextColor = Color.Black };
 			PaymentTypeEntry.SetBinding(Label.TextProperty, "PaymentType");
+
+
+
+			Grid grid = new Grid
+			{
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				RowDefinitions = 
+				{
+					new RowDefinition { Height = new GridLength(80, GridUnitType.Absolute) },
+				},
+				ColumnDefinitions = 
+				{
+					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)},
+					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+					new ColumnDefinition { Width = new GridLength(120, GridUnitType.Absolute)}
+				}
+			};
+			var bv = new Label {
+				Text = "Leftover space",
+				TextColor = Color.Transparent,
+				XAlign = TextAlignment.Center,
+				YAlign = TextAlignment.Center,
+
+				BackgroundColor = Color.Transparent
+			};
+
+
+
+
+
+
 			var layout = new StackLayout();
 			layout.BindingContext = p;
 			//if (!isDuringPrescription) {
@@ -140,10 +172,24 @@ namespace TriCare.Views
 					App.CurrentPrescription.Patient =p;
 					await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
 				};
+			grid.Children.Add(bv, 0,0);
+			grid.Children.Add(editButton);
+			grid.Children.Add(continueButton);
 
+			Grid.SetColumn (editButton, 0);
+			Grid.SetColumn (bv, 1);
+			Grid.SetColumn (continueButton, 2);
 				#region Layouts
 				this.BindingContext = p;
-
+			var buttonStack = new StackLayout();
+			buttonStack.VerticalOptions = LayoutOptions.FillAndExpand;
+			if(isDuringPrescription)
+			{
+				buttonStack.Children.Add(grid);
+			}
+			else{
+				buttonStack.Children.Add(editButton);
+			}
 				Label patientHeaderLabel = new Label {
 					Text = "Patient Information",
 					Font = Font.SystemFontOfSize (NamedSize.Large),
@@ -323,8 +369,7 @@ namespace TriCare.Views
 						VerticalOptions = LayoutOptions.StartAndExpand,
 						Padding = new Thickness (20),
 						Children = {
-							editButton,
-							continueButton,
+						buttonStack,
 							new Label (),
 							patientHeaderLabel,
 							nameLayout,

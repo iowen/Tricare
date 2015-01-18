@@ -12,7 +12,7 @@ namespace TriCare.Views
     {
         public PrescriptionSelectMedicinePage()
         {
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			this.SetBinding(ContentPage.TitleProperty, "Select Medicine");
 			var mRepo = new MedicineRepo ();

@@ -15,7 +15,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Patient : "
 			};
 
@@ -23,7 +23,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 			};
 			labelPatientName.SetBinding(Label.TextProperty, "PatientNameFriendly");
 
@@ -31,7 +31,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Medicine : "
 			};
 
@@ -39,7 +39,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 			};
 			labelMedicineName.SetBinding(Label.TextProperty, "MedicineNameFriendly");
 
@@ -47,7 +47,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Date : "
 			};
 
@@ -55,7 +55,7 @@ namespace TriCare.Views
 			{
 				YAlign = TextAlignment.Center,
 				XAlign = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 			};
 			labelCreatedText.SetBinding(Label.TextProperty, "CreatedFriendly");
 

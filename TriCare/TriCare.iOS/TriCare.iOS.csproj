@@ -87,6 +87,7 @@
     <Compile Include="File.cs" />
     <Compile Include="FileSystem.cs" />
     <Compile Include="IosUtil.cs" />
+    <Compile Include="ExtendedTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TriCare\TriCare.csproj">

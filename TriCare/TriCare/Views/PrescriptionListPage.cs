@@ -15,7 +15,7 @@ namespace TriCare.Views
 		List<PrescriptionModel> prescriptionList;
 		public PrescriptionListPage (bool isDuringPrescription = false)
 		{
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			Title = "My Patients";
 			prescriptionList = new List<PrescriptionModel> ();

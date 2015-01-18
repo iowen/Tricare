@@ -16,19 +16,18 @@ namespace TriCare
         public static Page GetMainPage()
 		{
 			logOutButton = new ToolbarItem ();
+			np = new NavigationPage (new LoginPage ());
+
 			if (Device.OS != TargetPlatform.iOS) 
 			{
 				logOutButton.Order = ToolbarItemOrder.Secondary;
 				logOutButton.Text = "Log Out";
 				logOutButton.Clicked += LogOut;
-				np = new NavigationPage (new LoginPage ());
-				np.ToolbarItems.Add (logOutButton);
 			} else 			{
 				logOutButton.Text = ". . .";
 				logOutButton.Clicked += LogOutIOS;
-				np = new NavigationPage (new LoginPage ());
-				np.ToolbarItems.Add (logOutButton);
 			}
+			np.ToolbarItems.Add (logOutButton);
 			var mainNav = np;
 			mainNav.BarBackgroundColor = Color.FromRgba (52, 63, 169, 128);
 			mainNav.BarTextColor = Color.White;

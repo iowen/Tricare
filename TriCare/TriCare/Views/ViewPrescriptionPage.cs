@@ -14,7 +14,7 @@ namespace TriCare
 		PrescriptionModel model;
 		public ViewPrescriptionPage (PrescriptionModel prescription)
 		{
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			Title = "View Prescription";
 			model = prescription;
 			var downloadButton = new Button { Text = "Download", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };

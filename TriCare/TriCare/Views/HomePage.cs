@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs;
+using Xamarin.Forms.Labs.Controls;
 
 namespace TriCare.Views
 {
-    public class HomePage : TabbedPage
+    public class HomePage : ExtendedTabbedPage
     {
         public HomePage()
         {
 			NavigationPage.SetHasBackButton (this, false);
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += (sender, e) =>
@@ -51,7 +53,7 @@ namespace TriCare.Views
             this.Children.Add(new ContentPage
                 {
                     Title = "Prescriptions",
-					BackgroundImage = "tricareBG.png",
+					BackgroundColor = Color.White,
                     Content = new StackLayout
           {
               VerticalOptions = LayoutOptions.StartAndExpand,
@@ -65,7 +67,7 @@ namespace TriCare.Views
             this.Children.Add(new ContentPage
             {
                 Title = "Patients",
-					BackgroundImage = "tricareBG.png",
+					BackgroundColor = Color.White,
                 Content = new StackLayout
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,

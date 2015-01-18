@@ -15,7 +15,7 @@ namespace TriCare.Views
             var pRepo = new PrescriberRepo();
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
 			Title = "Profile";
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
@@ -23,59 +23,59 @@ namespace TriCare.Views
                 this.Navigation.PushAsync(new EditPrescriberPage());
             };
 
-            var firstNameLabel = new Label { Text = "First Name" };
+			var firstNameLabel = new Label { Text = "First Name", TextColor = Color.Navy  };
             var firstNameEntry = new Label();
             firstNameEntry.SetBinding(Label.TextProperty, "FirstName");
 
-            var lastNameLabel = new Label { Text = "Last Name" };
+			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy };
             var lastNameEntry = new Label();
             lastNameEntry.SetBinding(Label.TextProperty, "LastName");
 
-			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Black };
-			var fullNameEntry = new Label { TextColor = Color.Black };
+			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Navy };
+			var fullNameEntry = new Label { TextColor = Color.Gray};
 			fullNameEntry.SetBinding (Label.TextProperty, "NameFriendly");
 
-			var emailLabel = new Label { Text = "Email:", TextColor = Color.Black };
-			var emailEntry = new Label{ TextColor = Color.Black };
+			var emailLabel = new Label { Text = "Email:",  TextColor = Color.Navy };
+			var emailEntry = new Label{ TextColor = Color.Gray };
             emailEntry.SetBinding(Label.TextProperty, "Email");
 
-			var passwordLabel = new Label { Text = "Password:", TextColor = Color.Black  };
+			var passwordLabel = new Label { Text = "Password:",  TextColor = Color.Navy  };
 			var passwordEntry = new Label{ TextColor = Color.Black };
             passwordEntry.SetBinding(Label.TextProperty, "Password");
 
-			var NpiNumberLabel = new Label { Text = "NPI Number:", TextColor = Color.Black };
+			var NpiNumberLabel = new Label { Text = "NPI Number:", TextColor = Color.Navy };
 			var NpiNumberEntry = new Label{ TextColor = Color.Black };
             NpiNumberEntry.SetBinding(Label.TextProperty, "NpiNumber");
 
-			var LicenseNumberLabel = new Label { Text = "License Number:", TextColor = Color.Black };
+			var LicenseNumberLabel = new Label { Text = "License Number:", TextColor = Color.Navy };
 			var LicenseNumberEntry = new Label{ TextColor = Color.Black };
             LicenseNumberEntry.SetBinding(Label.TextProperty, "LicenseNumber");
 
-			var DeaNumberLabel = new Label { Text = "DEA Number:", TextColor = Color.Black };
+			var DeaNumberLabel = new Label { Text = "DEA Number:", TextColor = Color.Navy  };
 			var DeaNumberEntry = new Label{ TextColor = Color.Black };
             DeaNumberEntry.SetBinding(Label.TextProperty, "DeaNumber");
 
-			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Black };
+			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Navy  };
 			var AddressEntry = new Label{ TextColor = Color.Black };
             AddressEntry.SetBinding(Label.TextProperty, "Address");
 
-			var CityLabel = new Label { Text = "City:", TextColor = Color.Black };
+			var CityLabel = new Label { Text = "City:", TextColor = Color.Navy  };
 			var CityEntry = new Label{ TextColor = Color.Black };
             CityEntry.SetBinding(Label.TextProperty, "City");
 
-			var StateLabel = new Label { Text = "State:", TextColor = Color.Black };
+			var StateLabel = new Label { Text = "State:", TextColor = Color.Navy  };
 			var StateEntry = new Label{ TextColor = Color.Black };
             StateEntry.SetBinding(Label.TextProperty, "State");
 
-			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Black };
+			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Navy };
 			var ZipEntry = new Label{ TextColor = Color.Black };
             ZipEntry.SetBinding(Label.TextProperty, "Zip");
 
-			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Black };
+			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Navy  };
 			var PhoneEntry = new Label{ TextColor = Color.Black };
             PhoneEntry.SetBinding(Label.TextProperty, "Phone");
 
-			var FaxLabel = new Label { Text = "Fax:", TextColor = Color.Black };
+			var FaxLabel = new Label { Text = "Fax:", TextColor = Color.Navy };
 			var FaxEntry = new Label{ TextColor = Color.Black };
             FaxEntry.SetBinding(Label.TextProperty, "Fax");
 
