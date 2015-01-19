@@ -120,8 +120,8 @@ namespace TriCare.Data
 				var resultTask = await client.PutAsync("http://teamsavagemma.com/api/patient", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 
-				var pReturn = JsonConvert.DeserializeObject<int>(resultText);
-				if (pReturn > 0)
+				var pReturn = JsonConvert.DeserializeObject<string>(resultText).Replace("\"","");
+				if (pReturn.ToLower() == "success")
 				{
 					var oldItem = database.Table<Patient>().FirstOrDefault(x => x.PatientId == item.PatientId);
 					oldItem.Address = item.Address;

@@ -188,7 +188,7 @@ namespace TriCare.Views
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Gray,
             };
-            RxPcnEntry.SetBinding(Entry.TextProperty, "Diagnosis");
+			DiagnosisEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
 			var AddressLabel = new Label { Text = "Address" , TextColor = Color.Navy};
             var AddressEntry = new Entry()

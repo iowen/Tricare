@@ -146,3 +146,6 @@ C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\dr
 C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\tricarebg.png
 C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\R.cs.flag
 C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\uploadflags.txt
+C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\tricareicon.png
+C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\tcareloginlogo.png
+C:\Users\Sujit\Documents\GitHub\Tricare\TriCare\TriCare.Android\obj\Debug\res\drawable\tricareicona.png

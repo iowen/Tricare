@@ -6,13 +6,30 @@ using System.Threading.Tasks;
 using TriCare.Data;
 using TriCare.Models;
 using Xamarin.Forms;
+using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace TriCare.Views
 {
 	public class EditPatientPage : ContentPage
 	{
+		private List<InsuranceCarrier> inList;
+		private List<object> insuranceList =
+			new List<object>();
+		public List<object> InsuranceList
+		{
+			get { return insuranceList; }
+		}
+		private string searchText;
+		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
+
+		public ICommand SearchCommand { get; set; }
+		public ICommand CellSelectedCommand { get; set; }
+		private AutoCompleteView a;
+
 		public EditPatientPage(Patient p, bool isDuringPrescription = false)
 		{
+			inList = new List<InsuranceCarrier> ();
 			this.BindingContext = p;
 
 			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
@@ -34,23 +51,20 @@ namespace TriCare.Views
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
-
 			var genderLabel = new Label { Text = "Gender", TextColor = Color.Navy };
-			var genderEntry = new Entry()
-			{
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+			var genderEntry = new Picker {
+				Title="Select a Gender",
+				BackgroundColor = Color.Transparent
 			};
-			genderEntry.SetBinding(Entry.TextProperty, "Gender");
+			genderEntry.Items.Add ("Male");
+			genderEntry.Items.Add ("Female");
+			genderEntry.SelectedIndex = p.Gender.Trim() == "Male" ? 0 : 1;
+			//genderEntry.SetBinding (Picker.SelectedIndexProperty, "Gender");
 
 			var birthDateLabel = new Label { Text = "Birth Date" , TextColor = Color.Navy};
-			var birthDateEntry = new Entry()
-			{
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
-			};
-			birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
-
+			DatePicker birthDateEntry = new DatePicker ();
+			birthDateEntry.BackgroundColor = Color.Transparent;
+			birthDateEntry.Date = p.BirthDate;
 
 			var ssnLabel = new Label { Text = "Last 4 of SSN", TextColor = Color.Navy };
 			var ssnEntry = new Entry()
@@ -60,13 +74,54 @@ namespace TriCare.Views
 			};
 			ssnEntry.SetBinding(Entry.TextProperty, "SSN");
 
+			a = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = InsuranceList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommand,
+				SuggestionBackgroundColor = Color.Gray,
+				Placeholder = "",
+			};
+
+			var a1 = new AutoCompleteView ();
+			SearchCommand = new Command((key) =>
+				{
+					DisplayAlert("Search",a.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					// Add the key to the input string.
+				});
+
+			CellSelectedCommand = new Command<InsuranceCarrier>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var CellSelectedCommandS = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var iRepo = new InsuranceCarrierRepo ();
+			inList = iRepo.GetAllInsuranceCarriers ();
+
+			foreach (var i in inList) {
+				insuranceList.Add(i);
+			}
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier", TextColor = Color.Navy };
-			var InsuranceCarrierEntry = new Entry()
+			var eleLoc = inList.IndexOf (inList.First (x => x.InsuranceCarrierId == p.InsuranceCarrierId));
+			a.Text = insuranceList.ElementAt (eleLoc).ToString();
+			var InsuranceCarrierEntry = a; /*= new Entry()
 			{
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Gray,
 			};
-			InsuranceCarrierEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
+			InsuranceCarrierEntry = a;*/
+			//InsuranceCarrierEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
+			//InsuranceCarrierEntry.Text = iRepo.GetInsuranceCarrier (p.InsuranceCarrierId).Name;
+			//var eleLoc = inList.IndexOf (inList.First (x => x.InsuranceCarrierId == p.InsuranceCarrierId));
+			//InsuranceCarrierEntry.Text = insuranceList.ElementAt (eleLoc).ToString();
 
 			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number" , TextColor = Color.Navy};
 			var InsuranceCarrierIdNumberEntry = new Entry()
@@ -122,7 +177,7 @@ namespace TriCare.Views
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Gray,
 			};
-			RxPcnEntry.SetBinding(Entry.TextProperty, "Diagnosis");
+			DiagnosisEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
 			var AddressLabel = new Label { Text = "Address", TextColor = Color.Navy };
 			var AddressEntry = new Entry()
@@ -183,12 +238,134 @@ namespace TriCare.Views
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
 			saveButton.Clicked += async (sender, e) =>
 			{
+				#region VALIDATE BEFORE SAVE
+				var validInsCarrier = insuranceList.Where(i => i.ToString().Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
+				if(firstNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a valid first name","OK");
+					return;
+				}
+				else if(lastNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a valid last name","OK");
+					return;
+				}
+				else if(genderEntry.SelectedIndex < 0)
+				{
+					await DisplayAlert("Alert!","Please select a gender","OK");
+					return;
+				}
+				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please make sure SSN contains 4 digits","OK");
+					return;
+				}
+				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0 || (validInsCarrier == null))
+				{
+					await DisplayAlert("Alert!","Please provide a valid Insurance Carrier","OK");
+					return;
+				}
+				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the Insurance Carrier Id Number","OK");
+					return;
+				}
+				else if(InsuranceGroupNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceGroupNumberEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the Insurance Group Number","OK");
+					return;
+				}
+				else if(InsurancePhoneEntry.Text.Trim().Length != 10 || Regex.Matches(InsurancePhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for the Insurance Phone Number","OK");
+					return;
+				}
+				else if(RxBinEntry.Text.Trim().Length <= 0 || Regex.Matches(RxBinEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter digits for the RX Bin","OK");
+					return;
+				}
+				else if(RxPcnEntry.Text.Trim().Length <= 0 || Regex.Matches(RxPcnEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter only digits for the RX Pcn","OK");
+					return;
+				}
+				else if(AllergiesEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter information on Allergies","OK");
+					return;
+				}
+				else if(DiagnosisEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter information on Diagnosis","OK");
+					return;
+				}
+				else if(AddressEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an Address","OK");				
+					return;
+				}
+				else if(CityEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a City","OK");
+					return;
+				}
+				else if(StateEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an State","OK");
+					return;
+				}
+				else if(ZipEntry.Text.Trim().Length != 5 || Regex.Matches(ZipEntry.Text,@"[a-zA-Z]").Count > 0)
+				{				
+					await DisplayAlert("Alert!","Please enter a Zip code with 5 digits","OK");
+					return;
+				}
+				else if(PhoneEntry.Text.Trim().Length != 10 || Regex.Matches(PhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for the Phone Number","OK");
+					return;
+				}
+				else if(EmailEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an Email","OK");
+					return;
+				}
+				else if(PaymentTypeEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a Payment Type","OK");
+					return;
+				}
+				#endregion
+
 				var pId = int.Parse(App.Token);
-				var patientItem = new Patient() { PrescriberId=pId, Address = AddressEntry.Text, City = CityEntry.Text, InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, Gender = genderEntry.Text, Email = EmailEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, SSN = int.Parse(ssnEntry.Text), Allergies = AllergiesEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text), BirthDate = DateTime.Parse(birthDateEntry.Text), Diagnosis = DiagnosisEntry.Text, InsuranceCarrierId = 1, InsurancePhone = InsurancePhoneEntry.Text, PaymentType = PaymentTypeEntry.Text, RxBin = RxBinEntry.Text, RxPcn = RxPcnEntry.Text };
+				var patientItem = new Patient() { 
+					PrescriberId=pId,
+					PatientId = p.PatientId,
+					Address = AddressEntry.Text, 
+					City = CityEntry.Text, 
+					InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, 
+					Gender = genderEntry.Items[genderEntry.SelectedIndex].ToString(),//genderEntry.Text, 
+					Email = EmailEntry.Text, 
+					FirstName = firstNameEntry.Text, 
+					LastName = lastNameEntry.Text, 
+					InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, 
+					SSN = int.Parse(ssnEntry.Text), 
+					Allergies = AllergiesEntry.Text, 
+					Phone = PhoneEntry.Text, 
+					State = StateEntry.Text, 
+					Zip = int.Parse(ZipEntry.Text), 
+					BirthDate = birthDateEntry.Date, 
+					Diagnosis = DiagnosisEntry.Text, 
+					InsuranceCarrierId = 1, 
+					InsurancePhone = InsurancePhoneEntry.Text,
+					PaymentType = PaymentTypeEntry.Text, 
+					RxBin = RxBinEntry.Text, 
+					RxPcn = RxPcnEntry.Text 
+				};
 				var patientRepo = new PatientRepo();
 				// send webservice request and so on
-				var res = await patientRepo.AddPatient(patientItem);
-				if (!string.IsNullOrWhiteSpace(res))
+				var res = await patientRepo.UpdatePatient(patientItem);
+				if (res == true)
 				{
 					if (!isDuringPrescription)
 					{

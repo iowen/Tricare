@@ -76,7 +76,7 @@ namespace TriCare.Views
 
 			var DiagnosisLabel = new Label { Text = "Diagnosis:", TextColor = Color.Navy };
 			var DiagnosisEntry = new Label { TextColor = Color.Black };
-			RxPcnEntry.SetBinding(Label.TextProperty, "Diagnosis");
+			DiagnosisEntry.SetBinding(Label.TextProperty, "Diagnosis");
 
 			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Navy };
 			var AddressEntry = new Label { TextColor = Color.Black };
