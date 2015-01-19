@@ -17,7 +17,7 @@ namespace TriCare.Views
 		{
 			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
-			Title = "My Patients";
+			Title = "Patients";
 			patientList = new List<Patient> ();
 			listView = new ListView ();
 			var pRepo = new PatientRepo();
@@ -26,17 +26,20 @@ namespace TriCare.Views
 			listView.ItemsSource = patientList;
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (PatientCell));
-			listView.ItemSelected += (sender, e) => {
+			listView.ItemSelected += async (sender, e) => {
+				if (e.SelectedItem == null)
+					return;
                 var selected = (Patient)e.SelectedItem;
                 if (!isDuringPrescription)
                 {
                     var patientPage = new PatientPage(selected);
-                    Navigation.PushAsync(patientPage);
+                    await Navigation.PushAsync(patientPage);
                 }
                 else
                 {
-					Navigation.PushAsync(new PatientPage(selected, true));
+					await Navigation.PushAsync(new PatientPage(selected, true));
                 }
+				listView.SelectedItem = null;
 			};
 			SearchBar searchBar = new SearchBar
 			{

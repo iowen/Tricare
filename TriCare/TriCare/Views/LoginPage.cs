@@ -47,12 +47,14 @@ namespace TriCare.Views
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
 					}
+          
 					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 					var prescriberRepo = new PrescriberRepo ();
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
 					if (loginState.ToLower () == "success") {
 						App.ClearCurrentPrescription ();
-						await this.Navigation.PushAsync (new HomePage ());
+						await this.Navigation.PopAsync();
+						await this.Navigation.PushAsync(new HomePage());
 					} else {
 						await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
 					}

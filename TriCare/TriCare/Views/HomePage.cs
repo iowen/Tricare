@@ -13,6 +13,7 @@ namespace TriCare.Views
     {
         public HomePage()
         {
+
 			NavigationPage.SetHasBackButton (this, false);
 			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
@@ -56,7 +57,7 @@ namespace TriCare.Views
 					BackgroundColor = Color.White,
                     Content = new StackLayout
           {
-              VerticalOptions = LayoutOptions.StartAndExpand,
+              VerticalOptions = LayoutOptions.CenterAndExpand,
               Padding = new Thickness(20),
               Children = {
 					AddPrescriptionButton, ManagePrescriptionButton
@@ -70,7 +71,7 @@ namespace TriCare.Views
 					BackgroundColor = Color.White,
                 Content = new StackLayout
                 {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
+						VerticalOptions = LayoutOptions.CenterAndExpand,
                     Padding = new Thickness(20),
                     Children = {
 					AddPatientButton, ManagePatientButton

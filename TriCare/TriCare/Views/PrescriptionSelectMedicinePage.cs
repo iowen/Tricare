@@ -19,7 +19,7 @@ namespace TriCare.Views
 			var meds = mRepo.GetAllMedicines ();
 			var myContent = new StackLayout
 			{
-				VerticalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Padding = new Thickness(20),
 			};
 			foreach (var med in meds) {

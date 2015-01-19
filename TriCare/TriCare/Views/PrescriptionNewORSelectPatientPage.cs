@@ -35,7 +35,7 @@ namespace TriCare.Views
 			var orLabel = new Label (){ Text = "- OR -",HorizontalOptions =LayoutOptions.Center, TextColor = Color.Gray };
             Content = new StackLayout
             {
-                VerticalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
                 Padding = new Thickness(20),
                 Children = {
 					newPatientButton,orLabel, existingPatientButton
