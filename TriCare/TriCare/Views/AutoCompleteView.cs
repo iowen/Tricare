@@ -783,6 +783,10 @@ namespace TriCare.Views
 				TextChanged(this, e);
 			}
 		}
+		public void SetText (string txt)
+		{
+			_entText.Text = txt;
+		}
 
 		/// <summary>
 		/// Shows the hide listbox.
