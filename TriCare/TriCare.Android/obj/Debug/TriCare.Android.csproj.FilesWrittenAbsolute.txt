@@ -6,6 +6,11 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/android/bin/TriCare.Android.apk
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/layout/signaturepad.xml
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/icon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricareicon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tcareloginlogo.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricareicona.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/layout/splashtheme.xml
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricaresplasha.png
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricarebg.png
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/R.cs.flag
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/TriCare.Android-Signed.apk
@@ -29,6 +34,3 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.xml
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/System.Diagnostics.Tools.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricareicon.png
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tcareloginlogo.png
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Debug/res/drawable/tricareicona.png

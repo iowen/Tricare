@@ -179,6 +179,9 @@ namespace TriCare.Droid
 			// aapt resource value: 0x7f020006
 			public const int tricareIconA = 2130837510;
 			
+			// aapt resource value: 0x7f020007
+			public const int tricareSplashA = 2130837511;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -239,7 +242,10 @@ namespace TriCare.Droid
 			public const int SignaturePad = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int week = 2130903044;
+			public const int SplashTheme = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int week = 2130903045;
 			
 			static Layout()
 			{

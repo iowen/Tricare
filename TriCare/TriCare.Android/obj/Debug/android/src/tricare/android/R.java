@@ -39,6 +39,7 @@ public final class R {
         public static final int tricarebg=0x7f020004;
         public static final int tricareicon=0x7f020005;
         public static final int tricareicona=0x7f020006;
+        public static final int tricaresplasha=0x7f020007;
     }
     public static final class id {
         public static final int btnCancel=0x7f080005;
@@ -54,7 +55,8 @@ public final class R {
         public static final int dialog=0x7f030001;
         public static final int month=0x7f030002;
         public static final int signaturepad=0x7f030003;
-        public static final int week=0x7f030004;
+        public static final int splashtheme=0x7f030004;
+        public static final int week=0x7f030005;
     }
     public static final class string {
         public static final int ApplicationName=0x7f060006;

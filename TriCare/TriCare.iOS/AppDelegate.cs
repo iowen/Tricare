@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Diagnostics;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
@@ -17,7 +17,7 @@ namespace TriCare.iOS
     {
         // class-level declarations
         UIWindow window;
-
+		private Stopwatch timer;
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -28,7 +28,7 @@ namespace TriCare.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
-
+			timer = new Stopwatch ();
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             window.RootViewController = App.GetMainPage().CreateViewController();
@@ -37,5 +37,25 @@ namespace TriCare.iOS
 
             return true;
         }
+
+		public override void DidEnterBackground (UIApplication application)
+		{
+			// NOTE: Don't call the base implementation on a Model class
+			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
+			timer.Stop ();
+			timer.Reset ();
+			timer.Start ();
+		}
+
+		public override void WillEnterForeground (UIApplication application)
+		{
+			// NOTE: Don't call the base implementation on a Model class
+			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
+			timer.Stop ();
+			if (timer.ElapsedMilliseconds > 600000) {
+				if (App.IsLoggedIn)
+					App.LogOutTime ();
+			}
+		}
     }
 }

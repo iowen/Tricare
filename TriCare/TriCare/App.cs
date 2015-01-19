@@ -33,6 +33,12 @@ namespace TriCare
 			mainNav.BarTextColor = Color.White;
             return mainNav;
         }
+		public static void LogOutTime()
+		{
+			ClearCurrentPrescription ();
+			InvalidateToken ();
+			np.Navigation.PushAsync (new LoginPage ());
+		}
 		public static void LogOut(Object e , EventArgs s)
 		{
 			ClearCurrentPrescription ();
@@ -113,5 +119,7 @@ namespace TriCare
 		{
 			_currentPrescription = new PrescriptionModel ();
 		}
+
+
     }
 }
