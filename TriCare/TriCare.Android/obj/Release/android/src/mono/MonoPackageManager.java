@@ -68,19 +68,21 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"TriCare.Android.dll",
+		"FormsViewGroup.dll",
+		"SignaturePad.Android.dll",
 		"SQLite.Net.dll",
 		"SQLite.Net.Platform.XamarinAndroid.dll",
-		"TriCare.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Forms.Core.dll",
+		"Xamarin.Forms.Labs.Droid.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Xaml.dll",
-		"System.Diagnostics.Tracing.dll",
-		"System.Reflection.Emit.dll",
+		"ExifLib.dll",
+		"Xamarin.Forms.Labs.dll",
+		"TriCare.dll",
 		"System.Reflection.Emit.ILGeneration.dll",
 		"System.Reflection.Emit.Lightweight.dll",
-		"System.ServiceModel.Security.dll",
-		"System.Threading.Timer.dll",
+		"System.Reflection.Emit.dll",
 		"Newtonsoft.Json.dll",
 	};
 	public static final String[] Dependencies = new String[]{

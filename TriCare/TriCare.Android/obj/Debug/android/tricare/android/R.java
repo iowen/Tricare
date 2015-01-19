@@ -38,6 +38,7 @@ public final class R {
         public static final int tcareloginlogo=0x7f020003;
         public static final int tricarebg=0x7f020004;
         public static final int tricareicon=0x7f020005;
+        public static final int tricareicona=0x7f020006;
     }
     public static final class id {
         public static final int btnCancel=0x7f080005;

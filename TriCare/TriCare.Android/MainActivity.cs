@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace TriCare.Droid
 {
-	[Activity(Label = "TriCare", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Icon="@drawable/tricareIcon")]
+	[Activity(Label = "TriCare Wellness", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Icon="@drawable/tricareIconA")]
     public class MainActivity : AndroidActivity
     {
         protected override void OnCreate(Bundle bundle)

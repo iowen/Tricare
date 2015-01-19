@@ -120,6 +120,7 @@ namespace TriCare.Views
 				SuggestionBackgroundColor = Color.Gray,
 				Placeholder = "",
 			};
+	
 			st = new AutoCompleteView () {
 				SearchBackgroundColor = Color.Transparent,
 				ShowSearchButton = false,
