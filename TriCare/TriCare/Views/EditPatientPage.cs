@@ -14,12 +14,22 @@ namespace TriCare.Views
 	public class EditPatientPage : ContentPage
 	{
 		private List<InsuranceCarrier> inList;
+		private List<State> stList;
 		private List<object> insuranceList =
 			new List<object>();
 		public List<object> InsuranceList
 		{
 			get { return insuranceList; }
 		}
+
+		private List<object> stateList =
+			new List<object>();
+			
+		public List<object> StateList
+		{
+			get { return stateList; }
+		}
+		private AutoCompleteView st;
 		private string searchText;
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
 
@@ -30,6 +40,7 @@ namespace TriCare.Views
 		public EditPatientPage(Patient p, bool isDuringPrescription = false)
 		{
 			inList = new List<InsuranceCarrier> ();
+			stList = new List<State> ();
 			this.BindingContext = p;
 
 			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
@@ -81,8 +92,30 @@ namespace TriCare.Views
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
 				SuggestionBackgroundColor = Color.Gray,
+				TextColor = Color.Gray,
+				SearchTextColor = Color.White
 			};
+			var CellSelectedCommands = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var s = new StateRepo ();
+			stList = s.GetAllStates ();
 
+			foreach (var sss in stList) {
+				stateList.Add(sss);
+			}
+			st = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = StateList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommands,
+				SuggestionBackgroundColor = Color.Gray,
+				TextColor = Color.Gray,
+				SearchTextColor = Color.White,
+			};
 			var a1 = new AutoCompleteView ();
 			SearchCommand = new Command((key) =>
 				{
@@ -110,9 +143,13 @@ namespace TriCare.Views
 			}
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier", TextColor = Color.Navy };
 			var eleLoc = inList.IndexOf (inList.First (x => x.InsuranceCarrierId == p.InsuranceCarrierId));
+			var seleLoc = stList.IndexOf (stList.First (x => x.Name.Trim() == p.State.Trim()));
 			//Got This Working
 			a.SetText (InsuranceList.ElementAt (eleLoc).ToString ());
 			a.ShowHideListbox (false);
+
+			st.SetText (StateList.ElementAt (seleLoc).ToString ());
+			st.ShowHideListbox (false);
 		//	firstNameEntry.Focus ();
 			var InsuranceCarrierEntry = a; /*= new Entry()
 			{
@@ -198,12 +235,7 @@ namespace TriCare.Views
 			CityEntry.SetBinding(Entry.TextProperty, "City");
 
 			var StateLabel = new Label { Text = "State" , TextColor = Color.Navy};
-			var StateEntry = new Entry()
-			{
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
-			};
-			StateEntry.SetBinding(Entry.TextProperty, "State");
+			var StateEntry = st;
 
 			var ZipLabel = new Label { Text = "Zip" , TextColor = Color.Navy};
 			var ZipEntry = new Entry()
