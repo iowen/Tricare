@@ -33,7 +33,7 @@ namespace TriCare.Views
 			this.BindingContext = p;
 
 			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()
@@ -81,7 +81,6 @@ namespace TriCare.Views
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
 				SuggestionBackgroundColor = Color.Gray,
-				Placeholder = "",
 			};
 
 			var a1 = new AutoCompleteView ();
@@ -111,7 +110,10 @@ namespace TriCare.Views
 			}
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier", TextColor = Color.Navy };
 			var eleLoc = inList.IndexOf (inList.First (x => x.InsuranceCarrierId == p.InsuranceCarrierId));
-			a.Text = insuranceList.ElementAt (eleLoc).ToString();
+			//Got This Working
+			a.SetText (InsuranceList.ElementAt (eleLoc).ToString ());
+			a.ShowHideListbox (false);
+		//	firstNameEntry.Focus ();
 			var InsuranceCarrierEntry = a; /*= new Entry()
 			{
 				BackgroundColor = Color.Transparent,

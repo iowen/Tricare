@@ -792,7 +792,7 @@ namespace TriCare.Views
 		/// Shows the hide listbox.
 		/// </summary>
 		/// <param name="show">if set to <c>true</c> [show].</param>
-		private void ShowHideListbox(bool show)
+		public void ShowHideListbox(bool show)
 		{
 			_lstSuggestions.IsVisible = show;
 		}
