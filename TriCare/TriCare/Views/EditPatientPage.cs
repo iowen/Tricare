@@ -84,7 +84,11 @@ namespace TriCare.Views
 				TextColor = Color.Gray,
 			};
 			ssnEntry.SetBinding(Entry.TextProperty, "SSN");
-
+			var CellSelectedCommandS = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
 			a = new AutoCompleteView () {
 				SearchBackgroundColor = Color.Transparent,
 				ShowSearchButton = false,
@@ -95,11 +99,7 @@ namespace TriCare.Views
 				TextColor = Color.Gray,
 				SearchTextColor = Color.White
 			};
-			var CellSelectedCommands = new Command<State>((key) =>
-				{
-					// Add the key to the input string.
-					this.Opacity = 50;
-				});
+
 			var s = new StateRepo ();
 			stList = s.GetAllStates ();
 
@@ -111,7 +111,7 @@ namespace TriCare.Views
 				ShowSearchButton = false,
 				Suggestions = StateList,
 				SearchCommand = SearchCommand,
-				SelectedCommand = CellSelectedCommands,
+				SelectedCommand = CellSelectedCommandS,
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Gray,
 				SearchTextColor = Color.White,
@@ -130,11 +130,7 @@ namespace TriCare.Views
 					// Add the key to the input string.
 					this.Opacity = 50;
 				});
-			var CellSelectedCommandS = new Command<State>((key) =>
-				{
-					// Add the key to the input string.
-					this.Opacity = 50;
-				});
+
 			var iRepo = new InsuranceCarrierRepo ();
 			inList = iRepo.GetAllInsuranceCarriers ();
 

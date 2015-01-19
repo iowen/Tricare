@@ -8,11 +8,28 @@ using TriCare.Models;
 using TriCare.Views;
 using TriCare.Validators;
 using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace TriCare
 {
 	public class EditPrescriberPage : ContentPage
 	{
+		private List<State> stList;
+
+
+		private List<object> stateList =
+			new List<object>();
+
+		public List<object> StateList
+		{
+			get { return stateList; }
+		}
+		private AutoCompleteView st;
+		private string searchText;
+		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
+
+		public ICommand SearchCommand { get; set; }
+		public ICommand CellSelectedCommand { get; set; }
 		public EditPrescriberPage ()
 		{
 			var pRepo = new PrescriberRepo();
@@ -78,6 +95,42 @@ namespace TriCare
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Gray,
 			};
+
+			var CellSelectedCommands = new Command<State>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+				});
+			var s = new StateRepo ();
+			stList = s.GetAllStates ();
+
+			foreach (var sss in stList) {
+				stateList.Add(sss);
+			}
+			st = new AutoCompleteView () {
+				SearchBackgroundColor = Color.Transparent,
+				ShowSearchButton = false,
+				Suggestions = StateList,
+				SearchCommand = SearchCommand,
+				SelectedCommand = CellSelectedCommands,
+				SuggestionBackgroundColor = Color.Gray,
+				TextColor = Color.Gray,
+				SearchTextColor = Color.White,
+			};
+
+			SearchCommand = new Command((key) =>
+				{
+					DisplayAlert("Search",st.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					// Add the key to the input string.
+				});
+
+			var seleLoc = stList.IndexOf (stList.First (x => x.Name.Trim() == p.State.Trim()));
+			//Got This Working
+
+			st.SetText (StateList.ElementAt (seleLoc).ToString ());
+			st.ShowHideListbox (false);
 			AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
 			var CityLabel = new Label { Text = "City" , TextColor = Color.Navy};
@@ -89,12 +142,7 @@ namespace TriCare
 			CityEntry.SetBinding(Entry.TextProperty, "City");
 
 			var StateLabel = new Label { Text = "State", TextColor = Color.Navy };
-			var StateEntry = new Entry()
-			{
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
-			};
-			StateEntry.SetBinding(Entry.TextProperty, "State");
+			var StateEntry = st;
 
 			var ZipLabel = new Label { Text = "Zip", TextColor = Color.Navy };
 			var ZipEntry = new Entry()
