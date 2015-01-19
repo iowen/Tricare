@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace TriCare.Droid
 {
-	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,Icon="@drawable/tricareIconA")]
     public class MainActivity : AndroidActivity
     {
 		private Stopwatch timer;
