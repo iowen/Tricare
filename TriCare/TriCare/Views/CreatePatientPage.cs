@@ -245,6 +245,7 @@ namespace TriCare.Views
             saveButton.Clicked += async (sender, e) =>
 			{
 				#region VALIDATE BEFORE SAVE
+				var validInsCarrier = insuranceList.Where(i => i.ToString().Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
 				if(firstNameEntry.Text.Trim().Length <= 0)
 				{
 					await DisplayAlert("Alert!","Please enter a valid first name","OK");
@@ -265,9 +266,9 @@ namespace TriCare.Views
 					await DisplayAlert("Alert!","Please make sure SSN contains 4 digits","OK");
 					return;
 				}
-				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0)
+				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0 || (validInsCarrier == null))
 				{
-					await DisplayAlert("Alert!","Please provide the Insurance Carrier","OK");
+					await DisplayAlert("Alert!","Please provide a valid Insurance Carrier","OK");
 					return;
 				}
 				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)

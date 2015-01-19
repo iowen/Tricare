@@ -1,53 +1,8 @@
 ﻿<Properties StartupItem="TriCare/TriCare.iOS/TriCare.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5.8.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Views/PatientListPage.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare\TriCare\Views\CreatePatientPage.cs">
     <Files>
-      <File FileName="TriCare/TriCare/Views/SignaturePadPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionListCell.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Data/PrescriptionRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/MedicineModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/PrescriptionModel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Models/MedicineIngredient.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="13" Column="13" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionListPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Data/PatientRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Data/PrescriberRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Data/MedicineIngredientRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Data/RefillRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/RefillPage.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Views/HomePage.cs" Line="54" Column="54" />
-      <File FileName="TriCare/TriCare/Models/Medicine.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/VerifyPage.cs" Line="39" Column="39" />
-      <File FileName="TriCare/TriCare/Views/VerifyCell.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Models/StringLabel.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/ViewPrescriptionPage.cs" Line="13" Column="13" />
-      <File FileName="TriCare/TriCare.Android/Resources/Resource.Designer.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.Android/app.config" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.Android/MainActivity.cs" Line="40" Column="40" />
-      <File FileName="TriCare/TriCare.Android/Properties/AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.Android/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Data/SyncRepo.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="55" Column="55" />
-      <File FileName="TriCare/TriCare/Views/RegisterPage.cs" Line="48" Column="48" />
-      <File FileName="TriCare/TriCare/Views/AutoCompleteView.cs" Line="25" Column="25" />
-      <File FileName="TriCare/TriCare/App.cs" Line="38" Column="38" />
-      <File FileName="TriCare/TriCare/Models/Patient.cs" Line="46" Column="46" />
-      <File FileName="TriCare/TriCare/Models/Prescriber.cs" Line="28" Column="28" />
-      <File FileName="TriCare/TriCare/Views/ExtendedTabbedPage.cs" Line="3" Column="3" />
-      <File FileName="TriCare/TriCare.iOS/ExtendedTabbedPageRenderer.cs" Line="53" Column="53" />
-      <File FileName="TriCare/TriCare/Views/PrescriberPage.cs" Line="54" Column="54" />
-      <File FileName="TriCare/TriCare/Views/PatientCell.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="36" Column="36" />
-      <File FileName="TriCare/TriCare/Views/CreatePatientPage.cs" Line="85" Column="85" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionNewORSelectPatientPage.cs" Line="52" Column="52" />
-      <File FileName="TriCare/TriCare/Views/PrescriptionSelectMedicinePage.cs" Line="52" Column="52" />
-      <File FileName="TriCare/TriCare/Views/IngredientCell.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Views/ingCell.cs" Line="27" Column="27" />
-      <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="39" Column="39" />
-      <File FileName="TriCare/TriCare/Views/EditPrescriberPage.cs" Line="57" Column="57" />
-      <File FileName="TriCare/TriCare/Views/EditPatientPage.cs" Line="85" Column="85" />
-      <File FileName="TriCare/TriCare.Android/SignaturePadRenderer.cs" Line="15" Column="15" />
-      <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="TriCare\TriCare\Views\CreatePatientPage.cs" Line="57" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
