@@ -130,7 +130,7 @@ namespace TriCare.Views
 		public static readonly BindableProperty TextVerticalOptionsProperty = BindableProperty.Create<AutoCompleteView, LayoutOptions>(p => p.TextVerticalOptions, LayoutOptions.Start, BindingMode.TwoWay, null, TestVerticalOptionsChanged);
 		private  List<object> _availableSuggestions;
 		private readonly Button _btnSearch;
-		private readonly Entry _entText;
+		private  Entry _entText;
 		private  ListView _lstSuggestions;
 		private readonly StackLayout _stkBase;
 
