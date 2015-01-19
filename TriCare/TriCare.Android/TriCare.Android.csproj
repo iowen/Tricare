@@ -98,6 +98,7 @@
     <Compile Include="SignatureService.cs" />
     <Compile Include="SignatureServiceActivity.cs" />
     <Compile Include="SqLite_Android.cs" />
+    <Compile Include="SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -111,6 +112,8 @@
     <AndroidResource Include="Resources\Drawable\tricareIcon.png" />
     <AndroidResource Include="Resources\Drawable\tcareLoginLogo.png" />
     <AndroidResource Include="Resources\Drawable\tricareIconA.png" />
+    <AndroidResource Include="Resources\Layout\SplashTheme.xml" />
+    <AndroidResource Include="Resources\Drawable\tricareSplashA.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\tricareBG.png" />
