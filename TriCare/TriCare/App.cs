@@ -39,6 +39,7 @@ namespace TriCare
 			InvalidateToken ();
 			np.Navigation.PushAsync (new LoginPage ());
 		}
+
 		public static void LogOut(Object e , EventArgs s)
 		{
 			ClearCurrentPrescription ();

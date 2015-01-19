@@ -4,7 +4,7 @@ using System.Linq;
 using System.Diagnostics;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-
+using TriCare;
 using Xamarin.Forms;
 
 namespace TriCare.iOS
@@ -54,7 +54,7 @@ namespace TriCare.iOS
 			timer.Stop ();
 			if (timer.ElapsedMilliseconds > 600000) {
 				if (App.IsLoggedIn)
-					App.LogOutTime ();
+					App.LogOutTime();
 			}
 		}
     }
