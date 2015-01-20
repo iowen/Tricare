@@ -128,7 +128,6 @@ namespace TriCare
 
 			var seleLoc = stList.IndexOf (stList.First (x => x.Name.Trim() == p.State.Trim()));
 			//Got This Working
-
 			st.SetText (StateList.ElementAt (seleLoc).ToString ());
 			st.ShowHideListbox (false);
 			AddressEntry.SetBinding(Entry.TextProperty, "Address");
@@ -171,35 +170,101 @@ namespace TriCare
 			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 			saveButton.Clicked += async (sender, e) =>
 			{
-//
-//				int temp;
-//				if (!int.TryParse(ZipEntry.Text,out temp))
-//				{
-//					await DisplayAlert("Error", "Invalid Zip Format", "OK", "");
-//					return;
-//				}
-//				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = FaxEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
-//				string msg;
-//				var bR = PrescriberValidator.Validate(prescriberItem, out msg);
-//				if(!bR)
-//				{
-//					await DisplayAlert("Error", msg, "OK", "");
-//					return;
-//				}
-//
-//				var prescriberRepo = new PrescriberRepo();
-//				// send webservice request and so on
-//				var res = await prescriberRepo.AddPrescriber(prescriberItem);
-//				var resultInt = int.Parse(res.ToString());
-//				if (resultInt > 0)
-//				{
-//					//await this.Navigation.PopAsync();
-//					await this.Navigation.PushAsync(new HomePage());
-//				}
-//				else
-//				{
-//					await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
-//				}
+				#region Validation 
+				int zipval = 0;
+				int.TryParse(ZipEntry.Text.Trim(),out zipval);
+				long phoneval = 0;
+				long faxval = 0;
+				Int64.TryParse(FaxEntry.Text.Trim(), out faxval);
+				Int64.TryParse(PhoneEntry.Text.Trim(), out phoneval);
+				if(firstNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a first name","Ok");
+					return;
+				}
+				else if(lastNameEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a last name","Ok");
+					return;
+				}
+				else if(emailEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an email address","Ok");
+					return;
+				}
+				else if(NpiNumberEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an NPI number","Ok");
+					return;
+				}
+				else if(LicenseNumberEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an License Number","Ok");
+					return;
+				}
+				else if(DeaNumberEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an DEA Number","Ok");
+					return;
+				}
+				else if(AddressEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter an Address","Ok");
+					return;
+				}
+				else if(CityEntry.Text.Trim().Length <= 0)
+				{
+					await DisplayAlert("Alert!","Please enter a City","Ok");
+					return;
+				}
+				else if(StateEntry.Text.Trim().Length <= 0 || stList.Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault() == null)
+				{
+					await DisplayAlert("Alert!","Please enter a valid State","Ok");
+					return;
+				}
+				else if(zipval < 10000)
+				{
+					await DisplayAlert("Alert!","Please enter a vlaid ZIP Code","Ok");
+					return;
+				}
+				else if(phoneval < 1000000000)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for Phone Number","Ok");
+					return;
+				}
+				else if(faxval < 1000000000)
+				{
+					await DisplayAlert("Alert!","Please enter 10 digits for Fax Number","Ok");
+					return;
+				}
+				#endregion
+
+				Prescriber item = new Prescriber(){
+					PrescriberId = p.PrescriberId,
+					AccountId = p.AccountId,
+					FirstName = firstNameEntry.Text.Trim(),
+					LastName = lastNameEntry.Text.Trim(),
+					NpiNumber = NpiNumberEntry.Text.Trim(),
+					LicenseNumber = LicenseNumberEntry.Text.Trim(),	
+					DeaNumber = DeaNumberEntry.Text.Trim(),	
+					Address = AddressEntry.Text.Trim(),
+					City = CityEntry.Text.Trim(),
+					State = StateEntry.Text.Trim(),
+					Zip = int.Parse(ZipEntry.Text),
+					Phone = PhoneEntry.Text.Trim(),
+					Fax = FaxEntry.Text.Trim(),
+					Email = emailEntry.Text.Trim(),
+					Password = p.Password.Trim(),
+					LastUpdate = DateTime.Now
+				};
+
+				PrescriberRepo presRepo = new PrescriberRepo();
+				var res = await presRepo.UpdatePrescriber(item);
+				if(res == true)
+				{
+					await this.Navigation.PopAsync();
+					await this.Navigation.PushAsync(new HomePage());
+				}
 			};
 			var scrollview = new ScrollView 
 			{

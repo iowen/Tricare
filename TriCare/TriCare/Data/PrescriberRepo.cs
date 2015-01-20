@@ -195,8 +195,8 @@ namespace TriCare.Data
 
 				var resultTask = await client.PutAsync("http://teamsavagemma.com/api/prescriber", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
-				var pReturn = JsonConvert.DeserializeObject<int>(resultText);
-				if (pReturn > 0)
+				var pReturn = JsonConvert.DeserializeObject<string>(resultText).Replace("\\","").Replace("\"","");
+				if (pReturn.ToLower() == "success")
 				{
 					var oldItem = database.Table<Prescriber>().FirstOrDefault(x => x.PrescriberId == item.PrescriberId);
 					oldItem.Address = item.Address;
