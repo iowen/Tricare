@@ -126,12 +126,16 @@ namespace TriCare.Views
 			layout.Children.Add (grid);
 	// for version 2
             //		layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
-			layout.Children.Add (	new ScrollView
-				{
-					Content = listView,
-					VerticalOptions = LayoutOptions.FillAndExpand
+			layout.Children.Add (new StackLayout{	
+				Children = {
+					new ScrollView
+					{
+						Content = listView,
+						VerticalOptions = LayoutOptions.FillAndExpand
+					}
 				}
-				);
+			}
+			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 

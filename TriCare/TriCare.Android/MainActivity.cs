@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace TriCare.Droid
 {
-	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,Icon="@drawable/tricareIconA")]
+	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,Icon="@drawable/tricareIconA",Theme = "@style/Theme.Tcaretab")]
     public class MainActivity : AndroidActivity
     {
 		private Stopwatch timer;
@@ -21,15 +21,16 @@ namespace TriCare.Droid
             base.OnCreate(bundle);
 			timer = new Stopwatch ();
             Xamarin.Forms.Forms.Init(this, bundle);
-			this.ActionBar.SetStackedBackgroundDrawable (new ColorDrawable(Xamarin.Forms.Color.FromRgba(52, 63, 169, 128).ToAndroid()));
             SetPage(App.GetMainPage());
         }
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{
-			this.ActionBar.SetStackedBackgroundDrawable (new ColorDrawable(Xamarin.Forms.Color.FromRgba(52, 63, 169, 128).ToAndroid()));
-			return base.OnCreateOptionsMenu (menu);
+			var result = base.OnCreateOptionsMenu (menu);
+			this.ActionBar.SetStackedBackgroundDrawable (new ColorDrawable(Xamarin.Forms.Color.FromRgb(52, 63, 169).ToAndroid()));
+			return result;
 
 		}
+
 		protected override void OnStart()
 		{
 			base.OnStart();

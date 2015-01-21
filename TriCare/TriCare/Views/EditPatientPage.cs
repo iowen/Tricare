@@ -42,10 +42,10 @@ namespace TriCare.Views
 			inList = new List<InsuranceCarrier> ();
 			stList = new List<State> ();
 			this.BindingContext = p;
+			App.EnableLogout ();
 
 			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()
 			{

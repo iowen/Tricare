@@ -13,10 +13,9 @@ namespace TriCare.Views
     {
         public HomePage()
         {
-
+			App.EnableLogout ();
 			NavigationPage.SetHasBackButton (this, false);
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += (sender, e) =>
             {
@@ -80,6 +79,11 @@ namespace TriCare.Views
             });
 			this.Children.Add (new PrescriberPage ());
         }
+
+		protected override bool OnBackButtonPressed ()
+		{
+			return false;
+		}
 
     }
 }

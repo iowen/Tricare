@@ -50,11 +50,15 @@ namespace TriCare.Views
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
 			layout.Children.Add (searchBar);
-			layout.Children.Add (	new ScrollView
+			layout.Children.Add (new StackLayout{	
+				Children = {
+					new ScrollView
 				{
 					Content = listView,
 					VerticalOptions = LayoutOptions.FillAndExpand
+					}
 				}
+			}
 				);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;

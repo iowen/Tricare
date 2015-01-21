@@ -36,7 +36,7 @@ namespace TriCare.Droid
 
             var view = new NativeView(Forms.Context);
             var el = e.NewElement;
-            view.BackgroundColor = Color.White.ToAndroid();
+            view.BackgroundColor = Color.Black.ToAndroid();
             
             if (!String.IsNullOrWhiteSpace(el.CaptionText))
                 view.Caption.Text = el.CaptionText;

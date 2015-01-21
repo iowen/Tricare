@@ -63,7 +63,7 @@ namespace TriCare.Data
         {
 			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == login.Password))
 				{
-            var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
+            	var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
 				var sRepo = new SyncRepo();
 				var sModel = new SyncModel();
 				sModel.PrescriberId = prescriber.PrescriberId;
@@ -103,8 +103,10 @@ namespace TriCare.Data
 						var sRepo = new SyncRepo();
 						var sModel = new SyncModel();
 						sModel.PrescriberId = resultItem.PrescriberId;
-						sModel.SyncType = 'p';
+						sModel.SyncType = 'b';
 						sModel.LastSync = new DateTime(1987, 11,21);
+						sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
+
 						await sRepo.GetSyncData(sModel);
                    //     patRepo.PullAllPatientsForPrescriber(resultItem.PrescriberId);
                         App.SaveToken(resultItem.PrescriberId.ToString());

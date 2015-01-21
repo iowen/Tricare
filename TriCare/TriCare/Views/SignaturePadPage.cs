@@ -22,7 +22,7 @@ namespace TriCare.Views
 		private Label rLabel;
         public SignaturePadPage(ISignatureService signatureService,IFileSystem fileSystem)
         {
-			this.BackgroundImage = "tricareBG.png";
+			this.BackgroundColor = Color.White;
 			App.EnableLogout ();
             this.signatureService = signatureService;
             //this.dialogs = dialogs;
@@ -34,6 +34,8 @@ namespace TriCare.Views
           //  this.List = new ObservableList<Signature>();
 			rLabel = new Label {
 				Text = "Rotate to Sign",
+				TextColor = Color.Red,
+				FontSize = 24,
 				IsVisible = false
 			};
 			curView = new SignaturePadView {  
@@ -43,8 +45,8 @@ namespace TriCare.Views
 				ClearTextColor = Color.Red,
 				PromptText = "",
 				PromptTextColor = Color.Blue,
-				SignatureLineColor = Color.Blue,
-				StrokeColor = Color.Black,
+				SignatureLineColor = Color.Gray,
+				StrokeColor = Color.White,
 				StrokeWidth = 2,
 			};
 			saveButton = new Button { Text = "Sign & Send" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
@@ -52,7 +54,7 @@ namespace TriCare.Views
 		//	if (Device.OS == TargetPlatform.iOS) {		
             Grid grid = new Grid
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 RowDefinitions = 
 				{
 					new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute)},
@@ -69,14 +71,14 @@ namespace TriCare.Views
 			grid.Children.Add (rLabel);
             grid.Children.Add(curView);
             Grid.SetRow(curView, 0);
-
+			Grid.SetRow (rLabel, 0);
             grid.Children.Add(saveButton);
             Grid.SetRow(saveButton, 1);
 
 		
             Content =  new StackLayout
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 Padding = new Thickness(20),
                 Children = {
 					grid
@@ -135,26 +137,17 @@ namespace TriCare.Views
 				curView.IsVisible = true;
 				saveButton.IsVisible = true;
 				rLabel.IsVisible = false;
-				if (Device.OS == TargetPlatform.iOS) {		
-					curView.WidthRequest = 440;
-				}
-				if (Device.OS == TargetPlatform.Android) {		
-					curView.WidthRequest = 600;
 
-				}
+					curView.WidthRequest = width - 40;
+
 			} else {
 				curView.IsVisible = false;
 				saveButton.IsVisible = false;
 				rLabel.IsVisible = true;
 				// Orientation got changed! Do your changes here
-				if (Device.OS == TargetPlatform.iOS) {		
-					curView.WidthRequest = 0;		
-				}
-				if (Device.OS == TargetPlatform.Android) {		
-					curView.WidthRequest = 0;
-				//	curView.RelScaleTo(300);
 
-				}
+					curView.WidthRequest = 0;		
+
 			}
 
 		}

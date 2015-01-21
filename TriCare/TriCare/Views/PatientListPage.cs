@@ -43,10 +43,10 @@ namespace TriCare.Views
 			};
 			SearchBar searchBar = new SearchBar
 			{
-				
+
 			};
 			searchBar.SearchButtonPressed += OnSearchBarButtonPressed;
-
+			searchBar.TextChanged += OnTextChanged;
 
 			// Accomodate iPhone status bar.
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
@@ -57,12 +57,16 @@ namespace TriCare.Views
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
 			layout.Children.Add (searchBar);
-			layout.Children.Add (	new ScrollView
-				{
-					Content = listView,
-					VerticalOptions = LayoutOptions.FillAndExpand
+			layout.Children.Add(new StackLayout{	
+				Children = {
+					new ScrollView
+					{
+						Content = listView,
+						VerticalOptions = LayoutOptions.FillAndExpand
+					}
 				}
-				);
+			}
+			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
@@ -84,6 +88,19 @@ namespace TriCare.Views
 				var result = patientList.Where (a => a.FirstName.ToLower ().Contains (searchText) || a.LastName.ToLower().Contains (searchText)).ToList ();
 				listView.ItemsSource = result;
 			} else {
+				listView.ItemsSource = patientList;
+			}
+		}
+
+		public void OnTextChanged(object sender, EventArgs args)
+		{
+			// Get the search text.
+			SearchBar searchBar = (SearchBar)sender;
+			string searchText = searchBar.Text;
+			if (string.IsNullOrWhiteSpace (searchText.Trim ())) {
+//				var result = patientList.Where (a => a.FirstName.ToLower ().Contains (searchText) || a.LastName.ToLower().Contains (searchText)).ToList ();
+//				listView.ItemsSource = result;
+//			} else {
 				listView.ItemsSource = patientList;
 			}
 		}

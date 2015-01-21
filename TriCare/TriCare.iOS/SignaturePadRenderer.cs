@@ -38,7 +38,7 @@ namespace TriCare.iOS
 
 			var view = new NativeView();
 			var el = e.NewElement;
-			view.BackgroundColor = UIColor.White;
+			view.BackgroundColor = UIColor.Black;
 			if (!String.IsNullOrWhiteSpace(el.CaptionText))
 				view.Caption.Text = el.CaptionText;
 

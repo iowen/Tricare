@@ -159,28 +159,124 @@ namespace TriCare.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int ad16 = 2130837504;
+			public const int ab_background_textured_tcaretab = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int calendar_bg_selector = 2130837505;
+			public const int ab_bottom_solid_tcaretab = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int Icon = 2130837506;
+			public const int ab_solid_tcaretab = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int tcareLoginLogo = 2130837507;
+			public const int ab_stacked_solid_tcaretab = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int tricareBG = 2130837508;
+			public const int ab_texture_tile_tcaretab = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int tricareIcon = 2130837509;
+			public const int ab_transparent_tcaretab = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int tricareIconA = 2130837510;
+			public const int ad16 = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int tricareSplashA = 2130837511;
+			public const int btn_cab_done_default_tcaretab = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int btn_cab_done_focused_tcaretab = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int btn_cab_done_pressed_tcaretab = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int btn_cab_done_tcaretab = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int cab_background_bottom_tcaretab = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int cab_background_top_tcaretab = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int calendar_bg_selector = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int Icon = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int list_focused_tcaretab = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int list_pressed_tcaretab = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int menu_dropdown_panel_tcaretab = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int progress_bg_tcaretab = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int progress_horizontal_tcaretab = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int progress_primary_tcaretab = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int progress_secondary_tcaretab = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int selectable_background_tcaretab = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int spinner_ab_default_tcaretab = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int spinner_ab_disabled_tcaretab = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int spinner_ab_focused_tcaretab = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int spinner_ab_pressed_tcaretab = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int spinner_background_ab_tcaretab = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int tab_indicator_ab_tcaretab = 2130837532;
+			
+			// aapt resource value: 0x7f02001d
+			public const int tab_selected_focused_tcaretab = 2130837533;
+			
+			// aapt resource value: 0x7f02001e
+			public const int tab_selected_pressed_tcaretab = 2130837534;
+			
+			// aapt resource value: 0x7f02001f
+			public const int tab_selected_tcaretab = 2130837535;
+			
+			// aapt resource value: 0x7f020020
+			public const int tab_unselected_focused_tcaretab = 2130837536;
+			
+			// aapt resource value: 0x7f020021
+			public const int tab_unselected_pressed_tcaretab = 2130837537;
+			
+			// aapt resource value: 0x7f020022
+			public const int tab_unselected_tcaretab = 2130837538;
+			
+			// aapt resource value: 0x7f020023
+			public const int tcareLoginLogo = 2130837539;
+			
+			// aapt resource value: 0x7f020024
+			public const int tricareBG = 2130837540;
+			
+			// aapt resource value: 0x7f020025
+			public const int tricareIcon = 2130837541;
+			
+			// aapt resource value: 0x7f020026
+			public const int tricareIconA = 2130837542;
+			
+			// aapt resource value: 0x7f020027
+			public const int tricareSplashA = 2130837543;
 			
 			static Drawable()
 			{
@@ -294,6 +390,18 @@ namespace TriCare.Droid
 		public partial class Style
 		{
 			
+			// aapt resource value: 0x7f070005
+			public const int ActionBar_Solid_Tcaretab = 2131165189;
+			
+			// aapt resource value: 0x7f070006
+			public const int ActionBar_Transparent_Tcaretab = 2131165190;
+			
+			// aapt resource value: 0x7f070009
+			public const int ActionBarTabStyle_Tcaretab = 2131165193;
+			
+			// aapt resource value: 0x7f07000c
+			public const int ActionButton_CloseMode_Tcaretab = 2131165196;
+			
 			// aapt resource value: 0x7f070001
 			public const int CalendarCell = 2131165185;
 			
@@ -305,6 +413,24 @@ namespace TriCare.Droid
 			
 			// aapt resource value: 0x7f070000
 			public const int CalendarTitle = 2131165184;
+			
+			// aapt resource value: 0x7f070008
+			public const int DropDownListView_Tcaretab = 2131165192;
+			
+			// aapt resource value: 0x7f07000a
+			public const int DropDownNav_Tcaretab = 2131165194;
+			
+			// aapt resource value: 0x7f070007
+			public const int PopupMenu_Tcaretab = 2131165191;
+			
+			// aapt resource value: 0x7f07000b
+			public const int ProgressBar_Tcaretab = 2131165195;
+			
+			// aapt resource value: 0x7f070004
+			public const int Theme_Tcaretab = 2131165188;
+			
+			// aapt resource value: 0x7f07000d
+			public const int Theme_Tcaretab_Widget = 2131165197;
 			
 			static Style()
 			{

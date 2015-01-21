@@ -51,11 +51,15 @@ namespace TriCare
 
 			layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an field for more info." });
 			layout.Children.Add (confirmButton);
-			layout.Children.Add (	new ScrollView
-				{
-					Content = listView,
-					VerticalOptions = LayoutOptions.FillAndExpand
+			layout.Children.Add (new StackLayout{	
+				Children = {
+					new ScrollView
+					{
+						Content = listView,
+						VerticalOptions = LayoutOptions.FillAndExpand
+					}
 				}
+			}
 			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;

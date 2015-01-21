@@ -21,6 +21,7 @@ namespace TriCare.Views
 				};
 
 				NavigationPage.SetHasNavigationBar (this, false);
+				App.DisableLogout ();
 				this.SetBinding (ContentPage.TitleProperty, "Login");
 				var emailLabel = new Label { Text = "Email", TextColor = Color.Navy  };
 				var emailEntry = new Entry () {
@@ -39,7 +40,7 @@ namespace TriCare.Views
 
 				var loginButton = new Button {
 					Text = "Log In" ,
-					BackgroundColor = Color.FromRgba (52, 63, 169, 128),
+					BackgroundColor = Color.FromRgb (52, 63, 169),
 					TextColor = Color.White
 				};
 				loginButton.Clicked += async (sender, e) => {
