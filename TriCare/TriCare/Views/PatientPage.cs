@@ -39,7 +39,7 @@ namespace TriCare.Views
 
 			var birthDateLabel = new Label { Text = "Birth Date:", TextColor = Color.Navy };
 			var birthDateEntry = new Label { TextColor = Color.Black };
-			birthDateEntry.SetBinding(Label.TextProperty, "BirthDate");
+			birthDateEntry.SetBinding(Label.TextProperty, "BirthDateFriendly");
 
 			var ssnLabel = new Label { Text = "Last 4 of SSN:",TextColor = Color.Navy };
 			var ssnEntry = new Label { TextColor = Color.Black };

@@ -35,5 +35,6 @@ namespace TriCare.Models
         public DateTime LastUpdate { get; set; }
 		[Ignore]
 		public string NameFriendly{ get { return FirstName.ToString ().Trim() +" "+ LastName.ToString ().Trim(); } }
+        public string BirthDateFriendly { get { return BirthDate.ToString("d"); } }
     }
 }
