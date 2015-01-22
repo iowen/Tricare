@@ -61,7 +61,7 @@ namespace TriCare.Views
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
 				SuggestionBackgroundColor = Color.Gray,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 				SearchTextColor = Color.White,
 				Placeholder = "",
 			};
@@ -69,7 +69,7 @@ namespace TriCare.Views
             var firstNameEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+                TextColor = Color.Black,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
@@ -77,7 +77,7 @@ namespace TriCare.Views
             var lastNameEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+                TextColor = Color.Black,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
@@ -86,7 +86,7 @@ namespace TriCare.Views
             var emailEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+                TextColor = Color.Black,
             };
             emailEntry.SetBinding(Entry.TextProperty, "Email");
 
@@ -94,7 +94,7 @@ namespace TriCare.Views
 			var passwordEntry = new Entry(){
 				IsPassword = true,
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White
+                TextColor = Color.Black
 			}; 
 
 			passwordEntry.SetBinding(Entry.TextProperty, "Password");
@@ -103,7 +103,7 @@ namespace TriCare.Views
 			var password2Entry = new Entry(){
 				IsPassword = true,
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.White
+                TextColor = Color.Black
 			}; 
 
 
@@ -111,7 +111,7 @@ namespace TriCare.Views
             var NpiNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
 
@@ -119,7 +119,7 @@ namespace TriCare.Views
             var LicenseNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
@@ -127,7 +127,7 @@ namespace TriCare.Views
             var DeaNumberEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
 
@@ -135,7 +135,7 @@ namespace TriCare.Views
             var AddressEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
@@ -143,7 +143,7 @@ namespace TriCare.Views
             var CityEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
@@ -154,7 +154,7 @@ namespace TriCare.Views
             var ZipEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
@@ -162,7 +162,7 @@ namespace TriCare.Views
             var PhoneEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
@@ -170,7 +170,7 @@ namespace TriCare.Views
             var FaxEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 

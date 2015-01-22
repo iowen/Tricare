@@ -12,8 +12,14 @@ namespace TriCare.Views
 {
     public class LoginPage : ContentPage
     {
+		private ActivityIndicator indi;
 		public LoginPage(bool isLogin = true)
         {
+			App.IsHome = true;
+
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
+			var indi = new ActivityIndicator();
 			if (isLogin) {
 				this.BackgroundColor = Color.White;
 				var logoCell = new Image () {
@@ -26,14 +32,14 @@ namespace TriCare.Views
 				var emailLabel = new Label { Text = "Email", TextColor = Color.Navy  };
 				var emailEntry = new Entry () {
 					BackgroundColor = Color.Transparent,
-					TextColor = Color.Gray,
+					TextColor = Color.Black,
 				};
 				emailEntry.SetBinding (Entry.TextProperty, "Email");
 
 				var passwordLabel = new Label { Text = "Password", TextColor = Color.Navy   };
 				var passwordEntry = new Entry () {
 					BackgroundColor = Color.Transparent,
-					TextColor = Color.Gray,
+					TextColor = Color.Black,
 					IsPassword = true
 				};
 				passwordEntry.SetBinding (Entry.TextProperty, "Password");
@@ -44,6 +50,8 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				loginButton.Clicked += async (sender, e) => {
+					loginButton.IsEnabled = false;
+					indi.IsRunning = true;
 					var sr = new StateRepo();
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
@@ -52,12 +60,15 @@ namespace TriCare.Views
 					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 					var prescriberRepo = new PrescriberRepo ();
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
+					indi.IsRunning = false;
+
 					if (loginState.ToLower () == "success") {
 						App.ClearCurrentPrescription ();
 						await this.Navigation.PopAsync();
 						await this.Navigation.PushAsync(new HomePage());
 					} else {
 						await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
+						loginButton.IsEnabled = true;
 					}
 				};
 
@@ -80,7 +91,7 @@ namespace TriCare.Views
 					this.Navigation.PushAsync (new  RegisterPage());            
 				};
 
-				Content = new StackLayout {
+				content = new StackLayout {
 					VerticalOptions = LayoutOptions.StartAndExpand,
 					Padding = new Thickness (20),
 					Children = {
@@ -90,7 +101,13 @@ namespace TriCare.Views
 						loginButton, registerButton
 					}
 				};
-
+				AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+				AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+				AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+				AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+				overlay.Children.Add(content);
+				overlay.Children.Add(indi);
+				Content = overlay;
 			}
         }
 		public  void ReLoad()

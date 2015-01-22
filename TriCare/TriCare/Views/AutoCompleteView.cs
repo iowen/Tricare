@@ -140,7 +140,8 @@ namespace TriCare.Views
 		public AutoCompleteView()
 		{
 			_availableSuggestions = new List<object>();
-			_stkBase = new StackLayout();
+			_stkBase = new StackLayout(){VerticalOptions = LayoutOptions.Fill};
+			var lstStkBase = new StackLayout(){VerticalOptions = LayoutOptions.FillAndExpand};
 			var innerLayout = new StackLayout();
 			_entText = new Entry
 			{
@@ -164,8 +165,10 @@ namespace TriCare.Views
 			};
 			innerLayout.Children.Add(_entText);
 			innerLayout.Children.Add(_btnSearch);
+			lstStkBase.Children.Add(_lstSuggestions);
+
 			_stkBase.Children.Add(innerLayout);
-			_stkBase.Children.Add(_lstSuggestions);
+			_stkBase.Children.Add(lstStkBase);
 
 			Content = _stkBase;
 
@@ -174,9 +177,17 @@ namespace TriCare.Views
 			};
 			_entText.TextChanged += (s, e) =>
 			{
-				Text = e.NewTextValue;
+				var sEntry = s as Entry;
+
+						Text = e.NewTextValue;
+				if(! String.IsNullOrWhiteSpace(sEntry.Text.Trim()))
+				{
 				OnTextChanged(e);
+				}
+				else
+					ShowHideListbox(false);
 			};
+
 			_btnSearch.Clicked += (s, e) =>
 			{
 				if (SearchCommand != null && SearchCommand.CanExecute(Text))

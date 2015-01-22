@@ -50,7 +50,7 @@ namespace TriCare.Views
 			var firstNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
@@ -58,7 +58,7 @@ namespace TriCare.Views
 			var lastNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
@@ -81,7 +81,7 @@ namespace TriCare.Views
 			var ssnEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			ssnEntry.SetBinding(Entry.TextProperty, "SSN");
 			var CellSelectedCommandS = new Command<State>((key) =>
@@ -96,7 +96,7 @@ namespace TriCare.Views
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
 				SuggestionBackgroundColor = Color.Gray,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 				SearchTextColor = Color.White
 			};
 
@@ -113,7 +113,7 @@ namespace TriCare.Views
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommandS,
 				SuggestionBackgroundColor = Color.Gray,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 				SearchTextColor = Color.White,
 			};
 			var a1 = new AutoCompleteView ();
@@ -162,7 +162,7 @@ namespace TriCare.Views
 			var InsuranceCarrierIdNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			InsuranceCarrierIdNumberEntry.SetBinding(Entry.TextProperty, "InsuranceCarrierIdNumber");
 
@@ -170,7 +170,7 @@ namespace TriCare.Views
 			var InsuranceGroupNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			InsuranceGroupNumberEntry.SetBinding(Entry.TextProperty, "InsuranceGroupNumber");
 
@@ -178,7 +178,7 @@ namespace TriCare.Views
 			var InsurancePhoneEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			InsurancePhoneEntry.SetBinding(Entry.TextProperty, "InsurancePhone");
 
@@ -186,7 +186,7 @@ namespace TriCare.Views
 			var RxBinEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			RxBinEntry.SetBinding(Entry.TextProperty, "RxBin");
 
@@ -194,7 +194,7 @@ namespace TriCare.Views
 			var RxPcnEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			RxPcnEntry.SetBinding(Entry.TextProperty, "RxPcn");
 
@@ -202,7 +202,7 @@ namespace TriCare.Views
 			var AllergiesEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			AllergiesEntry.SetBinding(Entry.TextProperty, "Allergies");
 
@@ -210,7 +210,7 @@ namespace TriCare.Views
 			var DiagnosisEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			DiagnosisEntry.SetBinding(Entry.TextProperty, "Diagnosis");
 
@@ -218,7 +218,7 @@ namespace TriCare.Views
 			var AddressEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
@@ -226,7 +226,7 @@ namespace TriCare.Views
 			var CityEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			CityEntry.SetBinding(Entry.TextProperty, "City");
 
@@ -237,7 +237,7 @@ namespace TriCare.Views
 			var ZipEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
@@ -245,7 +245,7 @@ namespace TriCare.Views
 			var PhoneEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
@@ -253,7 +253,7 @@ namespace TriCare.Views
 			var EmailEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			EmailEntry.SetBinding(Entry.TextProperty, "Email");
 
@@ -261,7 +261,7 @@ namespace TriCare.Views
 			var PaymentTypeEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 

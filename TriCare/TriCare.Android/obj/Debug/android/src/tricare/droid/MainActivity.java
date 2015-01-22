@@ -15,6 +15,7 @@ public class MainActivity
 			"n_onResume:()V:GetOnResumeHandler\n" +
 			"n_onPause:()V:GetOnPauseHandler\n" +
 			"n_onStop:()V:GetOnStopHandler\n" +
+			"n_onBackPressed:()V:GetOnBackPressedHandler\n" +
 			"";
 		mono.android.Runtime.register ("TriCare.Droid.MainActivity, TriCare.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", MainActivity.class, __md_methods);
 	}
@@ -74,6 +75,14 @@ public class MainActivity
 	}
 
 	private native void n_onStop ();
+
+
+	public void onBackPressed ()
+	{
+		n_onBackPressed ();
+	}
+
+	private native void n_onBackPressed ();
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

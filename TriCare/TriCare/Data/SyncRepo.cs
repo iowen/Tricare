@@ -66,7 +66,7 @@ namespace TriCare.Data
 							}
 						}
 						if (model.SyncType == 'b' || model.SyncType == 'p') {
-							if (resultItem.PrescriberUpdates.Updated > model.LastSync) {
+							if (resultItem.PrescriberUpdates.Prescriber.LastUpdate > model.LastSync) {
 								var p = resultItem.PrescriberUpdates.Prescriber;
 								p.LastUpdate = resultItem.PrescriberUpdates.Updated; 
 								database.InsertOrReplace (p);

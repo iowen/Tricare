@@ -14,11 +14,13 @@ namespace TriCare.Views
         public HomePage()
         {
 			App.EnableLogout ();
+			App.IsHome = true;
 			NavigationPage.SetHasBackButton (this, false);
 			this.BackgroundColor = Color.White;
 			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += (sender, e) =>
             {
+				App.IsHome = false;
                 this.Navigation.PushAsync(new CreatePatientPage());
 
             };
@@ -26,6 +28,8 @@ namespace TriCare.Views
 			var ManagePatientButton = new Button { Text = "Manage Patients", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePatientButton.Clicked += (sender, e) =>
             {
+				App.IsHome = false;
+
                 this.Navigation.PushAsync(new PatientListPage());
 
             };
@@ -33,6 +37,8 @@ namespace TriCare.Views
 			var AddPrescriptionButton = new Button { Text = "Add Prescription" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPrescriptionButton.Clicked += (sender, e) =>
             {
+				App.IsHome = false;
+
                 this.Navigation.PushAsync(new PrescriptionNewORSelectPatientPage());
 
             };
@@ -40,12 +46,16 @@ namespace TriCare.Views
 			var ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePrescriptionButton.Clicked += (sender, e) =>
             {
+				App.IsHome = false;
+
 				this.Navigation.PushAsync(new PrescriptionListPage());
 
             };
 			var EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             EditProfileButton.Clicked += (sender, e) =>
             {
+				App.IsHome = false;
+
                 this.Navigation.PushAsync(new PrescriberPage());
 
             };

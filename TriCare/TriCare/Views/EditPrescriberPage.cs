@@ -43,7 +43,7 @@ namespace TriCare
 			var firstNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
@@ -51,7 +51,7 @@ namespace TriCare
 			var lastNameEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
@@ -60,7 +60,7 @@ namespace TriCare
 			var emailEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			emailEntry.SetBinding(Entry.TextProperty, "Email");
 
@@ -69,7 +69,7 @@ namespace TriCare
 			var NpiNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
 
@@ -77,7 +77,7 @@ namespace TriCare
 			var LicenseNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
@@ -85,7 +85,7 @@ namespace TriCare
 			var DeaNumberEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
 
@@ -93,7 +93,7 @@ namespace TriCare
 			var AddressEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 
 			var CellSelectedCommands = new Command<State>((key) =>
@@ -114,7 +114,7 @@ namespace TriCare
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommands,
 				SuggestionBackgroundColor = Color.Gray,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 				SearchTextColor = Color.White,
 			};
 
@@ -136,7 +136,7 @@ namespace TriCare
 			var CityEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			CityEntry.SetBinding(Entry.TextProperty, "City");
 
@@ -147,7 +147,7 @@ namespace TriCare
 			var ZipEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
@@ -155,7 +155,7 @@ namespace TriCare
 			var PhoneEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 
@@ -163,7 +163,7 @@ namespace TriCare
 			var FaxEntry = new Entry()
 			{
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
 			};
 			FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 

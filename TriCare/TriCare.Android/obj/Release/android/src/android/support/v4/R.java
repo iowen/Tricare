@@ -32,12 +32,46 @@ public final class R {
         public static int calendar_text_small=0x7f050004;
     }
     public static final class drawable {
-        public static int ad16=0x7f020000;
-        public static int calendar_bg_selector=0x7f020001;
-        public static int icon=0x7f020002;
-        public static int tcareloginlogo=0x7f020003;
-        public static int tricarebg=0x7f020004;
-        public static int tricareicon=0x7f020005;
+        public static int ab_background_textured_tcaretab=0x7f020000;
+        public static int ab_bottom_solid_tcaretab=0x7f020001;
+        public static int ab_solid_tcaretab=0x7f020002;
+        public static int ab_stacked_solid_tcaretab=0x7f020003;
+        public static int ab_texture_tile_tcaretab=0x7f020004;
+        public static int ab_transparent_tcaretab=0x7f020005;
+        public static int ad16=0x7f020006;
+        public static int btn_cab_done_default_tcaretab=0x7f020007;
+        public static int btn_cab_done_focused_tcaretab=0x7f020008;
+        public static int btn_cab_done_pressed_tcaretab=0x7f020009;
+        public static int btn_cab_done_tcaretab=0x7f02000a;
+        public static int cab_background_bottom_tcaretab=0x7f02000b;
+        public static int cab_background_top_tcaretab=0x7f02000c;
+        public static int calendar_bg_selector=0x7f02000d;
+        public static int icon=0x7f02000e;
+        public static int list_focused_tcaretab=0x7f02000f;
+        public static int list_pressed_tcaretab=0x7f020010;
+        public static int menu_dropdown_panel_tcaretab=0x7f020011;
+        public static int progress_bg_tcaretab=0x7f020012;
+        public static int progress_horizontal_tcaretab=0x7f020013;
+        public static int progress_primary_tcaretab=0x7f020014;
+        public static int progress_secondary_tcaretab=0x7f020015;
+        public static int selectable_background_tcaretab=0x7f020016;
+        public static int spinner_ab_default_tcaretab=0x7f020017;
+        public static int spinner_ab_disabled_tcaretab=0x7f020018;
+        public static int spinner_ab_focused_tcaretab=0x7f020019;
+        public static int spinner_ab_pressed_tcaretab=0x7f02001a;
+        public static int spinner_background_ab_tcaretab=0x7f02001b;
+        public static int tab_indicator_ab_tcaretab=0x7f02001c;
+        public static int tab_selected_focused_tcaretab=0x7f02001d;
+        public static int tab_selected_pressed_tcaretab=0x7f02001e;
+        public static int tab_selected_tcaretab=0x7f02001f;
+        public static int tab_unselected_focused_tcaretab=0x7f020020;
+        public static int tab_unselected_pressed_tcaretab=0x7f020021;
+        public static int tab_unselected_tcaretab=0x7f020022;
+        public static int tcareloginlogo=0x7f020023;
+        public static int tricarebg=0x7f020024;
+        public static int tricareicon=0x7f020025;
+        public static int tricareicona=0x7f020026;
+        public static int tricaresplasha=0x7f020027;
     }
     public static final class id {
         public static int btnCancel=0x7f080005;
@@ -53,7 +87,8 @@ public final class R {
         public static int dialog=0x7f030001;
         public static int month=0x7f030002;
         public static int signaturepad=0x7f030003;
-        public static int week=0x7f030004;
+        public static int splashtheme=0x7f030004;
+        public static int week=0x7f030005;
     }
     public static final class string {
         public static int ApplicationName=0x7f060006;
@@ -65,11 +100,23 @@ public final class R {
         public static int month_name_format=0x7f060003;
     }
     public static final class style {
+        public static int ActionBar_Solid_Tcaretab=0x7f070005;
+        public static int ActionBar_Transparent_Tcaretab=0x7f070006;
+        public static int ActionBarTabStyle_Tcaretab=0x7f070009;
+        public static int ActionButton_CloseMode_Tcaretab=0x7f07000c;
         /**     <item name="android:textAlignment">center</item>
          */
         public static int CalendarCell=0x7f070001;
         public static int CalendarCell_CalendarDate=0x7f070003;
         public static int CalendarCell_DayHeader=0x7f070002;
         public static int CalendarTitle=0x7f070000;
+        public static int DropDownListView_Tcaretab=0x7f070008;
+        public static int DropDownNav_Tcaretab=0x7f07000a;
+        public static int PopupMenu_Tcaretab=0x7f070007;
+        public static int ProgressBar_Tcaretab=0x7f07000b;
+        public static int Theme_Tcaretab=0x7f070004;
+        /**  this style is only referenced in a Light.DarkActionBar based theme 
+         */
+        public static int Theme_Tcaretab_Widget=0x7f07000d;
     }
 }

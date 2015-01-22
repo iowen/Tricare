@@ -58,6 +58,12 @@ namespace TriCare.Droid
 			timer.Reset ();
 			timer.Start ();	
 		}
+
+		public override void OnBackPressed ()
+		{
+			if(!App.IsHome)
+			base.OnBackPressed ();
+		}
     }
 }
 

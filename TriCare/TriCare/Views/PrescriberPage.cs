@@ -39,9 +39,9 @@ namespace TriCare.Views
 			var emailEntry = new Label{ TextColor = Color.Gray };
             emailEntry.SetBinding(Label.TextProperty, "Email");
 
-			var passwordLabel = new Label { Text = "Password:",  TextColor = Color.Navy  };
-			var passwordEntry = new Label{ TextColor = Color.Black };
-            passwordEntry.SetBinding(Label.TextProperty, "Password");
+//			var passwordLabel = new Label { Text = "Password:",  TextColor = Color.Navy  };
+//			var passwordEntry = new Label{ TextColor = Color.Black };
+//            passwordEntry.SetBinding(Label.TextProperty, "Password");
 
 			var NpiNumberLabel = new Label { Text = "NPI Number:", TextColor = Color.Navy };
 			var NpiNumberEntry = new Label{ TextColor = Color.Black };
@@ -100,9 +100,9 @@ namespace TriCare.Views
 			StackLayout passwordLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
 			};
-
-			passwordLayout.Children.Add (passwordLabel);
-			passwordLayout.Children.Add (passwordEntry);
+//
+//			passwordLayout.Children.Add (passwordLabel);
+//			passwordLayout.Children.Add (passwordEntry);
 
 			StackLayout npiLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
@@ -203,7 +203,7 @@ namespace TriCare.Views
 						new Label(),
 						prescriberHeaderLabel,
 						nameLayout,
-						passwordLayout,
+//						passwordLayout,
 						npiLayout,
 						licenseLayout,
 						deaLayout,

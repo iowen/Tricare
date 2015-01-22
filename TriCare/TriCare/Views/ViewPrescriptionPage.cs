@@ -67,6 +67,11 @@ namespace TriCare
 			var rRepo = new RefillRepo ();
 			var am = rRepo.GetRefillAmountForId (model.Refill.Amount);
 			var aq = rRepo.GetRefillQuantityForId (model.Refill.Quantity);
+
+			var dLabel = new StringLabel () {
+				NameFriendly = "Date : " + model.CreatedFriendly.Trim()
+			};
+
 			var pLabel = new StringLabel () {
 				NameFriendly = "Patient : " + model.Patient.NameFriendly.Trim ()
 			};
@@ -84,7 +89,7 @@ namespace TriCare
 				NameFriendly = "Refill Quantity : " + aq.ToString(),
 			};
 
-			var lr = new List<StringLabel> (){ pLabel,presLabel,medLabel, rAmountLabel, rQuantLabel};
+			var lr = new List<StringLabel> (){ dLabel, pLabel,presLabel,medLabel, rAmountLabel, rQuantLabel};
 			listView.ItemsSource = lr;
 		}
 	}

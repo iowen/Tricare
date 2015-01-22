@@ -88,6 +88,7 @@ namespace TriCare
 //				}
 			}
 		}
+		public static bool IsHome{ get; set; }
         static string _Token;
         public static string Token
         {
