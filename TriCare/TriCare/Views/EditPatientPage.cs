@@ -265,6 +265,14 @@ namespace TriCare.Views
 			};
 			PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 
+			InsuranceCarrierEntry.TextChanged += (sender, e) => {
+				var ins = iRepo.GetAllInsuranceCarriers().Where(i => i.Name.Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
+				if(ins != null)
+				{
+					InsuranceCarrierIdNumberEntry.Text = ins.InsuranceCarrierId.ToString();
+				}
+			};
+
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
 			saveButton.Clicked += async (sender, e) =>
 			{
