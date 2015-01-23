@@ -177,30 +177,96 @@ namespace TriCare.Views
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
-                if (passwordEntry.Text != password2Entry.Text)
+				#region Validation
+				var validState = s.GetAllStates().Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault();
+				int validZip = 0;
+				int.TryParse(ZipEntry.Text,out validZip);
+				long validPhone = 0;
+				Int64.TryParse(PhoneEntry.Text,out validPhone);
+				long validFax = 0;
+				Int64.TryParse(FaxEntry.Text,out validFax);
+				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter a first name.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter a last name.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(emailEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter an email.", "OK");
+					return;
+				}
+				else if (passwordEntry.Text != password2Entry.Text)
                 {
-                    await DisplayAlert("Error", "Passwords must match.", "OK", "");
+                    await DisplayAlert("Error", "Passwords must match.", "OK");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(passwordEntry.Text))
+				else if (string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
-                    await DisplayAlert("Error", "Password is required", "OK", "");
+                    await DisplayAlert("Error", "Password is required", "OK");
                     return;
                 }
-                int temp;
-                if (!int.TryParse(ZipEntry.Text,out temp))
+				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter an NPI number.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter a License number.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter a DEA number.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter an Address.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
+				{
+					await DisplayAlert("Error", "Please enter a City.", "OK");
+					return;
+				}
+				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
+				{
+					await DisplayAlert("Error", "Please enter a valid State.", "OK");
+					return;
+				}
+				else if (validZip < 10000)
                 {
-                    await DisplayAlert("Error", "Invalid Zip Format", "OK", "");
+					//must be atleast 5 digits
+                    await DisplayAlert("Error", "Invalid Zip Format, please enter 5 digits.", "OK");
                     return;
                 }
+				else if(validPhone < 1000000000)
+				{
+					//must be atleast 10 digits
+					await DisplayAlert("Error", "Please enter a valid Phone number.", "OK");
+					return;
+				}
+				else if(validFax < 1000000000)
+				{
+					//must be atleast 10 digits
+					await DisplayAlert("Error", "Please enter a valid fax number.", "OK");
+					return;
+				}
                 var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = FaxEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
                 string msg;
                 var bR = PrescriberValidator.Validate(prescriberItem, out msg);
                 if(!bR)
                 {
-                    await DisplayAlert("Error", msg, "OK", "");
+                    await DisplayAlert("Error", msg, "OK");
                     return;
                 }
+				#endregion
 
                 var prescriberRepo = new PrescriberRepo();
                 // send webservice request and so on
@@ -217,7 +283,7 @@ namespace TriCare.Views
                 }
                 else
                 {
-                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
+                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK");
                 }
             };
 			var scrollview = new ScrollView 
