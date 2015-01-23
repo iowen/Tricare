@@ -43,7 +43,33 @@ namespace TriCare
 				Title = "Quantity",
 				BackgroundColor =Color.Transparent
 			};
-			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			var continueButton = new Button { 
+				Text = "Continue", 
+				BackgroundColor = Color.FromRgba(128, 128, 128, 128),
+				TextColor = Color.White
+			};
+			continueButton.IsEnabled = false;
+
+			refillAmountPicker.SelectedIndexChanged += (sender, e) => {
+				if(refillAmountPicker.SelectedIndex >= 0 && refillQuantPicker.SelectedIndex >= 0)
+				{
+					continueButton.IsEnabled = true;
+				}
+				else{
+					continueButton.IsEnabled = false;
+				}
+			};
+
+			refillQuantPicker.SelectedIndexChanged += (sender, e) => {
+				if(refillAmountPicker.SelectedIndex >= 0 && refillQuantPicker.SelectedIndex >= 0)
+				{
+					continueButton.IsEnabled = true;
+				}
+				else{
+					continueButton.IsEnabled = false;
+				}
+			};
+
 			continueButton.Clicked += (sender, e) =>
 			{
 				App.CurrentPrescription.Refill = new TriCare.Models.RefillModel();
