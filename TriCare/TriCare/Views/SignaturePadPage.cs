@@ -20,11 +20,15 @@ namespace TriCare.Views
         private SignaturePadView curView;
 		private Button saveButton;
 		private Label rLabel;
+		private ActivityIndicator indi;
+
         public SignaturePadPage(ISignatureService signatureService,IFileSystem fileSystem)
         {
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
             this.signatureService = signatureService;
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
+			indi = new ActivityIndicator();
             //this.dialogs = dialogs;
             this.fileSystem = fileSystem;
             //this.fileViewer = fileViewer;
@@ -70,13 +74,13 @@ namespace TriCare.Views
 	
 			grid.Children.Add (rLabel);
             grid.Children.Add(curView);
-            Grid.SetRow(curView, 0);
 			Grid.SetRow (rLabel, 0);
+            Grid.SetRow(curView, 0);
             grid.Children.Add(saveButton);
             Grid.SetRow(saveButton, 1);
 
 		
-            Content =  new StackLayout
+            content =  new StackLayout
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Padding = new Thickness(20),
@@ -86,6 +90,17 @@ namespace TriCare.Views
                 }
             
         };
+			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			overlay.Children.Add(content);
+			overlay.Children.Add(indi);
+			Content = new StackLayout () {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Children = {overlay}
+			};
 			if (Width < Height) {
 				// Orientation got changed! Do your changes here
 				rLabel.IsVisible = true;
@@ -153,6 +168,8 @@ namespace TriCare.Views
 		}
         private async void saveButton_Clicked(object sender, EventArgs e)
         {
+			indi.IsRunning = true;
+			saveButton.IsEnabled = false;
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
 			byte[] bytes = curView.GetImage(ImageFormatType.Png).ToArray();
@@ -185,8 +202,13 @@ namespace TriCare.Views
 			};
 			var rep = new PrescriptionRepo ();
 			var a = await rep.AddPrescription (presc, bytes);
+			indi.IsRunning = false;
 			if (a == "success") {
-				this.Navigation.PushAsync (new HomePage ());
+				var Command = new Command(async o => {
+					await App.np.PopToRootAsync(false);
+					await App.np.PushAsync (new HomePage ());
+				});
+				Command.Execute(new []{"run"});
 			}
         }
 

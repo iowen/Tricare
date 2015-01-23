@@ -24,7 +24,8 @@ namespace TriCare.Views
 
 		private List<object> stateList =
 			new List<object>();
-			
+		private ActivityIndicator indi;
+
 		public List<object> StateList
 		{
 			get { return stateList; }
@@ -36,14 +37,17 @@ namespace TriCare.Views
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
 		private AutoCompleteView a;
+		private int _insuranceCarrierId;
 
 		public EditPatientPage(Patient p, bool isDuringPrescription = false)
 		{
 			inList = new List<InsuranceCarrier> ();
 			stList = new List<State> ();
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
+			indi = new ActivityIndicator();
 			this.BindingContext = p;
-			App.EnableLogout ();
-
+			_insuranceCarrierId = p.InsuranceCarrierId;
 			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
 			this.BackgroundColor = Color.White;
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
@@ -89,6 +93,20 @@ namespace TriCare.Views
 					// Add the key to the input string.
 					this.Opacity = 50;
 				});
+			CellSelectedCommand = new Command<InsuranceCarrier>((key) =>
+				{
+					// Add the key to the input string.
+					this.Opacity = 50;
+					_insuranceCarrierId = key.InsuranceCarrierId;
+				});
+			var a1 = new AutoCompleteView ();
+			SearchCommand = new Command((key) =>
+				{
+					DisplayAlert("Search",a.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
+					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
+					// Add the key to the input string.
+				});
 			a = new AutoCompleteView () {
 				SearchBackgroundColor = Color.Transparent,
 				ShowSearchButton = false,
@@ -116,20 +134,9 @@ namespace TriCare.Views
 				TextColor = Color.Black,
 				SearchTextColor = Color.White,
 			};
-			var a1 = new AutoCompleteView ();
-			SearchCommand = new Command((key) =>
-				{
-					DisplayAlert("Search",a.Suggestions.Count.ToString(),"close");
-					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
-					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
-					// Add the key to the input string.
-				});
 
-			CellSelectedCommand = new Command<InsuranceCarrier>((key) =>
-				{
-					// Add the key to the input string.
-					this.Opacity = 50;
-				});
+
+
 
 			var iRepo = new InsuranceCarrierRepo ();
 			inList = iRepo.GetAllInsuranceCarriers ();
@@ -265,111 +272,151 @@ namespace TriCare.Views
 			};
 			PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
 
-			InsuranceCarrierEntry.TextChanged += (sender, e) => {
-				var ins = iRepo.GetAllInsuranceCarriers().Where(i => i.Name.Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
-				if(ins != null)
-				{
-					InsuranceCarrierIdNumberEntry.Text = ins.InsuranceCarrierId.ToString();
-				}
-			};
+//			InsuranceCarrierEntry.TextChanged += (sender, e) => {
+//				var ins = iRepo.GetAllInsuranceCarriers().Where(i => i.Name.Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
+//				if(ins != null)
+//				{
+//					InsuranceCarrierIdNumberEntry.Text = ins.InsuranceCarrierId.ToString();
+//				}
+//			};
 
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
 			saveButton.Clicked += async (sender, e) =>
 			{
+				indi.IsRunning = true;
+				saveButton.IsEnabled = false;
 				#region VALIDATE BEFORE SAVE
 				var validInsCarrier = insuranceList.Where(i => i.ToString().Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
 				if(firstNameEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a valid first name","OK");
 					return;
 				}
 				else if(lastNameEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a valid last name","OK");
 					return;
 				}
 				else if(genderEntry.SelectedIndex < 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please select a gender","OK");
 					return;
 				}
 				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please make sure SSN contains 4 digits","OK");
 					return;
 				}
 				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0 || (validInsCarrier == null))
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please provide a valid Insurance Carrier","OK");
 					return;
 				}
 				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+
 					await DisplayAlert("Alert!","Please enter digits for the Insurance Carrier Id Number","OK");
 					return;
 				}
 				else if(InsuranceGroupNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceGroupNumberEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter digits for the Insurance Group Number","OK");
 					return;
 				}
 				else if(InsurancePhoneEntry.Text.Trim().Length != 10 || Regex.Matches(InsurancePhoneEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for the Insurance Phone Number","OK");
 					return;
 				}
 				else if(RxBinEntry.Text.Trim().Length <= 0 || Regex.Matches(RxBinEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter digits for the RX Bin","OK");
 					return;
 				}
 				else if(RxPcnEntry.Text.Trim().Length <= 0 || Regex.Matches(RxPcnEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter only digits for the RX Pcn","OK");
 					return;
 				}
 				else if(AllergiesEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter information on Allergies","OK");
 					return;
 				}
 				else if(DiagnosisEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter information on Diagnosis","OK");
 					return;
 				}
 				else if(AddressEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an Address","OK");				
 					return;
 				}
 				else if(CityEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a City","OK");
 					return;
 				}
 				else if(StateEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an State","OK");
 					return;
 				}
 				else if(ZipEntry.Text.Trim().Length != 5 || Regex.Matches(ZipEntry.Text,@"[a-zA-Z]").Count > 0)
-				{				
+				{	
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a Zip code with 5 digits","OK");
 					return;
 				}
 				else if(PhoneEntry.Text.Trim().Length != 10 || Regex.Matches(PhoneEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for the Phone Number","OK");
 					return;
 				}
 				else if(EmailEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an Email","OK");
 					return;
 				}
 				else if(PaymentTypeEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a Payment Type","OK");
 					return;
 				}
@@ -381,6 +428,7 @@ namespace TriCare.Views
 					PatientId = p.PatientId,
 					Address = AddressEntry.Text, 
 					City = CityEntry.Text, 
+					InsuranceCarrierId = _insuranceCarrierId,
 					InsuranceCarrierIdNumber = InsuranceCarrierIdNumberEntry.Text, 
 					Gender = genderEntry.Items[genderEntry.SelectedIndex].ToString(),//genderEntry.Text, 
 					Email = EmailEntry.Text, 
@@ -394,7 +442,6 @@ namespace TriCare.Views
 					Zip = int.Parse(ZipEntry.Text), 
 					BirthDate = birthDateEntry.Date, 
 					Diagnosis = DiagnosisEntry.Text, 
-					InsuranceCarrierId = 1, 
 					InsurancePhone = InsurancePhoneEntry.Text,
 					PaymentType = PaymentTypeEntry.Text, 
 					RxBin = RxBinEntry.Text, 
@@ -403,21 +450,32 @@ namespace TriCare.Views
 				var patientRepo = new PatientRepo();
 				// send webservice request and so on
 				var res = await patientRepo.UpdatePatient(patientItem);
+				indi.IsRunning = false;
+
 				if (res == true)
 				{
 					if (!isDuringPrescription)
 					{
-						await this.Navigation.PopAsync();
-						await this.Navigation.PushAsync(new HomePage());
+						var Command = new Command(async o => {
+							await App.np.PopAsync(false);
+							await App.np.PopAsync(false);
+							await App.np.PushAsync(new PatientPage(patientItem, isDuringPrescription));
+						});
+						Command.Execute(new []{"run"});
 					}
 					else
 					{
+						var Command = new Command(async o => {
+							await App.np.PopAsync(false);
+							await App.np.PopAsync(false);
 						await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
-
+						});
+						Command.Execute(new []{"run"});
 					}
 				}
 				else
 				{
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
 				}
 			};
@@ -453,17 +511,26 @@ namespace TriCare.Views
 					}
 				}
 			};
-			Content = new StackLayout
+			content = new StackLayout
 			{
 				Children = {
 					scrollview
 				}
 			};
+			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			overlay.Children.Add(content);
+			overlay.Children.Add(indi);
+			Content = new ScrollView () {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Content = overlay
+			};
+
 		}
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-		}
+
 	}
 }
 

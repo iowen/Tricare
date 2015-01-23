@@ -17,7 +17,6 @@ namespace TriCare
 			cq = new List<string> ();
             var rRepo = new RefillRepo();
             Title = "Refills";
-			App.EnableLogout ();
             var ra =rRepo.GetAllRefillAmounts();
 			var qa =rRepo.GetAllRefillQuantities();
 
@@ -70,12 +69,12 @@ namespace TriCare
 				}
 			};
 
-			continueButton.Clicked += (sender, e) =>
+			continueButton.Clicked += async (sender, e) =>
 			{
 				App.CurrentPrescription.Refill = new TriCare.Models.RefillModel();
 				App.CurrentPrescription.Refill.Amount = ra[refillAmountPicker.SelectedIndex].RefillAmountId;
 				App.CurrentPrescription.Refill.Quantity = qa[refillQuantPicker.SelectedIndex].RefillQuantityId;
-				Navigation.PushAsync(new VerifyPage());
+				await App.np.PushAsync(new VerifyPage());
 			};
 
             foreach(var r in ra)
@@ -94,7 +93,7 @@ namespace TriCare
 
             Content = new StackLayout
             {
-                VerticalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 Padding = new Thickness(40),
                 Children = {
 					medL, amL, refillAmountPicker, aqL,refillQuantPicker,continueButton

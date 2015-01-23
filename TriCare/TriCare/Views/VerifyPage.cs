@@ -15,7 +15,6 @@ namespace TriCare
 		public VerifyPage ()
 		{
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			Title = "Verify";
 
 			var confirmButton = new Button { Text = "Confirm", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };
@@ -24,7 +23,7 @@ namespace TriCare
 				//  this.Navigation.PushAsync(new RegisterPage());
 				var sigserv = DependencyService.Get<ISignatureService>();
 				var fileSys = DependencyService.Get<IFileSystem>();
-				this.Navigation.PushAsync(new SignaturePadPage(sigserv, fileSys));
+				App.np.PushAsync(new SignaturePadPage(sigserv, fileSys));
 
 			};
 			//get Patient Name

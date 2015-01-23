@@ -11,11 +11,14 @@ namespace TriCare.Views
 {
 	public class PatientPage : ContentPage
 	{
+		private static Patient _patient;
 		public PatientPage(Patient p, bool isDuringPrescription = false)
 		{
+
+			var patientRepo  = new PatientRepo();
+			_patient = patientRepo.GetPatient (p.PatientId);
 			var insuranceCarrierRepo = new InsuranceCarrierRepo ();
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			if (!isDuringPrescription)
 				this.SetBinding(ContentPage.TitleProperty, "View Patient");
 			else
@@ -138,7 +141,7 @@ namespace TriCare.Views
 
 
 			var layout = new StackLayout();
-			layout.BindingContext = p;
+			layout.BindingContext = _patient;
 			//if (!isDuringPrescription) {
 				var editButton = new Button {
 					Text = "Edit" ,
@@ -146,7 +149,7 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				editButton.Clicked += async (sender, e) => {
-					this.Navigation.PushAsync (new EditPatientPage (p));
+				await App.np.PushAsync (new EditPatientPage (p));
 
 				};
 				var continueButton = new Button {
@@ -169,8 +172,8 @@ namespace TriCare.Views
 					//{
 					//    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
 					//}
-					App.CurrentPrescription.Patient =p;
-					await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
+				App.CurrentPrescription.Patient =_patient;
+				await App.np.PushAsync(new PrescriptionSelectMedicinePage());
 				};
 			grid.Children.Add(bv, 0,0);
 			grid.Children.Add(editButton);
@@ -180,7 +183,7 @@ namespace TriCare.Views
 			Grid.SetColumn (bv, 1);
 			Grid.SetColumn (continueButton, 2);
 				#region Layouts
-				this.BindingContext = p;
+			this.BindingContext = _patient;
 			var buttonStack = new StackLayout();
 			buttonStack.VerticalOptions = LayoutOptions.FillAndExpand;
 			if(isDuringPrescription)
@@ -406,6 +409,15 @@ namespace TriCare.Views
 				Content = scrollview;
 				#endregion
 			}
+	
+		protected override void OnAppearing ()
+		{
+			var patientRepo  = new PatientRepo();
+			_patient = patientRepo.GetPatient (_patient.PatientId);
+			OnBindingContextChanged ();
+			base.OnAppearing ();
+
+		}
 
 		}
 	//}

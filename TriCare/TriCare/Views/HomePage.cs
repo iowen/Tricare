@@ -15,48 +15,49 @@ namespace TriCare.Views
         {
 			App.EnableLogout ();
 			App.IsHome = true;
+			App.IsLogin = false;
 			NavigationPage.SetHasBackButton (this, false);
 			this.BackgroundColor = Color.White;
 			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
-            AddPatientButton.Clicked += (sender, e) =>
+            AddPatientButton.Clicked += async (sender, e) =>
             {
 				App.IsHome = false;
-                this.Navigation.PushAsync(new CreatePatientPage());
+                await App.np.PushAsync(new CreatePatientPage());
 
             };
 
 			var ManagePatientButton = new Button { Text = "Manage Patients", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
-            ManagePatientButton.Clicked += (sender, e) =>
+            ManagePatientButton.Clicked += async (sender, e) =>
             {
 				App.IsHome = false;
 
-                this.Navigation.PushAsync(new PatientListPage());
+               await App.np.PushAsync(new PatientListPage());
 
             };
 
 			var AddPrescriptionButton = new Button { Text = "Add Prescription" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
-            AddPrescriptionButton.Clicked += (sender, e) =>
+            AddPrescriptionButton.Clicked += async (sender, e) =>
             {
 				App.IsHome = false;
 
-                this.Navigation.PushAsync(new PrescriptionNewORSelectPatientPage());
+				await App.np.PushAsync(new PrescriptionNewORSelectPatientPage());
 
             };
 
 			var ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
-            ManagePrescriptionButton.Clicked += (sender, e) =>
+            ManagePrescriptionButton.Clicked += async (sender, e) =>
             {
 				App.IsHome = false;
 
-				this.Navigation.PushAsync(new PrescriptionListPage());
+				await App.np.PushAsync(new PrescriptionListPage());
 
             };
 			var EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
-            EditProfileButton.Clicked += (sender, e) =>
+            EditProfileButton.Clicked += async (sender, e) =>
             {
 				App.IsHome = false;
 
-                this.Navigation.PushAsync(new PrescriberPage());
+				await  App.np.PushAsync(new PrescriberPage());
 
             };
             this.SetBinding(ContentPage.TitleProperty, "Home");

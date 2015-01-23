@@ -15,11 +15,11 @@ namespace TriCare.Views
 		private ActivityIndicator indi;
 		public LoginPage(bool isLogin = true)
         {
-			App.IsHome = true;
+			App.IsHome = false;
 
 			var overlay = new AbsoluteLayout();
 			var content = new StackLayout();
-			var indi = new ActivityIndicator();
+			 indi = new ActivityIndicator();
 			if (isLogin) {
 				this.BackgroundColor = Color.White;
 				var logoCell = new Image () {
@@ -27,7 +27,6 @@ namespace TriCare.Views
 				};
 
 				NavigationPage.SetHasNavigationBar (this, false);
-				App.DisableLogout ();
 				this.SetBinding (ContentPage.TitleProperty, "Login");
 				var emailLabel = new Label { Text = "Email", TextColor = Color.Navy  };
 				var emailEntry = new Entry () {
@@ -49,8 +48,14 @@ namespace TriCare.Views
 					BackgroundColor = Color.FromRgb (52, 63, 169),
 					TextColor = Color.White
 				};
+				var registerButton = new Button {
+					Text = "Register",
+					BackgroundColor = Color.FromRgba (128, 128, 128, 128),
+					TextColor = Color.White
+				};
 				loginButton.Clicked += async (sender, e) => {
 					loginButton.IsEnabled = false;
+					registerButton.IsEnabled = false;
 					indi.IsRunning = true;
 					var sr = new StateRepo();
 					if (sr.InsertRecords()){
@@ -64,35 +69,31 @@ namespace TriCare.Views
 
 					if (loginState.ToLower () == "success") {
 						App.ClearCurrentPrescription ();
-						await this.Navigation.PopAsync();
-						await this.Navigation.PushAsync(new HomePage());
-					} else {
-						await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
 						loginButton.IsEnabled = true;
+						registerButton.IsEnabled = true;
+						passwordEntry.Text = "";
+						emailEntry.Text = "";
+						await App.np.PushAsync(new HomePage());
+					} else {
+						loginButton.IsEnabled = true;
+						registerButton.IsEnabled = true;
+						await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
+
 					}
 				};
 
-				var registerButton = new Button {
-					Text = "Register",
-					BackgroundColor = Color.FromRgba (128, 128, 128, 128),
-					TextColor = Color.White
-				};
+
 				registerButton.Clicked += async (sender, e) => {
 					var sr = new StateRepo();
 					if (sr.InsertRecords()){
 						var r = sr.GetStates();
 					}
-					var sRepo = new SyncRepo();
-					var sModel = new SyncModel();
-					sModel.PrescriberId = 0;
-					sModel.SyncType = 'a';
-					sModel.LastAppDataSync = sRepo.GetLastAppUpdate();
-					await sRepo.GetSyncData(sModel);
-					this.Navigation.PushAsync (new  RegisterPage());            
+					await App.np.PushAsync (new  RegisterPage());            
 				};
 
 				content = new StackLayout {
-					VerticalOptions = LayoutOptions.StartAndExpand,
+					VerticalOptions = LayoutOptions.CenterAndExpand,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
 					Padding = new Thickness (20),
 					Children = {
 						logoCell,
@@ -107,7 +108,12 @@ namespace TriCare.Views
 				AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 				overlay.Children.Add(content);
 				overlay.Children.Add(indi);
-				Content = overlay;
+				Content = new ScrollView () {
+					VerticalOptions = LayoutOptions.CenterAndExpand,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+					Content = overlay
+				};
+
 			}
         }
 		public  void ReLoad()

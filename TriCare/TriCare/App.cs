@@ -10,7 +10,7 @@ namespace TriCare
 {
     public class App
     {
-		private static NavigationPage np;
+		public static NavigationPage np;
 		private static ToolbarItem logOutButton;
 
         public static Page GetMainPage()
@@ -24,9 +24,9 @@ namespace TriCare
 //				logOutButton.Text = "Log Out";
 //				logOutButton.Clicked += LogOut;
 //			} else 			{
-				logOutButton.Text = ". . .";
-				logOutButton.Clicked += LogOutIOS;
 //			}
+			logOutButton.Text = ". . .";
+			logOutButton.Clicked += LogOutIOS;
 			np.ToolbarItems.Add (logOutButton);
 
 			var mainNav = np;
@@ -34,18 +34,23 @@ namespace TriCare
 			mainNav.BarTextColor = Color.White;
             return mainNav;
         }
-		public static void LogOutTime()
+		public static async void LogOutTime()
 		{
 			ClearCurrentPrescription ();
 			InvalidateToken ();
-			np.Navigation.PushAsync (new LoginPage ());
+			await np.PopToRootAsync ();
+		}
+			
+		public static async void LogOut(Object e , EventArgs s)
+		{
+			ClearCurrentPrescription ();
+			InvalidateToken ();
+			await np.PopToRootAsync ();
 		}
 
-		public static void LogOut(Object e , EventArgs s)
+		public static async void IgnoreLogOut(Object e , EventArgs s)
 		{
-			ClearCurrentPrescription ();
-			InvalidateToken ();
-			np.Navigation.PushAsync (new LoginPage ());
+			return;
 		}
 		public static async void LogOutIOS(Object e , EventArgs s)
 		{
@@ -53,7 +58,7 @@ namespace TriCare
 			if (action == "Log Out") {
 				ClearCurrentPrescription ();
 				InvalidateToken ();
-				np.Navigation.PushAsync (new LoginPage ());
+				await np.PopToRootAsync ();
 			}
 		}
         public static bool IsLoggedIn
@@ -62,33 +67,24 @@ namespace TriCare
         }
 		public static void DisableLogout()
 		{
-			//np.ToolbarItems.Clear ();
+			if (logOutButton.Text == ". . .") {
+				logOutButton.Text = "";
+				logOutButton.Clicked -= LogOutIOS;
+				logOutButton.Clicked += IgnoreLogOut;
+			}
 		}
 
 		public static void EnableLogout()
 		{
-			if (np.ToolbarItems.Count == 0)
-			{
-//				if (Device.OS != TargetPlatform.iOS) 
-//				{
-//					logOutButton = new ToolbarItem ();
-//
-//					logOutButton.Order = ToolbarItemOrder.Secondary;
-//					logOutButton.Text = "Log Out";
-//					logOutButton.Clicked += LogOut;
-//					np = new NavigationPage (new LoginPage ());
-//					np.ToolbarItems.Add (logOutButton);
-//				} else 			{
-					logOutButton = new ToolbarItem ();
-
-					logOutButton.Text = ". . .";
-					logOutButton.Clicked += LogOutIOS;
-					np = new NavigationPage (new LoginPage ());
-					np.ToolbarItems.Add (logOutButton);
-//				}
+			if (logOutButton.Text == "") {
+				logOutButton.Text = ". . .";
+				logOutButton.Clicked -= IgnoreLogOut;
+				logOutButton.Clicked += LogOutIOS;
 			}
+
 		}
 		public static bool IsHome{ get; set; }
+		public static bool IsLogin{ get; set; }
         static string _Token;
         public static string Token
         {

@@ -16,6 +16,7 @@ namespace TriCare
 	{
 		private List<State> stList;
 
+		private ActivityIndicator indi;
 
 		private List<object> stateList =
 			new List<object>();
@@ -34,7 +35,9 @@ namespace TriCare
 		{
 			var pRepo = new PrescriberRepo();
 			var p = pRepo.GetPrescriber(int.Parse(App.Token));
-
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
+			indi = new ActivityIndicator();
 			this.BindingContext = p;
 			this.BackgroundColor = Color.White;
 			this.SetBinding(ContentPage.TitleProperty, "Edit Profile");
@@ -170,6 +173,8 @@ namespace TriCare
 			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 			saveButton.Clicked += async (sender, e) =>
 			{
+				indi.IsRunning = true;
+				saveButton.IsEnabled = false;
 				#region Validation 
 				int zipval = 0;
 				int.TryParse(ZipEntry.Text.Trim(),out zipval);
@@ -179,61 +184,84 @@ namespace TriCare
 				Int64.TryParse(PhoneEntry.Text.Trim(), out phoneval);
 				if(firstNameEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
 					await DisplayAlert("Alert!","Please enter a first name","Ok");
 					return;
 				}
 				else if(lastNameEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a last name","Ok");
 					return;
 				}
 				else if(emailEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an email address","Ok");
 					return;
 				}
 				else if(NpiNumberEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an NPI number","Ok");
 					return;
 				}
 				else if(LicenseNumberEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an License Number","Ok");
 					return;
 				}
 				else if(DeaNumberEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an DEA Number","Ok");
 					return;
 				}
 				else if(AddressEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an Address","Ok");
 					return;
 				}
 				else if(CityEntry.Text.Trim().Length <= 0)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a City","Ok");
 					return;
 				}
 				else if(StateEntry.Text.Trim().Length <= 0 || stList.Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault() == null)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a valid State","Ok");
 					return;
 				}
 				else if(zipval < 10000)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a vlaid ZIP Code","Ok");
 					return;
 				}
 				else if(phoneval < 1000000000)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for Phone Number","Ok");
 					return;
 				}
 				else if(faxval < 1000000000)
 				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for Fax Number","Ok");
 					return;
 				}
@@ -260,10 +288,11 @@ namespace TriCare
 
 				PrescriberRepo presRepo = new PrescriberRepo();
 				var res = await presRepo.UpdatePrescriber(item);
+				indi.IsRunning = false;
 				if(res == true)
 				{
-					await this.Navigation.PopAsync();
-					await this.Navigation.PushAsync(new HomePage());
+					await App.np.PopAsync();
+
 				}
 			};
 			var scrollview = new ScrollView 
@@ -290,12 +319,24 @@ namespace TriCare
 					}
 				}
 			};
-			Content = new StackLayout
+			content = new StackLayout
 			{
 				Children = {
 					scrollview
 				}
 			};
+			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			overlay.Children.Add(content);
+			overlay.Children.Add(indi);
+			Content = new ScrollView () {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Content = overlay
+			};
+
 		}
 	}
 }

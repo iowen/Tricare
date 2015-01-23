@@ -30,7 +30,6 @@ namespace TriCare.Views
 		public MedicineIngredientListPage (int _medicineId)
 		{
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			var iRepo = new IngredientRepo ();
 			var ir = iRepo.GetAllIngredients ();
 			foreach (var i in ir) {
@@ -48,12 +47,12 @@ namespace TriCare.Views
             //addIngredientButton.Clicked += async (sender, e) =>
             //{
 
-            //    await this.Navigation.PushModalAsync(new AddIngredients());
+            //    await App.np.PushModalAsync(new AddIngredients());
 
             //};
 
 			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White ,WidthRequest= 120 };
-			continueButton.Clicked += (sender, e) =>
+			continueButton.Clicked += async(sender, e) =>
 			{
 				//show add modal;
 				App.CurrentPrescription.Medicine.Ingredients = new List<PrescriptionMedicineIngredientModel>();
@@ -65,7 +64,7 @@ namespace TriCare.Views
 					App.CurrentPrescription.Medicine.Ingredients.Add(new PrescriptionMedicineIngredientModel(){  Percentage = it.Percentage, IngredientId = it.IngredientId, Name = it.Name}); 
 				}
 
-                Navigation.PushAsync(new RefillPage());
+                await App.np.PushAsync(new RefillPage());
 			};
 			Grid grid = new Grid
 			{

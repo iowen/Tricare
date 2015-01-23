@@ -12,7 +12,6 @@ namespace TriCare.Views
         public PrescriptionNewORSelectPatientPage()
         {
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			var pRepo = new PrescriberRepo ();
 			var pId = int.Parse(App.Token);
 			var presc = pRepo.GetPrescriber (pId);
@@ -23,13 +22,13 @@ namespace TriCare.Views
 			var newPatientButton = new Button { Text = "New Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             newPatientButton.Clicked += async (sender, e) =>
             {
-                    await this.Navigation.PushAsync(new CreatePatientPage(true));
+				await App.np.PushAsync(new CreatePatientPage(true));
             };
 
 			var existingPatientButton = new Button { Text = "Existing Patient", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
-            existingPatientButton.Clicked += (sender, e) =>
+            existingPatientButton.Clicked += async (sender, e) =>
             {
-                this.Navigation.PushAsync(new PatientListPage(true));
+				await App.np.PushAsync(new PatientListPage(true));
 
             };
 			var orLabel = new Label (){ Text = "- OR -",HorizontalOptions =LayoutOptions.Center, TextColor = Color.Gray };

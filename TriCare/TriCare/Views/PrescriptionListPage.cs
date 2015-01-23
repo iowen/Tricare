@@ -16,7 +16,6 @@ namespace TriCare.Views
 		public PrescriptionListPage (bool isDuringPrescription = false)
 		{
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			Title = "Prescriptions";
 			prescriptionList = new List<PrescriptionModel> ();
 			listView = new ListView ();
@@ -31,16 +30,16 @@ namespace TriCare.Views
 					return;
                 var selected = (PrescriptionModel)e.SelectedItem;
                     var prescriptionPage = new ViewPrescriptionPage(selected);
-				await Navigation.PushAsync(prescriptionPage);
+				await App.np.PushAsync(prescriptionPage);
 				listView.SelectedItem = null;
 			};
 			SearchBar searchBar = new SearchBar
 			{
-				
+
 			};
 			searchBar.SearchButtonPressed += OnSearchBarButtonPressed;
 			listView.HasUnevenRows = true;
-
+			searchBar.TextChanged += OnSearchBarTextChanged;
 			// Accomodate iPhone status bar.
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			var layout = new StackLayout();
@@ -73,13 +72,20 @@ namespace TriCare.Views
 			listView.ItemsSource = prescriptionList;
 
 		}
+		public void OnSearchBarTextChanged(object sender, EventArgs args)
+		{
+			var sb = sender as SearchBar;
+			if(String.IsNullOrWhiteSpace(sb.Text))
+				listView.ItemsSource = prescriptionList;
+		}
+
 		public void OnSearchBarButtonPressed(object sender, EventArgs args)
 		{
 			// Get the search text.
 			SearchBar searchBar = (SearchBar)sender;
 			string searchText = searchBar.Text;
 			if (!string.IsNullOrWhiteSpace (searchText.Trim ())) {
-				var result = prescriptionList.Where (a => a.MedicineNameFriendly.ToLower().Contains (searchText) || a.PatientNameFriendly.ToLower().Contains (searchText)).ToList ();
+				var result = prescriptionList.Where (a => a.MedicineNameFriendly.ToLower().Contains (searchText.ToLower()) || a.PatientNameFriendly.ToLower().Contains (searchText.ToLower())).ToList ();
 				listView.ItemsSource = result;
 			} else {
 				listView.ItemsSource = prescriptionList;

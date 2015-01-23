@@ -16,7 +16,6 @@ namespace TriCare.Views
 		public PatientListPage (bool isDuringPrescription = false)
 		{
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
 			Title = "Patients";
 			patientList = new List<Patient> ();
 			listView = new ListView ();
@@ -33,11 +32,11 @@ namespace TriCare.Views
                 if (!isDuringPrescription)
                 {
                     var patientPage = new PatientPage(selected);
-                    await Navigation.PushAsync(patientPage);
+					await App.np.PushAsync(patientPage);
                 }
                 else
                 {
-					await Navigation.PushAsync(new PatientPage(selected, true));
+					await App.np.PushAsync(new PatientPage(selected, true));
                 }
 				listView.SelectedItem = null;
 			};

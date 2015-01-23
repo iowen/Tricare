@@ -16,11 +16,11 @@ namespace TriCare.Views
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
 			Title = "Profile";
 			this.BackgroundColor = Color.White;
-			App.EnableLogout ();
+		//	App.EnableLogout ();
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {
-                this.Navigation.PushAsync(new EditPrescriberPage());
+				await App.np.PushAsync(new EditPrescriberPage());
             };
 
 			var firstNameLabel = new Label { Text = "First Name", TextColor = Color.Navy  };
@@ -32,11 +32,11 @@ namespace TriCare.Views
             lastNameEntry.SetBinding(Label.TextProperty, "LastName");
 
 			var fullNameLabel = new Label{ Text = "Name:", TextColor = Color.Navy };
-			var fullNameEntry = new Label { TextColor = Color.Gray};
+			var fullNameEntry = new Label { TextColor = Color.Black};
 			fullNameEntry.SetBinding (Label.TextProperty, "NameFriendly");
 
 			var emailLabel = new Label { Text = "Email:",  TextColor = Color.Navy };
-			var emailEntry = new Label{ TextColor = Color.Gray };
+			var emailEntry = new Label{ TextColor = Color.Black };
             emailEntry.SetBinding(Label.TextProperty, "Email");
 
 //			var passwordLabel = new Label { Text = "Password:",  TextColor = Color.Navy  };

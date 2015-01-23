@@ -18,6 +18,7 @@ namespace TriCare.Views
     {
 		private List<object> stateList =
 			new List<object>();
+		private ActivityIndicator indi;
 
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
@@ -33,6 +34,10 @@ namespace TriCare.Views
         {
 			this.BackgroundColor = Color.White;
 			App.DisableLogout ();
+		
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
+			indi = new ActivityIndicator();
             this.SetBinding(ContentPage.TitleProperty, "Register");
 			var a1 = new AutoCompleteView ();
 			SearchCommand = new Command((key) =>
@@ -177,6 +182,8 @@ namespace TriCare.Views
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
+				indi.IsRunning = true;
+				registerButton.IsEnabled = false;
 				#region Validation
 				var validState = s.GetAllStates().Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault();
 				int validZip = 0;
@@ -187,73 +194,101 @@ namespace TriCare.Views
 				Int64.TryParse(FaxEntry.Text,out validFax);
 				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a first name.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a last name.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(emailEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an email.", "OK");
 					return;
 				}
 				else if (passwordEntry.Text != password2Entry.Text)
                 {
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", "Passwords must match.", "OK");
                     return;
                 }
 				else if (string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", "Password is required", "OK");
                     return;
                 }
 				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an NPI number.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a License number.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a DEA number.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an Address.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a City.", "OK");
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a valid State.", "OK");
 					return;
 				}
 				else if (validZip < 10000)
                 {
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					//must be atleast 5 digits
                     await DisplayAlert("Error", "Invalid Zip Format, please enter 5 digits.", "OK");
                     return;
                 }
 				else if(validPhone < 1000000000)
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					//must be atleast 10 digits
 					await DisplayAlert("Error", "Please enter a valid Phone number.", "OK");
 					return;
 				}
 				else if(validFax < 1000000000)
 				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
 					//must be atleast 10 digits
 					await DisplayAlert("Error", "Please enter a valid fax number.", "OK");
 					return;
@@ -263,6 +298,8 @@ namespace TriCare.Views
                 var bR = PrescriberValidator.Validate(prescriberItem, out msg);
                 if(!bR)
                 {
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", msg, "OK");
                     return;
                 }
@@ -271,6 +308,8 @@ namespace TriCare.Views
                 var prescriberRepo = new PrescriberRepo();
                 // send webservice request and so on
                 var res = await prescriberRepo.AddPrescriber(prescriberItem);
+				indi.IsRunning = false;
+
 				var resultInt = int.Parse(res.ToString());
 				if (resultInt > 0)
                 {
@@ -278,20 +317,25 @@ namespace TriCare.Views
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
 					if (loginState.ToLower () == "success") {
 						App.ClearCurrentPrescription ();
-						await this.Navigation.PushAsync (new HomePage ());
+						await App.np.PushAsync (new HomePage ());
 					} 
                 }
                 else
                 {
+					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", "An Error Occured Please Try Again", "OK");
                 }
             };
+			firstNameEntry.Placeholder = "                                                                                              ";
 			var scrollview = new ScrollView 
 			{
-				VerticalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Content = new StackLayout 
 				{
-					VerticalOptions = LayoutOptions.StartAndExpand,
+					VerticalOptions = LayoutOptions.CenterAndExpand,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 					Padding = new Thickness(20),
 					Children={
 					firstNameLabel, firstNameEntry, 
@@ -310,14 +354,26 @@ namespace TriCare.Views
 					FaxLabel, FaxEntry,
 					registerButton
 					}
-				}
+				},
 			};
-            Content = new StackLayout
+            content = new StackLayout
             {
 				Children = {
                scrollview
              		}
             };
+			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			overlay.Children.Add(content);
+			overlay.Children.Add(indi);
+			Content = new ScrollView () {
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Content = overlay
+			};
+
         }
     }
 }

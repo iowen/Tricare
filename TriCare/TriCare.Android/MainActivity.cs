@@ -61,8 +61,12 @@ namespace TriCare.Droid
 
 		public override void OnBackPressed ()
 		{
-			if(!App.IsHome)
-			base.OnBackPressed ();
+			if (App.IsHome) {
+				OnStop ();
+				return;
+			}
+//			if(!App.IsHome)
+//			base.OnBackPressed ();
 		}
     }
 }
