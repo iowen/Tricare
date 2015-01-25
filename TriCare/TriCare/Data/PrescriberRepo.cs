@@ -68,7 +68,7 @@ namespace TriCare.Data
 				var sModel = new SyncModel();
 				sModel.PrescriberId = prescriber.PrescriberId;
 				sModel.SyncType = 'b';
-				sModel.LastSync = prescriber.LastUpdate;
+				sModel.LastSync = new DateTime(1987, 11,21);
 				sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
 				await sRepo.GetSyncData(sModel);
                 App.SaveToken(prescriber.PrescriberId.ToString());

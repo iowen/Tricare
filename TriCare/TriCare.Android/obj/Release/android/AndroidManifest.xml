@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="TriCare.Android">
   <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
-  <application android:name="mono.android.app.Application">
+  <application android:icon="@drawable/tricareicon" android:name="mono.android.app.Application">
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/tricareicona" android:label="TriCare Wellness" android:theme="@style/Theme.Tcaretab" android:name="tricare.droid.MainActivity" />
     <activity android:name="tricare.droid.SignatureServiceActivity" />
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/tricareicona" android:label="TriCare Wellness" android:noHistory="true" android:theme="@layout/splashtheme" android:name="tricare.droid.SplashScreen">
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/tricareicon" android:label="TriCare Wellness" android:noHistory="true" android:theme="@layout/splashtheme" android:name="tricare.droid.SplashScreen">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

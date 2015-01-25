@@ -144,3 +144,9 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Release/TriCare.dll.mdb
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Release/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Release/Newtonsoft.Json.xml
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/patienticon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/appmenu.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/prescribericon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/prescriptionicon.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/tricareios.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable/tricareandroid.png
