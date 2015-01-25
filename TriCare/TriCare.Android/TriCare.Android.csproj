@@ -228,6 +228,12 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_pressed_tcaretab.9.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_tcaretab.9.png" />
     <AndroidResource Include="Resources\values\styles_tcaretab.xml" />
+    <AndroidResource Include="Resources\Drawable\patientIcon.png" />
+    <AndroidResource Include="Resources\Drawable\appMenu.png" />
+    <AndroidResource Include="Resources\Drawable\prescriberIcon.png" />
+    <AndroidResource Include="Resources\Drawable\prescriptionIcon.png" />
+    <AndroidResource Include="Resources\Drawable\tricareIos.png" />
+    <AndroidResource Include="Resources\Drawable\tricareAndroid.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\tricareBG.png" />

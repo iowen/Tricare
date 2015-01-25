@@ -53,7 +53,6 @@ namespace TriCare.iOS
 			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
 			timer.Stop ();
 			if (timer.ElapsedMilliseconds > 600000) {
-				if (App.IsLoggedIn)
 					App.LogOutTime();
 			}
 		}

@@ -12,7 +12,8 @@ namespace TriCare
     {
 		public static NavigationPage np;
 		private static ToolbarItem logOutButton;
-
+		public static int andCurr;
+		public static bool showLogout;
         public static Page GetMainPage()
 		{
 			logOutButton = new ToolbarItem ();
@@ -25,26 +26,43 @@ namespace TriCare
 //				logOutButton.Clicked += LogOut;
 //			} else 			{
 //			}
-			logOutButton.Text = ". . .";
+			showLogout = true;
+			logOutButton.Icon = "appMenu.png";
 			logOutButton.Clicked += LogOutIOS;
 			np.ToolbarItems.Add (logOutButton);
 
+
+			if (andCurr > 0) {
+				SaveToken (andCurr.ToString ());
+				np.Navigation.PushAsync (new HomePage ());
+			}
 			var mainNav = np;
 			mainNav.BarBackgroundColor = Color.FromRgb (52, 63, 169);
 			mainNav.BarTextColor = Color.White;
             return mainNav;
         }
+		public static  void LogOutClear()
+		{
+			ClearCurrentPrescription ();
+			InvalidateToken ();
+			andCurr = 0;
+			IsHome = false;
+		}
 		public static async void LogOutTime()
 		{
 			ClearCurrentPrescription ();
 			InvalidateToken ();
+			andCurr = 0;
+			IsHome = false;
 			await np.PopToRootAsync ();
 		}
 			
 		public static async void LogOut(Object e , EventArgs s)
 		{
 			ClearCurrentPrescription ();
+			andCurr = 0;
 			InvalidateToken ();
+			IsHome = false;
 			await np.PopToRootAsync ();
 		}
 
@@ -58,6 +76,8 @@ namespace TriCare
 			if (action == "Log Out") {
 				ClearCurrentPrescription ();
 				InvalidateToken ();
+				andCurr = 0;
+				IsHome = false;
 				await np.PopToRootAsync ();
 			}
 		}
@@ -67,8 +87,8 @@ namespace TriCare
         }
 		public static void DisableLogout()
 		{
-			if (logOutButton.Text == ". . .") {
-				logOutButton.Text = "";
+			if (showLogout) {
+				showLogout = false;
 				logOutButton.Clicked -= LogOutIOS;
 				logOutButton.Clicked += IgnoreLogOut;
 			}
@@ -76,8 +96,8 @@ namespace TriCare
 
 		public static void EnableLogout()
 		{
-			if (logOutButton.Text == "") {
-				logOutButton.Text = ". . .";
+			if (!showLogout) {
+				showLogout = true;
 				logOutButton.Clicked -= IgnoreLogOut;
 				logOutButton.Clicked += LogOutIOS;
 			}

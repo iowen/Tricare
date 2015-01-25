@@ -117,7 +117,7 @@ namespace TriCare.Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				RowDefinitions = 
 				{
-					new RowDefinition { Height = new GridLength(80, GridUnitType.Absolute) },
+					new RowDefinition { Height = new GridLength(40, GridUnitType.Absolute) },
 				},
 				ColumnDefinitions = 
 				{
@@ -185,7 +185,6 @@ namespace TriCare.Views
 				#region Layouts
 			this.BindingContext = _patient;
 			var buttonStack = new StackLayout();
-			buttonStack.VerticalOptions = LayoutOptions.FillAndExpand;
 			if(isDuringPrescription)
 			{
 				buttonStack.Children.Add(grid);

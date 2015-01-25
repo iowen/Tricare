@@ -49,17 +49,22 @@ namespace TriCare.Views
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
 			layout.Children.Add (searchBar);
-			layout.Children.Add (new StackLayout{	
+			layout.Children.Add (new StackLayout{
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					new ScrollView
 				{
 					Content = listView,
-					VerticalOptions = LayoutOptions.FillAndExpand
+					VerticalOptions = LayoutOptions.FillAndExpand,
+						HorizontalOptions = LayoutOptions.FillAndExpand
+
 					}
 				}
 			}
 				);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
+			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
 		

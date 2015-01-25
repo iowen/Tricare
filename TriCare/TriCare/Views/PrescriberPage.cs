@@ -15,11 +15,13 @@ namespace TriCare.Views
             var pRepo = new PrescriberRepo();
             var p = pRepo.GetPrescriber(int.Parse(App.Token));
 			Title = "Profile";
+			Icon = "prescriberIcon.png";
 			this.BackgroundColor = Color.White;
 		//	App.EnableLogout ();
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {
+				App.IsHome = false;
 				await App.np.PushAsync(new EditPrescriberPage());
             };
 
@@ -226,5 +228,11 @@ namespace TriCare.Views
 			#endregion
 
         }
+
+		protected override void OnAppearing ()
+		{
+			App.IsHome = true;
+			base.OnAppearing ();
+		}
     }
 }

@@ -72,9 +72,9 @@ namespace TriCare.Views
               Children = {
 					AddPrescriptionButton, ManagePrescriptionButton
               }
-          },
-                }
-            );
+					},
+					Icon = "prescriptionIcon.png"
+                });
             this.Children.Add(new ContentPage
             {
                 Title = "Patients",
@@ -86,11 +86,25 @@ namespace TriCare.Views
                     Children = {
 					AddPatientButton, ManagePatientButton
               }
-                }
+                },
+					Icon = "patientIcon.png"
             });
 			this.Children.Add (new PrescriberPage ());
         }
+		protected override void OnCurrentPageChanged ()
+		{
+			if(Device.OS == TargetPlatform.iOS)
+				Title = this.CurrentPage.Title;
+			base.OnCurrentPageChanged ();
+		}
+		protected override void OnAppearing ()
+		{
+			App.IsHome = true;
+			if(Device.OS == TargetPlatform.iOS)
+			Title = this.CurrentPage.Title;
 
+			base.OnAppearing ();
+		}
 		protected override bool OnBackButtonPressed ()
 		{
 			return false;

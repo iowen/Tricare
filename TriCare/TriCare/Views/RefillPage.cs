@@ -93,7 +93,7 @@ namespace TriCare
 
             Content = new StackLayout
             {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
                 Padding = new Thickness(40),
                 Children = {
 					medL, amL, refillAmountPicker, aqL,refillQuantPicker,continueButton

@@ -35,6 +35,8 @@ namespace TriCare.Views
 		}
 		private AutoCompleteView a;
 		private AutoCompleteView st;
+		private int _insuranceCarrierId;
+
 		private string searchText;
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public CreatePatientPage(bool isDuringPrescription = false)
@@ -44,6 +46,7 @@ namespace TriCare.Views
 			var overlay = new AbsoluteLayout();
 			var content = new StackLayout();
 			indi = new ActivityIndicator();
+			_insuranceCarrierId = 0;
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()
             {
@@ -250,7 +253,7 @@ namespace TriCare.Views
 				var ins = iRepo.GetAllInsuranceCarriers().Where(i => i.Name.Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
 				if(ins != null)
 				{
-					InsuranceCarrierIdNumberEntry.Text = ins.InsuranceCarrierId.ToString();
+					_insuranceCarrierId = ins.InsuranceCarrierId;
 				}
 			};
 
@@ -414,7 +417,7 @@ namespace TriCare.Views
 					Zip = int.Parse(ZipEntry.Text), 
 					BirthDate = birthDateEntry.Date,//DateTime.Parse(birthDateEntry.Date.ToString("d")), 
 					Diagnosis = DiagnosisEntry.Text, 
-					InsuranceCarrierId = 1, 
+					InsuranceCarrierId = _insuranceCarrierId, 
 					InsurancePhone = InsurancePhoneEntry.Text, 
 					PaymentType = PaymentTypeEntry.Text,
 					RxBin = RxBinEntry.Text, 
@@ -449,15 +452,13 @@ namespace TriCare.Views
                     await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "Close");
                 }
             };
-			firstNameEntry.Placeholder = "                                                                                              ";
+		//	firstNameEntry.Placeholder = "                                                                                              ";
 
-            var scrollview = new ScrollView
-            {
-                VerticalOptions = LayoutOptions.StartAndExpand,
-                Content = new StackLayout
+            content =  new StackLayout
                 {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
-                    Padding = new Thickness(20),
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Padding = new Thickness(20),
                     Children ={
 					firstNameLabel, firstNameEntry, 
 					lastNameLabel, lastNameEntry,
@@ -481,25 +482,16 @@ namespace TriCare.Views
                     PaymentTypeLabel, PaymentTypeEntry,
 					saveButton
 					}
-                }
             };
-            content = new StackLayout
-            {
-                Children = {
-               scrollview
-             		}
-            };
-			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
-			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+
 			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
 			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-			overlay.Children.Add(content);
 			overlay.Children.Add(indi);
+			overlay.Children.Add(content,new Rectangle (0, 0, 1, 1), AbsoluteLayoutFlags.All);
 			Content = new ScrollView () {
-				VerticalOptions = LayoutOptions.CenterAndExpand,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Content = overlay
 			};
+
         }
     }
 }

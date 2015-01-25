@@ -25,8 +25,9 @@ namespace TriCare.iOS
 			base.OnElementChanged(e);
 
 			TabBar.TintColor = MonoTouch.UIKit.UIColor.White;
-			TabBar.BarTintColor = MonoTouch.UIKit.UIColor.FromRGBA(52, 63, 169, 128);
-			TabBar.BackgroundColor = MonoTouch.UIKit.UIColor.Blue;
+			TabBar.BarTintColor = MonoTouch.UIKit.UIColor.FromRGB(52, 63, 169);
+			TabBar.BackgroundColor = MonoTouch.UIKit.UIColor.FromRGB(52, 63, 169);
+
 
 		}
 	}

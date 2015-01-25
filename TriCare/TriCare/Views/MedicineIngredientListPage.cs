@@ -36,7 +36,7 @@ namespace TriCare.Views
 				IngredientList.Add (i.Name.Trim ());
 			}
 			var medL = new Label {
-				TextColor = Color.White,
+				TextColor = Color.Navy,
 				Text = "Medicine : "+App.CurrentPrescription.Medicine.MedicineName.Trim()
 			};
 			medicineId = _medicineId;
@@ -90,13 +90,13 @@ namespace TriCare.Views
 				HeightRequest = 1,
 				BackgroundColor = Color.Transparent
 			};
-			grid.Children.Add(bv, 0,0);
-			grid.Children.Add(continueButton);
-
-            // for version 2
-		//	Grid.SetColumn (addIngredientButton, 0);
-			Grid.SetColumn (bv, 1);
-			Grid.SetColumn (continueButton, 2);
+//			grid.Children.Add(bv, 0,0);
+//			grid.Children.Add(continueButton);
+//
+//            // for version 2
+//		//	Grid.SetColumn (addIngredientButton, 0);
+//			Grid.SetColumn (bv, 1);
+//			Grid.SetColumn (continueButton, 2);
 		
 			listView = new ListView ();
 			listView.BackgroundColor = Color.Transparent;
@@ -121,11 +121,14 @@ namespace TriCare.Views
 					Text="Formula", 
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
+			layout.Padding = new Thickness (20);
+			layout.Children.Add (continueButton);
 			layout.Children.Add (medL);
-			layout.Children.Add (grid);
 	// for version 2
             //		layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
-			layout.Children.Add (new StackLayout{	
+			layout.Children.Add (new StackLayout{
+				VerticalOptions = LayoutOptions.StartAndExpand,
+
 				Children = {
 					new ScrollView
 					{

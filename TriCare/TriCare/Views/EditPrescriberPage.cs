@@ -291,16 +291,20 @@ namespace TriCare
 				indi.IsRunning = false;
 				if(res == true)
 				{
-					await App.np.PopAsync();
+					var Command = new Command(async o => {
+						await App.np.PopToRootAsync(false);
+						var pg = new HomePage();
+						pg.CurrentPage = pg.Children.Last();
+						await  App.np.PushAsync(pg,false);
+					});
+					Command.Execute(new []{"run"});
 
 				}
 			};
-			var scrollview = new ScrollView 
-			{
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				Content = new StackLayout 
+			content = new StackLayout 
 				{
-					VerticalOptions = LayoutOptions.StartAndExpand,
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 					Padding = new Thickness(20),
 					Children={
 						firstNameLabel, firstNameEntry, 
@@ -317,23 +321,14 @@ namespace TriCare
 						FaxLabel, FaxEntry,
 						saveButton
 					}
-				}
+				
 			};
-			content = new StackLayout
-			{
-				Children = {
-					scrollview
-				}
-			};
-			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
-			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+
 			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
 			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-			overlay.Children.Add(content);
 			overlay.Children.Add(indi);
+			overlay.Children.Add(content,new Rectangle (0, 0, 1, 1), AbsoluteLayoutFlags.All);
 			Content = new ScrollView () {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Content = overlay
 			};
 

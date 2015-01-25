@@ -151,6 +151,13 @@
     <BundleResource Include="Resources\tricareBG.png" />
     <BundleResource Include="Resources\tricareIcon.png" />
     <BundleResource Include="Resources\tcareLoginLogo.png" />
+    <BundleResource Include="Resources\patientIcon.png" />
+    <BundleResource Include="Resources\prescriptionIcon.png" />
+    <BundleResource Include="Resources\prescriberIcon.png" />
+    <BundleResource Include="Resources\appMenu.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">

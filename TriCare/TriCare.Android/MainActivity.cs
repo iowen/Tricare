@@ -15,11 +15,23 @@ namespace TriCare.Droid
 	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,Icon="@drawable/tricareIconA",Theme = "@style/Theme.Tcaretab")]
     public class MainActivity : AndroidActivity
     {
-		private Stopwatch timer;
+		private static Stopwatch timer;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-			timer = new Stopwatch ();
+			try{
+			if (timer.IsRunning) {
+				timer.Stop ();
+				if (timer.ElapsedMilliseconds > 600000) {
+					App.LogOutClear();
+				}
+			}
+			else
+				timer = new Stopwatch ();
+			}
+			catch (Exception e) {
+				timer = new Stopwatch ();
+			}
             Xamarin.Forms.Forms.Init(this, bundle);
             SetPage(App.GetMainPage());
         }
@@ -40,7 +52,6 @@ namespace TriCare.Droid
 			base.OnResume();
 			timer.Stop ();
 			if (timer.ElapsedMilliseconds > 600000) {
-				if (App.IsLoggedIn)
 					App.LogOutTime ();
 			}
 		}
@@ -61,12 +72,21 @@ namespace TriCare.Droid
 
 		public override void OnBackPressed ()
 		{
-			if (App.IsHome) {
-				OnStop ();
-				return;
+//			if (App.IsHome) {
+//				OnStop ();
+//				return;
+//			}
+			if (!App.IsHome)
+				base.OnBackPressed ();
+			else
+			{
+				App.andCurr = int.Parse (App.Token);
+				timer.Stop ();
+				timer.Reset ();
+				timer.Start ();
+				Finish ();
+
 			}
-//			if(!App.IsHome)
-//			base.OnBackPressed ();
 		}
     }
 }

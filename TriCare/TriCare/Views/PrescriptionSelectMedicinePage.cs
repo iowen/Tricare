@@ -16,6 +16,7 @@ namespace TriCare.Views
 			this.SetBinding(ContentPage.TitleProperty, "Select Medicine");
 			var mRepo = new MedicineRepo ();
 			var meds = mRepo.GetAllMedicines ();
+			Title = "Medicines";
 			var myContent = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,

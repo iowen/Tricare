@@ -468,7 +468,7 @@ namespace TriCare.Views
 						var Command = new Command(async o => {
 							await App.np.PopAsync(false);
 							await App.np.PopAsync(false);
-						await this.Navigation.PushAsync(new PrescriptionSelectMedicinePage());
+							await App.np.PushAsync(new PrescriptionSelectMedicinePage());
 						});
 						Command.Execute(new []{"run"});
 					}
@@ -479,12 +479,10 @@ namespace TriCare.Views
 					await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
 				}
 			};
-			var scrollview = new ScrollView
-			{
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				Content = new StackLayout
+			content = new StackLayout
 				{
-					VerticalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 					Padding = new Thickness(20),
 					Children ={
 						firstNameLabel, firstNameEntry, 
@@ -509,26 +507,15 @@ namespace TriCare.Views
 						PaymentTypeLabel, PaymentTypeEntry,
 						saveButton
 					}
-				}
-			};
-			content = new StackLayout
-			{
-				Children = {
-					scrollview
-				}
-			};
-			AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
-			AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
-			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-			overlay.Children.Add(content);
-			overlay.Children.Add(indi);
-			Content = new ScrollView () {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Content = overlay
 			};
 
+			AbsoluteLayout.SetLayoutFlags(indi, AbsoluteLayoutFlags.PositionProportional);
+			AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			overlay.Children.Add(indi);
+			overlay.Children.Add(content,new Rectangle (0, 0, 1, 1), AbsoluteLayoutFlags.All);
+			Content = new ScrollView () {
+				Content = overlay
+			};
 		}
 
 	}
