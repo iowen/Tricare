@@ -24,6 +24,10 @@ namespace TriCare.Views
 				App.IsHome = false;
 				await App.np.PushAsync(new EditPrescriberPage());
             };
+			var buttonStack = new StackLayout();
+			buttonStack.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+				buttonStack.Children.Add(editButton);
 
 			var firstNameLabel = new Label { Text = "First Name", TextColor = Color.Navy  };
             var firstNameEntry = new Label();
@@ -64,10 +68,12 @@ namespace TriCare.Views
 			var CityLabel = new Label { Text = "City:", TextColor = Color.Navy  };
 			var CityEntry = new Label{ TextColor = Color.Black };
             CityEntry.SetBinding(Label.TextProperty, "City");
+			CityEntry.BindingContextChanged+= (object sender, EventArgs e) => {CityEntry.Text = CityEntry.Text.Trim();};
 
 			var StateLabel = new Label { Text = "State:", TextColor = Color.Navy  };
 			var StateEntry = new Label{ TextColor = Color.Black };
             StateEntry.SetBinding(Label.TextProperty, "State");
+			StateEntry.BindingContextChanged+= (object sender, EventArgs e) => {StateEntry.Text = StateEntry.Text.Trim();};
 
 			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Navy };
 			var ZipEntry = new Label{ TextColor = Color.Black };
@@ -89,11 +95,15 @@ namespace TriCare.Views
 				Font = Font.SystemFontOfSize (NamedSize.Large),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.Black,
-				BackgroundColor = Color.White
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
+	
 				};
 
 			StackLayout nameLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			nameLayout.Children.Add (fullNameLabel);
@@ -101,6 +111,8 @@ namespace TriCare.Views
 
 			StackLayout passwordLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 //
 //			passwordLayout.Children.Add (passwordLabel);
@@ -108,6 +120,8 @@ namespace TriCare.Views
 
 			StackLayout npiLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			npiLayout.Children.Add (NpiNumberLabel);
@@ -115,6 +129,8 @@ namespace TriCare.Views
 
 			StackLayout licenseLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			licenseLayout.Children.Add (LicenseNumberLabel);
@@ -122,6 +138,8 @@ namespace TriCare.Views
 
 			StackLayout deaLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			deaLayout.Children.Add (DeaNumberLabel);
@@ -132,11 +150,14 @@ namespace TriCare.Views
 				Font = Font.SystemFontOfSize (NamedSize.Large),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.Black,
-				BackgroundColor = Color.White
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			StackLayout emailLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			emailLayout.Children.Add (emailLabel);
@@ -144,6 +165,8 @@ namespace TriCare.Views
 
 			StackLayout phoneLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			phoneLayout.Children.Add (PhoneLabel);
@@ -151,6 +174,8 @@ namespace TriCare.Views
 
 			StackLayout faxLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			faxLayout.Children.Add (FaxLabel);
@@ -161,11 +186,14 @@ namespace TriCare.Views
 				Font = Font.SystemFontOfSize (NamedSize.Large),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.Black,
-				BackgroundColor = Color.White
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			StackLayout addressLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			addressLayout.Children.Add (AddressLabel);
@@ -173,6 +201,8 @@ namespace TriCare.Views
 
 			StackLayout cityLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			cityLayout.Children.Add (CityLabel);
@@ -180,6 +210,8 @@ namespace TriCare.Views
 
 			StackLayout stateLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			stateLayout.Children.Add (StateLabel);
@@ -187,6 +219,8 @@ namespace TriCare.Views
 
 			StackLayout zipLayout = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+
 			};
 
 			zipLayout.Children.Add (ZipLabel);
@@ -196,12 +230,14 @@ namespace TriCare.Views
 			var scrollview = new ScrollView
 			{
 				VerticalOptions = LayoutOptions.StartAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Content = new StackLayout
 				{
 					VerticalOptions = LayoutOptions.StartAndExpand,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 					Padding = new Thickness(20),
 					Children ={
-						editButton,
+						buttonStack,
 						new Label(),
 						prescriberHeaderLabel,
 						nameLayout,

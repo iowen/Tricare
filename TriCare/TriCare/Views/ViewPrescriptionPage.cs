@@ -28,12 +28,11 @@ namespace TriCare
 			listView.BackgroundColor = Color.Transparent;
 			listView.ItemTemplate = new DataTemplate 
 				(typeof (VerifyCell));
+
 			listView.ItemSelected += (sender, e) => {
-				var selected = (StringLabel)e.SelectedItem;
-
-				//var patientPage = new PatientPage(selected);
-				//                  Navigation.PushAsync(patientPage);
-
+				if (e.SelectedItem == null)
+					return;               
+				listView.SelectedItem = null;
 			};
 
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
@@ -51,12 +50,14 @@ namespace TriCare
 					new ScrollView
 					{
 						Content = listView,
-						VerticalOptions = LayoutOptions.FillAndExpand
+						VerticalOptions = LayoutOptions.FillAndExpand,
+						HorizontalOptions = LayoutOptions.CenterAndExpand
 					}
 				}
 			}
 			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
+			layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			Content = layout;
 
 

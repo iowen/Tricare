@@ -46,4 +46,6 @@ namespace TriCare.Models
         public List<PrescriptionMedicineIngredientModel> Ingredients;
 		public PrescriptionRefillModel Refill;
     }
+
+
 }

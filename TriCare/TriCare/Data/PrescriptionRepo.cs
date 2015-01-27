@@ -76,9 +76,49 @@ namespace TriCare.Data
 		public List<PrescriptionModel>GetPrescriptionsForPrescriber(int prescriberId)
 		{
 			var res = new List<PrescriptionModel> ();
-			var pres = database.Table<Prescription> ().Where (x => x.PrescrberId == prescriberId).ToList ();
-			foreach (var i in pres) {
-				res.Add (GetPrescriptionAsModel (i.PrescriptionId));
+
+			var rr = new RefillRepo ();
+			var pm = new PrescriptionMedicine ();
+			var pa = new Patient ();
+			var pscrib = database.Table<Prescriber>().FirstOrDefault(x => x.PrescriberId == prescriberId);
+			var pres = database.Table<Prescription> ().Where (x => x.PrescrberId ==prescriberId).OrderByDescending(X => X.Created). ToList();
+			//var pres = database.G("select * from Prescription As Prescription join Prescriber as Prescriber on Prescription.PrescrberId == Prescriber.PrescriberId join Patient as Patient on Prescription.PatientId == Patient.PatientId join PrescriptionMedicine as PrescriptionMedicine on Prescription.PrescriptionId == PrescriptionMedicine.PrescriptionId join PrescriptionMedicineIngredient on PrescriptionMedicine.PrescriptionMedicineId == PrescriptionMedicineIngredient.PrescriptionMedicineId where Prescription.PrescrberId == ?", prescriberId).ToList();
+		//	var pres = database.Table<Prescription> ().Where (x => x.PrescrberId == prescriberId).Join(database.Table<Prescriber> (),pb => pb.PrescrberId, pbb => pbb.PrescriberId, (pb,pbb)=> new{Prescription = pb, Prescriber = pbb}).Join(database.Table<Patient> (),pa => pa.Prescription.PatientId, paa => paa.PatientId, (pa,paa)=> new{Prescription = pa.Prescription, Prescriber = pa.Prescriber, Patient = paa}).Join (database.Table<PrescriptionMedicine> (), pscript => pscript.Prescription.PrescriptionId, pmed => pmed.PrescriptionId, (pscript, pmed) => new {Prescription = pscript.Prescription,Prescriber =pscript.Prescriber, Patient = pscript.Patient, PrescriptionMedicine = pmed}).GroupJoin (database.Table<PrescriptionMedicineIngredient> (), pmed => pmed.PrescriptionMedicine.PrescriptionMedicineId, pmedi => pmedi.PrescriptionMedicineId, (pmed, pmedi) => new {Prescription = pmed.Prescription, Prescriber =pmed.Prescriber, Patient = pmed.Patient, PrescriptionMedicine = pmed.PrescriptionMedicine, PrescriptionMedicineIngredients = pmedi.ToList ()}).ToList();
+			if (pres.Count > 0) {
+			//	var rm = rr.GetPrescriptionRefillAsModel (pres.First ().PrescriptionId);
+
+				foreach (var item in pres) {
+					pa = database.Table<Patient>().FirstOrDefault(x => x.PatientId == item.PatientId);
+					pm = database.Table<PrescriptionMedicine> ().First (x => x.PrescriptionId == item.PrescriptionId);
+					var pmi = database.Table<PrescriptionMedicineIngredient> ().Where (xx => xx.PrescriptionMedicineId == pm.PrescriptionMedicineId).ToList();
+					var mIng = new List<PrescriptionMedicineIngredientModel> ();
+					foreach (var i in pmi) {
+						mIng.Add (new PrescriptionMedicineIngredientModel () {
+							Percentage = i.Percentage,
+							PrescriptionMedicineId = i.PrescriptionMedicineId,
+							PrescriptionMedicineIngredientId = i.PrescriptionMedicineIngredientId,
+							IngredientId = i.IngredientId,
+							Name = i.Name
+						});
+					}
+					var mm = new MedicineModelForPrescription ();
+					var mRepo = new MedicineRepo ();
+					var med = mRepo.GetMedicine (pm.MedicineId);
+					mm.MedicineId = med.MedicineId;
+					mm.Ingredients = mIng;
+					mm.MedicineName = med.Name.Trim ();
+					mm.PrescriptionId = item.PrescriptionId;
+					var rm = rr.GetPrescriptionRefillAsModel (item.PrescriptionId);
+					var pmm = new PrescriptionModel () {
+						Prescriber = pscrib,
+						Patient = pa,
+						Created = item.Created,
+						Refill = rm,
+						PrescriptionId = item.PrescriptionId,
+						Medicine = mm
+					};
+					res.Add (pmm);
+				}
 			}
 			return res;
 		}

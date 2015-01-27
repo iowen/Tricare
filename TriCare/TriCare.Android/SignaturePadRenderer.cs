@@ -33,7 +33,6 @@ namespace TriCare.Droid
 
             if (e.OldElement != null || this.Element == null)
                 return;
-
             var view = new NativeView(Forms.Context);
             var el = e.NewElement;
             view.BackgroundColor = Color.Black.ToAndroid();

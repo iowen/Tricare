@@ -20,9 +20,9 @@ namespace TriCare.Views
 			prescriptionList = new List<PrescriptionModel> ();
 			listView = new ListView ();
 			var pRepo = new PrescriptionRepo();
-			prescriptionList = pRepo.GetPrescriptionsForPrescriber(int.Parse(App.Token));
 			listView.BackgroundColor = Color.Transparent;
 			listView.ItemsSource = prescriptionList;
+		
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (PrescriptionListCell));
 			listView.ItemSelected  += async (sender, e) => {
@@ -51,20 +51,20 @@ namespace TriCare.Views
 			layout.Children.Add (searchBar);
 			layout.Children.Add (new StackLayout{
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					new ScrollView
 				{
 					Content = listView,
 					VerticalOptions = LayoutOptions.FillAndExpand,
-						HorizontalOptions = LayoutOptions.FillAndExpand
+						HorizontalOptions = LayoutOptions.CenterAndExpand
 
 					}
 				}
 			}
 				);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
-			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
+			layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			Content = layout;
 
 		
@@ -72,8 +72,9 @@ namespace TriCare.Views
 
 		protected override void OnAppearing ()
 		{
-
 			base.OnAppearing ();
+			var pRepo = new PrescriptionRepo();
+			prescriptionList = pRepo.GetPrescriptionsForPrescriber(int.Parse(App.Token));
 			listView.ItemsSource = prescriptionList;
 
 		}

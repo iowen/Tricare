@@ -11,55 +11,76 @@ namespace TriCare.Views
 {
     public class HomePage : ExtendedTabbedPage
     {
+		private Button AddPatientButton; 
+		private Button ManagePatientButton; 
+		private Button AddPrescriptionButton; 
+		private Button ManagePrescriptionButton; 
+		private Button EditProfileButton; 
+		private ActivityIndicator indi;
         public HomePage()
         {
 			App.EnableLogout ();
 			App.IsHome = true;
 			App.IsLogin = false;
+			indi = new ActivityIndicator ();
+			indi.AnchorX = this.AnchorX / 2;
 			NavigationPage.SetHasBackButton (this, false);
+			var overlay = new AbsoluteLayout();
+			var content = new StackLayout();
 			this.BackgroundColor = Color.White;
-			var AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			AddPatientButton = new Button { Text = "Add Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPatientButton.Clicked += async (sender, e) =>
             {
+				DisableButtons();
 				App.IsHome = false;
                 await App.np.PushAsync(new CreatePatientPage());
+				EnableButtons();
 
             };
 
-			var ManagePatientButton = new Button { Text = "Manage Patients", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
+			ManagePatientButton = new Button { Text = "Manage Patients", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePatientButton.Clicked += async (sender, e) =>
             {
+				DisableButtons();
 				App.IsHome = false;
-
                await App.np.PushAsync(new PatientListPage());
-
+				EnableButtons();
             };
 
-			var AddPrescriptionButton = new Button { Text = "Add Prescription" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
+			AddPrescriptionButton = new Button { Text = "Add Prescription" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             AddPrescriptionButton.Clicked += async (sender, e) =>
             {
+				DisableButtons();
 				App.IsHome = false;
 
 				await App.np.PushAsync(new PrescriptionNewORSelectPatientPage());
+				EnableButtons();
+
 
             };
 
-			var ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
+			ManagePrescriptionButton = new Button { Text = "Prescription History", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             ManagePrescriptionButton.Clicked += async (sender, e) =>
             {
+				DisableButtons();
 				App.IsHome = false;
-
 				await App.np.PushAsync(new PrescriptionListPage());
+				EnableButtons();
+
 
             };
-			var EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
+			EditProfileButton = new Button { Text = "Edit Profile", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
             EditProfileButton.Clicked += async (sender, e) =>
             {
+				DisableButtons();
 				App.IsHome = false;
 
 				await  App.np.PushAsync(new PrescriberPage());
+				EnableButtons();
+
 
             };
+
             this.SetBinding(ContentPage.TitleProperty, "Home");
             this.Children.Add(new ContentPage
                 {
@@ -70,7 +91,7 @@ namespace TriCare.Views
               VerticalOptions = LayoutOptions.CenterAndExpand,
               Padding = new Thickness(20),
               Children = {
-					AddPrescriptionButton, ManagePrescriptionButton
+					indi,AddPrescriptionButton, ManagePrescriptionButton
               }
 					},
 					Icon = "prescriptionIcon.png"
@@ -84,13 +105,37 @@ namespace TriCare.Views
 						VerticalOptions = LayoutOptions.CenterAndExpand,
                     Padding = new Thickness(20),
                     Children = {
-					AddPatientButton, ManagePatientButton
+					indi,AddPatientButton, ManagePatientButton
               }
                 },
 					Icon = "patientIcon.png"
             });
 			this.Children.Add (new PrescriberPage ());
+
         }
+		private void  DisableButtons()
+		{
+			AddPatientButton.IsEnabled = false;
+			ManagePatientButton.IsEnabled = false;
+			AddPrescriptionButton.IsEnabled = false;
+			AddPrescriptionButton.IsEnabled = false;
+			ManagePrescriptionButton.IsEnabled = false;
+			EditProfileButton.IsEnabled = false;
+			indi.IsVisible = true;
+			indi.IsRunning = true;
+
+		}
+		private void  EnableButtons()
+		{
+			AddPatientButton.IsEnabled = true;
+			ManagePatientButton.IsEnabled = true;
+			AddPrescriptionButton.IsEnabled = true;
+			ManagePrescriptionButton.IsEnabled = true;
+			EditProfileButton.IsEnabled = true;
+			indi.IsVisible = false;
+			indi.IsRunning = false;
+
+		}
 		protected override void OnCurrentPageChanged ()
 		{
 			if(Device.OS == TargetPlatform.iOS)

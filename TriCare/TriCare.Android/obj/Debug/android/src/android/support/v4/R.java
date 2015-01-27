@@ -72,11 +72,12 @@ public final class R {
         public static int tab_unselected_pressed_tcaretab=0x7f020025;
         public static int tab_unselected_tcaretab=0x7f020026;
         public static int tcareloginlogo=0x7f020027;
-        public static int tricarebg=0x7f020028;
-        public static int tricareicon=0x7f020029;
-        public static int tricareicona=0x7f02002a;
-        public static int tricareios=0x7f02002b;
-        public static int tricaresplasha=0x7f02002c;
+        public static int tricareandroid=0x7f020028;
+        public static int tricarebg=0x7f020029;
+        public static int tricareicon=0x7f02002a;
+        public static int tricareicona=0x7f02002b;
+        public static int tricareios=0x7f02002c;
+        public static int tricaresplasha=0x7f02002d;
     }
     public static final class id {
         public static int btnCancel=0x7f080005;

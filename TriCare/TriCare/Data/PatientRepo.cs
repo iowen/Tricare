@@ -28,7 +28,7 @@ namespace TriCare.Data
 
         public List<Patient> GetAllPatientsForPrescriber(int prescriber)
         {
-            return database.Table<Patient>().Where(x => x.PrescriberId == prescriber).ToList();
+			return database.Table<Patient>().Where(x => x.PrescriberId == prescriber).OrderBy(x=>x.LastName).ToList();
         }
 
         public async Task<List<Patient>> PullAllPatientsForPrescriber(int prescriber)

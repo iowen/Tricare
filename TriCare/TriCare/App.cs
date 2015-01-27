@@ -89,6 +89,7 @@ namespace TriCare
 		{
 			if (showLogout) {
 				showLogout = false;
+				logOutButton.Icon = "";
 				logOutButton.Clicked -= LogOutIOS;
 				logOutButton.Clicked += IgnoreLogOut;
 			}
@@ -98,6 +99,7 @@ namespace TriCare
 		{
 			if (!showLogout) {
 				showLogout = true;
+				logOutButton.Icon = "appMenu.png";
 				logOutButton.Clicked -= IgnoreLogOut;
 				logOutButton.Clicked += LogOutIOS;
 			}

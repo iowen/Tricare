@@ -51,7 +51,7 @@ namespace TriCare.Views
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier:", TextColor = Color.Navy };
 			var InsuranceCarrierEntry = new Label { TextColor = Color.Black };
 			//InsuranceCarrierEntry.SetBinding(Label.TextProperty, "LicenseNumber");
-			InsuranceCarrierEntry.Text = insuranceCarrierRepo.GetInsuranceCarrier (p.InsuranceCarrierId).Name;
+			InsuranceCarrierEntry.Text = insuranceCarrierRepo.GetInsuranceCarrier (_patient.InsuranceCarrierId).Name.Trim();
 
 			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number:", TextColor = Color.Navy};
 			var InsuranceCarrierIdNumberEntry = new Label { TextColor = Color.Black };
@@ -76,10 +76,11 @@ namespace TriCare.Views
 			var AllergiesLabel = new Label { Text = "Allergies:", TextColor = Color.Navy };
 			var AllergiesEntry = new Label { TextColor = Color.Black };
 			AllergiesEntry.SetBinding(Label.TextProperty, "Allergies");
-
+			AllergiesEntry.BindingContextChanged+= (object sender, EventArgs e) => {AllergiesEntry.Text = AllergiesEntry.Text.Trim();};
 			var DiagnosisLabel = new Label { Text = "Diagnosis:", TextColor = Color.Navy };
 			var DiagnosisEntry = new Label { TextColor = Color.Black };
 			DiagnosisEntry.SetBinding(Label.TextProperty, "Diagnosis");
+			DiagnosisEntry.BindingContextChanged+= (object sender, EventArgs e) => {DiagnosisEntry.Text = DiagnosisEntry.Text.Trim();};
 
 			var AddressLabel = new Label { Text = "Address:", TextColor = Color.Navy };
 			var AddressEntry = new Label { TextColor = Color.Black };
@@ -88,10 +89,12 @@ namespace TriCare.Views
 			var CityLabel = new Label { Text = "City:", TextColor = Color.Navy};
 			var CityEntry = new Label { TextColor = Color.Black };
 			CityEntry.SetBinding(Label.TextProperty, "City");
+			CityEntry.BindingContextChanged+= (object sender, EventArgs e) => {CityEntry.Text = CityEntry.Text.Trim();};
 
 			var StateLabel = new Label { Text = "State:", TextColor = Color.Navy };
 			var StateEntry = new Label { TextColor = Color.Black };
 			StateEntry.SetBinding(Label.TextProperty, "State");
+			StateEntry.BindingContextChanged+= (object sender, EventArgs e) => {StateEntry.Text = StateEntry.Text.Trim();};
 
 			var ZipLabel = new Label { Text = "Zip:", TextColor = Color.Navy};
 			var ZipEntry = new Label { TextColor = Color.Black };
@@ -108,6 +111,7 @@ namespace TriCare.Views
 			var PaymentTypeLabel = new Label { Text = "Payment Type:", TextColor = Color.Navy };
 			var PaymentTypeEntry = new Label { TextColor = Color.Black };
 			PaymentTypeEntry.SetBinding(Label.TextProperty, "PaymentType");
+			PaymentTypeEntry.BindingContextChanged+= (object sender, EventArgs e) => {PaymentTypeEntry.Text = PaymentTypeEntry.Text.Trim();};
 
 
 
@@ -197,11 +201,13 @@ namespace TriCare.Views
 					Font = Font.SystemFontOfSize (NamedSize.Large),
 					FontAttributes = FontAttributes.Bold,
 					TextColor = Color.Black,
-					BackgroundColor = Color.White
+					BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				StackLayout nameLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				nameLayout.Children.Add (fullNameLabel);
@@ -209,6 +215,7 @@ namespace TriCare.Views
 
 				StackLayout genderLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				genderLayout.Children.Add (genderLabel);
@@ -216,6 +223,7 @@ namespace TriCare.Views
 
 				StackLayout birthDateLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				birthDateLayout.Children.Add (birthDateLabel);
@@ -223,6 +231,7 @@ namespace TriCare.Views
 
 				StackLayout ssnLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				ssnLayout.Children.Add (ssnLabel);
@@ -233,11 +242,13 @@ namespace TriCare.Views
 					Font = Font.SystemFontOfSize (NamedSize.Large),
 					FontAttributes = FontAttributes.Bold,
 					TextColor = Color.Black,
-					BackgroundColor = Color.White
+					BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				StackLayout addressLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				addressLayout.Children.Add (AddressLabel);
@@ -245,6 +256,7 @@ namespace TriCare.Views
 
 				StackLayout cityLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				cityLayout.Children.Add (CityLabel);
@@ -252,6 +264,7 @@ namespace TriCare.Views
 
 				StackLayout stateLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				stateLayout.Children.Add (StateLabel);
@@ -259,6 +272,7 @@ namespace TriCare.Views
 
 				StackLayout zipLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				zipLayout.Children.Add (ZipLabel);
@@ -269,11 +283,13 @@ namespace TriCare.Views
 					Font = Font.SystemFontOfSize (NamedSize.Large),
 					FontAttributes = FontAttributes.Bold,
 					TextColor = Color.Black,
-					BackgroundColor = Color.White
+					BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				StackLayout emailLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				emailLayout.Children.Add (EmailLabel);
@@ -281,6 +297,7 @@ namespace TriCare.Views
 
 				StackLayout phoneLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				phoneLayout.Children.Add (PhoneLabel);
@@ -291,11 +308,13 @@ namespace TriCare.Views
 					Font = Font.SystemFontOfSize (NamedSize.Large),
 					FontAttributes = FontAttributes.Bold,
 					TextColor = Color.Black,
-					BackgroundColor = Color.White
+					BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				StackLayout insuranceCarrierLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				insuranceCarrierLayout.Children.Add (InsuranceCarrierLabel);
@@ -303,6 +322,7 @@ namespace TriCare.Views
 
 				StackLayout insuranceCarrierIdNumberLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				insuranceCarrierIdNumberLayout.Children.Add (InsuranceCarrierIdNumberLabel);
@@ -310,6 +330,7 @@ namespace TriCare.Views
 
 				StackLayout insuranceGroupNumberLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				insuranceGroupNumberLayout.Children.Add (InsuranceGroupNumberLabel);
@@ -317,6 +338,7 @@ namespace TriCare.Views
 
 				StackLayout insurancePhoneLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				insurancePhoneLayout.Children.Add (InsurancePhoneLabel);
@@ -324,6 +346,7 @@ namespace TriCare.Views
 
 				StackLayout paymentTypeLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				paymentTypeLayout.Children.Add (PaymentTypeLabel);
@@ -334,11 +357,13 @@ namespace TriCare.Views
 					Font = Font.SystemFontOfSize (NamedSize.Large),
 					FontAttributes = FontAttributes.Bold,
 					TextColor = Color.Black,
-					BackgroundColor = Color.White
+					BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				StackLayout rxBinLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				rxBinLayout.Children.Add (RxBinLabel);
@@ -346,6 +371,7 @@ namespace TriCare.Views
 
 				StackLayout rxPcnLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				rxPcnLayout.Children.Add (RxPcnLabel);
@@ -353,6 +379,7 @@ namespace TriCare.Views
 
 				StackLayout allergiesLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				allergiesLayout.Children.Add (AllergiesLabel);
@@ -360,6 +387,7 @@ namespace TriCare.Views
 
 				StackLayout diagnosisLayout = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 				};
 
 				diagnosisLayout.Children.Add (DiagnosisLabel);
@@ -367,8 +395,10 @@ namespace TriCare.Views
 
 				var scrollview = new ScrollView {
 					VerticalOptions = LayoutOptions.StartAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 					Content = new StackLayout {
 						VerticalOptions = LayoutOptions.StartAndExpand,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 						Padding = new Thickness (20),
 						Children = {
 						buttonStack,

@@ -53,9 +53,18 @@ namespace TriCare.Views
 					BackgroundColor = Color.FromRgba (128, 128, 128, 128),
 					TextColor = Color.White
 				};
+				var forgotLabel = new Button {
+					Text = "Forgot Password?",
+					TextColor = Color.Red,
+					BackgroundColor = Color.Transparent
+				};
+				forgotLabel.Clicked += async (sender, e) => {
+					await App.np.PushAsync(new ForgotPasswordPage());
+				};
 				loginButton.Clicked += async (sender, e) => {
 					loginButton.IsEnabled = false;
 					registerButton.IsEnabled = false;
+					indi.IsVisible = true;
 					indi.IsRunning = true;
 					var sr = new StateRepo();
 					if (sr.InsertRecords()){
@@ -65,6 +74,7 @@ namespace TriCare.Views
 					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 					var prescriberRepo = new PrescriberRepo ();
 					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
+					indi.IsVisible = false;
 					indi.IsRunning = false;
 
 					if (loginState.ToLower () == "success") {
@@ -99,7 +109,7 @@ namespace TriCare.Views
 						logoCell,
 						emailLabel, emailEntry, 
 						passwordLabel, passwordEntry,
-						loginButton, registerButton
+						loginButton, registerButton, forgotLabel
 					}
 				};
 //				AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
