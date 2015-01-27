@@ -19,7 +19,7 @@ namespace TriCare.Views
 		private List<object> stateList =
 			new List<object>();
 		private ActivityIndicator indi;
-
+		private PrescriberRepo prescriberRepo; 
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
 
@@ -34,7 +34,8 @@ namespace TriCare.Views
         {
 			this.BackgroundColor = Color.White;
 			App.DisableLogout ();
-		
+			prescriberRepo = new PrescriberRepo ();
+
 			var overlay = new AbsoluteLayout (){ WidthRequest = this.Width };
 			var content = new StackLayout();
 			indi = new ActivityIndicator();
@@ -195,6 +196,8 @@ namespace TriCare.Views
 				Int64.TryParse(PhoneEntry.Text,out validPhone);
 				long validFax = 0;
 				Int64.TryParse(FaxEntry.Text,out validFax);
+				var prescriberList = prescriberRepo.GetAllPrescribers();
+				var emailExists = prescriberList.Where(em => em.Email.Trim() == emailEntry.Text.Trim()).FirstOrDefault();
 				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
 				{
 					indi.IsRunning = false;
@@ -214,6 +217,13 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an email.", "OK");
+					return;
+				}
+				else if(emailExists != null)
+				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
+					await DisplayAlert("Error", "The email written already exists, please enter another.", "OK");
 					return;
 				}
 				else if (passwordEntry.Text != password2Entry.Text)
@@ -308,7 +318,7 @@ namespace TriCare.Views
                 }
 				#endregion
 
-                var prescriberRepo = new PrescriberRepo();
+                //var prescriberRepo = new PrescriberRepo();
                 // send webservice request and so on
                 var res = await prescriberRepo.AddPrescriber(prescriberItem);
 				indi.IsRunning = false;
