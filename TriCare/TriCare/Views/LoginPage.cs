@@ -33,6 +33,10 @@ namespace TriCare.Views
 					BackgroundColor = Color.Transparent,
 					TextColor = Color.Black,
 				};
+				var sr = new StateRepo();
+				if (sr.InsertRecords()){
+					var r = sr.GetStates();
+				}
 				emailEntry.SetBinding (Entry.TextProperty, "Email");
 
 				var passwordLabel = new Label { Text = "Password", TextColor = Color.Navy   };
@@ -64,40 +68,35 @@ namespace TriCare.Views
 				loginButton.Clicked += async (sender, e) => {
 					loginButton.IsEnabled = false;
 					registerButton.IsEnabled = false;
-					indi.IsVisible = true;
-					indi.IsRunning = true;
-					var sr = new StateRepo();
-					if (sr.InsertRecords()){
-						var r = sr.GetStates();
-					}
-          
-					var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
-					var prescriberRepo = new PrescriberRepo ();
-					var loginState = await prescriberRepo.LoginPrescriber (loginItem);
-					indi.IsVisible = false;
-					indi.IsRunning = false;
 
-					if (loginState.ToLower () == "success") {
-						App.ClearCurrentPrescription ();
-						loginButton.IsEnabled = true;
-						registerButton.IsEnabled = true;
-						passwordEntry.Text = "";
-						emailEntry.Text = "";
-						await App.np.PushAsync(new HomePage());
-					} else {
-						loginButton.IsEnabled = true;
-						registerButton.IsEnabled = true;
-						await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
+					var Command = new Command(async o => {
+						indi.IsRunning = true;					
+						var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
+						var prescriberRepo = new PrescriberRepo ();
+						var loginState = await prescriberRepo.LoginPrescriber (loginItem);
+						indi.IsRunning = false;
+						if (loginState.ToLower () == "success") {
+							App.ClearCurrentPrescription ();
+							loginButton.IsEnabled = true;
+							registerButton.IsEnabled = true;
+							passwordEntry.Text = "";
+							emailEntry.Text = "";
+							await App.np.PushAsync(new HomePage());
+						} else {
+							loginButton.IsEnabled = true;
+							registerButton.IsEnabled = true;
+							await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
 
-					}
+						}
+					});
+					Command.Execute(new []{"run"});
+
+
+
 				};
 
 
 				registerButton.Clicked += async (sender, e) => {
-					var sr = new StateRepo();
-					if (sr.InsertRecords()){
-						var r = sr.GetStates();
-					}
 					await App.np.PushAsync (new  RegisterPage());            
 				};
 

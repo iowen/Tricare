@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>TriCare</string>
+	<string>TriCare Wellness</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.yourcompany.TriCare</string>
 	<key>CFBundleVersion</key>

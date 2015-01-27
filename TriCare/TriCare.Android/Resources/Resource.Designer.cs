@@ -111,11 +111,14 @@ namespace TriCare.Droid
 			// aapt resource value: 0x7f040009
 			public const int calendar_text_selected = 2130968585;
 			
-			// aapt resource value: 0x7f04000b
-			public const int calendar_text_selector = 2130968587;
+			// aapt resource value: 0x7f04000c
+			public const int calendar_text_selector = 2130968588;
 			
 			// aapt resource value: 0x7f04000a
 			public const int calendar_text_unselectable = 2130968586;
+			
+			// aapt resource value: 0x7f04000b
+			public const int tricareselect_color = 2130968587;
 			
 			static Color()
 			{
@@ -294,7 +297,124 @@ namespace TriCare.Droid
 			public const int tricareIos = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int tricareSplashA = 2130837549;
+			public const int tricareselect_activated_background_holo_light = 2130837549;
+			
+			// aapt resource value: 0x7f02002e
+			public const int tricareselect_btn_default_disabled_focused_holo_light = 2130837550;
+			
+			// aapt resource value: 0x7f02002f
+			public const int tricareselect_btn_default_disabled_holo_light = 2130837551;
+			
+			// aapt resource value: 0x7f020030
+			public const int tricareselect_btn_default_focused_holo_light = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int tricareselect_btn_default_holo_light = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int tricareselect_btn_default_normal_holo_light = 2130837554;
+			
+			// aapt resource value: 0x7f020033
+			public const int tricareselect_btn_default_pressed_holo_light = 2130837555;
+			
+			// aapt resource value: 0x7f020034
+			public const int tricareselect_btn_toggle_holo_light = 2130837556;
+			
+			// aapt resource value: 0x7f020035
+			public const int tricareselect_btn_toggle_off_disabled_focused_holo_light = 2130837557;
+			
+			// aapt resource value: 0x7f020036
+			public const int tricareselect_btn_toggle_off_disabled_holo_light = 2130837558;
+			
+			// aapt resource value: 0x7f020037
+			public const int tricareselect_btn_toggle_off_focused_holo_light = 2130837559;
+			
+			// aapt resource value: 0x7f020038
+			public const int tricareselect_btn_toggle_off_normal_holo_light = 2130837560;
+			
+			// aapt resource value: 0x7f020039
+			public const int tricareselect_btn_toggle_off_pressed_holo_light = 2130837561;
+			
+			// aapt resource value: 0x7f02003a
+			public const int tricareselect_btn_toggle_on_disabled_focused_holo_light = 2130837562;
+			
+			// aapt resource value: 0x7f02003b
+			public const int tricareselect_btn_toggle_on_disabled_holo_light = 2130837563;
+			
+			// aapt resource value: 0x7f02003c
+			public const int tricareselect_btn_toggle_on_focused_holo_light = 2130837564;
+			
+			// aapt resource value: 0x7f02003d
+			public const int tricareselect_btn_toggle_on_normal_holo_light = 2130837565;
+			
+			// aapt resource value: 0x7f02003e
+			public const int tricareselect_btn_toggle_on_pressed_holo_light = 2130837566;
+			
+			// aapt resource value: 0x7f02003f
+			public const int tricareselect_edit_text_holo_light = 2130837567;
+			
+			// aapt resource value: 0x7f020040
+			public const int tricareselect_fastscroll_thumb_default_holo = 2130837568;
+			
+			// aapt resource value: 0x7f020041
+			public const int tricareselect_fastscroll_thumb_holo = 2130837569;
+			
+			// aapt resource value: 0x7f020042
+			public const int tricareselect_fastscroll_thumb_pressed_holo = 2130837570;
+			
+			// aapt resource value: 0x7f020043
+			public const int tricareselect_item_background_holo_light = 2130837571;
+			
+			// aapt resource value: 0x7f020044
+			public const int tricareselect_list_activated_holo = 2130837572;
+			
+			// aapt resource value: 0x7f020045
+			public const int tricareselect_list_focused_holo = 2130837573;
+			
+			// aapt resource value: 0x7f020046
+			public const int tricareselect_list_longpressed_holo = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int tricareselect_list_pressed_holo_light = 2130837575;
+			
+			// aapt resource value: 0x7f020048
+			public const int tricareselect_list_selector_background_transition_holo_light = 2130837576;
+			
+			// aapt resource value: 0x7f020049
+			public const int tricareselect_list_selector_disabled_holo_light = 2130837577;
+			
+			// aapt resource value: 0x7f02004a
+			public const int tricareselect_list_selector_holo_light = 2130837578;
+			
+			// aapt resource value: 0x7f02004b
+			public const int tricareselect_text_select_handle_left = 2130837579;
+			
+			// aapt resource value: 0x7f02004c
+			public const int tricareselect_text_select_handle_middle = 2130837580;
+			
+			// aapt resource value: 0x7f02004d
+			public const int tricareselect_text_select_handle_right = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int tricareselect_textfield_activated_holo_light = 2130837582;
+			
+			// aapt resource value: 0x7f02004f
+			public const int tricareselect_textfield_default_holo_light = 2130837583;
+			
+			// aapt resource value: 0x7f020050
+			public const int tricareselect_textfield_disabled_focused_holo_light = 2130837584;
+			
+			// aapt resource value: 0x7f020051
+			public const int tricareselect_textfield_disabled_holo_light = 2130837585;
+			
+			// aapt resource value: 0x7f020052
+			public const int tricareselect_textfield_focused_holo_light = 2130837586;
+			
+			// aapt resource value: 0x7f020053
+			public const int tricareSplashA = 2130837587;
+			
+			// aapt resource value: 0x7f020054
+			public const int ViewCellBackground = 2130837588;
 			
 			static Drawable()
 			{
@@ -420,6 +540,12 @@ namespace TriCare.Droid
 			// aapt resource value: 0x7f07000c
 			public const int ActionButton_CloseMode_Tcaretab = 2131165196;
 			
+			// aapt resource value: 0x7f07000f
+			public const int AutoCompleteTextViewTriCareSelect = 2131165199;
+			
+			// aapt resource value: 0x7f070010
+			public const int ButtonTriCareSelect = 2131165200;
+			
 			// aapt resource value: 0x7f070001
 			public const int CalendarCell = 2131165185;
 			
@@ -438,17 +564,41 @@ namespace TriCare.Droid
 			// aapt resource value: 0x7f07000a
 			public const int DropDownNav_Tcaretab = 2131165194;
 			
+			// aapt resource value: 0x7f07000e
+			public const int EditTextTriCareSelect = 2131165198;
+			
+			// aapt resource value: 0x7f070011
+			public const int ImageButtonTriCareSelect = 2131165201;
+			
+			// aapt resource value: 0x7f070013
+			public const int ListViewTriCareSelect = 2131165203;
+			
+			// aapt resource value: 0x7f070014
+			public const int ListViewTriCareSelect_White = 2131165204;
+			
 			// aapt resource value: 0x7f070007
 			public const int PopupMenu_Tcaretab = 2131165191;
 			
 			// aapt resource value: 0x7f07000b
 			public const int ProgressBar_Tcaretab = 2131165195;
 			
+			// aapt resource value: 0x7f070015
+			public const int SpinnerItemTriCareSelect = 2131165205;
+			
 			// aapt resource value: 0x7f070004
 			public const int Theme_Tcaretab = 2131165188;
 			
 			// aapt resource value: 0x7f07000d
 			public const int Theme_Tcaretab_Widget = 2131165197;
+			
+			// aapt resource value: 0x7f070012
+			public const int ToggleTriCareSelect = 2131165202;
+			
+			// aapt resource value: 0x7f070016
+			public const int TriCareSelect = 2131165206;
+			
+			// aapt resource value: 0x7f070017
+			public const int _TriCareSelect = 2131165207;
 			
 			static Style()
 			{

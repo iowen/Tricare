@@ -21,8 +21,9 @@ public final class R {
         public static final int calendar_text_active=0x7f040008;
         public static final int calendar_text_inactive=0x7f040007;
         public static final int calendar_text_selected=0x7f040009;
-        public static final int calendar_text_selector=0x7f04000b;
+        public static final int calendar_text_selector=0x7f04000c;
         public static final int calendar_text_unselectable=0x7f04000a;
+        public static final int tricareselect_color=0x7f04000b;
     }
     public static final class dimen {
         public static final int calendar_day_headers_paddingbottom=0x7f050000;
@@ -77,7 +78,46 @@ public final class R {
         public static final int tricareicon=0x7f02002a;
         public static final int tricareicona=0x7f02002b;
         public static final int tricareios=0x7f02002c;
-        public static final int tricaresplasha=0x7f02002d;
+        public static final int tricareselect_activated_background_holo_light=0x7f02002d;
+        public static final int tricareselect_btn_default_disabled_focused_holo_light=0x7f02002e;
+        public static final int tricareselect_btn_default_disabled_holo_light=0x7f02002f;
+        public static final int tricareselect_btn_default_focused_holo_light=0x7f020030;
+        public static final int tricareselect_btn_default_holo_light=0x7f020031;
+        public static final int tricareselect_btn_default_normal_holo_light=0x7f020032;
+        public static final int tricareselect_btn_default_pressed_holo_light=0x7f020033;
+        public static final int tricareselect_btn_toggle_holo_light=0x7f020034;
+        public static final int tricareselect_btn_toggle_off_disabled_focused_holo_light=0x7f020035;
+        public static final int tricareselect_btn_toggle_off_disabled_holo_light=0x7f020036;
+        public static final int tricareselect_btn_toggle_off_focused_holo_light=0x7f020037;
+        public static final int tricareselect_btn_toggle_off_normal_holo_light=0x7f020038;
+        public static final int tricareselect_btn_toggle_off_pressed_holo_light=0x7f020039;
+        public static final int tricareselect_btn_toggle_on_disabled_focused_holo_light=0x7f02003a;
+        public static final int tricareselect_btn_toggle_on_disabled_holo_light=0x7f02003b;
+        public static final int tricareselect_btn_toggle_on_focused_holo_light=0x7f02003c;
+        public static final int tricareselect_btn_toggle_on_normal_holo_light=0x7f02003d;
+        public static final int tricareselect_btn_toggle_on_pressed_holo_light=0x7f02003e;
+        public static final int tricareselect_edit_text_holo_light=0x7f02003f;
+        public static final int tricareselect_fastscroll_thumb_default_holo=0x7f020040;
+        public static final int tricareselect_fastscroll_thumb_holo=0x7f020041;
+        public static final int tricareselect_fastscroll_thumb_pressed_holo=0x7f020042;
+        public static final int tricareselect_item_background_holo_light=0x7f020043;
+        public static final int tricareselect_list_activated_holo=0x7f020044;
+        public static final int tricareselect_list_focused_holo=0x7f020045;
+        public static final int tricareselect_list_longpressed_holo=0x7f020046;
+        public static final int tricareselect_list_pressed_holo_light=0x7f020047;
+        public static final int tricareselect_list_selector_background_transition_holo_light=0x7f020048;
+        public static final int tricareselect_list_selector_disabled_holo_light=0x7f020049;
+        public static final int tricareselect_list_selector_holo_light=0x7f02004a;
+        public static final int tricareselect_text_select_handle_left=0x7f02004b;
+        public static final int tricareselect_text_select_handle_middle=0x7f02004c;
+        public static final int tricareselect_text_select_handle_right=0x7f02004d;
+        public static final int tricareselect_textfield_activated_holo_light=0x7f02004e;
+        public static final int tricareselect_textfield_default_holo_light=0x7f02004f;
+        public static final int tricareselect_textfield_disabled_focused_holo_light=0x7f020050;
+        public static final int tricareselect_textfield_disabled_holo_light=0x7f020051;
+        public static final int tricareselect_textfield_focused_holo_light=0x7f020052;
+        public static final int tricaresplasha=0x7f020053;
+        public static final int viewcellbackground=0x7f020054;
     }
     public static final class id {
         public static final int btnCancel=0x7f080005;
@@ -110,6 +150,8 @@ public final class R {
         public static final int ActionBar_Transparent_Tcaretab=0x7f070006;
         public static final int ActionBarTabStyle_Tcaretab=0x7f070009;
         public static final int ActionButton_CloseMode_Tcaretab=0x7f07000c;
+        public static final int AutoCompleteTextViewTriCareSelect=0x7f07000f;
+        public static final int ButtonTriCareSelect=0x7f070010;
         /**     <item name="android:textAlignment">center</item>
          */
         public static final int CalendarCell=0x7f070001;
@@ -118,11 +160,19 @@ public final class R {
         public static final int CalendarTitle=0x7f070000;
         public static final int DropDownListView_Tcaretab=0x7f070008;
         public static final int DropDownNav_Tcaretab=0x7f07000a;
+        public static final int EditTextTriCareSelect=0x7f07000e;
+        public static final int ImageButtonTriCareSelect=0x7f070011;
+        public static final int ListViewTriCareSelect=0x7f070013;
+        public static final int ListViewTriCareSelect_White=0x7f070014;
         public static final int PopupMenu_Tcaretab=0x7f070007;
         public static final int ProgressBar_Tcaretab=0x7f07000b;
+        public static final int SpinnerItemTriCareSelect=0x7f070015;
         public static final int Theme_Tcaretab=0x7f070004;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
         public static final int Theme_Tcaretab_Widget=0x7f07000d;
+        public static final int ToggleTriCareSelect=0x7f070012;
+        public static final int TriCareSelect=0x7f070016;
+        public static final int _TriCareSelect=0x7f070017;
     }
 }
