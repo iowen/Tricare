@@ -102,6 +102,7 @@
     <Compile Include="SignatureServiceActivity.cs" />
     <Compile Include="SqLite_Android.cs" />
     <Compile Include="SplashScreen.cs" />
+    <Compile Include="Encrypter_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -5,6 +5,7 @@ using System.Text;
 using TriCare.Views;
 using Xamarin.Forms;
 using TriCare.Models;
+using TriCare.Data;
 
 namespace TriCare
 {
@@ -141,5 +142,17 @@ namespace TriCare
 			_currentPrescription = new PrescriptionModel ();
 		}
 
+		public static string Encrypt(string plainText)
+		{
+			//Anything to process?
+			var en = DependencyService.Get<IEncrypter> ();
+			return en.GetEncryption (plainText);
+		}
+		public static string Decrypt(string plainText)
+		{
+			//Anything to process?
+			var en = DependencyService.Get<IEncrypter> ();
+			return en.GetDecryption (plainText);
+		}
     }
 }

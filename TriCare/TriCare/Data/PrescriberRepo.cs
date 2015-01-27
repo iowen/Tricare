@@ -63,7 +63,7 @@ namespace TriCare.Data
         {
 			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == login.Password))
 				{
-            	var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
+				var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && App.Encrypt(x.Password) == App.Encrypt(login.Password));
 				var sRepo = new SyncRepo();
 				var sModel = new SyncModel();
 				sModel.PrescriberId = prescriber.PrescriberId;

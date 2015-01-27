@@ -49,8 +49,18 @@ namespace TriCare.Views
 				submitButton.IsEnabled = false;
 				indi.IsRunning = true;
 				//send to api
-				indi.IsRunning = false;
+				if(String.IsNullOrWhiteSpace(emailEntry.Text.Trim()))
+					{
+						indi.IsRunning = false;
+						var Command1 = new Command(async o => {
+							await DisplayAlert("Message","Please enter a valid email address.","Close");
+						});
+						Command1.Execute(new []{"run"});
+					return;
+					}
 				var Command = new Command(async o => {
+						indi.IsRunning = false;
+
 					await DisplayAlert("Message","Please Check email for instructions on obtaining your credentials","Close");
 					await App.np.PopToRootAsync();
 				});

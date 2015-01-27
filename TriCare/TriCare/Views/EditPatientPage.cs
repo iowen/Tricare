@@ -115,7 +115,9 @@ namespace TriCare.Views
 				SelectedCommand = CellSelectedCommand,
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
-				SearchTextColor = Color.White
+				SearchTextColor = Color.White,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
+
 			};
 
 			var s = new StateRepo ();
@@ -130,6 +132,7 @@ namespace TriCare.Views
 				Suggestions = StateList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommandS,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
 				SearchTextColor = Color.White,

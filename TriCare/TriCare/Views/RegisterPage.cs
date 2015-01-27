@@ -66,10 +66,10 @@ namespace TriCare.Views
 				Suggestions = StateList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
 				SearchTextColor = Color.White,
-				Placeholder = "",
 			};
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()

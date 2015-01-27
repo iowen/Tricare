@@ -123,9 +123,9 @@ namespace TriCare.Views
 				Suggestions = InsuranceList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommand,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
-				Placeholder = "",
 			};
 	
 			st = new AutoCompleteView () {
@@ -134,9 +134,9 @@ namespace TriCare.Views
 				Suggestions = StateList,
 				SearchCommand = SearchCommand,
 				SelectedCommand = CellSelectedCommandS,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
-				Placeholder = "",
 			};
 
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" , TextColor = Color.Navy};

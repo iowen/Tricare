@@ -119,6 +119,7 @@ namespace TriCare
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
 				SearchTextColor = Color.White,
+				SuggestionItemDataTemplate =  new DataTemplate (typeof (acCell)),
 			};
 
 			SearchCommand = new Command((key) =>

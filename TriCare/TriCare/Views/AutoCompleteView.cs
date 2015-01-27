@@ -141,7 +141,7 @@ namespace TriCare.Views
 		{
 			_availableSuggestions = new List<object>();
 			_stkBase = new StackLayout(){VerticalOptions = LayoutOptions.Fill};
-			var lstStkBase = new StackLayout(){VerticalOptions = LayoutOptions.FillAndExpand};
+			var lstStkBase = new StackLayout(){VerticalOptions = LayoutOptions.Fill};
 			var innerLayout = new StackLayout();
 			_entText = new Entry
 			{
@@ -749,6 +749,11 @@ namespace TriCare.Views
 							control._availableSuggestions.Add(suggestion);
 						}
 						control._lstSuggestions.ItemsSource = control._availableSuggestions;
+						if (filteredSuggestions.Count < 4)
+							control._lstSuggestions.HeightRequest = filteredSuggestions.Count * 60.0d;
+						else
+							control._lstSuggestions.HeightRequest = 4 * 60.0d;
+
 						control.ShowHideListbox(true);
 					}
 					else
@@ -758,12 +763,12 @@ namespace TriCare.Views
 				}
 				else
 				{
-					if (control._availableSuggestions.Count > 0)
-					{
-						control._availableSuggestions.Clear();
-						control._lstSuggestions.ItemsSource = control._availableSuggestions;
+//					if (control._availableSuggestions.Count > 0)
+//					{
+//						control._availableSuggestions.Clear();
+//						control._lstSuggestions.ItemsSource = control._availableSuggestions;
 						control.ShowHideListbox(false);
-					}
+//					}
 				}
 			}
 		}

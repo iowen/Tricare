@@ -12,6 +12,7 @@ namespace TriCare.Models
 		[PrimaryKey,AutoIncrement]
 		public int StateId { get; set; }
 		public string Name { get; set; }
+		public string NameFriendly {get {return ToString();}}
 
 		public override string ToString ()
 		{

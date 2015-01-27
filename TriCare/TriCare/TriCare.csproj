@@ -104,6 +104,8 @@
     <Compile Include="Views\ViewPrescriptionPage.cs" />
     <Compile Include="Views\ExtendedTabbedPage.cs" />
     <Compile Include="Views\ForgotPasswordPage.cs" />
+    <Compile Include="Views\acCell.cs" />
+    <Compile Include="Data\IEncrypter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">
