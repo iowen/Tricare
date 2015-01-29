@@ -150,6 +150,7 @@ namespace TriCare.Data
 			mm.Ingredients = mIng;
 			mm.MedicineName = med.Name.Trim();
 			mm.PrescriptionId = id;
+			mm.Directions = med.Directions.Trim ();
 			return new PrescriptionModel (){Prescriber = presc, PrescriptionId = id,Patient = pat,Created = prescr.Created,Refill = rm ,Medicine = mm};
 		}
 		public async Task<string>  AddPrescription(CreatePrescriptionModel item, byte[] Sig)
