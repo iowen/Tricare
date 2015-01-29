@@ -90,22 +90,23 @@ namespace TriCare.Data
 				foreach (var item in pres) {
 					pa = database.Table<Patient>().FirstOrDefault(x => x.PatientId == item.PatientId);
 					pm = database.Table<PrescriptionMedicine> ().First (x => x.PrescriptionId == item.PrescriptionId);
-					var pmi = database.Table<PrescriptionMedicineIngredient> ().Where (xx => xx.PrescriptionMedicineId == pm.PrescriptionMedicineId).ToList();
-					var mIng = new List<PrescriptionMedicineIngredientModel> ();
-					foreach (var i in pmi) {
-						mIng.Add (new PrescriptionMedicineIngredientModel () {
-							Percentage = i.Percentage,
-							PrescriptionMedicineId = i.PrescriptionMedicineId,
-							PrescriptionMedicineIngredientId = i.PrescriptionMedicineIngredientId,
-							IngredientId = i.IngredientId,
-							Name = i.Name
-						});
-					}
+//					var pmi = database.Table<PrescriptionMedicineIngredient> ().Where (xx => xx.PrescriptionMedicineId == pm.PrescriptionMedicineId).ToList();
+//					var mIng = new List<PrescriptionMedicineIngredientModel> ();
+//					foreach (var i in pmi) {
+//						mIng.Add (new PrescriptionMedicineIngredientModel () {
+//							Percentage = i.Percentage,
+//							PrescriptionMedicineId = i.PrescriptionMedicineId,
+//							PrescriptionMedicineIngredientId = i.PrescriptionMedicineIngredientId,
+//							IngredientId = i.IngredientId,
+//							Name = i.Name
+//						});
+//					}
 					var mm = new MedicineModelForPrescription ();
 					var mRepo = new MedicineRepo ();
 					var med = mRepo.GetMedicine (pm.MedicineId);
+
 					mm.MedicineId = med.MedicineId;
-					mm.Ingredients = mIng;
+			//		mm.Ingredients = mIng;
 					mm.MedicineName = med.Name.Trim ();
 					mm.PrescriptionId = item.PrescriptionId;
 					var rm = rr.GetPrescriptionRefillAsModel (item.PrescriptionId);

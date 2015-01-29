@@ -61,9 +61,9 @@ namespace TriCare.Data
                     
 		public async Task<string> LoginPrescriber(LoginModel login)
         {
-			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == login.Password))
+			if (database.Table<Prescriber>().Any(x => x.Email == login.Email && x.Password == App.Encrypt(login.Password)))
 				{
-				var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && App.Encrypt(x.Password) == App.Encrypt(login.Password));
+				var prescriber = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == App.Encrypt(login.Password));
 				var sRepo = new SyncRepo();
 				var sModel = new SyncModel();
 				sModel.PrescriberId = prescriber.PrescriberId;
@@ -146,7 +146,7 @@ namespace TriCare.Data
 		}
         public void AddPrescriberLocal (Prescriber item)
         {
-            database.Insert(item);
+            database.InsertOrReplace(item);
         }
 
 		public async Task<string> AddPrescriber(Prescriber item)
@@ -168,7 +168,9 @@ namespace TriCare.Data
 				if (pReturn > 0)
 				{
 					item.PrescriberId = pReturn;
-					 database.Insert(item);
+                    var pwd = App.Encrypt(item.Password.Trim());
+                    item.Password = pwd;
+					 database.InsertOrReplace(item);
 					//return resultText;
 					var returnTask = new TaskCompletionSource<string>();
 					returnTask.SetResult(item.PrescriberId.ToString());

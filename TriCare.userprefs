@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="TriCare/TriCare.iOS/TriCare.iOS.csproj">
+﻿<Properties StartupItem="TriCare\TriCare.Android\TriCare.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5.8.1" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare.Android/Resources/values/styles_tcaretab.xml">
     <Files>

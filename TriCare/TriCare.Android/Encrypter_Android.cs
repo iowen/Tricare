@@ -11,7 +11,7 @@ namespace TriCare.Droid
 {
 	public class Encrypter_Android : IEncrypter
 	{
-		private static readonly byte[] salt = Encoding.ASCII.GetBytes("Xamarin.iOS Version: 7.0.6.168");
+		private static readonly byte[] salt = Encoding.ASCII.GetBytes("Rattleration");
 
 		public Encrypter_Android ()
 		{
@@ -21,7 +21,7 @@ namespace TriCare.Droid
 			try {
 				if (string.IsNullOrWhiteSpace (input.Trim ()))
 					return string.Empty;
-				var key = new Rfc2898DeriveBytes("password", salt);
+                var key = new Rfc2898DeriveBytes("1gf10f1", salt);
 				var algorithm = new RijndaelManaged ();
 				int bytesForKey = algorithm.KeySize / 8;
 				int bytesForIV = algorithm.BlockSize / 8;
@@ -47,7 +47,7 @@ namespace TriCare.Droid
 			try{
 				if (string.IsNullOrWhiteSpace (input.Trim ()))
 					return string.Empty;
-				var key = new Rfc2898DeriveBytes("password", salt);
+                var key = new Rfc2898DeriveBytes("1gf10f1", salt);
 				var algorithm = new RijndaelManaged ();
 				int bytesForKey = algorithm.KeySize / 8;
 				int bytesForIV = algorithm.BlockSize / 8;
