@@ -17,7 +17,7 @@ namespace TriCare.Views
 			var presc = pRepo.GetPrescriber (pId);
 			App.ClearCurrentPrescription ();
 			App.CurrentPrescription.Prescriber = presc;
-            this.SetBinding(ContentPage.TitleProperty, "Select Patient");
+			this.Title = "Select Patient";
 
 			var newPatientButton = new Button { Text = "New Patient" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             newPatientButton.Clicked += async (sender, e) =>

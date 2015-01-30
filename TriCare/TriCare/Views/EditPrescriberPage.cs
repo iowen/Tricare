@@ -40,7 +40,7 @@ namespace TriCare
 			indi = new ActivityIndicator();
 			this.BindingContext = p;
 			this.BackgroundColor = Color.White;
-			this.SetBinding(ContentPage.TitleProperty, "Edit Profile");
+			this.Title = "Edit Profile";
 
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()

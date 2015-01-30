@@ -48,7 +48,7 @@ namespace TriCare.Views
 			indi = new ActivityIndicator();
 			this.BindingContext = p;
 			_insuranceCarrierId = p.InsuranceCarrierId;
-			this.SetBinding(ContentPage.TitleProperty, "Edit Patient");
+			this.Title = "Edit Patient";
 			this.BackgroundColor = Color.White;
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()

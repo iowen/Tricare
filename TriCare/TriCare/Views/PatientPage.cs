@@ -20,9 +20,9 @@ namespace TriCare.Views
 			var insuranceCarrierRepo = new InsuranceCarrierRepo ();
 			this.BackgroundColor = Color.White;
 			if (!isDuringPrescription)
-				this.SetBinding(ContentPage.TitleProperty, "View Patient");
+				this.Title = "View Patient";
 			else
-				this.SetBinding(ContentPage.TitleProperty, "Verify Patient");
+				this.Title = "Verify Patient";
 
 			var firstNameLabel = new Label { Text = "First Name" };
 			var firstNameEntry = new Label( );
@@ -153,7 +153,7 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				editButton.Clicked += async (sender, e) => {
-				await App.np.PushAsync (new EditPatientPage (p));
+				await App.np.PushAsync (new EditPatientPage (p,isDuringPrescription));
 
 				};
 				var continueButton = new Button {

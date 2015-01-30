@@ -41,7 +41,7 @@ namespace TriCare.Views
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public CreatePatientPage(bool isDuringPrescription = false)
         {
-            this.SetBinding(ContentPage.TitleProperty, "Add Patient");
+			this.Title = "Add Patient";
 			this.BackgroundColor = Color.White;
 			var overlay = new AbsoluteLayout();
 			var content = new StackLayout();
