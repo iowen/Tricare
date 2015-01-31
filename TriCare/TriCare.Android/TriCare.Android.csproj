@@ -103,6 +103,8 @@
     <Compile Include="SqLite_Android.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Encrypter_Android.cs" />
+    <Compile Include="Android_EntryRenderer.cs" />
+    <Compile Include="Android_LoginScrollView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

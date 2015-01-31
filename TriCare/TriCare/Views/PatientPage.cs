@@ -44,7 +44,7 @@ namespace TriCare.Views
 			var birthDateEntry = new Label { TextColor = Color.Black };
 			birthDateEntry.SetBinding(Label.TextProperty, "BirthDateFriendly");
 
-			var ssnLabel = new Label { Text = "Last 4 of SSN:",TextColor = Color.Navy };
+			var ssnLabel = new Label { Text = "Id Number:",TextColor = Color.Navy };
 			var ssnEntry = new Label { TextColor = Color.Black };
 			ssnEntry.SetBinding(Label.TextProperty, "SSN");
 
@@ -56,7 +56,13 @@ namespace TriCare.Views
 			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number:", TextColor = Color.Navy};
 			var InsuranceCarrierIdNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceCarrierIdNumberEntry.SetBinding(Label.TextProperty, "InsuranceCarrierIdNumber");
+			InsuranceCarrierIdNumberEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
 
+				var pn = InsuranceCarrierIdNumberEntry.Text.Trim();
+				InsuranceCarrierIdNumberEntry.Text = pn;
+
+			};
 			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number:", TextColor = Color.Navy };
 			var InsuranceGroupNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceGroupNumberEntry.SetBinding(Label.TextProperty, "InsuranceGroupNumber");
@@ -64,7 +70,14 @@ namespace TriCare.Views
 			var InsurancePhoneLabel = new Label { Text = "Insurance Phone:", TextColor = Color.Navy};
 			var InsurancePhoneEntry = new Label { TextColor = Color.Black };
 			InsurancePhoneEntry.SetBinding(Label.TextProperty, "InsurancePhone");
-
+			InsurancePhoneEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(InsurancePhoneEntry.Text.Trim().Length == 10)
+				{
+					var pn = InsurancePhoneEntry.Text.Insert (3, "-").Insert (7, "-");
+					InsurancePhoneEntry.Text = pn;
+				}
+			};
 			var RxBinLabel = new Label { Text = "Rx Bin:", TextColor = Color.Navy };
 			var RxBinEntry = new Label { TextColor = Color.Black };
 			RxBinEntry.SetBinding(Label.TextProperty, "RxBin");
@@ -103,7 +116,14 @@ namespace TriCare.Views
 			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Navy };
 			var PhoneEntry = new Label { TextColor = Color.Black };
 			PhoneEntry.SetBinding(Label.TextProperty, "Phone");
-
+			PhoneEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(PhoneEntry.Text.Trim().Length == 10)
+				{
+					var pn = PhoneEntry.Text.Insert (3, "-").Insert (7, "-");
+					PhoneEntry.Text = pn;
+				}
+			};
 			var EmailLabel = new Label { Text = "Email:", TextColor = Color.Navy };
 			var EmailEntry = new Label { TextColor = Color.Black };
 			EmailEntry.SetBinding(Label.TextProperty, "Email");

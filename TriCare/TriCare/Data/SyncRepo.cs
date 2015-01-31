@@ -41,7 +41,7 @@ namespace TriCare.Data
 				var content = new FormUrlEncodedContent (new[] {
 					new KeyValuePair<string, string> ("", json)
 				});
-				var resultTask = await client.PostAsync ("http://teamsavagemma.com/api/Sync", content);
+				var resultTask = await client.PostAsync (App.ApiUrL+"/api/Sync", content);
 				var resultText = resultTask.Content.ReadAsStringAsync ().Result;
 				try {
 					dynamic resultFix = JsonConvert.DeserializeObject (resultText);

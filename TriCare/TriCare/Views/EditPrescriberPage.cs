@@ -156,21 +156,41 @@ namespace TriCare
 			ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
 			var PhoneLabel = new Label { Text = "Phone" , TextColor = Color.Navy};
-			var PhoneEntry = new Entry()
+			var PhoneEntry = new PhoneNumberEntry()
 			{
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
 			};
 			PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
-
+			PhoneEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(PhoneEntry.Text.Trim().Length == 10)
+				{
+					var pn = PhoneEntry.Text.Insert (3, "-").Insert (7, "-");
+					PhoneEntry.Text = pn;
+				}
+			};
+			PhoneEntry.TextChanged +=  (sender, e) => {
+				PhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var FaxLabel = new Label { Text = "Fax", TextColor = Color.Navy };
-			var FaxEntry = new Entry()
+			var FaxEntry = new PhoneNumberEntry()
 			{
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
 			};
 			FaxEntry.SetBinding(Entry.TextProperty, "Fax");
-
+			FaxEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(FaxEntry.Text.Trim().Length == 10)
+				{
+					var pn = FaxEntry.Text.Insert (3, "-").Insert (7, "-");
+					FaxEntry.Text = pn;
+				}
+			};
+			PhoneEntry.TextChanged +=  (sender, e) => {
+				PhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 			saveButton.Clicked += async (sender, e) =>
 			{
@@ -181,8 +201,8 @@ namespace TriCare
 				int.TryParse(ZipEntry.Text.Trim(),out zipval);
 				long phoneval = 0;
 				long faxval = 0;
-				Int64.TryParse(FaxEntry.Text.Trim(), out faxval);
-				Int64.TryParse(PhoneEntry.Text.Trim(), out phoneval);
+				Int64.TryParse(FaxEntry.Text.Trim().Replace("-",""), out faxval);
+				Int64.TryParse(PhoneEntry.Text.Trim().Replace("-",""), out phoneval);
 				if(firstNameEntry.Text.Trim().Length <= 0)
 				{
 					indi.IsRunning = false;
@@ -280,8 +300,8 @@ namespace TriCare
 					City = CityEntry.Text.Trim(),
 					State = StateEntry.Text.Trim(),
 					Zip = int.Parse(ZipEntry.Text),
-					Phone = PhoneEntry.Text.Trim(),
-					Fax = FaxEntry.Text.Trim(),
+					Phone = PhoneEntry.Text.Trim().Replace("-",""),
+					Fax = FaxEntry.Text.Trim().Replace("-",""),
 					Email = emailEntry.Text.Trim(),
 					Password = p.Password.Trim(),
 					LastUpdate = DateTime.Now

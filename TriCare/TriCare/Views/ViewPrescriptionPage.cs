@@ -12,11 +12,12 @@ namespace TriCare
 	{
 		ListView listView;
 		PrescriptionModel model;
-		public ViewPrescriptionPage (PrescriptionModel prescription)
+		public ViewPrescriptionPage (int prescriptionId)
 		{
 			this.BackgroundColor = Color.White;
 			Title = "View Prescription";
-			model = prescription;
+			var pRepo = new PrescriptionRepo();
+			model = pRepo.GetPrescriptionAsModel (prescriptionId);
 			var downloadButton = new Button { Text = "Download", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White  };
 			downloadButton.Clicked += (sender, e) =>
 			{
@@ -83,6 +84,9 @@ namespace TriCare
 			var medLabel = new StringLabel () {
 				NameFriendly = "Medicine : " + model.Medicine.MedicineName.Trim(),
 			};
+			var dirLabel = new StringLabel () {
+				NameFriendly = "Directions : " + model.Medicine.Directions.Trim(),
+			};
 			var rAmountLabel = new StringLabel () {
 				NameFriendly = "Refill Amount : " + am.ToString(),
 			};
@@ -90,7 +94,7 @@ namespace TriCare
 				NameFriendly = "Refill Quantity : " + aq.ToString(),
 			};
 
-			var lr = new List<StringLabel> (){ dLabel, pLabel,presLabel,medLabel, rAmountLabel, rQuantLabel};
+			var lr = new List<StringLabel> (){ dLabel, pLabel,presLabel,medLabel,dirLabel, rAmountLabel, rQuantLabel};
 			listView.ItemsSource = lr;
 		}
 	}

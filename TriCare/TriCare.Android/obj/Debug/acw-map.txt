@@ -2,6 +2,8 @@ TriCare.Droid.MainActivity;tricare.droid.MainActivity
 TriCare.Droid.SignaturePadRenderer;tricare.droid.SignaturePadRenderer
 TriCare.Droid.SignatureServiceActivity;tricare.droid.SignatureServiceActivity
 TriCare.Droid.SplashScreen;tricare.droid.SplashScreen
+TriCare.Droid.AndroidEntryRenderer;tricare.droid.AndroidEntryRenderer
+TriCare.Droid.AndroidLoginScrollViewRenderer;tricare.droid.AndroidLoginScrollViewRenderer
 SignaturePad.SignaturePadView;signaturepad.SignaturePadView
 SignaturePad.ClearingImageView;signaturepad.ClearingImageView
 SignaturePad.SignatureCanvasView;signaturepad.SignatureCanvasView

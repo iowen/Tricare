@@ -106,6 +106,8 @@
     <Compile Include="Views\ForgotPasswordPage.cs" />
     <Compile Include="Views\acCell.cs" />
     <Compile Include="Data\IEncrypter.cs" />
+    <Compile Include="PhoneNumberEntry.cs" />
+    <Compile Include="Data\LoginScrollView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

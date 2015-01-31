@@ -36,9 +36,9 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://teamsavagemma.com");
+				client.BaseAddress = new Uri(App.ApiUrL);
 
-                var resultTask = await client.GetAsync("http://teamsavagemma.com/api/MedicineIngredient");
+				var resultTask = await client.GetAsync(App.ApiUrL+"/api/MedicineIngredient");
                 var resultText = resultTask.Content.ReadAsStringAsync().Result;
                 try
                 {

@@ -51,7 +51,7 @@ namespace TriCare.Views
             var firstNameEntry = new Entry()
             {
 				BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
@@ -59,7 +59,7 @@ namespace TriCare.Views
             var lastNameEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
@@ -78,11 +78,11 @@ namespace TriCare.Views
 
 			birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
 
-			var ssnLabel = new Label { Text = "Last 4 of SSN" , TextColor = Color.Navy };
+			var ssnLabel = new Label { Text = "Id Number" , TextColor = Color.Navy };
             var ssnEntry = new Entry()
             {
                 BackgroundColor = Color.Transparent,
-				TextColor = Color.Gray,
+				TextColor = Color.Black,
             };
             ssnEntry.SetBinding(Entry.TextProperty, "SSN");
 			var a1 = new AutoCompleteView ();
@@ -159,13 +159,15 @@ namespace TriCare.Views
             InsuranceGroupNumberEntry.SetBinding(Entry.TextProperty, "InsuranceGroupNumber");
 
 			var InsurancePhoneLabel = new Label { Text = "Insurance Phone" , TextColor = Color.Navy};
-            var InsurancePhoneEntry = new Entry()
+            var InsurancePhoneEntry = new PhoneNumberEntry()
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
             };
             InsurancePhoneEntry.SetBinding(Entry.TextProperty, "InsurancePhone");
-
+			InsurancePhoneEntry.TextChanged +=  (sender, e) => {
+				InsurancePhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var RxBinLabel = new Label { Text = "Rx Bin" , TextColor = Color.Navy};
             var RxBinEntry = new Entry()
             {
@@ -226,13 +228,15 @@ namespace TriCare.Views
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
 			var PhoneLabel = new Label { Text = "Phone", TextColor = Color.Navy };
-            var PhoneEntry = new Entry()
+            var PhoneEntry = new PhoneNumberEntry()
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
             };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
-
+			PhoneEntry.TextChanged +=  (sender, e) => {
+				PhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var EmailLabel = new Label { Text = "Email" , TextColor = Color.Navy};
             var EmailEntry = new Entry()
             {
@@ -313,7 +317,7 @@ namespace TriCare.Views
 					await DisplayAlert("Alert!","Please enter digits for the Insurance Group Number","OK");
 					return;
 				}
-				else if(InsurancePhoneEntry.Text.Trim().Length != 10 || Regex.Matches(InsurancePhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				else if(InsurancePhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(InsurancePhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
@@ -376,7 +380,7 @@ namespace TriCare.Views
 					await DisplayAlert("Alert!","Please enter a Zip code with 5 digits","OK");
 					return;
 				}
-				else if(PhoneEntry.Text.Trim().Length != 10 || Regex.Matches(PhoneEntry.Text,@"[a-zA-Z]").Count > 0)
+				else if(PhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(PhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
@@ -412,7 +416,7 @@ namespace TriCare.Views
 					InsuranceGroupNumber = InsuranceGroupNumberEntry.Text, 
 					SSN = int.Parse(ssnEntry.Text), 
 					Allergies = AllergiesEntry.Text, 
-					Phone = PhoneEntry.Text, 
+					Phone = PhoneEntry.Text.Replace("-",""), 
 					State = StateEntry.Text, 
 					Zip = int.Parse(ZipEntry.Text), 
 					BirthDate = birthDateEntry.Date,//DateTime.Parse(birthDateEntry.Date.ToString("d")), 

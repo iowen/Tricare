@@ -82,11 +82,25 @@ namespace TriCare.Views
 			var PhoneLabel = new Label { Text = "Phone:", TextColor = Color.Navy  };
 			var PhoneEntry = new Label{ TextColor = Color.Black };
             PhoneEntry.SetBinding(Label.TextProperty, "Phone");
-
+			PhoneEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(PhoneEntry.Text.Length == 10)
+				{
+					var pn = PhoneEntry.Text.Insert (3, "-").Insert (7, "-");
+					PhoneEntry.Text = pn;
+				}
+			};
 			var FaxLabel = new Label { Text = "Fax:", TextColor = Color.Navy };
 			var FaxEntry = new Label{ TextColor = Color.Black };
             FaxEntry.SetBinding(Label.TextProperty, "Fax");
-
+			FaxEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
+				if(FaxEntry.Text.Length == 10)
+				{
+					var fn = FaxEntry.Text.Insert (3, "-").Insert (7, "-");
+					FaxEntry.Text = fn;
+				}
+			};
 			#region LAYOUTS
 			this.BindingContext = p;
 

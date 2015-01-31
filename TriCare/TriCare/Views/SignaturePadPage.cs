@@ -40,8 +40,9 @@ namespace TriCare.Views
 				Text = "Rotate to Sign",
 				TextColor = Color.Red,
 				FontSize = 24,
-				IsVisible = false
-			};
+				IsVisible = false,
+
+		};
 			curView = new SignaturePadView {  
 				CaptionText = " ",
 				CaptionTextColor = Color.Blue,
@@ -58,7 +59,8 @@ namespace TriCare.Views
 		//	if (Device.OS == TargetPlatform.iOS) {		
             Grid grid = new Grid
             {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
                 RowDefinitions = 
 				{
 					new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute)},
@@ -74,7 +76,7 @@ namespace TriCare.Views
 	
 			grid.Children.Add (rLabel);
             grid.Children.Add(curView);
-			Grid.SetRow (rLabel, 0);
+			Grid.SetRow (rLabel, 1);
             Grid.SetRow(curView, 0);
             grid.Children.Add(saveButton);
             Grid.SetRow(saveButton, 1);

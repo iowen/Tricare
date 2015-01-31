@@ -154,5 +154,20 @@ namespace TriCare
 			var en = DependencyService.Get<IEncrypter> ();
 			return en.GetDecryption (plainText);
 		}
+
+		public static string GetInputAsPhoneNumber(string oldText, string newText)
+		{
+			string phoneInput = newText;
+			string phoneOutput = "";
+			if ((newText.Length == 3 && newText.Length > oldText.Length) || (newText.Length == 4 && !newText.Contains ("-") && newText.Length > oldText.Length)) {
+				phoneOutput = phoneInput.Insert (3, "-");
+			} else if ((newText.Length == 7 && newText.Length > oldText.Length) || (newText.Length == 8 && !newText.Substring (5).Contains ("-") && newText.Length > oldText.Length)) {
+				phoneOutput = phoneInput.Insert (7, "-");
+			} else
+				return phoneInput;
+			return phoneOutput;
+		}
+
+		public static string ApiUrL = "http://teamsavagemma.com";
     }
 }

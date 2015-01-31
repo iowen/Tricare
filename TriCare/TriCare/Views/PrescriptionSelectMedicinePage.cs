@@ -29,6 +29,7 @@ namespace TriCare.Views
 					App.CurrentPrescription.Medicine = new TriCare.Models.MedicineModelForPrescription();
 					App.CurrentPrescription.Medicine .MedicineId = med.MedicineId;
 					App.CurrentPrescription.Medicine .MedicineName = med.Name.Trim();
+					App.CurrentPrescription.Medicine.Directions = med.Directions.Trim();
 					await this.Navigation.PushAsync (new MedicineIngredientListPage (med.MedicineId));
 				};
 				myContent.Children.Add (newButton);

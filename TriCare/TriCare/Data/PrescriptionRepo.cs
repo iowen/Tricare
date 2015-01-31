@@ -41,9 +41,9 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://teamsavagemma.com");
+				client.BaseAddress = new Uri(App.ApiUrL);
 
-                var resultTask = await client.GetAsync("http://teamsavagemma.com/api/Ingredient");
+				var resultTask = await client.GetAsync(App.ApiUrL+"/api/Ingredient");
                 var resultText = resultTask.Content.ReadAsStringAsync().Result;
                 try
                 {
@@ -170,7 +170,7 @@ namespace TriCare.Data
 				};
 				content.Add(fileContent);
 
-				var resultTask = await client.PostAsync("http://teamsavagemma.com/api/PrescriptionMedicine", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/PrescriptionMedicine", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 
 				dynamic resultFix = JsonConvert.DeserializeObject(resultText);

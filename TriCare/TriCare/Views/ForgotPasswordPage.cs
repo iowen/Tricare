@@ -13,6 +13,7 @@ namespace TriCare.Views
     public class ForgotPasswordPage : ContentPage
     {
 		private ActivityIndicator indi;
+		private Entry emailEntry;
 		public ForgotPasswordPage(bool isLogin = true)
 		{
 			App.IsHome = false;
@@ -28,11 +29,11 @@ namespace TriCare.Views
 
 			this.SetBinding (ContentPage.TitleProperty, "Forgot Password");
 			var emailLabel = new Label { Text = "Email", TextColor = Color.Navy  };
-			var emailEntry = new Entry () {
+			emailEntry = new Entry () {
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text=""
 			};
-			emailEntry.SetBinding (Entry.TextProperty, "Email");
 
 			var forgotLabel = new Label {
 				Text = "Please enter the email address you used to sign up.",
@@ -49,15 +50,18 @@ namespace TriCare.Views
 				submitButton.IsEnabled = false;
 				indi.IsRunning = true;
 				//send to api
+			
 				if(String.IsNullOrWhiteSpace(emailEntry.Text.Trim()))
 					{
-						indi.IsRunning = false;
 						var Command1 = new Command(async o => {
+						indi.IsRunning = false;
 							await DisplayAlert("Message","Please enter a valid email address.","Close");
+						submitButton.IsEnabled = true;
 						});
 						Command1.Execute(new []{"run"});
-					return;
+
 					}
+				else{
 				var Command = new Command(async o => {
 						indi.IsRunning = false;
 
@@ -65,6 +69,7 @@ namespace TriCare.Views
 					await App.np.PopToRootAsync();
 				});
 				Command.Execute(new []{"run"});
+				}
 
 			};
 
@@ -84,8 +89,8 @@ namespace TriCare.Views
 			AbsoluteLayout.SetLayoutBounds (indi, new Rectangle (0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 			overlay.Children.Add (content, new Rectangle (0, 0, 1, 1), AbsoluteLayoutFlags.All);
 			overlay.Children.Add (indi);
-			Content = new ScrollView () {
-				VerticalOptions = LayoutOptions.CenterAndExpand,
+			Content = new LoginScrollView () {
+				VerticalOptions = LayoutOptions.StartAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Content = overlay
 			};

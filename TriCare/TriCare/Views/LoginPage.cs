@@ -7,17 +7,19 @@ using TriCare.Data;
 using TriCare.Models;
 using TriCare.Utilities;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Controls;
 
 namespace TriCare.Views
 {
     public class LoginPage : ContentPage
     {
 		private ActivityIndicator indi;
+		private AbsoluteLayout overlay;
 		public LoginPage(bool isLogin = true)
         {
 			App.IsHome = false;
 
-			var overlay = new AbsoluteLayout();
+			overlay = new AbsoluteLayout();
 			var content = new StackLayout();
 			 indi = new ActivityIndicator();
 			if (isLogin) {
@@ -63,28 +65,42 @@ namespace TriCare.Views
 					BackgroundColor = Color.Transparent
 				};
 				forgotLabel.Clicked += async (sender, e) => {
+					loginButton.IsEnabled = false;
+					registerButton.IsEnabled = false;
+					forgotLabel.IsEnabled = false;
 					await App.np.PushAsync(new ForgotPasswordPage());
+					passwordEntry.Text = "";
+					emailEntry.Text = "";
+					loginButton.IsEnabled = true;
+					registerButton.IsEnabled = true;
+					forgotLabel.IsEnabled = true;
 				};
 				loginButton.Clicked += async (sender, e) => {
 					loginButton.IsEnabled = false;
 					registerButton.IsEnabled = false;
-
+					forgotLabel.IsEnabled = false;
 					var Command = new Command(async o => {
 						indi.IsRunning = true;					
 						var loginItem = new LoginModel () { Email = emailEntry.Text, Password = passwordEntry.Text };
 						var prescriberRepo = new PrescriberRepo ();
 						var loginState = await prescriberRepo.LoginPrescriber (loginItem);
-						indi.IsRunning = false;
 						if (loginState.ToLower () == "success") {
 							App.ClearCurrentPrescription ();
-							loginButton.IsEnabled = true;
-							registerButton.IsEnabled = true;
+
 							passwordEntry.Text = "";
 							emailEntry.Text = "";
 							await App.np.PushAsync(new HomePage());
+							loginButton.IsEnabled = true;
+							registerButton.IsEnabled = true;
+							forgotLabel.IsEnabled = true;
+							indi.IsRunning = false;
+
 						} else {
 							loginButton.IsEnabled = true;
 							registerButton.IsEnabled = true;
+							forgotLabel.IsEnabled = true;
+							indi.IsRunning = false;
+
 							await DisplayAlert ("Error", "Invalid credentials provided", "OK", "close");
 
 						}
@@ -97,13 +113,26 @@ namespace TriCare.Views
 
 
 				registerButton.Clicked += async (sender, e) => {
-					await App.np.PushAsync (new  RegisterPage());            
+					var Command = new Command(async o => {
+						indi.IsRunning = true;					
+							loginButton.IsEnabled = false;
+							registerButton.IsEnabled = false;
+						forgotLabel.IsEnabled = false;
+							passwordEntry.Text = "";
+							emailEntry.Text = "";
+						indi.IsRunning = false;
+							await App.np.PushAsync (new  RegisterPage());            
+						loginButton.IsEnabled = true;
+						registerButton.IsEnabled = true;
+						forgotLabel.IsEnabled = true;
+					});
+					Command.Execute(new []{"run"});
 				};
 
 				content = new StackLayout {
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
-					Padding = new Thickness (20),
+					Padding = new Thickness (5),
 					Children = {
 						logoCell,
 						emailLabel, emailEntry, 
@@ -117,17 +146,18 @@ namespace TriCare.Views
 				AbsoluteLayout.SetLayoutBounds(indi, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 				overlay.Children.Add(content,new Rectangle (0, 0, 1, 1), AbsoluteLayoutFlags.All);
 				overlay.Children.Add(indi);
-				Content = new ScrollView () {
-					VerticalOptions = LayoutOptions.CenterAndExpand,
+
+				Content = new LoginScrollView () {
+					Padding = new Thickness (20),
+					VerticalOptions = LayoutOptions.StartAndExpand,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					Content = overlay
-				};
 
+				};
 			}
         }
-		public  void ReLoad()
-		{
-			this.Navigation.PushAsync (new LoginPage ());
-		}
+
+	
+
     }
 }

@@ -88,7 +88,7 @@ namespace TriCare.Views
 			SearchBar searchBar = (SearchBar)sender;
 			string searchText = searchBar.Text;
 			if (!string.IsNullOrWhiteSpace (searchText.Trim ())) {
-				var result = patientList.Where (a => a.FirstName.ToLower ().Contains (searchText) || a.LastName.ToLower().Contains (searchText)).ToList ();
+				var result = patientList.Where (a => a.FirstName.ToLower ().Contains (searchText.ToLower()) || a.LastName.ToLower().Contains (searchText.ToLower())).ToList ();
 				listView.ItemsSource = result;
 			} else {
 				listView.ItemsSource = patientList;

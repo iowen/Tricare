@@ -70,6 +70,7 @@ namespace TriCare.Views
 				SuggestionBackgroundColor = Color.Gray,
 				TextColor = Color.Black,
 				SearchTextColor = Color.White,
+				Text = ""
 			};
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()
@@ -77,6 +78,7 @@ namespace TriCare.Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.Transparent,
                 TextColor = Color.Black,
+				Text = ""
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
 
@@ -86,6 +88,7 @@ namespace TriCare.Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.Transparent,
                 TextColor = Color.Black,
+				Text = ""
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
@@ -96,6 +99,7 @@ namespace TriCare.Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.Transparent,
                 TextColor = Color.Black,
+				Text = ""
             };
             emailEntry.SetBinding(Entry.TextProperty, "Email");
 
@@ -103,7 +107,8 @@ namespace TriCare.Views
 			var passwordEntry = new Entry(){
 				IsPassword = true,
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Black
+                TextColor = Color.Black,
+				Text = ""
 			}; 
 
 			passwordEntry.SetBinding(Entry.TextProperty, "Password");
@@ -112,7 +117,8 @@ namespace TriCare.Views
 			var password2Entry = new Entry(){
 				IsPassword = true,
                 BackgroundColor = Color.Transparent,
-                TextColor = Color.Black
+                TextColor = Color.Black,
+				Text = ""
 			}; 
 
 
@@ -121,6 +127,7 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
 
@@ -129,6 +136,7 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
 
@@ -137,6 +145,7 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
 
@@ -145,6 +154,7 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
 
@@ -153,6 +163,7 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             CityEntry.SetBinding(Entry.TextProperty, "City");
 
@@ -164,25 +175,34 @@ namespace TriCare.Views
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
 
 			var PhoneLabel = new Label { Text = "Phone" , TextColor = Color.Navy };
-            var PhoneEntry = new Entry()
+            var PhoneEntry = new PhoneNumberEntry()
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
-
+			PhoneEntry.TextChanged +=  (sender, e) => {
+				var pnum = sender as PhoneNumberEntry;
+				pnum.Text =  App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var FaxLabel = new Label { Text = "Fax" , TextColor = Color.Navy };
-            var FaxEntry = new Entry()
+            var FaxEntry = new PhoneNumberEntry()
             {
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
+				Text = ""
             };
             FaxEntry.SetBinding(Entry.TextProperty, "Fax");
-
+			FaxEntry.TextChanged +=  (sender, e) => {
+				var fnum = sender as PhoneNumberEntry;
+				fnum.Text =  App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
+			};
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
@@ -193,9 +213,12 @@ namespace TriCare.Views
 				int validZip = 0;
 				int.TryParse(ZipEntry.Text,out validZip);
 				long validPhone = 0;
-				Int64.TryParse(PhoneEntry.Text,out validPhone);
+				var phneTxt = PhoneEntry.Text.Replace("-","");
+				Int64.TryParse(phneTxt,out validPhone);
 				long validFax = 0;
-				Int64.TryParse(FaxEntry.Text,out validFax);
+				var fxTxt = FaxEntry.Text.Replace("-","");
+
+				Int64.TryParse(fxTxt,out validFax);
 				var prescriberList = prescriberRepo.GetAllPrescribers();
 				var emailExists = prescriberList.Where(em => em.Email.Trim() == emailEntry.Text.Trim()).FirstOrDefault();
 				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
@@ -203,6 +226,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a first name.", "OK");
+					firstNameLabel.Text = "* First Name *";
+					firstNameLabel.TextColor = Color.Red;
+					firstNameLabel.Focus();
+					firstNameEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
@@ -306,7 +333,7 @@ namespace TriCare.Views
 					await DisplayAlert("Error", "Please enter a valid fax number.", "OK");
 					return;
 				}
-                var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = FaxEntry.Text, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = PhoneEntry.Text, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
+				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
                 string msg;
                 var bR = PrescriberValidator.Validate(prescriberItem, out msg);
                 if(!bR)

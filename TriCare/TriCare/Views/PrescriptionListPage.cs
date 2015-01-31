@@ -29,7 +29,7 @@ namespace TriCare.Views
 				if (e.SelectedItem == null)
 					return;
                 var selected = (PrescriptionModel)e.SelectedItem;
-                    var prescriptionPage = new ViewPrescriptionPage(selected);
+				var prescriptionPage = new ViewPrescriptionPage(selected.PrescriptionId);
 				await App.np.PushAsync(prescriptionPage);
 				listView.SelectedItem = null;
 			};

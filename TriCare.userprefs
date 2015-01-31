@@ -1,16 +1,16 @@
 ﻿<Properties StartupItem="TriCare\TriCare.Android\TriCare.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5.8.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare.Android/Resources/values/styles_tcaretab.xml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Owen's iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Views/PatientPage.cs">
     <Files>
       <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="43" Column="43" />
+      <File FileName="TriCare/TriCare/Views/PatientPage.cs" Line="63" Column="63" />
       <File FileName="TriCare/TriCare/Views/EditPatientPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/App.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/CreatePatientPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/EditPrescriberPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/HomePage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/MedicineIngredientListPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="4" Column="4" />
+      <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriberPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriptionListCell.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriptionListPage.cs" Line="1" Column="1" />
@@ -21,7 +21,7 @@
       <File FileName="TriCare/TriCare/Views/SignaturePadView.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/VerifyPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/ViewPrescriptionPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/AutoCompleteView.cs" Line="25" Column="25" />
+      <File FileName="TriCare/TriCare/Views/AutoCompleteView.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.Android/MainActivity.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriptionSelectMedicinePage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/AppDelegate.cs" Line="1" Column="1" />
@@ -29,7 +29,6 @@
       <File FileName="TriCare/TriCare/Data/SyncRepo.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/ExtendedTabbedPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/ExtendedTabbedPageRenderer.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/Info.plist" />
       <File FileName="TriCare/TriCare.Android/Properties/AndroidManifest.xml" Line="1" Column="1" />
       <File FileName="../../../../Library/Frameworks/Mono.framework/Versions/3.12.0/lib/mono/4.5/Microsoft.Common.targets" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.Android/SplashScreen.cs" Line="1" Column="1" />
@@ -44,6 +43,25 @@
       <File FileName="TriCare/TriCare/Models/PrescriberModel.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Models/Patient.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.Android/Resources/values/styles_tcaretab.xml" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/IngredientCell.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/Ingredient.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/InsuranceCarrier.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/Encrypter_iOS.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/SqLite_iOS.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Models/MedicineModel.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/IngredientRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/InsuranceCarrierRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/ISqLite.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/MedicineRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/RefillRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/StateRepo.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.Android/Android_EntryRenderer.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/IOS_EntryRenderer.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Data/LoginScrollView.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.Android/Encrypter_Android.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.Android/Android_LoginScrollView.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/IOS_LoginScrollView.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -57,9 +75,12 @@
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="186" column="1" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\PatientPage.cs" line="141" column="70" />
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="180" column="1" />
-      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Data/PrescriberRepo.cs" line="109" column="1" />
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/MainActivity.cs" line="26" column="1" />
+      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Data/PrescriberRepo.cs" line="93" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TriCare.iOS>
+    <IPhoneTestFlightSettings_27CRelease ApiToken="5f1cec8a3d9f0765993dcf06138c71e3_MjM0OTAyODIwMTUtMDEtMzEgMDQ6MzY6MjQuMDUxMzk5" TeamToken="38efa5e2bff6803441d5d322ec0aa4cc_NDg1OTQ4MjAxNS0wMS0zMSAwNDozNzozNS43Mzc2NDc" ReleaseNotes="Beta test of TriCare Wellness Aoo." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="lh13@msn.com,marcus1.ayee@gmail.com" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.TriCare.iOS>
 </Properties>

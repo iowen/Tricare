@@ -36,10 +36,10 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://teamsavagemma.com");
+				client.BaseAddress = new Uri(App.ApiUrL);
 
 
-                var resultTask = await client.GetAsync("http://teamsavagemma.com/api/Prescriber/" + prescriberId.ToString());
+				var resultTask = await client.GetAsync(App.ApiUrL+"/api/Prescriber/" + prescriberId.ToString());
                 var resultText = resultTask.Content.ReadAsStringAsync().Result;
                 try
                 {
@@ -79,14 +79,14 @@ namespace TriCare.Data
 
 				using (var client = new HttpClient())
 				{
-					client.BaseAddress = new Uri("http://teamsavagemma.com");
+				client.BaseAddress = new Uri(App.ApiUrL);
 					var json = JsonConvert.SerializeObject(login);
 
 				var content = new FormUrlEncodedContent(new[] 
 					{
 						new KeyValuePair<string, string>("", json)
 					});
-				var resultTask = await client.PostAsync("http://teamsavagemma.com/api/PrescriberLogin", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/api/PrescriberLogin", content);
 					var resultText = resultTask.Content.ReadAsStringAsync().Result;
 				try
 				{
@@ -130,7 +130,7 @@ namespace TriCare.Data
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("http://teamsavagemma.com");
+				client.BaseAddress = new Uri(App.ApiUrL);
 				var json = JsonConvert.SerializeObject(item);
 
 				var content = new FormUrlEncodedContent(new[] 
@@ -138,7 +138,7 @@ namespace TriCare.Data
 						new KeyValuePair<string, string>("", json)
 					});
 
-				var resultTask = await client.PostAsync ("http://teamsavagemma.com/api/Prescriber", content);
+				var resultTask = await client.PostAsync (App.ApiUrL+"/api/Prescriber", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 				return resultText;
 			}
@@ -162,7 +162,7 @@ namespace TriCare.Data
 						new KeyValuePair<string, string>("", json)
 					});
 			
-				var resultTask = await client.PostAsync("http://teamsavagemma.com/api/prescriber", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/api/prescriber", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 				var pReturn = JsonConvert.DeserializeObject<int>(resultText);
 				if (pReturn > 0)
@@ -197,7 +197,7 @@ namespace TriCare.Data
 						new KeyValuePair<string, string>("", json)
 					});
 
-				var resultTask = await client.PutAsync("http://teamsavagemma.com/api/prescriber", content);
+				var resultTask = await client.PutAsync(App.ApiUrL+"/api/prescriber", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 				var pReturn = JsonConvert.DeserializeObject<string>(resultText).Replace("\\","").Replace("\"","");
 				if (pReturn.ToLower() == "success")
