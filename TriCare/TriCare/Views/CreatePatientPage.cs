@@ -443,7 +443,7 @@ namespace TriCare.Views
 						App.CurrentPrescription.Patient = patientItem;
 						var Command = new Command(async o => {
 							await App.np.PopAsync(false);
-							await App.np.PushAsync(new PrescriptionSelectMedicinePage());
+							await App.np.PushAsync(new PrescriptionSelectMedicineCategoryPage());
 						});
 						Command.Execute(new []{"run"});
 

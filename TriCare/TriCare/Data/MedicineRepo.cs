@@ -63,7 +63,10 @@ namespace TriCare.Data
         {
             return (from i in database.Table<Medicine>() select i).ToList();
         }
-
+		public List<Medicine> GetMedicinesForCategory(int categoryId)
+		{
+			return database.Table<Medicine>().Where(x => x.MedicineCategoryId == categoryId).ToList();
+		}
         public Medicine GetMedicine(int id)
         {
             return database.Table<Medicine>().FirstOrDefault(x => x.MedicineId == id);

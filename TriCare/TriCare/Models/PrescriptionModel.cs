@@ -24,6 +24,7 @@ namespace TriCare.Models
         public Prescriber Prescriber;
         public Patient Patient;
         public DateTime Created;
+		public int MedicineCategoryId;
         public MedicineModelForPrescription Medicine;
         public RefillModel Refill;
 		[Ignore]
@@ -40,6 +41,7 @@ namespace TriCare.Models
         public Patient Patient;
         public DateTime Created;
         public string MedicineName;
+		public int MedicineCategoryId;
         public string Location;
         public DateTime LastUpdate;
         public int MedicineId;

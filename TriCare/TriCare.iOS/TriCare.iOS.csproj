@@ -57,7 +57,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Larry Howard (85HG35V69C)</CodesignKey>
     <BuildIpa>true</BuildIpa>
     <IpaPackageName>
     </IpaPackageName>
@@ -65,6 +65,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
+    <CodesignProvision>d1972017-a03d-4f14-bc76-c08f6f757645</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -105,6 +106,8 @@
     <Compile Include="IOS_EntryRenderer.cs" />
     <Compile Include="IOS_LoginScrollView.cs" />
     <None Include="RELEASE-NOTES.txt" />
+    <Compile Include="Network_iOS.cs" />
+    <Compile Include="Reachability.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TriCare\TriCare.csproj">
@@ -175,6 +178,7 @@
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\options.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">

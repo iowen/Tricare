@@ -113,6 +113,11 @@ namespace TriCare.Views
 
 
 				registerButton.Clicked += async (sender, e) => {
+//					if(!App.IsConnected())
+//					{
+//						await DisplayAlert ("Error", "Registration cannot be completed without an internet connection.", "OK", "close");
+//						return;
+//					}
 					var Command = new Command(async o => {
 						indi.IsRunning = true;					
 							loginButton.IsEnabled = false;

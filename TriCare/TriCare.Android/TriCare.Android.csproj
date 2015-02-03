@@ -105,6 +105,7 @@
     <Compile Include="Encrypter_Android.cs" />
     <Compile Include="Android_EntryRenderer.cs" />
     <Compile Include="Android_LoginScrollView.cs" />
+    <Compile Include="Network_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -369,6 +370,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\tricareselect_btn_default_focused_holo_light.9.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\tricareselect_btn_default_normal_holo_light.9.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\tricareselect_btn_default_pressed_holo_light.9.png" />
+    <AndroidResource Include="Resources\Drawable\options.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\tricareBG.png" />

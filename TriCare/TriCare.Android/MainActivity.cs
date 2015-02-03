@@ -7,7 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Graphics.Drawables;
-
+using Android.Content;
 using Xamarin.Forms.Platform.Android;
 
 namespace TriCare.Droid
@@ -16,6 +16,7 @@ namespace TriCare.Droid
     public class MainActivity : AndroidActivity
     {
 		private static Stopwatch timer;
+		public static Context context;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -34,7 +35,8 @@ namespace TriCare.Droid
 			}
             Xamarin.Forms.Forms.Init(this, bundle);
             SetPage(App.GetMainPage());
-        }
+			context = this.BaseContext;
+		}
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{
 

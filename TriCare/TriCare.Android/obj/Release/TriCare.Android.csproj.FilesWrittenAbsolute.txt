@@ -282,3 +282,4 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable-xxhdpi/tricareselect_btn_default_focused_holo_light.9.png
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable-xxhdpi/tricareselect_btn_default_normal_holo_light.9.png
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/obj/Release/res/drawable-xxhdpi/tricareselect_btn_default_pressed_holo_light.9.png
+/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Release/System.Diagnostics.Tools.dll

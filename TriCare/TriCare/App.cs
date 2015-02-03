@@ -121,7 +121,10 @@ namespace TriCare
         {
             _Token = token;
         }
-
+		public static bool IsConnected ()
+		{
+			return DependencyService.Get<INetwork> ().IsConnected ();
+		}
         public static Action SuccessfulLoginAction
         {
             get

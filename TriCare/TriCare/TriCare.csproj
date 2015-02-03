@@ -108,6 +108,10 @@
     <Compile Include="Data\IEncrypter.cs" />
     <Compile Include="PhoneNumberEntry.cs" />
     <Compile Include="Data\LoginScrollView.cs" />
+    <Compile Include="Models\MedicineCategory.cs" />
+    <Compile Include="Views\PrescriptionSelectMedicineCategoryPage.cs" />
+    <Compile Include="Data\MedicineCategoryRepo.cs" />
+    <Compile Include="Data\INetwork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.XamForms.SignaturePad">

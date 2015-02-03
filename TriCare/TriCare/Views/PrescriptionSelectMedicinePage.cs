@@ -10,12 +10,12 @@ namespace TriCare.Views
 {
     public class PrescriptionSelectMedicinePage : ContentPage
     {
-        public PrescriptionSelectMedicinePage()
+		public PrescriptionSelectMedicinePage(int categoryId)
         {
 			this.BackgroundColor = Color.White;
 			this.SetBinding(ContentPage.TitleProperty, "Select Medicine");
 			var mRepo = new MedicineRepo ();
-			var meds = mRepo.GetAllMedicines ();
+			var meds = mRepo.GetMedicinesForCategory(categoryId);
 			Title = "Medicines";
 			var myContent = new StackLayout
 			{
@@ -30,7 +30,7 @@ namespace TriCare.Views
 					App.CurrentPrescription.Medicine .MedicineId = med.MedicineId;
 					App.CurrentPrescription.Medicine .MedicineName = med.Name.Trim();
 					App.CurrentPrescription.Medicine.Directions = med.Directions.Trim();
-					await this.Navigation.PushAsync (new MedicineIngredientListPage (med.MedicineId));
+					await App.np.PushAsync (new MedicineIngredientListPage (med.MedicineId));
 				};
 				myContent.Children.Add (newButton);
 			}

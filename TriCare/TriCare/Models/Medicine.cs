@@ -13,7 +13,7 @@ namespace TriCare.Models
         public int MedicineId { get; set; }
         public string Name { get; set; }
 		public string Directions{ get; set; }
-
+		public int MedicineCategoryId { get; set; }
     }
 
     public class PrescriptionMedicine
@@ -24,6 +24,8 @@ namespace TriCare.Models
         public int PrescriptionId { get; set; }
 		[Ignore]
 		public string Directions{ get; set; }
+		public int MedicineCategoryId { get; set; }
+
     }
 
 
@@ -33,5 +35,7 @@ namespace TriCare.Models
 		public string Name { get; set; }
 		public List<MedicineIngredient> Ingredients { get; set; }
 		public string Directions{ get; set; }
+		public int MedicineCategoryId { get; set; }
+
 	}
 }

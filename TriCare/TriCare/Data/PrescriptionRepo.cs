@@ -170,7 +170,7 @@ namespace TriCare.Data
 				};
 				content.Add(fileContent);
 
-				var resultTask = await client.PostAsync(App.ApiUrL+"/PrescriptionMedicine", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/api/PrescriptionMedicine", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 
 				dynamic resultFix = JsonConvert.DeserializeObject(resultText);

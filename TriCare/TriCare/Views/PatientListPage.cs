@@ -9,13 +9,20 @@ using Xamarin.Forms;
 
 namespace TriCare.Views
 {
-    public class PatientListPage : ContentPage
+	public class PatientListPage : MasterDetailPage
     {
 		ListView listView;
 		List<Patient> patientList;
+		ContentPage cPage;
 		public PatientListPage (bool isDuringPrescription = false)
 		{
+			cPage = new ContentPage();
 			this.BackgroundColor = Color.White;
+			Button filter = new Button (){ Image = "options.png" , BackgroundColor=Color.White,HorizontalOptions = LayoutOptions.StartAndExpand};
+			filter.Clicked += (sender, e) => {
+				this.IsPresented = !this.IsPresented;
+			};
+
 			Title = "Patients";
 			patientList = new List<Patient> ();
 			listView = new ListView ();
@@ -46,15 +53,18 @@ namespace TriCare.Views
 			};
 			searchBar.SearchButtonPressed += OnSearchBarButtonPressed;
 			searchBar.TextChanged += OnTextChanged;
-
+			var sblayout = new StackLayout (){ Orientation = StackOrientation.Horizontal };
+			sblayout.Children.Add (filter);
+			sblayout.Children.Add (searchBar);
 			// Accomodate iPhone status bar.
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			var layout = new StackLayout();
+			var layout = new StackLayout(){HorizontalOptions =LayoutOptions.StartAndExpand};
 			if (Device.OS == TargetPlatform.WinPhone) { // WinPhone doesn't have the title showing
 				layout.Children.Add(new Label{
 					Text="Patient", 
 					Font=Font.SystemFontOfSize (NamedSize.Large)});
 			}
+			layout.Children.Add (filter);
 			layout.Children.Add (searchBar);
 			layout.Children.Add(new StackLayout{
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -71,8 +81,10 @@ namespace TriCare.Views
 			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
 			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
-			Content = layout;
-
+			cPage.Content = layout;
+			cPage.BackgroundColor = Color.White;
+			this.Detail = cPage;
+			this.Master = MenuPage();
 		
 		}
 
@@ -94,7 +106,32 @@ namespace TriCare.Views
 				listView.ItemsSource = patientList;
 			}
 		}
+		public ContentPage MenuPage ()
+		{
+			ContentPage mPage = new ContentPage ();
+			Icon = "settings.png";
+			mPage.Title = "menu"; // The Title property must be set.
+			BackgroundColor = Color.FromHex ("333333");
+			var Menu = new ListView ();
 
+			var menuLabel = new ContentView {
+				Padding = new Thickness (10, 36, 0, 5),
+				Content = new Label {
+					TextColor = Color.FromHex ("AAAAAA"),
+					Text = "MENU", 
+				}
+			};
+
+			var layout = new StackLayout { 
+				Spacing = 0, 
+				VerticalOptions = LayoutOptions.FillAndExpand
+			};
+			layout.Children.Add (menuLabel);
+			layout.Children.Add (Menu);
+
+			mPage.Content = layout;
+			return mPage;
+		}
 		public void OnTextChanged(object sender, EventArgs args)
 		{
 			// Get the search text.

@@ -237,6 +237,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a last name.", "OK");
+					lastNameLabel.Text = "* Last Name *";
+					lastNameLabel.TextColor = Color.Red;
+					lastNameLabel.Focus();
+					lastNameEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(emailEntry.Text))
@@ -244,6 +248,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an email.", "OK");
+					emailLabel.Text = "* Email *";
+					emailLabel.TextColor = Color.Red;
+					emailLabel.Focus();
+					emailEntry.Focus();
 					return;
 				}
 				else if(emailExists != null)
@@ -251,6 +259,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "The email written already exists, please enter another.", "OK");
+					emailLabel.Text = "* Email *";
+					emailLabel.TextColor = Color.Red;
+					emailLabel.Focus();
+					emailEntry.Focus();
 					return;
 				}
 				else if (passwordEntry.Text != password2Entry.Text)
@@ -258,6 +270,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", "Passwords must match.", "OK");
+					passwordLabel.Text = "* Password *";
+					passwordLabel.TextColor = Color.Red;
+					passwordLabel.Focus();
+					passwordEntry.Focus();
                     return;
                 }
 				else if (string.IsNullOrWhiteSpace(passwordEntry.Text))
@@ -265,6 +281,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
                     await DisplayAlert("Error", "Password is required", "OK");
+					passwordLabel.Text = "* Password *";
+					passwordLabel.TextColor = Color.Red;
+					passwordLabel.Focus();
+					passwordEntry.Focus();
                     return;
                 }
 				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
@@ -272,6 +292,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an NPI number.", "OK");
+					NpiNumberLabel.Text = "* NPI Number *";
+					NpiNumberLabel.TextColor = Color.Red;
+					NpiNumberLabel.Focus();
+					NpiNumberEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
@@ -279,6 +303,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a License number.", "OK");
+					LicenseNumberLabel.Text = "* License Number *";
+					LicenseNumberLabel.TextColor = Color.Red;
+					LicenseNumberLabel.Focus();
+					LicenseNumberEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
@@ -286,6 +314,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a DEA number.", "OK");
+					DeaNumberLabel.Text = "* DEA Number *";
+					DeaNumberLabel.TextColor = Color.Red;
+					DeaNumberLabel.Focus();
+					DeaNumberEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
@@ -293,6 +325,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter an Address.", "OK");
+					AddressLabel.Text = "* Address *";
+					AddressLabel.TextColor = Color.Red;
+					AddressLabel.Focus();
+					AddressEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
@@ -300,6 +336,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a City.", "OK");
+					CityLabel.Text = "* City *";
+					CityLabel.TextColor = Color.Red;
+					CityLabel.Focus();
+					CityEntry.Focus();
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
@@ -307,6 +347,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
 					await DisplayAlert("Error", "Please enter a valid State.", "OK");
+					StateLabel.Text = "* State *";
+					StateLabel.TextColor = Color.Red;
+					StateLabel.Focus();
+					StateEntry.Focus();
 					return;
 				}
 				else if (validZip < 10000)
@@ -315,6 +359,10 @@ namespace TriCare.Views
 					registerButton.IsEnabled = true;
 					//must be atleast 5 digits
                     await DisplayAlert("Error", "Invalid Zip Format, please enter 5 digits.", "OK");
+					ZipLabel.Text = "* Zip *";
+					ZipLabel.TextColor = Color.Red;
+					ZipLabel.Focus();
+					ZipEntry.Focus();
                     return;
                 }
 				else if(validPhone < 1000000000)
@@ -323,6 +371,10 @@ namespace TriCare.Views
 					registerButton.IsEnabled = true;
 					//must be atleast 10 digits
 					await DisplayAlert("Error", "Please enter a valid Phone number.", "OK");
+					PhoneLabel.Text = "* Phone *";
+					PhoneLabel.TextColor = Color.Red;
+					PhoneLabel.Focus();
+					PhoneEntry.Focus();
 					return;
 				}
 				else if(validFax < 1000000000)
@@ -331,6 +383,10 @@ namespace TriCare.Views
 					registerButton.IsEnabled = true;
 					//must be atleast 10 digits
 					await DisplayAlert("Error", "Please enter a valid fax number.", "OK");
+					FaxLabel.Text = "* Fax *";
+					FaxLabel.TextColor = Color.Red;
+					FaxLabel.Focus();
+					FaxEntry.Focus();
 					return;
 				}
 				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };

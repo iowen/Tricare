@@ -47,7 +47,13 @@ namespace TriCare.Views
 			var ssnLabel = new Label { Text = "Id Number:",TextColor = Color.Navy };
 			var ssnEntry = new Label { TextColor = Color.Black };
 			ssnEntry.SetBinding(Label.TextProperty, "SSN");
+			ssnEntry.BindingContextChanged += (sender, e) => {
+				base.OnBindingContextChanged();
 
+				var pn = ssnEntry.Text.Trim();
+				ssnEntry.Text = pn;
+
+			};
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier:", TextColor = Color.Navy };
 			var InsuranceCarrierEntry = new Label { TextColor = Color.Black };
 			//InsuranceCarrierEntry.SetBinding(Label.TextProperty, "LicenseNumber");
@@ -197,7 +203,7 @@ namespace TriCare.Views
 					//    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
 					//}
 				App.CurrentPrescription.Patient =_patient;
-				await App.np.PushAsync(new PrescriptionSelectMedicinePage());
+				await App.np.PushAsync(new PrescriptionSelectMedicineCategoryPage());
 				};
 			grid.Children.Add(bv, 0,0);
 			grid.Children.Add(editButton);

@@ -27,6 +27,7 @@ namespace TriCare.Models
     public class AppSyncDataModel
     {
         public List<InsuranceCarrier> InsuranceCarriers;
+		public List<MedicineCategory> Categories;
         public List<Medicine> Medicines;
         public List<Ingredient> Ingredients;
         public List<MedicineIngredient> MedicineIngredients;
@@ -36,6 +37,7 @@ namespace TriCare.Models
         public AppSyncDataModel()
         {
             InsuranceCarriers = new List<InsuranceCarrier>();
+			Categories = new List<MedicineCategory> ();
             Medicines = new List<Medicine>();
             Ingredients = new List<Ingredient>();
             MedicineIngredients = new List<MedicineIngredient>();

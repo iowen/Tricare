@@ -22,6 +22,7 @@ namespace TriCare.Data
 			database.CreateTable<Patient> ();
 			database.CreateTable<InsuranceCarrier> ();
 			database.CreateTable<Prescriber> ();
+			database.CreateTable<MedicineCategory> ();
 			database.CreateTable<Medicine> ();
 			database.CreateTable<Ingredient> ();
 			database.CreateTable<MedicineIngredient> ();
@@ -35,6 +36,8 @@ namespace TriCare.Data
 
 		public async Task GetSyncData (SyncModel model)
 		{
+//			if (!App.IsConnected ())
+//				return;
 			using (var client = new HttpClient ()) {
 				var json = JsonConvert.SerializeObject (model);
 
@@ -51,6 +54,7 @@ namespace TriCare.Data
 							if (resultItem.AppDataUpdates.Updated > model.LastAppDataSync) {
 								database.InsertOrReplaceAll (resultItem.AppDataUpdates.InsuranceCarriers);
 								database.InsertOrReplaceAll (resultItem.AppDataUpdates.Ingredients);
+								database.InsertOrReplaceAll (resultItem.AppDataUpdates.Categories);
 								database.InsertOrReplaceAll (resultItem.AppDataUpdates.Medicines);
 								database.InsertOrReplaceAll (resultItem.AppDataUpdates.MedicineIngredients);
 								database.InsertOrReplaceAll (resultItem.AppDataUpdates.RefillAmounts);
