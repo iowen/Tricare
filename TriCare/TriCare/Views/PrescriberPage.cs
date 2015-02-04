@@ -21,6 +21,11 @@ namespace TriCare.Views
 			var editButton = new Button { Text = "Edit" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             editButton.Clicked += async (sender, e) =>
             {
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Your Profile cannot be modified without an internet connection.", "OK", "close");
+					return;
+				}
 				App.IsHome = false;
 				await App.np.PushAsync(new EditPrescriberPage());
             };

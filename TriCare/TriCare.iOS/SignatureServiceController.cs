@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Drawing;
 using System.Collections.Generic;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using UIKit;
+using Foundation;
 using Xamarin.Forms.Platform.iOS;
 using TriCare;
 using TriCare.iOS;
@@ -61,7 +61,7 @@ namespace TriCare.iOS
 				? frame.Location.Y + sbframe.Height
 				: 0;
 
-			frame = new RectangleF(x, y, width, height);
+			frame = new CoreGraphics.CGRect(x, y, width, height);
 
 			this.view.Frame = frame;//UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone
 			//	? new RectangleF (10, 10, Bounds.Width - 20, Bounds.Height - 60)
@@ -87,7 +87,7 @@ namespace TriCare.iOS
 			//	this.view.CancelButton.Hidden = true;
 			//	this.view.SaveButton.Hidden = true;
 				this.view.ClearLabel.Hidden = true;
-				this.view.LoadPoints(this.points.Select(xx => new PointF { X = xx.X, Y = xx.Y }).ToArray());
+				this.view.LoadPoints(this.points.Select(xx => new CoreGraphics.CGPoint { X = xx.X, Y = xx.Y }).ToArray());
 			}
 			else {
 			//	this.view.SaveButton.SetTitle(this.config.SaveText, UIControlState.Normal);
@@ -126,7 +126,7 @@ namespace TriCare.iOS
 			return output;
 		}
 
-		public void LoadSignature(params PointF[] points) {
+		public void LoadSignature(params CoreGraphics.CGPoint[] points) {
 			this.view.LoadPoints(points);
 		}
 

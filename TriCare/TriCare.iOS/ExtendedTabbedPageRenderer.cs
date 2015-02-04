@@ -7,7 +7,7 @@ using TriCare;
 using TriCare.iOS;
 using TriCare.Utilities;
 using TriCare.Views;
-using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
@@ -24,9 +24,9 @@ namespace TriCare.iOS
 		{
 			base.OnElementChanged(e);
 
-			TabBar.TintColor = MonoTouch.UIKit.UIColor.White;
-			TabBar.BarTintColor = MonoTouch.UIKit.UIColor.FromRGB(52, 63, 169);
-			TabBar.BackgroundColor = MonoTouch.UIKit.UIColor.FromRGB(52, 63, 169);
+			TabBar.TintColor = UIKit.UIColor.White;
+			TabBar.BarTintColor = UIKit.UIColor.FromRGB(52, 63, 169);
+			TabBar.BackgroundColor = UIKit.UIColor.FromRGB(52, 63, 169);
 
 
 		}

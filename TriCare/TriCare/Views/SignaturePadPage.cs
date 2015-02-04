@@ -173,6 +173,14 @@ namespace TriCare.Views
 			indi.IsRunning = true;
 			saveButton.IsEnabled = false;
 			curView.IsEnabled = false;
+			if(!App.IsConnected())
+			{
+				await DisplayAlert ("Error", "Prescriptions cannot be created without an internet connection.", "OK", "close");
+				indi.IsRunning = false;
+				saveButton.IsEnabled = true;
+				curView.IsEnabled = true;
+				return;
+			}
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
 			byte[] bytes = curView.GetImage(ImageFormatType.Png).ToArray();

@@ -179,6 +179,11 @@ namespace TriCare.Views
 					TextColor = Color.White
 				};
 				editButton.Clicked += async (sender, e) => {
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Patients cannot be modified without an internet connection.", "OK", "close");
+					return;
+				}
 				await App.np.PushAsync (new EditPatientPage (p,isDuringPrescription));
 
 				};
@@ -203,6 +208,11 @@ namespace TriCare.Views
 					//    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK", "");
 					//}
 				App.CurrentPrescription.Patient =_patient;
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Please connect to the internet to continue.", "OK", "close");
+					return;
+				}
 				await App.np.PushAsync(new PrescriptionSelectMedicineCategoryPage());
 				};
 			grid.Children.Add(bv, 0,0);

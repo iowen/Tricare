@@ -36,8 +36,8 @@ namespace TriCare.Data
 
 		public async Task GetSyncData (SyncModel model)
 		{
-//			if (!App.IsConnected ())
-//				return;
+			if (!App.IsConnected ())
+				return;
 			using (var client = new HttpClient ()) {
 				var json = JsonConvert.SerializeObject (model);
 

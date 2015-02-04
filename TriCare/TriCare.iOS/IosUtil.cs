@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using MonoTouch.UIKit;
+using UIKit;
 namespace TriCare.iOS
 {
 	public static class Utils {

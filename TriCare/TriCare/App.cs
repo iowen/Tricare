@@ -7,15 +7,20 @@ using Xamarin.Forms;
 using TriCare.Models;
 using TriCare.Data;
 using System.Text.RegularExpressions;
+using Acr.XamForms.Mobile.Net;
 
 namespace TriCare
 {
-    public class App
+	public class App : Application
     {
 		public static NavigationPage np;
 		private static ToolbarItem logOutButton;
 		public static int andCurr;
 		public static bool showLogout;
+		public App()
+		{
+			MainPage = GetMainPage ();
+		}
         public static Page GetMainPage()
 		{
 			logOutButton = new ToolbarItem ();
@@ -181,9 +186,10 @@ namespace TriCare
 			return regex.IsMatch (email);
 		}
 
-//		public static bool IsConnected()
-//		{
-//			return 
-//		}
+		public static bool IsConnected()
+		{
+			var nservice = DependencyService.Get<INetworkService> ();
+			return nservice.IsConnected;
+		}
     }
 }

@@ -206,6 +206,11 @@ namespace TriCare.Views
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Registration cannot be completed without an internet connection.", "OK", "close");
+					return;
+				}
 				indi.IsRunning = true;
 				registerButton.IsEnabled = false;
 				#region Validation
@@ -486,5 +491,16 @@ namespace TriCare.Views
 			};
 
         }
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			var s = new StateRepo ();
+			var ss = s.GetAllStates ();
+
+			foreach (var sss in ss) {
+				stateList.Add(sss);
+			}
+
+		}
     }
 }

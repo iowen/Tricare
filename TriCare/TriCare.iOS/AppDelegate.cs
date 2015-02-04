@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using TriCare;
 using Xamarin.Forms;
-
+ 
 namespace TriCare.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : UIApplicationDelegate
+	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         // class-level declarations
         UIWindow window;
@@ -28,6 +28,7 @@ namespace TriCare.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
+			LoadApplication (new App ());  
 			timer = new Stopwatch ();
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 

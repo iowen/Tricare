@@ -7,7 +7,7 @@ using TriCare;
 using TriCare.iOS;
 using TriCare.Utilities;
 using TriCare.Views;
-using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
@@ -70,8 +70,8 @@ namespace TriCare.iOS
 				imgFormat => imgFormat == ImageFormatType.Jpg
 				? ConvertStreamToMemoryStream(view.GetImage().AsJPEG().AsStream())
 				: ConvertStreamToMemoryStream(view.GetImage().AsPNG().AsStream()) ,
-				() => view.Points.Select(x => new DrawPoint(x.X, x.Y)), 
-				x => view.LoadPoints(x.Select(y => new System.Drawing.PointF(y.X, y.Y)).ToArray()),
+				() => view.Points.Select(x => new DrawPoint((float)x.X, (float)x.Y)), 
+				x => view.LoadPoints(x.Select(y => new CoreGraphics.CGPoint((float)y.X, (float)y.Y)).ToArray()),
 				() => view.IsBlank
 			);
 

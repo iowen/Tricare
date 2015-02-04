@@ -47,6 +47,11 @@ namespace TriCare.Views
 			};
 
 			submitButton.Clicked += async (sender, e) => {
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Password request cannot be made without an internet connection.", "OK", "close");
+					return;
+				}
 				var sRepo = new SyncRepo();
 				submitButton.IsEnabled = false;
 				indi.IsRunning = true;

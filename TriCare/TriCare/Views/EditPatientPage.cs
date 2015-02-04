@@ -48,6 +48,13 @@ namespace TriCare.Views
 			indi = new ActivityIndicator();
 			this.BindingContext = p;
 			_insuranceCarrierId = p.InsuranceCarrierId;
+
+			var iRepo = new InsuranceCarrierRepo ();
+			inList = iRepo.GetAllInsuranceCarriers ();
+
+			foreach (var i in inList) {
+				insuranceList.Add(i);
+			}
 			this.Title = "Edit Patient";
 			this.BackgroundColor = Color.White;
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
@@ -141,12 +148,6 @@ namespace TriCare.Views
 
 
 
-			var iRepo = new InsuranceCarrierRepo ();
-			inList = iRepo.GetAllInsuranceCarriers ();
-
-			foreach (var i in inList) {
-				insuranceList.Add(i);
-			}
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier", TextColor = Color.Navy };
 			var eleLoc = inList.IndexOf (inList.First (x => x.InsuranceCarrierId == p.InsuranceCarrierId));
 			var seleLoc = stList.IndexOf (stList.First (x => x.Name.Trim() == p.State.Trim()));
@@ -307,6 +308,11 @@ namespace TriCare.Views
 			var saveButton = new Button { Text = "Save", BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White };
 			saveButton.Clicked += async (sender, e) =>
 			{
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Patients cannot be modified without an internet connection.", "OK", "close");
+					return;
+				}
 				indi.IsRunning = true;
 				saveButton.IsEnabled = false;
 				#region VALIDATE BEFORE SAVE
@@ -579,6 +585,8 @@ namespace TriCare.Views
 						var Command = new Command(async o => {
 							App.CurrentPrescription.Patient = patientItem;
 							await App.np.PopAsync(false);
+							await App.np.PopAsync(false);
+							await App.np.PushAsync(new PatientPage(patientItem,true),false);
 							await App.np.PushAsync(new PrescriptionSelectMedicineCategoryPage());
 						});
 						Command.Execute(new []{"run"});

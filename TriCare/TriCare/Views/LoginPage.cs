@@ -65,6 +65,11 @@ namespace TriCare.Views
 					BackgroundColor = Color.Transparent
 				};
 				forgotLabel.Clicked += async (sender, e) => {
+					if(!App.IsConnected())
+					{
+						await DisplayAlert ("Error", "Password request cannot be made without an internet connection.", "OK", "close");
+						return;
+					}
 					loginButton.IsEnabled = false;
 					registerButton.IsEnabled = false;
 					forgotLabel.IsEnabled = false;
@@ -113,11 +118,11 @@ namespace TriCare.Views
 
 
 				registerButton.Clicked += async (sender, e) => {
-//					if(!App.IsConnected())
-//					{
-//						await DisplayAlert ("Error", "Registration cannot be completed without an internet connection.", "OK", "close");
-//						return;
-//					}
+					if(!App.IsConnected())
+					{
+						await DisplayAlert ("Error", "Registration cannot be completed without an internet connection.", "OK", "close");
+						return;
+					}
 					var Command = new Command(async o => {
 						indi.IsRunning = true;					
 							loginButton.IsEnabled = false;
@@ -162,7 +167,13 @@ namespace TriCare.Views
 			}
         }
 
-	
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			if (!App.IsConnected ()) {
+				DisplayAlert("Warning", "Functionality is limited because there is no internet connection.","OK");
+			}
+		}
 
     }
 }

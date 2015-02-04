@@ -184,6 +184,11 @@ namespace TriCare
 			var saveButton = new Button { Text = "Save" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
 			saveButton.Clicked += async (sender, e) =>
 			{
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Tour profile cannot be modified without an internet connection.", "OK", "close");
+					return;
+				}
 				indi.IsRunning = true;
 				saveButton.IsEnabled = false;
 				#region Validation 

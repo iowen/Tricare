@@ -13,7 +13,7 @@ using Xamarin.Forms.Platform.Android;
 namespace TriCare.Droid
 {
 	[Activity (Label = "TriCare Wellness", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,Icon="@drawable/tricareIconA",Theme = "@style/TriCareSelect")]
-    public class MainActivity : AndroidActivity
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity 
     {
 		private static Stopwatch timer;
 		public static Context context;
@@ -34,8 +34,7 @@ namespace TriCare.Droid
 				timer = new Stopwatch ();
 			}
             Xamarin.Forms.Forms.Init(this, bundle);
-            SetPage(App.GetMainPage());
-			context = this.BaseContext;
+			LoadApplication (new App());
 		}
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{

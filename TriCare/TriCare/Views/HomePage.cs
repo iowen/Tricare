@@ -32,12 +32,12 @@ namespace TriCare.Views
             AddPatientButton.Clicked += async (sender, e) =>
             {
 				DisableButtons();
-//				if(!App.IsConnected())
-//				{
-//					await DisplayAlert ("Error", "Patients cannot be added without an internet connection.", "OK", "close");
-//					EnableButtons();
-//					return;
-//				}
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Patients cannot be added without an internet connection.", "OK", "close");
+					EnableButtons();
+					return;
+				}
 				App.IsHome = false;
                 await App.np.PushAsync(new CreatePatientPage());
 				EnableButtons();
@@ -57,12 +57,12 @@ namespace TriCare.Views
             AddPrescriptionButton.Clicked += async (sender, e) =>
             {
 				DisableButtons();
-//				if(!App.IsConnected())
-//				{
-//					await DisplayAlert ("Error", "Prescriptions cannot be created without an internet connection.", "OK", "close");
-//					EnableButtons();
-//					return;
-//				}
+				if(!App.IsConnected())
+				{
+					await DisplayAlert ("Error", "Prescriptions cannot be created without an internet connection.", "OK", "close");
+					EnableButtons();
+					return;
+				}
 				App.IsHome = false;
 
 				await App.np.PushAsync(new PrescriptionNewORSelectPatientPage());
