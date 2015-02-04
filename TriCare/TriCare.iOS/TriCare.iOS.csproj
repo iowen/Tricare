@@ -106,7 +106,6 @@
     <Compile Include="IOS_EntryRenderer.cs" />
     <Compile Include="IOS_LoginScrollView.cs" />
     <None Include="RELEASE-NOTES.txt" />
-    <Compile Include="Network_iOS.cs" />
     <Compile Include="Reachability.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -273,6 +273,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a valid first name","OK");
+					firstNameLabel.Text = "* First Name *";
+					firstNameLabel.TextColor = Color.Red;
+					firstNameLabel.Focus();
+					firstNameEntry.Focus();
 					return;
 				}
 				else if(lastNameEntry.Text.Trim().Length <= 0)
@@ -280,6 +284,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a valid last name","OK");
+					lastNameLabel.Text = "* Last Name *";
+					lastNameLabel.TextColor = Color.Red;
+					lastNameLabel.Focus();
+					lastNameEntry.Focus();
 					return;
 				}
 				else if(genderEntry.SelectedIndex < 0)
@@ -287,6 +295,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please select a gender","OK");
+					genderLabel.Text = "* Gender *";
+					genderLabel.TextColor = Color.Red;
+					genderLabel.Focus();
+					genderEntry.Focus();
 					return;
 				}
 				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -294,6 +306,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please make sure SSN contains 4 digits","OK");
+					ssnLabel.Text = "* Id Number *";
+					ssnLabel.TextColor = Color.Red;
+					ssnLabel.Focus();
+					ssnEntry.Focus();
 					return;
 				}
 				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0 || (validInsCarrier == null))
@@ -301,6 +317,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please provide a valid Insurance Carrier","OK");
+					InsuranceCarrierLabel.Text = "* Insurance Carrier *";
+					InsuranceCarrierLabel.TextColor = Color.Red;
+					InsuranceCarrierLabel.Focus();
+					InsuranceCarrierEntry.Focus();
 					return;
 				}
 				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -308,6 +328,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter digits for the Insurance Carrier Id Number","OK");
+					InsuranceCarrierIdNumberLabel.Text = "* Insurance Carrier Id Number *";
+					InsuranceCarrierIdNumberLabel.TextColor = Color.Red;
+					InsuranceCarrierIdNumberLabel.Focus();
+					InsuranceCarrierIdNumberEntry.Focus();
 					return;
 				}
 				else if(InsuranceGroupNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceGroupNumberEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -315,6 +339,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter digits for the Insurance Group Number","OK");
+					InsuranceGroupNumberLabel.Text = "* Insurance Group Number *";
+					InsuranceGroupNumberLabel.TextColor = Color.Red;
+					InsuranceGroupNumberLabel.Focus();
+					InsuranceGroupNumberEntry.Focus();
 					return;
 				}
 				else if(InsurancePhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(InsurancePhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
@@ -322,20 +350,32 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for the Insurance Phone Number","OK");
+					InsurancePhoneLabel.Text = "* Insurance Phone *";
+					InsurancePhoneLabel.TextColor = Color.Red;
+					InsurancePhoneLabel.Focus();
+					InsurancePhoneEntry.Focus();
 					return;
 				}
 				else if(RxBinEntry.Text.Trim().Length <= 0 || Regex.Matches(RxBinEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter digits for the RX Bin","OK");
+					await DisplayAlert("Alert!","Please enter information for the RX Bin","OK");
+					RxBinLabel.Text = "* Rx Bin *";
+					RxBinLabel.TextColor = Color.Red;
+					RxBinLabel.Focus();
+					RxBinEntry.Focus();
 					return;
 				}
 				else if(RxPcnEntry.Text.Trim().Length <= 0 || Regex.Matches(RxPcnEntry.Text,@"[a-zA-Z]").Count > 0)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter only digits for the RX Pcn","OK");
+					await DisplayAlert("Alert!","Please enter information for the RX Pcn","OK");
+					RxPcnLabel.Text = "* Rx Pcn *";
+					RxPcnLabel.TextColor = Color.Red;
+					RxPcnLabel.Focus();
+					RxPcnEntry.Focus();
 					return;
 				}
 				else if(AllergiesEntry.Text.Trim().Length <= 0)
@@ -343,6 +383,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter information on Allergies","OK");
+					AllergiesLabel.Text = "* Allergies *";
+					AllergiesLabel.TextColor = Color.Red;
+					AllergiesLabel.Focus();
+					AllergiesEntry.Focus();
 					return;
 				}
 				else if(DiagnosisEntry.Text.Trim().Length <= 0)
@@ -350,13 +394,21 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter information on Diagnosis","OK");
+					DiagnosisLabel.Text = "* Diagnosis *";
+					DiagnosisLabel.TextColor = Color.Red;
+					DiagnosisLabel.Focus();
+					DiagnosisEntry.Focus();
 					return;
 				}
 				else if(AddressEntry.Text.Trim().Length <= 0)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an Address","OK");				
+					await DisplayAlert("Alert!","Please enter an Address","OK");	
+					AddressLabel.Text = "* Address *";
+					AddressLabel.TextColor = Color.Red;
+					AddressLabel.Focus();
+					AddressEntry.Focus();
 					return;
 				}
 				else if(CityEntry.Text.Trim().Length <= 0)
@@ -364,6 +416,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a City","OK");
+					CityLabel.Text = "* City *";
+					CityLabel.TextColor = Color.Red;
+					CityLabel.Focus();
+					CityEntry.Focus();
 					return;
 				}
 				else if(StateEntry.Text.Trim().Length <= 0)
@@ -371,6 +427,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an State","OK");
+					StateLabel.Text = "* State *";
+					StateLabel.TextColor = Color.Red;
+					StateLabel.Focus();
+					StateEntry.Focus();
 					return;
 				}
 				else if(ZipEntry.Text.Trim().Length != 5 || Regex.Matches(ZipEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -378,6 +438,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a Zip code with 5 digits","OK");
+					ZipLabel.Text = "* Zip *";
+					ZipLabel.TextColor = Color.Red;
+					ZipLabel.Focus();
+					ZipEntry.Focus();
 					return;
 				}
 				else if(PhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(PhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
@@ -385,6 +449,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter 10 digits for the Phone Number","OK");
+					PhoneLabel.Text = "* Phone *";
+					PhoneLabel.TextColor = Color.Red;
+					PhoneLabel.Focus();
+					PhoneEntry.Focus();
 					return;
 				}
 				else if(EmailEntry.Text.Trim().Length <= 0)
@@ -392,6 +460,21 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter an Email","OK");
+					EmailLabel.Text = "* Email *";
+					EmailLabel.TextColor = Color.Red;
+					EmailLabel.Focus();
+					EmailEntry.Focus();
+					return;
+				}
+				else if (!App.ValidEmail(EmailEntry.Text))
+				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
+					await DisplayAlert("Error", "Please enter an valid email.", "OK");
+					EmailLabel.Text = "* Email *";
+					EmailLabel.TextColor = Color.Red;
+					EmailLabel.Focus();
+					EmailEntry.Focus();
 					return;
 				}
 				else if(PaymentTypeEntry.Text.Trim().Length <= 0)
@@ -399,6 +482,10 @@ namespace TriCare.Views
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
 					await DisplayAlert("Alert!","Please enter a Payment Type","OK");
+					PaymentTypeLabel.Text = "* Payment Type *";
+					PaymentTypeLabel.TextColor = Color.Red;
+					PaymentTypeLabel.Focus();
+					PaymentTypeEntry.Focus();
 					return;
 				}
 				#endregion

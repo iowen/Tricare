@@ -6,6 +6,7 @@ using TriCare.Views;
 using Xamarin.Forms;
 using TriCare.Models;
 using TriCare.Data;
+using System.Text.RegularExpressions;
 
 namespace TriCare
 {
@@ -121,10 +122,7 @@ namespace TriCare
         {
             _Token = token;
         }
-		public static bool IsConnected ()
-		{
-			return DependencyService.Get<INetwork> ().IsConnected ();
-		}
+
         public static Action SuccessfulLoginAction
         {
             get
@@ -172,5 +170,20 @@ namespace TriCare
 		}
 
 		public static string ApiUrL = "http://teamsavagemma.com";
+
+		public static bool ValidEmail(string email)
+		{
+			string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" 
+				+ @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" 
+				+ @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+
+			Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+			return regex.IsMatch (email);
+		}
+
+//		public static bool IsConnected()
+//		{
+//			return 
+//		}
     }
 }

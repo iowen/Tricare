@@ -30,3 +30,4 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/System.Text.RegularExpressions.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/System.Reflection.Primitives.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/System.Text.Encoding.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug/Acr.XamForms.Mobile.dll

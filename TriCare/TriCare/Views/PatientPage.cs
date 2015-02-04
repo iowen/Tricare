@@ -54,12 +54,12 @@ namespace TriCare.Views
 				ssnEntry.Text = pn;
 
 			};
-			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier:", TextColor = Color.Navy };
+			var InsuranceCarrierLabel = new Label { Text = "Carrier:", TextColor = Color.Navy };
 			var InsuranceCarrierEntry = new Label { TextColor = Color.Black };
 			//InsuranceCarrierEntry.SetBinding(Label.TextProperty, "LicenseNumber");
 			InsuranceCarrierEntry.Text = insuranceCarrierRepo.GetInsuranceCarrier (_patient.InsuranceCarrierId).Name.Trim();
 
-			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number:", TextColor = Color.Navy};
+			var InsuranceCarrierIdNumberLabel = new Label { Text = "Carrier Id Number:", TextColor = Color.Navy};
 			var InsuranceCarrierIdNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceCarrierIdNumberEntry.SetBinding(Label.TextProperty, "InsuranceCarrierIdNumber");
 			InsuranceCarrierIdNumberEntry.BindingContextChanged += (sender, e) => {
@@ -69,7 +69,7 @@ namespace TriCare.Views
 				InsuranceCarrierIdNumberEntry.Text = pn;
 
 			};
-			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number:", TextColor = Color.Navy };
+			var InsuranceGroupNumberLabel = new Label { Text = "Group Number:", TextColor = Color.Navy };
 			var InsuranceGroupNumberEntry = new Label { TextColor = Color.Black };
 			InsuranceGroupNumberEntry.SetBinding(Label.TextProperty, "InsuranceGroupNumber");
 

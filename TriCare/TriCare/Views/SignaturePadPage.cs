@@ -172,6 +172,7 @@ namespace TriCare.Views
         {
 			indi.IsRunning = true;
 			saveButton.IsEnabled = false;
+			curView.IsEnabled = false;
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
 			byte[] bytes = curView.GetImage(ImageFormatType.Png).ToArray();

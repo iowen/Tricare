@@ -47,10 +47,10 @@ namespace TriCare.Views
 			};
 
 			submitButton.Clicked += async (sender, e) => {
+				var sRepo = new SyncRepo();
 				submitButton.IsEnabled = false;
 				indi.IsRunning = true;
 				//send to api
-			
 				if(String.IsNullOrWhiteSpace(emailEntry.Text.Trim()))
 					{
 						var Command1 = new Command(async o => {
@@ -63,6 +63,7 @@ namespace TriCare.Views
 					}
 				else{
 				var Command = new Command(async o => {
+						sRepo.SendForgotPassword(emailEntry.Text.Trim());
 						indi.IsRunning = false;
 
 					await DisplayAlert("Message","Please Check email for instructions on obtaining your credentials","Close");

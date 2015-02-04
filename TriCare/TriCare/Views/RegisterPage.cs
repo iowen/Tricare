@@ -254,6 +254,17 @@ namespace TriCare.Views
 					emailEntry.Focus();
 					return;
 				}
+				else if (!App.ValidEmail(emailEntry.Text))
+				{
+					indi.IsRunning = false;
+					registerButton.IsEnabled = true;
+					await DisplayAlert("Error", "Please enter an valid email.", "OK");
+					emailLabel.Text = "* Email *";
+					emailLabel.TextColor = Color.Red;
+					emailLabel.Focus();
+					emailEntry.Focus();
+					return;
+				}
 				else if(emailExists != null)
 				{
 					indi.IsRunning = false;

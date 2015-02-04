@@ -105,7 +105,6 @@
     <Compile Include="Encrypter_Android.cs" />
     <Compile Include="Android_EntryRenderer.cs" />
     <Compile Include="Android_LoginScrollView.cs" />
-    <Compile Include="Network_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

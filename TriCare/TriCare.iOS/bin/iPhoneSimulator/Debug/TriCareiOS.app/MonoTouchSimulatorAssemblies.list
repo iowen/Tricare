@@ -25,9 +25,9 @@ System.Reflection.Extensions.dll
 System.Diagnostics.Debug.dll
 SQLite.Net.dll
 System.Text.Encoding.dll
+System.Text.RegularExpressions.dll
 System.Net.Http.dll
 Newtonsoft.Json.dll
-System.Text.RegularExpressions.dll
 System.Xml.XDocument.dll
 System.Xml.Linq.dll
 System.Runtime.Serialization.Primitives.dll

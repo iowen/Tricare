@@ -90,9 +90,16 @@ namespace TriCare.Views
 			// Get the search text.
 			SearchBar searchBar = (SearchBar)sender;
 			string searchText = searchBar.Text;
+			DateTime dateInput;
 			if (!string.IsNullOrWhiteSpace (searchText.Trim ())) {
+				if (DateTime.TryParse (searchText.Trim (), out dateInput)) {
+					var result1 = prescriptionList.Where (a => a.Created.Date.Equals(dateInput.Date)).ToList ();
+					listView.ItemsSource = result1;
+					return;
+				}
 				var result = prescriptionList.Where (a => a.MedicineNameFriendly.ToLower().Contains (searchText.ToLower()) || a.PatientNameFriendly.ToLower().Contains (searchText.ToLower())).ToList ();
 				listView.ItemsSource = result;
+				return;
 			} else {
 				listView.ItemsSource = prescriptionList;
 			}

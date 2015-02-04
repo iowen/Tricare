@@ -129,5 +129,14 @@ namespace TriCare.Data
 				return new DateTime (1987, 11, 21);
 			}
 		}
+
+		public async void SendForgotPassword (string emailAddress)
+		{
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri(App.ApiUrL);
+				await client.GetAsync(App.ApiUrL+"/api/ForgotPassword/" + emailAddress);
+			}
+		}
 	}
 }

@@ -58,16 +58,6 @@ namespace TriCare
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
 
-
-			var emailLabel = new Label { Text = "Email" , TextColor = Color.Navy};
-			var emailEntry = new Entry()
-			{
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Black,
-			};
-			emailEntry.SetBinding(Entry.TextProperty, "Email");
-
-
 			var NpiNumberLabel = new Label { Text = "NPI Number" , TextColor = Color.Navy};
 			var NpiNumberEntry = new Entry()
 			{
@@ -197,93 +187,148 @@ namespace TriCare
 				indi.IsRunning = true;
 				saveButton.IsEnabled = false;
 				#region Validation 
-				int zipval = 0;
-				int.TryParse(ZipEntry.Text.Trim(),out zipval);
-				long phoneval = 0;
-				long faxval = 0;
-				Int64.TryParse(FaxEntry.Text.Trim().Replace("-",""), out faxval);
-				Int64.TryParse(PhoneEntry.Text.Trim().Replace("-",""), out phoneval);
-				if(firstNameEntry.Text.Trim().Length <= 0)
-				{
-					indi.IsRunning = false;
-					await DisplayAlert("Alert!","Please enter a first name","Ok");
-					return;
-				}
-				else if(lastNameEntry.Text.Trim().Length <= 0)
-				{
-					indi.IsRunning = false;
-					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter a last name","Ok");
-					return;
-				}
-				else if(emailEntry.Text.Trim().Length <= 0)
+				var validState = s.GetAllStates().Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault();
+				int validZip = 0;
+				int.TryParse(ZipEntry.Text,out validZip);
+				long validPhone = 0;
+				var phneTxt = PhoneEntry.Text.Replace("-","");
+				Int64.TryParse(phneTxt,out validPhone);
+				long validFax = 0;
+				var fxTxt = FaxEntry.Text.Replace("-","");
+
+				Int64.TryParse(fxTxt,out validFax);
+				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an email address","Ok");
+					await DisplayAlert("Error", "Please enter a first name.", "OK");
+					firstNameLabel.Text = "* First Name *";
+					firstNameLabel.TextColor = Color.Red;
+					firstNameLabel.Focus();
+					firstNameEntry.Focus();
 					return;
 				}
-				else if(NpiNumberEntry.Text.Trim().Length <= 0)
+				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an NPI number","Ok");
+					await DisplayAlert("Error", "Please enter a last name.", "OK");
+					lastNameLabel.Text = "* Last Name *";
+					lastNameLabel.TextColor = Color.Red;
+					lastNameLabel.Focus();
+					lastNameEntry.Focus();
 					return;
 				}
-				else if(LicenseNumberEntry.Text.Trim().Length <= 0)
+				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an License Number","Ok");
+					await DisplayAlert("Error", "Please enter an NPI number.", "OK");
+					NpiNumberLabel.Text = "* NPI Number *";
+					NpiNumberLabel.TextColor = Color.Red;
+					NpiNumberLabel.Focus();
+					NpiNumberEntry.Focus();
 					return;
 				}
-				else if(DeaNumberEntry.Text.Trim().Length <= 0)
+				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an DEA Number","Ok");
+					await DisplayAlert("Error", "Please enter a License number.", "OK");
+					LicenseNumberLabel.Text = "* License Number *";
+					LicenseNumberLabel.TextColor = Color.Red;
+					LicenseNumberLabel.Focus();
+					LicenseNumberEntry.Focus();
 					return;
 				}
-				else if(AddressEntry.Text.Trim().Length <= 0)
+				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter an Address","Ok");
+					await DisplayAlert("Error", "Please enter a DEA number.", "OK");
+					DeaNumberLabel.Text = "* DEA Number *";
+					DeaNumberLabel.TextColor = Color.Red;
+					DeaNumberLabel.Focus();
+					DeaNumberEntry.Focus();
 					return;
 				}
-				else if(CityEntry.Text.Trim().Length <= 0)
+				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter a City","Ok");
+					await DisplayAlert("Error", "Please enter an Address.", "OK");
+					AddressLabel.Text = "* Address *";
+					AddressLabel.TextColor = Color.Red;
+					AddressLabel.Focus();
+					AddressEntry.Focus();
 					return;
 				}
-				else if(StateEntry.Text.Trim().Length <= 0 || stList.Where(_st => _st.Name.Trim() == StateEntry.Text.Trim()).FirstOrDefault() == null)
+				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter a valid State","Ok");
+					await DisplayAlert("Error", "Please enter a City.", "OK");
+					CityLabel.Text = "* City *";
+					CityLabel.TextColor = Color.Red;
+					CityLabel.Focus();
+					CityEntry.Focus();
 					return;
 				}
-				else if(zipval < 10000)
+				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter a vlaid ZIP Code","Ok");
+					await DisplayAlert("Error", "Please enter a valid State.", "OK");
+					StateLabel.Text = "* State *";
+					StateLabel.TextColor = Color.Red;
+					StateLabel.Focus();
+					StateEntry.Focus();
 					return;
 				}
-				else if(phoneval < 1000000000)
+				else if (validZip < 10000)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter 10 digits for Phone Number","Ok");
+					//must be atleast 5 digits
+					await DisplayAlert("Error", "Invalid Zip Format, please enter 5 digits.", "OK");
+					ZipLabel.Text = "* Zip *";
+					ZipLabel.TextColor = Color.Red;
+					ZipLabel.Focus();
+					ZipEntry.Focus();
 					return;
 				}
-				else if(faxval < 1000000000)
+				else if(validPhone < 1000000000)
 				{
 					indi.IsRunning = false;
 					saveButton.IsEnabled = true;
-					await DisplayAlert("Alert!","Please enter 10 digits for Fax Number","Ok");
+					//must be atleast 10 digits
+					await DisplayAlert("Error", "Please enter a valid Phone number.", "OK");
+					PhoneLabel.Text = "* Phone *";
+					PhoneLabel.TextColor = Color.Red;
+					PhoneLabel.Focus();
+					PhoneEntry.Focus();
+					return;
+				}
+				else if(validFax < 1000000000)
+				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
+					//must be atleast 10 digits
+					await DisplayAlert("Error", "Please enter a valid fax number.", "OK");
+					FaxLabel.Text = "* Fax *";
+					FaxLabel.TextColor = Color.Red;
+					FaxLabel.Focus();
+					FaxEntry.Focus();
+					return;
+				}
+				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = p.Email.Trim(), Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = p.Password.Trim(), Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
+				string msg;
+				var bR = PrescriberValidator.Validate(prescriberItem, out msg);
+				if(!bR)
+				{
+					indi.IsRunning = false;
+					saveButton.IsEnabled = true;
+					await DisplayAlert("Error", msg, "OK");
 					return;
 				}
 				#endregion
@@ -302,7 +347,7 @@ namespace TriCare
 					Zip = int.Parse(ZipEntry.Text),
 					Phone = PhoneEntry.Text.Trim().Replace("-",""),
 					Fax = FaxEntry.Text.Trim().Replace("-",""),
-					Email = emailEntry.Text.Trim(),
+					Email = p.Email.Trim(),
 					Password = p.Password.Trim(),
 					LastUpdate = DateTime.Now
 				};
@@ -330,7 +375,6 @@ namespace TriCare
 					Children={
 						firstNameLabel, firstNameEntry, 
 						lastNameLabel, lastNameEntry,
-						emailLabel, emailEntry, 
 						NpiNumberLabel, NpiNumberEntry, 
 						LicenseNumberLabel, LicenseNumberEntry,
 						DeaNumberLabel, DeaNumberEntry,
