@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="TriCare/TriCare.iOS/TriCare.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare.iOS/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriCare/TriCare/Views/ForgotPasswordPage.cs">
     <Files>
       <File FileName="TriCare/TriCare/Views/PatientListPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriptionListPage.cs" Line="1" Column="1" />
@@ -11,11 +11,11 @@
       <File FileName="TriCare/TriCare/Views/EditPatientPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/EditPrescriberPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/SignaturePadPage.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/ForgotPasswordPage.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/ForgotPasswordPage.cs" Line="15" Column="15" />
       <File FileName="TriCare/TriCare/Data/SyncRepo.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Data/PatientRepo.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Validators/PrescriberValidator.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/App.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/App.cs" Line="34" Column="34" />
       <File FileName="TriCare/TriCare.Android/SignaturePadRenderer.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/LoginPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/AppDelegate.cs" Line="1" Column="1" />
@@ -42,7 +42,7 @@
       <File FileName="TriCare/TriCare/Views/PrescriberPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare/Views/PrescriptionNewORSelectPatientPage.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/Main.cs" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare/Views/AutoCompleteView.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare/Views/AutoCompleteView.cs" Line="4" Column="4" />
       <File FileName="TriCare/TriCare.iOS/TriCare.iOS.csproj" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/SignaturePadRenderer.cs" Line="30" Column="30" />
       <File FileName="TriCare/TriCare.iOS/SignatureServiceController.cs" Line="56" Column="56" />
@@ -52,9 +52,11 @@
       <File FileName="TriCare/TriCare.iOS/IOS_LoginScrollView.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/Properties/AssemblyInfo.cs" Line="1" Column="1" />
       <File FileName="TriCare/TriCare.iOS/app.config" Line="1" Column="1" />
-      <File FileName="TriCare/TriCare.iOS/Info.plist" />
       <File FileName="TriCare/TriCare/Utilities/DrawPoint.cs" Line="9" Column="9" />
       <File FileName="TriCare/TriCare.iOS/SqLite_iOS.cs" Line="1" Column="1" />
+      <File FileName="TriCare/TriCare.iOS/Info.plist" />
+      <File FileName="TriCare/TriCare/Data/StateRepo.cs" Line="9" Column="9" />
+      <File FileName="../../../../Library/Frameworks/Mono.framework/External/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="12" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -70,9 +72,11 @@
       <Breakpoint file="C:\Users\iowen\Documents\GitHub\Tricare\TriCare\TriCare\Views\SignaturePadPage.cs" line="180" column="1" />
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Data/PrescriberRepo.cs" line="93" column="1" />
       <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/EditPatientPage.cs" line="107" column="1" />
-      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/AutoCompleteView.cs" line="782" column="1" />
-      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/AutoCompleteView.cs" line="200" column="1" />
+      <Breakpoint file="/Users/iowen/Documents/Tricare/TriCare/TriCare/Views/AutoCompleteView.cs" line="792" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TriCare.iOS>
+    <IPhoneTestFlightSettings_27CRelease ApiToken="5f1cec8a3d9f0765993dcf06138c71e3_MjM0OTAyODIwMTUtMDEtMzEgMDQ6MzY6MjQuMDUxMzk5" TeamToken="38efa5e2bff6803441d5d322ec0aa4cc_NDg1OTQ4MjAxNS0wMS0zMSAwNDozNzozNS43Mzc2NDc" ReleaseNotes="Beta test of TriCare Wellness App." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="owen1.watson@email.com" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.TriCare.iOS>
 </Properties>

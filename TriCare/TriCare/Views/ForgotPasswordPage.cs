@@ -66,6 +66,15 @@ namespace TriCare.Views
 						Command1.Execute(new []{"run"});
 
 					}
+				else if (!App.ValidEmail(emailEntry.Text.Trim()))
+				{
+					var Command2 = new Command(async o => {
+						indi.IsRunning = false;
+						await DisplayAlert("Message","Please enter a valid email address.","Close");
+						submitButton.IsEnabled = true;
+					});
+					Command2.Execute(new []{"run"});
+				}
 				else{
 				var Command = new Command(async o => {
 						sRepo.SendForgotPassword(emailEntry.Text.Trim());

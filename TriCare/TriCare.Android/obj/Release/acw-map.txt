@@ -4,6 +4,8 @@ TriCare.Droid.SignatureServiceActivity;tricare.droid.SignatureServiceActivity
 TriCare.Droid.SplashScreen;tricare.droid.SplashScreen
 TriCare.Droid.AndroidEntryRenderer;tricare.droid.AndroidEntryRenderer
 TriCare.Droid.AndroidLoginScrollViewRenderer;tricare.droid.AndroidLoginScrollViewRenderer
+Acr.XamForms.Mobile.Droid.Net.NetworkConnectionBroadcastReceiver;acr.xamforms.mobile.droid.net.NetworkConnectionBroadcastReceiver
+Acr.XamForms.Mobile.Droid.TextToSpeechService;acr.xamforms.mobile.droid.TextToSpeechService
 SignaturePad.SignaturePadView;signaturepad.SignaturePadView
 SignaturePad.ClearingImageView;signaturepad.ClearingImageView
 SignaturePad.SignatureCanvasView;signaturepad.SignatureCanvasView
@@ -64,6 +66,10 @@ Xamarin.Forms.Labs.Droid.ExtendedEntryRenderer;xamarin.forms.labs.droid.Extended
 Xamarin.Forms.Labs.SeparatorDroidView;xamarin.forms.labs.SeparatorDroidView
 Xamarin.Forms.Labs.Droid.SeparatorRenderer;xamarin.forms.labs.droid.SeparatorRenderer
 Xamarin.Forms.Labs.Droid.ExtendedTableViewRenderer;xamarin.forms.labs.droid.ExtendedTableViewRenderer
+Xamarin.AsyncQuery`1;xamarin.AsyncQuery_1
+Xamarin.Geolocation.GeolocationContinuousListener;xamarin.geolocation.GeolocationContinuousListener
+Xamarin.Geolocation.GeolocationSingleListener;xamarin.geolocation.GeolocationSingleListener
+Xamarin.Media.MediaPickerActivity;xamarin.media.MediaPickerActivity
 Xamarin.Forms.Platform.Android.CellAdapter;xamarin.forms.platform.android.CellAdapter
 Xamarin.Forms.Platform.Android.FormsApplicationActivity;xamarin.forms.platform.android.FormsApplicationActivity
 Xamarin.Forms.Platform.Android.AndroidActivity;xamarin.forms.platform.android.AndroidActivity
@@ -129,6 +135,8 @@ Xamarin.Forms.Platform.Android.TableViewRenderer;xamarin.forms.platform.android.
 Xamarin.Forms.Platform.Android.TimePickerRenderer;xamarin.forms.platform.android.TimePickerRenderer
 Xamarin.Forms.Platform.Android.TimePickerRenderer.TimePickerListener;xamarin.forms.platform.android.TimePickerRenderer_TimePickerListener
 Xamarin.Forms.Platform.Android.ToolbarRenderer;xamarin.forms.platform.android.ToolbarRenderer
+Xamarin.Forms.Platform.Android.ToolbarButton;xamarin.forms.platform.android.ToolbarButton
+Xamarin.Forms.Platform.Android.ToolbarImageButton;xamarin.forms.platform.android.ToolbarImageButton
 Xamarin.Forms.Platform.Android.WebViewRenderer;xamarin.forms.platform.android.WebViewRenderer
 Xamarin.Forms.Platform.Android.WebViewRenderer.WebClient;xamarin.forms.platform.android.WebViewRenderer_WebClient
 Xamarin.Forms.Platform.Android.VisualElementTracker.AttachTracker;xamarin.forms.platform.android.VisualElementTracker_AttachTracker
