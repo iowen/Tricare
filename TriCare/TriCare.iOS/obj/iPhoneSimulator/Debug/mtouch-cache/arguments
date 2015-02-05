@@ -35,17 +35,17 @@
 	-r \
 	../../packages/Newtonsoft.Json.6.0.8/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll \
-	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
-	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll \
-	-r \
 	../../packages/Xamarin.Forms.Labs.1.2.0/lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/Xamarin.Forms.Labs.dll \
 	-r \
 	../../packages/Acr.XamForms.Mobile.2.0.0/lib/Xamarin.iOS10/Acr.XamForms.Mobile.dll \
 	-r \
 	../../packages/Acr.XamForms.Mobile.2.0.0/lib/Xamarin.iOS10/Xamarin.Mobile.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
@@ -149,17 +149,17 @@
 	-r \
 	../../packages/Newtonsoft.Json.6.0.8/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll \
-	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
-	-r \
-	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll \
-	-r \
 	../../packages/Xamarin.Forms.Labs.1.2.0/lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/Xamarin.Forms.Labs.dll \
 	-r \
 	../../packages/Acr.XamForms.Mobile.2.0.0/lib/Xamarin.iOS10/Acr.XamForms.Mobile.dll \
 	-r \
 	../../packages/Acr.XamForms.Mobile.2.0.0/lib/Xamarin.iOS10/Xamarin.Mobile.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
+	-r \
+	../../packages/Xamarin.Forms.1.3.2.6316/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll \
 	-r \
 	/Users/iowen/Documents/Tricare/TriCare/TriCare/bin/Debug//TriCare.dll \
 	/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug//FormsTemplateiOS.exe \

@@ -43,7 +43,7 @@ namespace TriCare.Views
 			var a1 = new AutoCompleteView ();
 			SearchCommand = new Command((key) =>
 				{
-					DisplayAlert("Search",st.Suggestions.Count.ToString(),"close");
+					//DisplayAlert("Search",st.Suggestions.Count.ToString(),"close");
 					//DisplayAlert("Search",a.Sugestions.Count.ToString(),"close");
 					//DisplayAlert("Search",IngredientList.Count.ToString(),"close");
 					// Add the key to the input string.
@@ -56,7 +56,7 @@ namespace TriCare.Views
 				});
 			var s = new StateRepo ();
 			var ss = s.GetAllStates ();
-
+			stateList.Clear ();
 			foreach (var sss in ss) {
 				stateList.Add(sss);
 			}
@@ -491,16 +491,5 @@ namespace TriCare.Views
 			};
 
         }
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-			var s = new StateRepo ();
-			var ss = s.GetAllStates ();
-
-			foreach (var sss in ss) {
-				stateList.Add(sss);
-			}
-
-		}
     }
 }

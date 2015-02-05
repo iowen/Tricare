@@ -160,7 +160,7 @@ namespace TriCare.Views
 			_lstSuggestions = new ListView
 			{
 				HeightRequest = SuggestionsHeightRequest,
-				HasUnevenRows = true,
+				HasUnevenRows = true, 
 
 			};
 			innerLayout.Children.Add(_entText);
@@ -199,9 +199,8 @@ namespace TriCare.Views
 			{
 				_entText.Text = e.SelectedItem.ToString().Trim();
 
-				_availableSuggestions.Clear();
-				ShowHideListbox(false);
 				OnSelectedItemChanged(e.SelectedItem);
+				ShowHideListbox(false);
 
 				if (ExecuteOnSuggestionClick
 					&& SearchCommand != null
@@ -211,6 +210,8 @@ namespace TriCare.Views
 				}
 			};
 			ShowHideListbox(false);
+			_availableSuggestions.Clear();
+
 			_lstSuggestions.ItemsSource = _availableSuggestions;
 		}
 
@@ -749,10 +750,19 @@ namespace TriCare.Views
 							control._availableSuggestions.Add(suggestion);
 						}
 						control._lstSuggestions.ItemsSource = control._availableSuggestions;
-						if (filteredSuggestions.Count < 4)
-							control._lstSuggestions.HeightRequest = filteredSuggestions.Count * 60.0d;
-						else
-							control._lstSuggestions.HeightRequest = 4 * 60.0d;
+						if (filteredSuggestions.Count < 4) {
+							if (Device.OS == TargetPlatform.Android)
+								control._lstSuggestions.HeightRequest = filteredSuggestions.Count * 60.0d;
+							else if (Device.OS == TargetPlatform.iOS)
+								control._lstSuggestions.HeightRequest = filteredSuggestions.Count * 45.0d;
+
+						} else {
+							if(Device.OS == TargetPlatform.Android)
+								control._lstSuggestions.HeightRequest = 4 * 60.0d;
+							else if (Device.OS == TargetPlatform.iOS)
+								control._lstSuggestions.HeightRequest = 4 * 45.0d;
+
+						}
 
 						control.ShowHideListbox(true);
 					}
