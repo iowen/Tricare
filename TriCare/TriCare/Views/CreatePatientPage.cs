@@ -37,6 +37,8 @@ namespace TriCare.Views
 		private AutoCompleteView st;
 		private int _insuranceCarrierId;
 
+		private List<Label> formLabelList; 
+
 		private string searchText;
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
         public CreatePatientPage(bool isDuringPrescription = false)
@@ -47,6 +49,8 @@ namespace TriCare.Views
 			var content = new StackLayout();
 			indi = new ActivityIndicator();
 			_insuranceCarrierId = 0;
+			formLabelList = new List<Label> ();
+
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()
             {
@@ -54,6 +58,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
+			formLabelList.Add (firstNameLabel);
 
 			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy };
             var lastNameEntry = new Entry()
@@ -61,7 +66,8 @@ namespace TriCare.Views
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
             };
-            firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
+            lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
+			formLabelList.Add (lastNameLabel);
 
 			var genderLabel = new Label { Text = "Gender" , TextColor = Color.Navy };
 			var genderEntry = new Picker {
@@ -71,12 +77,14 @@ namespace TriCare.Views
 			genderEntry.Items.Add ("Male");
 			genderEntry.Items.Add ("Female");
 			genderEntry.SetBinding(Entry.TextProperty, "Gender");
+			formLabelList.Add (genderLabel);
 
 			var birthDateLabel = new Label { Text = "Birth Date" , TextColor = Color.Navy };
 			DatePicker birthDateEntry = new DatePicker ();
 			birthDateEntry.BackgroundColor = Color.Transparent;
 
 			birthDateEntry.SetBinding(Entry.TextProperty, "BirthDate");
+			formLabelList.Add (birthDateLabel);
 
 			var ssnLabel = new Label { Text = "Id Number" , TextColor = Color.Navy };
             var ssnEntry = new Entry()
@@ -85,6 +93,8 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             ssnEntry.SetBinding(Entry.TextProperty, "SSN");
+			formLabelList.Add (ssnLabel);
+
 			var a1 = new AutoCompleteView ();
 			SearchCommand = new Command((key) =>
 				{
@@ -141,6 +151,7 @@ namespace TriCare.Views
 
 			var InsuranceCarrierLabel = new Label { Text = "Insurance Carrier" , TextColor = Color.Navy};
 			var InsuranceCarrierEntry = a;
+			formLabelList.Add (InsuranceCarrierLabel);
 
 			var InsuranceCarrierIdNumberLabel = new Label { Text = "Insurance Carrier Id Number", TextColor = Color.Navy };
 			var InsuranceCarrierIdNumberEntry = new Entry()
@@ -149,6 +160,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             InsuranceCarrierIdNumberEntry.SetBinding(Entry.TextProperty, "InsuranceCarrierIdNumber");
+			formLabelList.Add (InsuranceCarrierIdNumberLabel);
 
 			var InsuranceGroupNumberLabel = new Label { Text = "Insurance Group Number" , TextColor = Color.Navy};
             var InsuranceGroupNumberEntry = new Entry()
@@ -157,6 +169,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             InsuranceGroupNumberEntry.SetBinding(Entry.TextProperty, "InsuranceGroupNumber");
+			formLabelList.Add (InsuranceGroupNumberLabel);
 
 			var InsurancePhoneLabel = new Label { Text = "Insurance Phone" , TextColor = Color.Navy};
             var InsurancePhoneEntry = new PhoneNumberEntry()
@@ -164,6 +177,8 @@ namespace TriCare.Views
                 BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
             };
+			formLabelList.Add (InsurancePhoneLabel);
+
             InsurancePhoneEntry.SetBinding(Entry.TextProperty, "InsurancePhone");
 			InsurancePhoneEntry.TextChanged +=  (sender, e) => {
 				InsurancePhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
@@ -175,6 +190,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             RxBinEntry.SetBinding(Entry.TextProperty, "RxBin");
+			formLabelList.Add (RxBinLabel);
 
 			var RxPcnLabel = new Label { Text = "Rx Pcn" , TextColor = Color.Navy};
             var RxPcnEntry = new Entry()
@@ -183,6 +199,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             RxPcnEntry.SetBinding(Entry.TextProperty, "RxPcn");
+			formLabelList.Add (RxPcnLabel);
 
 			var AllergiesLabel = new Label { Text = "Allergies" , TextColor = Color.Navy};
             var AllergiesEntry = new Entry()
@@ -191,6 +208,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             AllergiesEntry.SetBinding(Entry.TextProperty, "Allergies");
+			formLabelList.Add (AllergiesLabel);
 
 			var DiagnosisLabel = new Label { Text = "Diagnosis", TextColor = Color.Navy };
             var DiagnosisEntry = new Entry()
@@ -199,6 +217,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
 			DiagnosisEntry.SetBinding(Entry.TextProperty, "Diagnosis");
+			formLabelList.Add (DiagnosisLabel);
 
 			var AddressLabel = new Label { Text = "Address" , TextColor = Color.Navy};
             var AddressEntry = new Entry()
@@ -207,6 +226,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
+			formLabelList.Add (AddressLabel);
 
 			var CityLabel = new Label { Text = "City", TextColor = Color.Navy };
             var CityEntry = new Entry()
@@ -215,9 +235,11 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             CityEntry.SetBinding(Entry.TextProperty, "City");
+			formLabelList.Add (CityLabel);
 
 			var StateLabel = new Label { Text = "State" , TextColor = Color.Navy};
 			var StateEntry = st;
+			formLabelList.Add (StateLabel);
 
 			var ZipLabel = new Label { Text = "Zip", TextColor = Color.Navy };
             var ZipEntry = new Entry()
@@ -226,6 +248,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
+			formLabelList.Add (ZipLabel);
 
 			var PhoneLabel = new Label { Text = "Phone", TextColor = Color.Navy };
             var PhoneEntry = new PhoneNumberEntry()
@@ -237,6 +260,8 @@ namespace TriCare.Views
 			PhoneEntry.TextChanged +=  (sender, e) => {
 				PhoneEntry.Text = App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
 			};
+			formLabelList.Add (PhoneLabel);
+
 			var EmailLabel = new Label { Text = "Email" , TextColor = Color.Navy};
             var EmailEntry = new Entry()
             {
@@ -244,6 +269,7 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             EmailEntry.SetBinding(Entry.TextProperty, "Email");
+			formLabelList.Add (EmailLabel);
 
 			var PaymentTypeLabel = new Label { Text = "Payment Type" , TextColor = Color.Navy};
             var PaymentTypeEntry = new Entry()
@@ -252,12 +278,20 @@ namespace TriCare.Views
 				TextColor = Color.Black,
             };
             PaymentTypeEntry.SetBinding(Entry.TextProperty, "PaymentType");
+			formLabelList.Add (PaymentTypeLabel);
 
 			InsuranceCarrierEntry.TextChanged += (sender, e) => {
 				var ins = iRepo.GetAllInsuranceCarriers().Where(i => i.Name.Trim() == InsuranceCarrierEntry.Text.Trim()).FirstOrDefault();
 				if(ins != null)
 				{
 					_insuranceCarrierId = ins.InsuranceCarrierId;
+				}
+			};
+				
+			genderEntry.SelectedIndexChanged += (sender, e) => {
+				if(genderEntry.SelectedIndex >= 0)
+				{
+					updateLabels(formLabelList,null);
 				}
 			};
 
@@ -282,6 +316,7 @@ namespace TriCare.Views
 					firstNameLabel.TextColor = Color.Red;
 					firstNameLabel.Focus();
 					firstNameEntry.Focus();
+					updateLabels(formLabelList,firstNameLabel);
 					return;
 				}
 				else if(lastNameEntry.Text.Trim().Length <= 0)
@@ -293,6 +328,7 @@ namespace TriCare.Views
 					lastNameLabel.TextColor = Color.Red;
 					lastNameLabel.Focus();
 					lastNameEntry.Focus();
+					updateLabels(formLabelList,lastNameLabel);
 					return;
 				}
 				else if(genderEntry.SelectedIndex < 0)
@@ -304,6 +340,7 @@ namespace TriCare.Views
 					genderLabel.TextColor = Color.Red;
 					genderLabel.Focus();
 					genderEntry.Focus();
+					updateLabels(formLabelList,genderLabel);
 					return;
 				}
 				else if(ssnEntry.Text.Trim().Length != 4 || Regex.Matches(ssnEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -315,6 +352,7 @@ namespace TriCare.Views
 					ssnLabel.TextColor = Color.Red;
 					ssnLabel.Focus();
 					ssnEntry.Focus();
+					updateLabels(formLabelList,ssnLabel);
 					return;
 				}
 				else if(InsuranceCarrierEntry.Text.Trim().Length <= 0 || (validInsCarrier == null))
@@ -326,6 +364,7 @@ namespace TriCare.Views
 					InsuranceCarrierLabel.TextColor = Color.Red;
 					InsuranceCarrierLabel.Focus();
 					InsuranceCarrierEntry.Focus();
+					updateLabels(formLabelList,InsuranceCarrierLabel);
 					return;
 				}
 				else if(InsuranceCarrierIdNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceCarrierIdNumberEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -337,6 +376,7 @@ namespace TriCare.Views
 					InsuranceCarrierIdNumberLabel.TextColor = Color.Red;
 					InsuranceCarrierIdNumberLabel.Focus();
 					InsuranceCarrierIdNumberEntry.Focus();
+					updateLabels(formLabelList,InsuranceCarrierIdNumberLabel);
 					return;
 				}
 				else if(InsuranceGroupNumberEntry.Text.Trim().Length <= 0 || Regex.Matches(InsuranceGroupNumberEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -348,6 +388,7 @@ namespace TriCare.Views
 					InsuranceGroupNumberLabel.TextColor = Color.Red;
 					InsuranceGroupNumberLabel.Focus();
 					InsuranceGroupNumberEntry.Focus();
+					updateLabels(formLabelList,InsuranceGroupNumberLabel);
 					return;
 				}
 				else if(InsurancePhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(InsurancePhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
@@ -359,6 +400,7 @@ namespace TriCare.Views
 					InsurancePhoneLabel.TextColor = Color.Red;
 					InsurancePhoneLabel.Focus();
 					InsurancePhoneEntry.Focus();
+					updateLabels(formLabelList,InsurancePhoneLabel);
 					return;
 				}
 				else if(RxBinEntry.Text.Trim().Length <= 0 || Regex.Matches(RxBinEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -370,6 +412,7 @@ namespace TriCare.Views
 					RxBinLabel.TextColor = Color.Red;
 					RxBinLabel.Focus();
 					RxBinEntry.Focus();
+					updateLabels(formLabelList,RxBinLabel);
 					return;
 				}
 				else if(RxPcnEntry.Text.Trim().Length <= 0 || Regex.Matches(RxPcnEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -381,6 +424,7 @@ namespace TriCare.Views
 					RxPcnLabel.TextColor = Color.Red;
 					RxPcnLabel.Focus();
 					RxPcnEntry.Focus();
+					updateLabels(formLabelList,RxPcnLabel);
 					return;
 				}
 				else if(AllergiesEntry.Text.Trim().Length <= 0)
@@ -392,6 +436,7 @@ namespace TriCare.Views
 					AllergiesLabel.TextColor = Color.Red;
 					AllergiesLabel.Focus();
 					AllergiesEntry.Focus();
+					updateLabels(formLabelList,AllergiesLabel);
 					return;
 				}
 				else if(DiagnosisEntry.Text.Trim().Length <= 0)
@@ -403,6 +448,7 @@ namespace TriCare.Views
 					DiagnosisLabel.TextColor = Color.Red;
 					DiagnosisLabel.Focus();
 					DiagnosisEntry.Focus();
+					updateLabels(formLabelList,DiagnosisLabel);
 					return;
 				}
 				else if(AddressEntry.Text.Trim().Length <= 0)
@@ -414,6 +460,7 @@ namespace TriCare.Views
 					AddressLabel.TextColor = Color.Red;
 					AddressLabel.Focus();
 					AddressEntry.Focus();
+					updateLabels(formLabelList,AddressLabel);
 					return;
 				}
 				else if(CityEntry.Text.Trim().Length <= 0)
@@ -425,6 +472,7 @@ namespace TriCare.Views
 					CityLabel.TextColor = Color.Red;
 					CityLabel.Focus();
 					CityEntry.Focus();
+					updateLabels(formLabelList,CityLabel);
 					return;
 				}
 				else if(StateEntry.Text.Trim().Length <= 0)
@@ -436,6 +484,7 @@ namespace TriCare.Views
 					StateLabel.TextColor = Color.Red;
 					StateLabel.Focus();
 					StateEntry.Focus();
+					updateLabels(formLabelList,StateLabel);
 					return;
 				}
 				else if(ZipEntry.Text.Trim().Length != 5 || Regex.Matches(ZipEntry.Text,@"[a-zA-Z]").Count > 0)
@@ -447,6 +496,7 @@ namespace TriCare.Views
 					ZipLabel.TextColor = Color.Red;
 					ZipLabel.Focus();
 					ZipEntry.Focus();
+					updateLabels(formLabelList,ZipLabel);
 					return;
 				}
 				else if(PhoneEntry.Text.Trim().Replace("-","").Length != 10 || Regex.Matches(PhoneEntry.Text.Replace("-",""),@"[a-zA-Z]").Count > 0)
@@ -458,6 +508,7 @@ namespace TriCare.Views
 					PhoneLabel.TextColor = Color.Red;
 					PhoneLabel.Focus();
 					PhoneEntry.Focus();
+					updateLabels(formLabelList,PhoneLabel);
 					return;
 				}
 				else if(EmailEntry.Text.Trim().Length <= 0)
@@ -469,6 +520,7 @@ namespace TriCare.Views
 					EmailLabel.TextColor = Color.Red;
 					EmailLabel.Focus();
 					EmailEntry.Focus();
+					updateLabels(formLabelList,EmailLabel);
 					return;
 				}
 				else if (!App.ValidEmail(EmailEntry.Text))
@@ -480,6 +532,7 @@ namespace TriCare.Views
 					EmailLabel.TextColor = Color.Red;
 					EmailLabel.Focus();
 					EmailEntry.Focus();
+					updateLabels(formLabelList,EmailLabel);
 					return;
 				}
 				else if(PaymentTypeEntry.Text.Trim().Length <= 0)
@@ -491,6 +544,7 @@ namespace TriCare.Views
 					PaymentTypeLabel.TextColor = Color.Red;
 					PaymentTypeLabel.Focus();
 					PaymentTypeEntry.Focus();
+					updateLabels(formLabelList,PaymentTypeLabel);
 					return;
 				}
 				#endregion
@@ -514,7 +568,7 @@ namespace TriCare.Views
 					BirthDate = birthDateEntry.Date,//DateTime.Parse(birthDateEntry.Date.ToString("d")), 
 					Diagnosis = DiagnosisEntry.Text, 
 					InsuranceCarrierId = _insuranceCarrierId, 
-					InsurancePhone = InsurancePhoneEntry.Text, 
+					InsurancePhone = InsurancePhoneEntry.Text.Replace("-",""),
 					PaymentType = PaymentTypeEntry.Text,
 					RxBin = RxBinEntry.Text, 
 					RxPcn = RxPcnEntry.Text 
@@ -589,6 +643,24 @@ namespace TriCare.Views
 			};
 
         }
+
+		private void updateLabels(List<Label> formLabels, Label currentLabel)
+		{
+			/*
+			 * if currentlabel is null, it means to reset all labels to original text 
+			 * and remove red color signifying error has previously occurred.
+			*/
+			foreach (var label in formLabels) {
+				if (currentLabel == null) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+				else if (label != currentLabel) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+			}
+		}
     }
 }
 
