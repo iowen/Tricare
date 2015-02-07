@@ -70,7 +70,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
-    <CodesignProvision>d1972017-a03d-4f14-bc76-c08f6f757645</CodesignProvision>
+    <CodesignProvision>fd1883bc-5921-458e-a872-9ce54f24dd21</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>

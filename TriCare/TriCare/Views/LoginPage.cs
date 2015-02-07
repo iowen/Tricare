@@ -15,6 +15,7 @@ namespace TriCare.Views
     {
 		private ActivityIndicator indi;
 		private AbsoluteLayout overlay;
+
 		public LoginPage(bool isLogin = true)
         {
 			App.IsHome = false;
@@ -170,9 +171,7 @@ namespace TriCare.Views
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			if (!App.IsConnected ()) {
-				DisplayAlert("Warning", "Functionality is limited because there is no internet connection.","OK");
-			}
+
 		}
 
     }

@@ -79,7 +79,12 @@ namespace TriCare
 		}
 		public static async void LogOutIOS(Object e , EventArgs s)
 		{
-			var action = await np.DisplayActionSheet("Menu", "Close","Log Out", new string[]{});
+			string action;
+			if (Device.OS == TargetPlatform.iOS) 
+			action = await np.DisplayActionSheet("Menu", "Close","Log Out", new string[]{});
+			else
+				action = await np.DisplayActionSheet("Menu", "Cancel","Close", new string[]{"Log Out"});
+
 			if (action == "Log Out") {
 				ClearCurrentPrescription ();
 				InvalidateToken ();

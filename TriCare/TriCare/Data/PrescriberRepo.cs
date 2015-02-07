@@ -58,6 +58,36 @@ namespace TriCare.Data
             }
             return null;
         }
+
+		public async Task<bool> IsEmailTaken(string email)
+		{
+			if (string.IsNullOrWhiteSpace (email))
+				return true;
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri(App.ApiUrL);
+
+
+				var resultTask = await client.GetAsync(App.ApiUrL+"/api/PrescriberLogin?email=" + email.Trim());
+				var resultText = resultTask.Content.ReadAsStringAsync().Result;
+				try
+				{
+				
+					if (resultText.Contains("true"))
+					{
+
+						return true;
+					}
+					return false;
+				}
+				catch (Exception ex)
+				{
+					return true;
+				}
+			}
+			return true;
+		}
+
                     
 		public async Task<string> LoginPrescriber(LoginModel login)
         {

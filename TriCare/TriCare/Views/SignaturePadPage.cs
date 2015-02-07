@@ -216,6 +216,7 @@ namespace TriCare.Views
 			indi.IsRunning = false;
 			if (a == "success") {
 				var Command = new Command(async o => {
+					await DisplayAlert ("Success", "Prescription was sucessfully created.", "OK", "close");
 					await App.np.PopToRootAsync(false);
 					await App.np.PushAsync (new HomePage ());
 				});

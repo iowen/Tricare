@@ -135,7 +135,7 @@ namespace TriCare.Data
 			using (var client = new HttpClient())
 			{
 				client.BaseAddress = new Uri(App.ApiUrL);
-				await client.GetAsync(App.ApiUrL+"/api/ForgotPassword/" + emailAddress);
+				await client.GetAsync(App.ApiUrL+"/api/ForgotPassword?email=" + emailAddress);
 			}
 		}
 	}

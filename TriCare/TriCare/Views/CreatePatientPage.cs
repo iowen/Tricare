@@ -514,7 +514,7 @@ namespace TriCare.Views
 					BirthDate = birthDateEntry.Date,//DateTime.Parse(birthDateEntry.Date.ToString("d")), 
 					Diagnosis = DiagnosisEntry.Text, 
 					InsuranceCarrierId = _insuranceCarrierId, 
-					InsurancePhone = InsurancePhoneEntry.Text, 
+					InsurancePhone = InsurancePhoneEntry.Text.Replace("-",""), 
 					PaymentType = PaymentTypeEntry.Text,
 					RxBin = RxBinEntry.Text, 
 					RxPcn = RxPcnEntry.Text 

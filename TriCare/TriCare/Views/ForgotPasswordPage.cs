@@ -77,6 +77,16 @@ namespace TriCare.Views
 				}
 				else{
 				var Command = new Command(async o => {
+						var prescriberRepo = new PrescriberRepo();
+						var emailExists = await prescriberRepo.IsEmailTaken(emailEntry.Text.Trim());
+						if(!emailExists)
+						{
+							await DisplayAlert("Message","This email is not registered. Please try again.","Close");
+							submitButton.IsEnabled = true;
+							indi.IsRunning = false;
+
+							return;
+						}
 						sRepo.SendForgotPassword(emailEntry.Text.Trim());
 						indi.IsRunning = false;
 

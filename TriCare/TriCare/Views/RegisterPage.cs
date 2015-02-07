@@ -224,8 +224,7 @@ namespace TriCare.Views
 				var fxTxt = FaxEntry.Text.Replace("-","");
 
 				Int64.TryParse(fxTxt,out validFax);
-				var prescriberList = prescriberRepo.GetAllPrescribers();
-				var emailExists = prescriberList.Where(em => em.Email.Trim() == emailEntry.Text.Trim()).FirstOrDefault();
+				var emailExists = await prescriberRepo.IsEmailTaken(emailEntry.Text.Trim());
 				if(string.IsNullOrWhiteSpace(firstNameEntry.Text))
 				{
 					indi.IsRunning = false;
@@ -270,7 +269,7 @@ namespace TriCare.Views
 					emailEntry.Focus();
 					return;
 				}
-				else if(emailExists != null)
+				else if(emailExists)
 				{
 					indi.IsRunning = false;
 					registerButton.IsEnabled = true;
