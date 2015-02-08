@@ -31,6 +31,9 @@ namespace TriCare
 
 		public ICommand SearchCommand { get; set; }
 		public ICommand CellSelectedCommand { get; set; }
+
+		private List<Label> formLabelList; 
+
 		public EditPrescriberPage ()
 		{
 			var pRepo = new PrescriberRepo();
@@ -41,7 +44,7 @@ namespace TriCare
 			this.BindingContext = p;
 			this.BackgroundColor = Color.White;
 			this.Title = "Edit Profile";
-
+			formLabelList = new List<Label> ();
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy};
 			var firstNameEntry = new Entry()
 			{
@@ -49,7 +52,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
-
+			formLabelList.Add (firstNameLabel);
 			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy};
 			var lastNameEntry = new Entry()
 			{
@@ -57,6 +60,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
+			formLabelList.Add (lastNameLabel);
 
 			var NpiNumberLabel = new Label { Text = "NPI Number" , TextColor = Color.Navy};
 			var NpiNumberEntry = new Entry()
@@ -65,6 +69,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
+			formLabelList.Add (NpiNumberLabel);
 
 			var LicenseNumberLabel = new Label { Text = "License Number", TextColor = Color.Navy };
 			var LicenseNumberEntry = new Entry()
@@ -73,6 +78,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
+			formLabelList.Add (LicenseNumberLabel);
 
 			var DeaNumberLabel = new Label { Text = "DEA Number", TextColor = Color.Navy };
 			var DeaNumberEntry = new Entry()
@@ -81,6 +87,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
+			formLabelList.Add (DeaNumberLabel);
 
 			var AddressLabel = new Label { Text = "Address", TextColor = Color.Navy };
 			var AddressEntry = new Entry()
@@ -88,6 +95,7 @@ namespace TriCare
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
 			};
+			formLabelList.Add (AddressLabel);
 
 			var CellSelectedCommands = new Command<State>((key) =>
 				{
@@ -133,9 +141,11 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			CityEntry.SetBinding(Entry.TextProperty, "City");
+			formLabelList.Add (CityLabel);
 
 			var StateLabel = new Label { Text = "State", TextColor = Color.Navy };
 			var StateEntry = st;
+			formLabelList.Add (StateLabel);
 
 			var ZipLabel = new Label { Text = "Zip", TextColor = Color.Navy };
 			var ZipEntry = new Entry()
@@ -144,6 +154,7 @@ namespace TriCare
 				TextColor = Color.Black,
 			};
 			ZipEntry.SetBinding(Entry.TextProperty, "Zip");
+			formLabelList.Add (ZipLabel);
 
 			var PhoneLabel = new Label { Text = "Phone" , TextColor = Color.Navy};
 			var PhoneEntry = new PhoneNumberEntry()
@@ -151,6 +162,8 @@ namespace TriCare
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
 			};
+			formLabelList.Add (PhoneLabel);
+
 			PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 			PhoneEntry.BindingContextChanged += (sender, e) => {
 				base.OnBindingContextChanged();
@@ -169,6 +182,7 @@ namespace TriCare
 				BackgroundColor = Color.Transparent,
 				TextColor = Color.Black,
 			};
+			formLabelList.Add (FaxLabel);
 			FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 			FaxEntry.BindingContextChanged += (sender, e) => {
 				base.OnBindingContextChanged();
@@ -211,6 +225,7 @@ namespace TriCare
 					firstNameLabel.TextColor = Color.Red;
 					firstNameLabel.Focus();
 					firstNameEntry.Focus();
+					updateLabels(formLabelList,firstNameLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
@@ -222,6 +237,7 @@ namespace TriCare
 					lastNameLabel.TextColor = Color.Red;
 					lastNameLabel.Focus();
 					lastNameEntry.Focus();
+					updateLabels(formLabelList,lastNameLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
@@ -233,6 +249,7 @@ namespace TriCare
 					NpiNumberLabel.TextColor = Color.Red;
 					NpiNumberLabel.Focus();
 					NpiNumberEntry.Focus();
+					updateLabels(formLabelList,NpiNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
@@ -244,6 +261,7 @@ namespace TriCare
 					LicenseNumberLabel.TextColor = Color.Red;
 					LicenseNumberLabel.Focus();
 					LicenseNumberEntry.Focus();
+					updateLabels(formLabelList,LicenseNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
@@ -255,6 +273,7 @@ namespace TriCare
 					DeaNumberLabel.TextColor = Color.Red;
 					DeaNumberLabel.Focus();
 					DeaNumberEntry.Focus();
+					updateLabels(formLabelList,DeaNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
@@ -266,6 +285,7 @@ namespace TriCare
 					AddressLabel.TextColor = Color.Red;
 					AddressLabel.Focus();
 					AddressEntry.Focus();
+					updateLabels(formLabelList,AddressLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
@@ -277,6 +297,7 @@ namespace TriCare
 					CityLabel.TextColor = Color.Red;
 					CityLabel.Focus();
 					CityEntry.Focus();
+					updateLabels(formLabelList,CityLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
@@ -288,6 +309,7 @@ namespace TriCare
 					StateLabel.TextColor = Color.Red;
 					StateLabel.Focus();
 					StateEntry.Focus();
+					updateLabels(formLabelList,StateLabel);
 					return;
 				}
 				else if (validZip < 10000)
@@ -300,6 +322,7 @@ namespace TriCare
 					ZipLabel.TextColor = Color.Red;
 					ZipLabel.Focus();
 					ZipEntry.Focus();
+					updateLabels(formLabelList,ZipLabel);
 					return;
 				}
 				else if(validPhone < 1000000000)
@@ -312,6 +335,7 @@ namespace TriCare
 					PhoneLabel.TextColor = Color.Red;
 					PhoneLabel.Focus();
 					PhoneEntry.Focus();
+					updateLabels(formLabelList,PhoneLabel);
 					return;
 				}
 				else if(validFax < 1000000000)
@@ -324,6 +348,7 @@ namespace TriCare
 					FaxLabel.TextColor = Color.Red;
 					FaxLabel.Focus();
 					FaxEntry.Focus();
+					updateLabels(formLabelList,FaxLabel);
 					return;
 				}
 				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = p.Email.Trim(), Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = p.Password.Trim(), Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
@@ -402,6 +427,24 @@ namespace TriCare
 				Content = overlay
 			};
 
+		}
+
+		private void updateLabels(List<Label> formLabels, Label currentLabel)
+		{
+			/*
+			 * if currentlabel is null, it means to reset all labels to original text 
+			 * and remove red color signifying error has previously occurred.
+			*/
+			foreach (var label in formLabels) {
+				if (currentLabel == null) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+				else if (label != currentLabel) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+			}
 		}
 	}
 }

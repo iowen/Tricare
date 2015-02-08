@@ -30,12 +30,15 @@ namespace TriCare.Views
 		private AutoCompleteView st;
 		private string searchText;
 		public string SearchText{ get{ return searchText;} set{searchText = value; OnPropertyChanged (); }}
+
+		private List<Label> formLabelList;
+
         public RegisterPage()
         {
 			this.BackgroundColor = Color.White;
 			App.DisableLogout ();
 			prescriberRepo = new PrescriberRepo ();
-
+			formLabelList = new List<Label> ();
 			var overlay = new AbsoluteLayout (){ WidthRequest = this.Width };
 			var content = new StackLayout();
 			indi = new ActivityIndicator();
@@ -72,6 +75,7 @@ namespace TriCare.Views
 				SearchTextColor = Color.White,
 				Text = ""
 			};
+
 			var firstNameLabel = new Label { Text = "First Name" , TextColor = Color.Navy };
             var firstNameEntry = new Entry()
             {
@@ -81,6 +85,7 @@ namespace TriCare.Views
 				Text = ""
             };
             firstNameEntry.SetBinding(Entry.TextProperty, "FirstName");
+			formLabelList.Add (firstNameLabel);
 
 			var lastNameLabel = new Label { Text = "Last Name" , TextColor = Color.Navy };
             var lastNameEntry = new Entry()
@@ -90,8 +95,8 @@ namespace TriCare.Views
                 TextColor = Color.Black,
 				Text = ""
             };
-            firstNameEntry.SetBinding(Entry.TextProperty, "LastName");
-
+            lastNameEntry.SetBinding(Entry.TextProperty, "LastName");
+			formLabelList.Add (lastNameLabel);
 
 			var emailLabel = new Label { Text = "Email" , TextColor = Color.Navy };
             var emailEntry = new Entry()
@@ -102,6 +107,7 @@ namespace TriCare.Views
 				Text = ""
             };
             emailEntry.SetBinding(Entry.TextProperty, "Email");
+			formLabelList.Add (emailLabel);
 
 			var passwordLabel = new Label { Text = "Password" , TextColor = Color.Navy };
 			var passwordEntry = new Entry(){
@@ -112,6 +118,7 @@ namespace TriCare.Views
 			}; 
 
 			passwordEntry.SetBinding(Entry.TextProperty, "Password");
+			formLabelList.Add (passwordLabel);
 
 			var password2Label = new Label { Text = "Re-Enter Password" , TextColor = Color.Navy };
 			var password2Entry = new Entry(){
@@ -130,6 +137,7 @@ namespace TriCare.Views
 				Text = ""
             };
             NpiNumberEntry.SetBinding(Entry.TextProperty, "NpiNumber");
+			formLabelList.Add (NpiNumberLabel);
 
 			var LicenseNumberLabel = new Label { Text = "License Number" , TextColor = Color.Navy };
             var LicenseNumberEntry = new Entry()
@@ -139,6 +147,7 @@ namespace TriCare.Views
 				Text = ""
             };
             LicenseNumberEntry.SetBinding(Entry.TextProperty, "LicenseNumber");
+			formLabelList.Add (LicenseNumberLabel);
 
 			var DeaNumberLabel = new Label { Text = "DEA Number" , TextColor = Color.Navy };
             var DeaNumberEntry = new Entry()
@@ -148,6 +157,7 @@ namespace TriCare.Views
 				Text = ""
             };
             DeaNumberEntry.SetBinding(Entry.TextProperty, "DeaNumber");
+			formLabelList.Add (DeaNumberLabel);
 
 			var AddressLabel = new Label { Text = "Address" , TextColor = Color.Navy };
             var AddressEntry = new Entry()
@@ -157,6 +167,7 @@ namespace TriCare.Views
 				Text = ""
             };
             AddressEntry.SetBinding(Entry.TextProperty, "Address");
+			formLabelList.Add (AddressLabel);
 
 			var CityLabel = new Label { Text = "City", TextColor = Color.Navy  };
             var CityEntry = new Entry()
@@ -166,9 +177,11 @@ namespace TriCare.Views
 				Text = ""
             };
             CityEntry.SetBinding(Entry.TextProperty, "City");
+			formLabelList.Add (CityLabel);
 
 			var StateLabel = new Label { Text = "State" , TextColor = Color.Navy };
 			var StateEntry = st;
+			formLabelList.Add (StateLabel);
 
 			var ZipLabel = new Label { Text = "Zip" , TextColor = Color.Navy };
             var ZipEntry = new Entry()
@@ -178,6 +191,7 @@ namespace TriCare.Views
 				Text = ""
             };
             ZipEntry.SetBinding(Entry.TextProperty, "Zip");
+			formLabelList.Add (ZipLabel);
 
 			var PhoneLabel = new Label { Text = "Phone" , TextColor = Color.Navy };
             var PhoneEntry = new PhoneNumberEntry()
@@ -186,6 +200,8 @@ namespace TriCare.Views
 				TextColor = Color.Black,
 				Text = ""
             };
+			formLabelList.Add (PhoneLabel);
+
             PhoneEntry.SetBinding(Entry.TextProperty, "Phone");
 			PhoneEntry.TextChanged +=  (sender, e) => {
 				var pnum = sender as PhoneNumberEntry;
@@ -198,11 +214,14 @@ namespace TriCare.Views
 				TextColor = Color.Black,
 				Text = ""
             };
+			formLabelList.Add (FaxLabel);
+
             FaxEntry.SetBinding(Entry.TextProperty, "Fax");
 			FaxEntry.TextChanged +=  (sender, e) => {
 				var fnum = sender as PhoneNumberEntry;
 				fnum.Text =  App.GetInputAsPhoneNumber(e.OldTextValue, e.NewTextValue);
 			};
+
 			var registerButton = new Button { Text = "Register" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             registerButton.Clicked += async (sender, e) =>
             {
@@ -234,6 +253,7 @@ namespace TriCare.Views
 					firstNameLabel.TextColor = Color.Red;
 					firstNameLabel.Focus();
 					firstNameEntry.Focus();
+					updateLabels(formLabelList,firstNameLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(lastNameEntry.Text))
@@ -245,6 +265,7 @@ namespace TriCare.Views
 					lastNameLabel.TextColor = Color.Red;
 					lastNameLabel.Focus();
 					lastNameEntry.Focus();
+					updateLabels(formLabelList,lastNameLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(emailEntry.Text))
@@ -256,6 +277,7 @@ namespace TriCare.Views
 					emailLabel.TextColor = Color.Red;
 					emailLabel.Focus();
 					emailEntry.Focus();
+					updateLabels(formLabelList,emailLabel);
 					return;
 				}
 				else if (!App.ValidEmail(emailEntry.Text))
@@ -267,6 +289,7 @@ namespace TriCare.Views
 					emailLabel.TextColor = Color.Red;
 					emailLabel.Focus();
 					emailEntry.Focus();
+					updateLabels(formLabelList,emailLabel);
 					return;
 				}
 				else if(emailExists)
@@ -278,6 +301,7 @@ namespace TriCare.Views
 					emailLabel.TextColor = Color.Red;
 					emailLabel.Focus();
 					emailEntry.Focus();
+					updateLabels(formLabelList,emailLabel);
 					return;
 				}
 				else if (passwordEntry.Text != password2Entry.Text)
@@ -289,6 +313,7 @@ namespace TriCare.Views
 					passwordLabel.TextColor = Color.Red;
 					passwordLabel.Focus();
 					passwordEntry.Focus();
+					updateLabels(formLabelList,passwordLabel);
                     return;
                 }
 				else if (string.IsNullOrWhiteSpace(passwordEntry.Text))
@@ -300,6 +325,7 @@ namespace TriCare.Views
 					passwordLabel.TextColor = Color.Red;
 					passwordLabel.Focus();
 					passwordEntry.Focus();
+					updateLabels(formLabelList,passwordLabel);
                     return;
                 }
 				else if(string.IsNullOrWhiteSpace(NpiNumberEntry.Text))
@@ -311,6 +337,7 @@ namespace TriCare.Views
 					NpiNumberLabel.TextColor = Color.Red;
 					NpiNumberLabel.Focus();
 					NpiNumberEntry.Focus();
+					updateLabels(formLabelList,NpiNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(LicenseNumberEntry.Text))
@@ -322,6 +349,7 @@ namespace TriCare.Views
 					LicenseNumberLabel.TextColor = Color.Red;
 					LicenseNumberLabel.Focus();
 					LicenseNumberEntry.Focus();
+					updateLabels(formLabelList,LicenseNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(DeaNumberEntry.Text))
@@ -333,6 +361,7 @@ namespace TriCare.Views
 					DeaNumberLabel.TextColor = Color.Red;
 					DeaNumberLabel.Focus();
 					DeaNumberEntry.Focus();
+					updateLabels(formLabelList,DeaNumberLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(AddressEntry.Text))
@@ -344,6 +373,7 @@ namespace TriCare.Views
 					AddressLabel.TextColor = Color.Red;
 					AddressLabel.Focus();
 					AddressEntry.Focus();
+					updateLabels(formLabelList,AddressLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(CityEntry.Text))
@@ -355,6 +385,7 @@ namespace TriCare.Views
 					CityLabel.TextColor = Color.Red;
 					CityLabel.Focus();
 					CityEntry.Focus();
+					updateLabels(formLabelList,CityLabel);
 					return;
 				}
 				else if(string.IsNullOrWhiteSpace(StateEntry.Text) || validState == null)
@@ -366,6 +397,7 @@ namespace TriCare.Views
 					StateLabel.TextColor = Color.Red;
 					StateLabel.Focus();
 					StateEntry.Focus();
+					updateLabels(formLabelList,StateLabel);
 					return;
 				}
 				else if (validZip < 10000)
@@ -378,6 +410,7 @@ namespace TriCare.Views
 					ZipLabel.TextColor = Color.Red;
 					ZipLabel.Focus();
 					ZipEntry.Focus();
+					updateLabels(formLabelList,ZipLabel);
                     return;
                 }
 				else if(validPhone < 1000000000)
@@ -390,6 +423,7 @@ namespace TriCare.Views
 					PhoneLabel.TextColor = Color.Red;
 					PhoneLabel.Focus();
 					PhoneEntry.Focus();
+					updateLabels(formLabelList,PhoneLabel);
 					return;
 				}
 				else if(validFax < 1000000000)
@@ -402,6 +436,7 @@ namespace TriCare.Views
 					FaxLabel.TextColor = Color.Red;
 					FaxLabel.Focus();
 					FaxEntry.Focus();
+					updateLabels(formLabelList,FaxLabel);
 					return;
 				}
 				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
@@ -490,5 +525,23 @@ namespace TriCare.Views
 			};
 
         }
+
+		private void updateLabels(List<Label> formLabels, Label currentLabel)
+		{
+			/*
+			 * if currentlabel is null, it means to reset all labels to original text 
+			 * and remove red color signifying error has previously occurred.
+			*/
+			foreach (var label in formLabels) {
+				if (currentLabel == null) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+				else if (label != currentLabel) {
+					label.TextColor = Color.Black;
+					label.Text = label.Text.Replace ("*", "").Trim ();
+				}
+			}
+		}
     }
 }
