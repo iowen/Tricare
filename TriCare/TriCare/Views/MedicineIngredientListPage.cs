@@ -39,6 +39,10 @@ namespace TriCare.Views
 				TextColor = Color.Navy,
 				Text = "Medicine : "+App.CurrentPrescription.Medicine.MedicineName.Trim()
 			};
+			var medDetailL = new Label {
+				TextColor = Color.Navy,
+				Text = App.CurrentPrescription.Medicine.MedicineDetail
+			};
 			medicineId = _medicineId;
 			Title = "Formula";
 			var addIngredientButton = new Button { Text = "Add" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White,WidthRequest= 120 };
@@ -124,6 +128,7 @@ namespace TriCare.Views
 			layout.Padding = new Thickness (20);
 			layout.Children.Add (continueButton);
 			layout.Children.Add (medL);
+			layout.Children.Add (medDetailL);
 	// for version 2
             //		layout.Children.Add (new Label { TextColor = Color.White, Text = "Tap an ingredient to edit." });
 			layout.Children.Add (new StackLayout{

@@ -70,7 +70,17 @@ namespace TriCare
 			base.OnAppearing ();
 			var rRepo = new RefillRepo ();
 			var am = rRepo.GetRefillAmountForId (App.CurrentPrescription.Refill.Amount);
+
 			var aq = rRepo.GetRefillQuantityForId (App.CurrentPrescription.Refill.Quantity);
+			string raq;
+			if (aq > 0) {
+				raq = am.ToString ();
+			} else {
+				if (aq == 0)
+					raq = "NR";
+				else
+					raq = "PRN";
+			}
 			var dLabel = new StringLabel () {
 				NameFriendly = "Date : " + DateTime.Now.ToString("d")
 			};
@@ -82,7 +92,7 @@ namespace TriCare
 				NameFriendly = "Prescriber : " + App.CurrentPrescription.Prescriber.NameFriendly.Trim ()
 			};
 			var medLabel = new StringLabel () {
-				NameFriendly = "Medicine : " + App.CurrentPrescription.Medicine.MedicineName.Trim(),
+				NameFriendly = "Medicine : " + App.CurrentPrescription.Medicine.MedicineName.Trim()+"\n"+App.CurrentPrescription.Medicine.MedicineDetail,
 			};
 			var dirLabel = new StringLabel () {
 				NameFriendly = "Directions : " + App.CurrentPrescription.Medicine.Directions.Trim(),
@@ -91,7 +101,7 @@ namespace TriCare
 				NameFriendly = "Refill Amount : " + am.ToString(),
 			};
 			var rQuantLabel = new StringLabel () {
-				NameFriendly = "Refill Quantity : " + aq.ToString(),
+				NameFriendly = "Refill Quantity : " + raq,
 			};
 			var lr = new List<StringLabel> (){ dLabel,pLabel,presLabel,medLabel,dirLabel, rAmountLabel, rQuantLabel};
 			listView.ItemsSource = lr;

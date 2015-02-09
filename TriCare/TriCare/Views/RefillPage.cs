@@ -8,13 +8,11 @@ namespace TriCare
 	public class RefillPage :ContentPage
 	{
 
-		List<string> ca;
-			List<string> cq;
+
 		public RefillPage ()
 		{
 			this.BackgroundColor = Color.White;
-			ca = new List<string> ();
-			cq = new List<string> ();
+
             var rRepo = new RefillRepo();
             Title = "Refills";
             var ra =rRepo.GetAllRefillAmounts();
@@ -79,16 +77,21 @@ namespace TriCare
 
             foreach(var r in ra)
             {
-				ca.Add (r.Amount.ToString ());
-				refillAmountPicker.Items.Add(r.Amount.ToString());
+					refillAmountPicker.Items.Add (r.Amount.ToString ());
+
             }
 
 
-            foreach(var q in qa)
-            {
-				cq.Add (q.Quantity.ToString ());
-				refillQuantPicker.Items.Add(q.Quantity.ToString());
-            }
+			foreach (var q in qa) {
+				if (q.Quantity > 0) {
+					refillQuantPicker.Items.Add (q.Quantity.ToString ());
+				} else {
+					if (q.Quantity == 0)
+						refillQuantPicker.Items.Add ("NR");
+					else
+						refillQuantPicker.Items.Add ("PRN");
+				}
+			}
 
 
             Content = new StackLayout

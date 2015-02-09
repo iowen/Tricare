@@ -30,6 +30,7 @@ namespace TriCare.Views
 					App.CurrentPrescription.Medicine .MedicineId = med.MedicineId;
 					App.CurrentPrescription.Medicine .MedicineName = med.Name.Trim();
 					App.CurrentPrescription.Medicine.Directions = med.Directions.Trim();
+					App.CurrentPrescription.Medicine.MedicineDetail = med.MedicineDetail.Trim();
 					await App.np.PushAsync (new MedicineIngredientListPage (med.MedicineId));
 				};
 				myContent.Children.Add (newButton);

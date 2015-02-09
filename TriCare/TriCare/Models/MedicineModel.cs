@@ -47,6 +47,7 @@ namespace TriCare.Models
         public int MedicineId;
         public List<PrescriptionMedicineIngredientModel> Ingredients;
 		public string Directions;
+		public string MedicineDetail;
 		public int MedicineCategoryId;
     }
 	public class MedicineIngredientForPrescriptionModel
