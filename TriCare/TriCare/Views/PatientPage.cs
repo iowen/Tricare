@@ -477,10 +477,11 @@ namespace TriCare.Views
 	
 		protected override void OnAppearing ()
 		{
+			base.OnAppearing ();
+
 			var patientRepo  = new PatientRepo();
 			_patient = patientRepo.GetPatient (_patient.PatientId);
 			OnBindingContextChanged ();
-			base.OnAppearing ();
 
 		}
 

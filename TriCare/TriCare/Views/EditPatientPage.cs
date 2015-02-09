@@ -618,9 +618,9 @@ namespace TriCare.Views
 					if (!isDuringPrescription)
 					{
 						var Command = new Command(async o => {
-							await App.np.PopAsync(false);
-							await App.np.PopAsync(false);
-							await App.np.PushAsync(new PatientPage(patientItem, isDuringPrescription));
+							//await App.np.PopAsync(false);
+							await App.np.PopAsync();
+							//await App.np.PushAsync(new PatientPage(patientItem, isDuringPrescription));
 						});
 						Command.Execute(new []{"run"});
 					}
