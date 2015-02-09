@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TriCare.Models;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace TriCare.Data
 {
@@ -36,6 +37,8 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 
 
@@ -65,6 +68,8 @@ namespace TriCare.Data
 				return true;
 			using (var client = new HttpClient())
 			{
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 
 
@@ -109,6 +114,8 @@ namespace TriCare.Data
 
 				using (var client = new HttpClient())
 				{
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 					var json = JsonConvert.SerializeObject(login);
 
@@ -160,6 +167,8 @@ namespace TriCare.Data
 		{
 			using (var client = new HttpClient())
 			{
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 				var json = JsonConvert.SerializeObject(item);
 
@@ -184,6 +193,8 @@ namespace TriCare.Data
 			try
 			{
 			var client = new HttpClient ();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 			//	client.BaseAddress = new Uri("");
 				var json = JsonConvert.SerializeObject(item);
 
@@ -219,6 +230,8 @@ namespace TriCare.Data
 			try
 			{
 				var client = new HttpClient ();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				//	client.BaseAddress = new Uri("");
 				var json = JsonConvert.SerializeObject(item);
 

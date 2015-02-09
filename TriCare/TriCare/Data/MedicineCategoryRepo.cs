@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TriCare.Models;
 using Xamarin.Forms;
+using System.Net.Http.Headers;
 
 namespace TriCare.Data
 {
@@ -36,6 +37,8 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 
 				var resultTask = await client.GetAsync(App.ApiUrL+"/api/MedicineCategory");

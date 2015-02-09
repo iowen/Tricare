@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TriCare.Models;
 using Xamarin.Forms;
+using System.Net.Http.Headers;
 
 namespace TriCare.Data
 {
@@ -36,6 +37,7 @@ namespace TriCare.Data
             using (var client = new HttpClient())
             {
 				client.BaseAddress = new Uri(App.ApiUrL);
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
 
 
 				var resultTask = await client.PutAsync(App.ApiUrL+"/api/Patient/" + prescriber.ToString(), null);
@@ -75,6 +77,8 @@ namespace TriCare.Data
             try
             {
                 var client = new HttpClient();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
                 //	client.BaseAddress = new Uri("");
                 var json = JsonConvert.SerializeObject(item);
 
@@ -108,6 +112,8 @@ namespace TriCare.Data
 			try
 			{
 				var client = new HttpClient();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				//	client.BaseAddress = new Uri("");
 				var json = JsonConvert.SerializeObject(item);
 

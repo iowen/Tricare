@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using TriCare.Models;
@@ -36,6 +37,8 @@ namespace TriCare.Data
         {
             using (var client = new HttpClient())
             {
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
+
 				client.BaseAddress = new Uri(App.ApiUrL);
 
 				var resultTask = await client.GetAsync(App.ApiUrL+"/api/InsuranceCarrier");
