@@ -138,12 +138,15 @@ namespace TriCare.Views
 					new ScrollView
 					{
 						Content = listView,
-						VerticalOptions = LayoutOptions.FillAndExpand
+						VerticalOptions = LayoutOptions.FillAndExpand,
+						HorizontalOptions = LayoutOptions.FillAndExpand
+
 					}
 				}
 			}
 			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
+			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
 

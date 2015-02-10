@@ -92,13 +92,13 @@ namespace TriCare
 					{
 						Content = listView,
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						HorizontalOptions = LayoutOptions.CenterAndExpand
+						HorizontalOptions = LayoutOptions.FillAndExpand
 					}
 				}
 			}
 			);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
-			layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
 

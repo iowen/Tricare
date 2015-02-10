@@ -61,18 +61,23 @@ namespace TriCare.Views
 
 			var pstack = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = { labelPatient, labelPatientName }
+
 			};
 			var mstack = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = { labelMedicine, labelMedicineName }
 			};
 			var cstack = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = { labelCreated, labelCreatedText }
 			};
 			var stack = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {pstack,mstack,cstack}
 			};
 			View = stack;

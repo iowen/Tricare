@@ -51,20 +51,20 @@ namespace TriCare.Views
 			layout.Children.Add (searchBar);
 			layout.Children.Add (new StackLayout{
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					new ScrollView
 				{
 					Content = listView,
 					VerticalOptions = LayoutOptions.FillAndExpand,
-						HorizontalOptions = LayoutOptions.CenterAndExpand
+						HorizontalOptions = LayoutOptions.FillAndExpand
 
 					}
 				}
 			}
 				);
 			layout.VerticalOptions = LayoutOptions.FillAndExpand;
-			layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			layout.HorizontalOptions = LayoutOptions.FillAndExpand;
 			Content = layout;
 
 		

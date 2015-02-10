@@ -10,6 +10,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -27,7 +28,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.RxApps.TriCareWellness</string>
 	<key>CFBundleVersion</key>
-	<string>1.03_rc</string>
+	<string>1.051</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon</string>
