@@ -40,8 +40,8 @@ namespace TriCare.Data
 			if (!App.IsConnected ())
 				return;
 			using (var client = new HttpClient ()) {
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
 				var json = JsonConvert.SerializeObject (model);
 
 				var content = new FormUrlEncodedContent (new[] {
@@ -137,8 +137,8 @@ namespace TriCare.Data
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
 				client.BaseAddress = new Uri(App.ApiUrL);
 				await client.GetAsync(App.ApiUrL+"/api/ForgotPassword?email=" + emailAddress);
 			}

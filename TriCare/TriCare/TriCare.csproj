@@ -111,6 +111,7 @@
     <Compile Include="Models\MedicineCategory.cs" />
     <Compile Include="Views\PrescriptionSelectMedicineCategoryPage.cs" />
     <Compile Include="Data\MedicineCategoryRepo.cs" />
+    <Compile Include="Data\TokenModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

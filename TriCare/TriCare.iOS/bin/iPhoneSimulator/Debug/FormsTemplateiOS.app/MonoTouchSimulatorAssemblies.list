@@ -30,7 +30,6 @@ Acr.XamForms.Mobile.dll
 Newtonsoft.Json.dll
 System.Runtime.Serialization.dll
 System.Net.Http.dll
-System.Net.Primitives.dll
 Microsoft.CSharp.dll
 Mono.CSharp.dll
 Xamarin.Forms.Xaml.dll

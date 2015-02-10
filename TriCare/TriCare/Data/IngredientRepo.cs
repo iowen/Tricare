@@ -38,8 +38,9 @@ namespace TriCare.Data
         {
 
             using (var client = new HttpClient())
-			{				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+			{				
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
 				client.BaseAddress = new Uri(App.ApiUrL);
 
 				var resultTask = await client.GetAsync(App.ApiUrL+"/api/Ingredient");

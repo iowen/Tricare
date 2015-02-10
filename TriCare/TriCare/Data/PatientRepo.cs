@@ -37,8 +37,8 @@ namespace TriCare.Data
             using (var client = new HttpClient())
             {
 				client.BaseAddress = new Uri(App.ApiUrL);
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
 
 				var resultTask = await client.PutAsync(App.ApiUrL+"/api/Patient/" + prescriber.ToString(), null);
                 var resultText = resultTask.Content.ReadAsStringAsync().Result;
@@ -77,8 +77,8 @@ namespace TriCare.Data
             try
             {
                 var client = new HttpClient();
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
                 //	client.BaseAddress = new Uri("");
                 var json = JsonConvert.SerializeObject(item);
 
@@ -112,8 +112,8 @@ namespace TriCare.Data
 			try
 			{
 				var client = new HttpClient();
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "TcareApp", "Tcare1234"))));
-
+				var appToken = App.GetAppToken();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
 				//	client.BaseAddress = new Uri("");
 				var json = JsonConvert.SerializeObject(item);
 

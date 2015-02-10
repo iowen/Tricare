@@ -8,6 +8,10 @@ using TriCare.Models;
 using TriCare.Data;
 using System.Text.RegularExpressions;
 using Acr.XamForms.Mobile.Net;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace TriCare
 {
@@ -33,6 +37,7 @@ namespace TriCare
 //				logOutButton.Clicked += LogOut;
 //			} else 			{
 //			}
+			GetAppToken ();
 			showLogout = true;
 			logOutButton.Icon = "appMenu.png";
 			logOutButton.Clicked += LogOutIOS;
@@ -195,6 +200,45 @@ namespace TriCare
 		{
 			var nservice = DependencyService.Get<INetworkService> ();
 			return nservice.IsConnected;
+		}
+		private static TokenModel _appToken;
+		private static async void InitAppToken()
+		{
+			try{
+				if(_appToken != null && _appToken.ExpiresIn > 100)
+				{
+					return;
+				}
+			using (var client = new HttpClient())
+			{
+				_appToken = new TokenModel ();
+				client.BaseAddress = new Uri(App.ApiUrL);
+				HttpContent requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+				var ttask = await client.PostAsync(App.ApiUrL+"/Token", requestContent);
+
+				var ttr = ttask.Content.ReadAsStringAsync ().Result;
+				_appToken = JsonConvert.DeserializeObject<TokenModel>(ttr);
+			}
+			}
+			catch(Exception ex) {
+				using (var client = new HttpClient())
+				{
+					_appToken = new TokenModel ();
+					client.BaseAddress = new Uri(App.ApiUrL);
+					HttpContent requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+					var ttask = await client.PostAsync(App.ApiUrL+"/Token", requestContent);
+
+					var ttr = ttask.Content.ReadAsStringAsync ().Result;
+					_appToken = JsonConvert.DeserializeObject<TokenModel>(ttr);
+				}
+			}
+		}
+		public static TokenModel GetAppToken()
+		{
+			InitAppToken ();
+			return _appToken;
 		}
     }
 }

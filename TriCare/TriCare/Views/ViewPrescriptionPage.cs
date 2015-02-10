@@ -27,6 +27,8 @@ namespace TriCare
 
 			listView = new ListView ();
 			listView.BackgroundColor = Color.Transparent;
+			listView.HasUnevenRows = true;
+
 			listView.ItemTemplate = new DataTemplate 
 				(typeof (VerifyCell));
 
@@ -36,6 +38,44 @@ namespace TriCare
 				listView.SelectedItem = null;
 			};
 
+			var rRepo = new RefillRepo ();
+			var am = rRepo.GetRefillAmountForId (model.Refill.Amount);
+			var aq = rRepo.GetRefillQuantityForId (model.Refill.Quantity);
+			string raq;
+			if (aq > 0) {
+				raq = aq.ToString ();
+			} else {
+				if (aq == 0)
+					raq = "NR";
+				else
+					raq = "PRN";
+			}
+			var dLabel = new StringLabel () {
+				NameFriendly = "Date : " + model.CreatedFriendly.Trim()
+			};
+
+			var pLabel = new StringLabel () {
+				NameFriendly = "Patient : " + model.Patient.NameFriendly.Trim ()
+			};
+
+			var presLabel = new StringLabel () {
+				NameFriendly = "Prescriber : " + model.Prescriber.NameFriendly.Trim ()
+			};
+			var medLabel = new StringLabel () {
+				NameFriendly = "Medicine : " + model.Medicine.MedicineName.Trim()+"\n"+model.Medicine.MedicineDetail,
+			};
+			var dirLabel = new StringLabel () {
+				NameFriendly = "Directions : " + model.Medicine.Directions.Trim(),
+			};
+			var rAmountLabel = new StringLabel () {
+				NameFriendly = "Refill Amount : " + am.ToString()+" Grams",
+			};
+			var rQuantLabel = new StringLabel () {
+				NameFriendly = "Refill Quantity : " + raq,
+			};
+
+			var lr = new List<StringLabel> (){ dLabel, pLabel,presLabel,medLabel,dirLabel, rAmountLabel, rQuantLabel};
+			listView.ItemsSource = lr;
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			var layout = new StackLayout();
 			if (Device.OS == TargetPlatform.WinPhone) { // WinPhone doesn't have the title showing
@@ -66,44 +106,7 @@ namespace TriCare
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			var rRepo = new RefillRepo ();
-			var am = rRepo.GetRefillAmountForId (model.Refill.Amount);
-			var aq = rRepo.GetRefillQuantityForId (model.Refill.Quantity);
-			string raq;
-			if (aq > 0) {
-				raq = am.ToString ();
-			} else {
-				if (aq == 0)
-					raq = "NR";
-				else
-					raq = "PRN";
-			}
-			var dLabel = new StringLabel () {
-				NameFriendly = "Date : " + model.CreatedFriendly.Trim()
-			};
 
-			var pLabel = new StringLabel () {
-				NameFriendly = "Patient : " + model.Patient.NameFriendly.Trim ()
-			};
-
-			var presLabel = new StringLabel () {
-				NameFriendly = "Prescriber : " + model.Prescriber.NameFriendly.Trim ()
-			};
-			var medLabel = new StringLabel () {
-				NameFriendly = "Medicine : " + model.Medicine.MedicineName.Trim()+"\n"+model.Medicine.MedicineDetail,
-			};
-			var dirLabel = new StringLabel () {
-				NameFriendly = "Directions : " + model.Medicine.Directions.Trim(),
-			};
-			var rAmountLabel = new StringLabel () {
-				NameFriendly = "Refill Amount : " + am.ToString(),
-			};
-			var rQuantLabel = new StringLabel () {
-				NameFriendly = "Refill Quantity : " + raq,
-			};
-
-			var lr = new List<StringLabel> (){ dLabel, pLabel,presLabel,medLabel,dirLabel, rAmountLabel, rQuantLabel};
-			listView.ItemsSource = lr;
 		}
 	}
 }

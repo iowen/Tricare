@@ -24,7 +24,7 @@ namespace TriCare
 			};
 			var amL = new Label {
 				TextColor = Color.Navy,
-				Text = "Refill Amount in MG",
+				Text = "Refill Amount in Grams",
 
 			};
 			var aqL = new Label {
@@ -77,7 +77,7 @@ namespace TriCare
 
             foreach(var r in ra)
             {
-					refillAmountPicker.Items.Add (r.Amount.ToString ());
+					refillAmountPicker.Items.Add (r.Amount.ToString ()+" Grams");
 
             }
 

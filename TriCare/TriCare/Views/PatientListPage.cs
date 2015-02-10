@@ -83,7 +83,6 @@ namespace TriCare.Views
 		{
 
 			base.OnAppearing ();
-			listView.ItemsSource = patientList;
 		}
 		public void OnSearchBarButtonPressed(object sender, EventArgs args)
 		{

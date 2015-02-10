@@ -21,8 +21,8 @@ namespace TriCare.Views
 			listView = new ListView ();
 			var pRepo = new PrescriptionRepo();
 			listView.BackgroundColor = Color.Transparent;
-			listView.ItemsSource = prescriptionList;
-		
+			prescriptionList = pRepo.GetPrescriptionsForPrescriber(int.Parse(App.Token));
+			listView.ItemsSource = prescriptionList;		
 			listView.ItemTemplate = new DataTemplate 
 					(typeof (PrescriptionListCell));
 			listView.ItemSelected  += async (sender, e) => {
@@ -73,9 +73,7 @@ namespace TriCare.Views
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			var pRepo = new PrescriptionRepo();
-			prescriptionList = pRepo.GetPrescriptionsForPrescriber(int.Parse(App.Token));
-			listView.ItemsSource = prescriptionList;
+
 
 		}
 		public void OnSearchBarTextChanged(object sender, EventArgs args)
