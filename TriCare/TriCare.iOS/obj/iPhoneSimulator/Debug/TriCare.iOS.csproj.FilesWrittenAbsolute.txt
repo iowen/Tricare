@@ -25,12 +25,12 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/SQLite.Net.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/SQLite.Net.Platform.XamarinIOS.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/SignaturePad.iOS.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Labs.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Acr.XamForms.Mobile.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Mobile.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
+/Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/TriCare.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.iOS/bin/iPhoneSimulator/Debug/TriCare.dll.mdb

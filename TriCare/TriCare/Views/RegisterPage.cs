@@ -439,7 +439,7 @@ namespace TriCare.Views
 					updateLabels(formLabelList,FaxLabel);
 					return;
 				}
-				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text) };
+				var prescriberItem = new Prescriber() { Address = AddressEntry.Text, City = CityEntry.Text, DeaNumber = DeaNumberEntry.Text, Email = emailEntry.Text, Fax = fxTxt, FirstName = firstNameEntry.Text, LastName = lastNameEntry.Text, LicenseNumber = LicenseNumberEntry.Text, NpiNumber = NpiNumberEntry.Text, Password = passwordEntry.Text, Phone = phneTxt, State = StateEntry.Text, Zip = int.Parse(ZipEntry.Text),Active = true, Verified = false};
                 string msg;
                 var bR = PrescriberValidator.Validate(prescriberItem, out msg);
                 if(!bR)
@@ -450,35 +450,35 @@ namespace TriCare.Views
                     return;
                 }
 				#endregion
-
+				await App.np.PushAsync(new TermsPage(prescriberItem));
                 //var prescriberRepo = new PrescriberRepo();
                 // send webservice request and so on
-                var res = await prescriberRepo.AddPrescriber(prescriberItem);
-				indi.IsRunning = false;
-
-				var resultInt = int.Parse(res.ToString());
-				if (resultInt > 0)
-                {
-					var sRepo = new SyncRepo();
-					var sModel = new SyncModel();
-					sModel.SyncType = 'a';
-					sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
-					await sRepo.GetSyncData(sModel);
-					App.SaveToken(resultInt.ToString());
-					App.ClearCurrentPrescription ();
-					var Command = new Command(async o => {
-						await App.np.PopToRootAsync(false);
-						var pg = new HomePage();
-						pg.CurrentPage = pg.Children.Last();
-						await  App.np.PushAsync(pg,false);
-					});
-					Command.Execute(new []{"run"});
-                }
-                else
-                {
-					registerButton.IsEnabled = true;
-                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK");
-                }
+//                var res = await prescriberRepo.AddPrescriber(prescriberItem);
+//				indi.IsRunning = false;
+//
+//				var resultInt = int.Parse(res.ToString());
+//				if (resultInt > 0)
+//                {
+//					var sRepo = new SyncRepo();
+//					var sModel = new SyncModel();
+//					sModel.SyncType = 'a';
+//					sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
+//					await sRepo.GetSyncData(sModel);
+//					App.SaveToken(resultInt.ToString());
+//					App.ClearCurrentPrescription ();
+//					var Command = new Command(async o => {
+//						await App.np.PopToRootAsync(false);
+//						var pg = new HomePage();
+//						pg.CurrentPage = pg.Children.Last();
+//						await  App.np.PushAsync(pg,false);
+//					});
+//					Command.Execute(new []{"run"});
+//                }
+//                else
+//                {
+//					registerButton.IsEnabled = true;
+//                    await DisplayAlert("Error", "An Error Occured Please Try Again", "OK");
+//                }
             };
 	//		firstNameEntry.Placeholder = "                                                                ";
 			content = new StackLayout 

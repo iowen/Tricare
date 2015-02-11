@@ -27,7 +27,8 @@ namespace TriCare.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime LastUpdate { get; set; }
-
+		public bool Active { get; set; }
+		public bool Verified { get; set; }
 		[Ignore]
 		public string NameFriendly{ get { return FirstName.ToString ().Trim() +" "+ LastName.ToString ().Trim(); } }
     }

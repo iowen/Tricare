@@ -112,6 +112,7 @@
     <Compile Include="Views\PrescriptionSelectMedicineCategoryPage.cs" />
     <Compile Include="Data\MedicineCategoryRepo.cs" />
     <Compile Include="Data\TokenModel.cs" />
+    <Compile Include="Views\TermsPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

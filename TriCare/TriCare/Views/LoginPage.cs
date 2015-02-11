@@ -101,7 +101,16 @@ namespace TriCare.Views
 							forgotLabel.IsEnabled = true;
 							indi.IsRunning = false;
 
-						} else {
+						} 
+						else if (loginState.ToLower () == "verification") {
+							loginButton.IsEnabled = true;
+							registerButton.IsEnabled = true;
+							forgotLabel.IsEnabled = true;
+							indi.IsRunning = false;
+
+							await DisplayAlert ("Alert", "Please check your email for steps on verifying your account.", "OK", "close");
+						}
+						else {
 							loginButton.IsEnabled = true;
 							registerButton.IsEnabled = true;
 							forgotLabel.IsEnabled = true;

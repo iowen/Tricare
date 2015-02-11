@@ -106,8 +106,19 @@ namespace TriCare.Data
 				sModel.LastSync = new DateTime(1987, 11,21);
 				sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
 				await sRepo.GetSyncData(sModel);
-                App.SaveToken(prescriber.PrescriberId.ToString());
+				var prescriberA = database.Table<Prescriber>().FirstOrDefault(x => x.Email == login.Email && x.Password == App.Encrypt(login.Password));
                 var returnTask = new TaskCompletionSource<string>();
+				if(!prescriberA.Active)
+				{
+					returnTask.SetResult("failure");
+					return await returnTask.Task;
+				}
+				if(!prescriberA.Verified)
+				{
+					returnTask.SetResult("verification");
+					return await returnTask.Task;
+				}
+				App.SaveToken(prescriberA.PrescriberId.ToString());
                 returnTask.SetResult("success");
                 return await returnTask.Task;
             }
@@ -131,7 +142,7 @@ namespace TriCare.Data
 				{
 					dynamic resultFix = JsonConvert.DeserializeObject(resultText);
 					var resultItem = JsonConvert.DeserializeObject<Prescriber>(resultFix);
-					if (resultItem.PrescriberId > 0) 
+					if (resultItem.PrescriberId > 0 && resultItem.Active) 
 					{
                         var pRepo = new PrescriberRepo();
                         var patRepo = new PatientRepo();
@@ -147,9 +158,15 @@ namespace TriCare.Data
 						sModel.LastAppDataSync = sRepo.GetLastAppUpdate ();
 
 						await sRepo.GetSyncData(sModel);
+						var returnTask = new TaskCompletionSource<string>();
+
                    //     patRepo.PullAllPatientsForPrescriber(resultItem.PrescriberId);
+						if(!resultItem.Verified)
+						{
+							returnTask.SetResult("verification");
+							return await returnTask.Task;
+						}
                         App.SaveToken(resultItem.PrescriberId.ToString());
-                        var returnTask = new TaskCompletionSource<string>();
                         returnTask.SetResult("success");
                         return await returnTask.Task;
 					}
