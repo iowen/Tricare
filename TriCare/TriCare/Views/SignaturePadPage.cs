@@ -31,16 +31,15 @@ namespace TriCare.Views
 			indi = new ActivityIndicator();
             //this.dialogs = dialogs;
             this.fileSystem = fileSystem;
-            //this.fileViewer = fileViewer;
 
-       //     this.Configure = new Command(() => App.NavigateTo<SignaturePadConfigViewModel>());
-          //  this.Create = new Command(this.OnCreate);
-          //  this.List = new ObservableList<Signature>();
 			rLabel = new Label {
 				Text = "Rotate to Sign",
 				TextColor = Color.Red,
 				FontSize = 24,
 				IsVisible = false,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				WidthRequest= 200.0d
 
 		};
 			curView = new SignaturePadView {  
@@ -54,40 +53,43 @@ namespace TriCare.Views
 				StrokeColor = Color.White,
 				StrokeWidth = 2,
 			};
+
 			saveButton = new Button { Text = "Sign & Send" , BackgroundColor = Color.FromRgba(128, 128, 128, 128),TextColor = Color.White};
             saveButton.Clicked += saveButton_Clicked;
 		//	if (Device.OS == TargetPlatform.iOS) {		
-            Grid grid = new Grid
-            {
-				VerticalOptions = LayoutOptions.CenterAndExpand,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-                RowDefinitions = 
-				{
-					new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute)},
-					new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) },
-				},
-                ColumnDefinitions = 
-				{
-					new ColumnDefinition { Width = GridLength.Auto },
-				}
-            };
-				curView.HeightRequest = grid.RowDefinitions [0].Height.Value;
-
-	
-			grid.Children.Add (rLabel);
-            grid.Children.Add(curView);
-			Grid.SetRow (rLabel, 1);
-            Grid.SetRow(curView, 0);
-            grid.Children.Add(saveButton);
-            Grid.SetRow(saveButton, 1);
-
-		
+//            Grid grid = new Grid
+//            {
+//				VerticalOptions = LayoutOptions.FillAndExpand,
+//				HorizontalOptions = LayoutOptions.FillAndExpand,
+//                RowDefinitions = 
+//				{
+//					new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute)},
+//					new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) },
+//				},
+//                ColumnDefinitions = 
+//				{
+//					new ColumnDefinition { Width = GridLength.Auto},
+//				}
+//            };
+//				curView.HeightRequest = grid.RowDefinitions [0].Height.Value;
+//
+//	
+//			grid.Children.Add (rLabel);
+//            grid.Children.Add(curView);
+//			Grid.SetRow (rLabel, 1);
+//            Grid.SetRow(curView, 0);
+//
+//            grid.Children.Add(saveButton);
+//            Grid.SetRow(saveButton, 0);
+//
+			curView.HeightRequest = 200;
             content =  new StackLayout
             {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
                 Padding = new Thickness(20),
                 Children = {
-					grid
+					rLabel,curView,saveButton
                     
                 }
             
@@ -108,41 +110,7 @@ namespace TriCare.Views
 				rLabel.IsVisible = true;
 				curView.IsVisible = false;
 				saveButton.IsVisible = false;
-				}
-			/*}else if (Device.OS == TargetPlatform.Android){
-				Grid grid = new Grid
-				{
-					VerticalOptions = LayoutOptions.FillAndExpand,
-					RowDefinitions = 
-					{
-						new RowDefinition { Height =GridLength.Auto},
-						new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) },
-					},
-					ColumnDefinitions = 
-					{
-						new ColumnDefinition { Width = GridLength.Auto },
-					}
-					};
-
-
-				grid.Children.Add(curView);
-				Grid.SetRow(curView, 0);
-
-				grid.Children.Add(saveButton);
-				Grid.SetRow(saveButton, 1);
-
-
-				Content =  new StackLayout
-				{
-					VerticalOptions = LayoutOptions.FillAndExpand,
-					Padding = new Thickness(20),
-					Children = {
-						grid,
-
-					}
-
-				};
-			}*/
+			}
          
         }
 		protected override void OnSizeAllocated(double width, double height)
@@ -154,9 +122,8 @@ namespace TriCare.Views
 				curView.IsVisible = true;
 				saveButton.IsVisible = true;
 				rLabel.IsVisible = false;
-
+				rLabel.WidthRequest = 0;
 					curView.WidthRequest = width - 40;
-
 			} else {
 				curView.IsVisible = false;
 				saveButton.IsVisible = false;
@@ -164,6 +131,7 @@ namespace TriCare.Views
 				// Orientation got changed! Do your changes here
 
 					curView.WidthRequest = 0;		
+				rLabel.WidthRequest = 200;
 
 			}
 
@@ -184,15 +152,7 @@ namespace TriCare.Views
             var fileName = String.Format(FILE_FORMAT, DateTime.Now);
             IFile file = null;
 			byte[] bytes = curView.GetImage(ImageFormatType.Png).ToArray();
-			//using (var ms = curView.GetImage(ImageFormatType.Png))
-      //      {
-      //          bytes = ms.ToArray();
-//                file = this.fileSystem.AppData.CreateFile(fileName);
-//                using (var fs = file.OpenWrite())
-//                    fs.Write(bytes, 0, bytes.Length);
-				//DisplayActionSheet ("fname", file.FullName, "close");
-      //     }
-			// make pdf Send fax and email 
+
 			var ingList = new List<MedicineIngredientForPrescriptionModel> ();
 			foreach (var i in App.CurrentPrescription.Medicine.Ingredients) 
 			{
@@ -222,75 +182,15 @@ namespace TriCare.Views
 				});
 				Command.Execute(new []{"run"});
 			}
+			else{
+					var Command = new Command(async o => {
+					saveButton.IsEnabled = true;
+					curView.IsEnabled = true;
+						await DisplayAlert ("Failure", "An Error Occured. Please Try Again.", "OK", "close");
+					});
+					Command.Execute(new []{"run"});
+				}
         }
-
-
-    //    public override void OnAppearing()
-      //  {
-            //this.List.Clear();
-
-            //var signatures = this.fileSystem
-            //    .AppData
-            //    .Files
-            //    .Select(x => new Signature
-            //    {
-            //        FileName = x.Name,
-            //        FilePath = x.FullName,
-            //        FileSize = x.Length
-            //    })
-            //    .ToList();
-
-            //this.List.AddRange(signatures);
-          //  this.NoData = false;// !this.List.Any();
-        //}
-
-       // public ObservableList<Signature> List { get; private set; }
-
-        private bool noData;
-        public bool NoData
-        {
-            get { return this.noData; }
-            set { }//this.SetProperty(ref this.noData, value); }
-        }
-
-
-        //public ICommand Configure { get; private set; }
-        //public ICommand Create { get; private set; }
-
-
-        private void OnCreate()
-        {
-        }
-
-
-        //private Command<Signature> selectCmd;
-        //public Command<Signature> Select
-        //{
-        //    get
-        //    {
-        //        this.selectCmd = this.selectCmd ?? new Command<Signature>(s =>
-        //            this.dialogs.ActionSheet(new ActionSheetConfig()
-        //                .Add("View", () =>
-        //                {
-        //                    if (!this.fileViewer.Open(s.FilePath))
-        //                        this.dialogs.Alert(String.Format("Could not open file {0}", s.FileName));
-        //                })
-        //                .Add("Delete", async () =>
-        //                {
-        //                    var r = await this.dialogs.ConfirmAsync(String.Format("Are you sure you want to delete {0}", s.FileName));
-        //                    if (!r)
-        //                        return;
-
-        //                    var file = this.fileSystem.GetFile(s.FilePath);
-        //                    file.Delete();
-        //                    this.List.Remove(s);
-        //                    this.NoData = !this.List.Any();
-        //                })
-        //                .Add("Cancel")
-        //            )
-        //        );
-        //        return this.selectCmd;
-        //    }
-        //}
+			
     }
 }

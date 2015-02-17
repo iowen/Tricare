@@ -14,7 +14,12 @@ namespace TriCare.Droid
 		{
 		}
 		public SQLite.Net.SQLiteConnection GetConnection () {
-			var sqliteFilename = "TriCareSQLite.db3";
+			string sqliteFilename = "";
+			#if DEBUG
+			sqliteFilename = "TriCareSQLiteDBG.db3";
+			#else
+			sqliteFilename = "TriCareSQLite.db3";
+			#endif
 			string documentsPath = System.Environment.GetFolderPath (System.Environment.SpecialFolder.Personal); // Documents folder
 			var path = Path.Combine(documentsPath, sqliteFilename);
 			// Create the connection

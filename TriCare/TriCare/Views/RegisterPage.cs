@@ -444,13 +444,14 @@ namespace TriCare.Views
                 var bR = PrescriberValidator.Validate(prescriberItem, out msg);
                 if(!bR)
                 {
-					indi.IsRunning = false;
-					registerButton.IsEnabled = true;
+					indi.IsRunning = false;	registerButton.IsEnabled = true;
                     await DisplayAlert("Error", msg, "OK");
                     return;
                 }
 				#endregion
 				await App.np.PushAsync(new TermsPage(prescriberItem));
+				indi.IsRunning = false;
+				registerButton.IsEnabled = true;
                 //var prescriberRepo = new PrescriberRepo();
                 // send webservice request and so on
 //                var res = await prescriberRepo.AddPrescriber(prescriberItem);

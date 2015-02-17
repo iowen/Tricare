@@ -14,7 +14,12 @@ namespace TriCare.iOS
 		}
 		public SQLite.Net.SQLiteConnection GetConnection ()
 		{
-			var sqliteFilename = "TriCareSQLite.db3";
+			string sqliteFilename = "";
+			#if DEBUG
+			sqliteFilename = "TriCareSQLiteDBG.db3";
+			#else
+			sqliteFilename = "TriCareSQLite.db3";
+			#endif
 			string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal); // Documents folder
 			string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder
 			var path = Path.Combine(libraryPath, sqliteFilename);

@@ -277,7 +277,6 @@
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Xamarin.Forms.Labs.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Newtonsoft.Json.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Acr.XamForms.Mobile.dll
-/Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Acr.XamForms.Mobile.Droid.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Xamarin.Mobile.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/Xamarin.Forms.Platform.Android.dll
 /Users/iowen/Documents/Tricare/TriCare/TriCare.Android/bin/Debug/FormsViewGroup.dll

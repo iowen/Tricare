@@ -54,15 +54,15 @@ namespace TriCare.Views
 //			var passwordEntry = new Label{ TextColor = Color.Black };
 //            passwordEntry.SetBinding(Label.TextProperty, "Password");
 
-			var NpiNumberLabel = new Label { Text = "NPI Number:", TextColor = Color.Navy };
+			var NpiNumberLabel = new Label { Text = "NPI Num:", TextColor = Color.Navy };
 			var NpiNumberEntry = new Label{ TextColor = Color.Black };
             NpiNumberEntry.SetBinding(Label.TextProperty, "NpiNumber");
 
-			var LicenseNumberLabel = new Label { Text = "License Number:", TextColor = Color.Navy };
+			var LicenseNumberLabel = new Label { Text = "License: ", TextColor = Color.Navy };
 			var LicenseNumberEntry = new Label{ TextColor = Color.Black };
             LicenseNumberEntry.SetBinding(Label.TextProperty, "LicenseNumber");
 
-			var DeaNumberLabel = new Label { Text = "DEA Number:", TextColor = Color.Navy  };
+			var DeaNumberLabel = new Label { Text = "DEA Num:", TextColor = Color.Navy  };
 			var DeaNumberEntry = new Label{ TextColor = Color.Black };
             DeaNumberEntry.SetBinding(Label.TextProperty, "DeaNumber");
 

@@ -160,12 +160,6 @@
     <Reference Include="Xamarin.Forms.Labs">
       <HintPath>..\..\packages\Xamarin.Forms.Labs.1.2.0\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\Xamarin.Forms.Labs.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.XamForms.Mobile">
-      <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.0\lib\Xamarin.iOS10\Acr.XamForms.Mobile.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Mobile">
-      <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.0\lib\Xamarin.iOS10\Xamarin.Mobile.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
@@ -174,6 +168,15 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.XamForms.Mobile">
+      <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.2\lib\Xamarin.iOS10\Acr.XamForms.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.XamForms.Mobile.iOS">
+      <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.2\lib\Xamarin.iOS10\Acr.XamForms.Mobile.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.2\lib\Xamarin.iOS10\Xamarin.Mobile.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

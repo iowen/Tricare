@@ -30,7 +30,6 @@ namespace TriCare
 
 			listView = new ListView ();
 			listView.BackgroundColor = Color.Transparent;
-			listView.HasUnevenRows = true;
 			listView.ItemTemplate = new DataTemplate 
 				(typeof (VerifyCell));
 			listView.ItemSelected += (sender, e) => {

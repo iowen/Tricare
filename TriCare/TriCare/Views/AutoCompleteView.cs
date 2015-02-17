@@ -765,10 +765,12 @@ namespace TriCare.Views
 						}
 
 						control.ShowHideListbox(true);
+						return;
 					}
 					else
 					{
 						control.ShowHideListbox(false);
+						return;
 					}
 				}
 				else

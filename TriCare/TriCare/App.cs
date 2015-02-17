@@ -184,7 +184,18 @@ namespace TriCare
 			return phoneOutput;
 		}
 
-		public static string ApiUrL = "http://teamsavagemma.com";
+		public static string ApiUrL 
+		{
+			get{
+				string url = "";
+				#if DEBUG
+			url = "http://teamsavagemma.com";
+				#else
+				url = "http://fertilscripts.com";
+				#endif
+				return url;
+			}
+		}
 
 		public static bool ValidEmail(string email)
 		{
@@ -213,8 +224,12 @@ namespace TriCare
 			{
 				_appToken = new TokenModel ();
 				client.BaseAddress = new Uri(App.ApiUrL);
-				HttpContent requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
-
+					HttpContent requestContent;
+					#if DEBUG
+					requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
+					#else
+					requestContent = new StringContent("grant_type=password&username=" + "RXTcareApp" + "&password=" + "100M@rch!ng", Encoding.UTF8, "application/x-www-form-urlencoded");
+					#endif
 				var ttask = await client.PostAsync(App.ApiUrL+"/Token", requestContent);
 
 				var ttr = ttask.Content.ReadAsStringAsync ().Result;
@@ -226,8 +241,12 @@ namespace TriCare
 				{
 					_appToken = new TokenModel ();
 					client.BaseAddress = new Uri(App.ApiUrL);
-					HttpContent requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
-
+					HttpContent requestContent;
+					#if DEBUG
+					requestContent = new StringContent("grant_type=password&username=" + "TcareApp" + "&password=" + "Tcare1234", Encoding.UTF8, "application/x-www-form-urlencoded");
+					#else
+					requestContent = new StringContent("grant_type=password&username=" + "RXTcareApp" + "&password=" + "100M@rch!ng", Encoding.UTF8, "application/x-www-form-urlencoded");
+					#endif
 					var ttask = await client.PostAsync(App.ApiUrL+"/Token", requestContent);
 
 					var ttr = ttask.Content.ReadAsStringAsync ().Result;

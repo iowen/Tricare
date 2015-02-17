@@ -90,7 +90,7 @@ namespace TriCare.Views
 						sRepo.SendForgotPassword(emailEntry.Text.Trim());
 						indi.IsRunning = false;
 
-					await DisplayAlert("Message","Please Check email for instructions on obtaining your credentials","Close");
+					await DisplayAlert("Message","Please check email for instructions on obtaining your credentials","Close");
 					await App.np.PopToRootAsync();
 				});
 				Command.Execute(new []{"run"});
