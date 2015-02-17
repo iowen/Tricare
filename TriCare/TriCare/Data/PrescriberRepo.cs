@@ -259,7 +259,7 @@ namespace TriCare.Data
 						new KeyValuePair<string, string>("", json)
 					});
 
-				var resultTask = await client.PutAsync(App.ApiUrL+"/api/prescriber", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/api/prescriberedit", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 				var pReturn = JsonConvert.DeserializeObject<string>(resultText).Replace("\\","").Replace("\"","");
 				if (pReturn.ToLower() == "success")

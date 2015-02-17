@@ -32,39 +32,39 @@ namespace TriCare.Data
 			return database.Table<Patient>().Where(x => x.PrescriberId == prescriber).OrderBy(x=>x.LastName).ToList();
         }
 
-        public async Task<List<Patient>> PullAllPatientsForPrescriber(int prescriber)
-        {
-            using (var client = new HttpClient())
-            {
-				client.BaseAddress = new Uri(App.ApiUrL);
-				var appToken = App.GetAppToken();
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
-
-				var resultTask = await client.PutAsync(App.ApiUrL+"/api/Patient/" + prescriber.ToString(), null);
-                var resultText = resultTask.Content.ReadAsStringAsync().Result;
-                try
-                {
-                    dynamic resultFix = JsonConvert.DeserializeObject(resultText);
-                    var resultItem = JsonConvert.DeserializeObject<List<Patient>>(resultFix);
-                    if (resultItem.Count > 0)
-                    {
-                        foreach (var it in resultItem)
-                        {
-                            database.Insert(it);
-                        }
-                        var returnTask = new TaskCompletionSource<List<Patient>>();
-                        returnTask.SetResult(resultItem);
-                        return await returnTask.Task;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-            return null;
-        }
-                            
+//        public async Task<List<Patient>> PullAllPatientsForPrescriber(int prescriber)
+//        {
+//            using (var client = new HttpClient())
+//            {
+//				client.BaseAddress = new Uri(App.ApiUrL);
+//				var appToken = App.GetAppToken();
+//				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",appToken.AccessToken);
+//
+//				var resultTask = await client.PutAsync(App.ApiUrL+"/api/Patient/" + prescriber.ToString(), null);
+//                var resultText = resultTask.Content.ReadAsStringAsync().Result;
+//                try
+//                {
+//                    dynamic resultFix = JsonConvert.DeserializeObject(resultText);
+//                    var resultItem = JsonConvert.DeserializeObject<List<Patient>>(resultFix);
+//                    if (resultItem.Count > 0)
+//                    {
+//                        foreach (var it in resultItem)
+//                        {
+//                            database.Insert(it);
+//                        }
+//                        var returnTask = new TaskCompletionSource<List<Patient>>();
+//                        returnTask.SetResult(resultItem);
+//                        return await returnTask.Task;
+//                    }
+//                }
+//                catch (Exception ex)
+//                {
+//                    return null;
+//                }
+//            }
+//            return null;
+//        }
+//                            
 
 
         public Patient GetPatient(int id)
@@ -123,7 +123,7 @@ namespace TriCare.Data
 					});
 
 			
-				var resultTask = await client.PutAsync(App.ApiUrL+"/api/patient", content);
+				var resultTask = await client.PostAsync(App.ApiUrL+"/api/patientedit", content);
 				var resultText = resultTask.Content.ReadAsStringAsync().Result;
 
 				var pReturn = JsonConvert.DeserializeObject<string>(resultText).Replace("\"","");
